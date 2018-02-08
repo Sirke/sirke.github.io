@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="SVN," />
+
+
+<meta name="description" content="SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+<meta name="keywords" content="SVN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN的使用">
+<meta property="og:url" content="http://www.iskei.cn/posts/57755.html">
+<meta property="og:site_name" content="Kei&#39;s Note">
+<meta property="og:description" content="SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0006.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN001.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN002.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN003.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN004.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN005.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN006.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN007.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN008.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN009.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN010.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN011.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN012.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN013.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN014.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN015.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN016.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN017.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN018.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN019.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN020.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN021.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN022.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN023.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN024.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN025.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN026.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN027.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN028.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN029.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN030.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN031.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN032.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN033.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN034.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN035.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN036.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN037.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN038.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN039.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN040.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN041.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN042.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN043.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN044.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN045.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN046.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN047.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN048.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN049.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN050.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN051.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN052.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN053.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN054.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN055.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN056.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN057.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN058.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN059.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN060.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN061.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN062.jpg">
+<meta property="og:updated_time" content="2018-02-08T06:23:26.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVN的使用">
+<meta name="twitter:description" content="SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0006.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kei's Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/57755.html"/>
+
+
+  <title>SVN的使用 | Kei's Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kei's Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/57755.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kei's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SVN的使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T20:34:36+08:00">2017-12-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SVN/" itemprop="url" rel="index"><span itemprop="name">SVN</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/57755.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/57755.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/57755.html" class="leancloud_visitors" data-flag-title="SVN的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">3.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:04</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0006.jpg" alt="image"></p>
+<p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。<br><a id="more"></a></p>
+<h3 id="为什么要使用配置管理"><a href="#为什么要使用配置管理" class="headerlink" title="为什么要使用配置管理"></a>为什么要使用配置管理</h3><p>及时了解团队中其他成员的进度。</p>
+<p>轻松比较不同版本间的细微差别；</p>
+<p>记录每个文件成长的每步细节，利于成果的复用(reuse);</p>
+<p>资料共享，避免以往靠邮件发送文件造成的版本混乱；</p>
+<p>人人为我，我为人人。所有成员维护的实际是同一个版本库，无需专人维护所有文件的最新版本；</p>
+<p>协同工作，大大提高团队工作效率，无论团队成员分布在天涯还是海角；</p>
+<h3 id="Subversion-TortoiseSVN的版本控制系统"><a href="#Subversion-TortoiseSVN的版本控制系统" class="headerlink" title="Subversion/TortoiseSVN的版本控制系统"></a>Subversion/TortoiseSVN的版本控制系统</h3><p>Subversion：是一个开源的版本控制系统，拥有CVS的大部分特征，并在CVS的基础上有更强的扩展，用来代替 CVS 系统。</p>
+<p>TortoiseSVN：SVN的客户端工具，和资源管理器完美集成，基于TortoiseCVS的代码开发，使用上与TortioseCVS极其相似;</p>
+<h3 id="配置库（-Repository-）"><a href="#配置库（-Repository-）" class="headerlink" title="配置库（ Repository ）"></a>配置库（ Repository ）</h3><p>SVN的核心是配置库，储存所有的数据，配置库按照文件树形式储存数据－包括文件和目录，任意数量的客户端可以连接到配置库，读写这些文件。通过写数据，别人可以看到这些信息；通过读数据，可以看到别人的修改。 </p>
+<p>最特别的是 Subversion 会记录配置库中的每一次更改，不仅针对文件也包括目录本身，包括增加、删除和重新组织文件和目录。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN001.jpg" alt="image"></p>
+<h3 id="工作副本（WorkSpace）"><a href="#工作副本（WorkSpace）" class="headerlink" title="工作副本（WorkSpace）"></a>工作副本（WorkSpace）</h3><p>与位于中央配置库相对应的是每个人的工作空间，它是每个程序员工作的地方，程序员从配置库拿到源代码，放在本地作为工作副本，在工作副本上进行查看、修改、编译、运行、测试等操作，并把新版本的代码从这里提交回配置库库中。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN002.jpg" alt="image"></p>
+<h3 id="SVN工作模式"><a href="#SVN工作模式" class="headerlink" title="SVN工作模式"></a>SVN工作模式</h3><h4 id="复制-修改-合并方案-Subversion默认的模式"><a href="#复制-修改-合并方案-Subversion默认的模式" class="headerlink" title="复制-修改-合并方案(Subversion默认的模式)"></a>复制-修改-合并方案(Subversion默认的模式)</h4><p>在这种模型里，每一个客户读取项目配置库建立一个私有工作副本——版本库中文件和目录的本地映射。用户并行工作，修改各自的工作副本，最终，各个私有的复制合并在一起，成为最终的版本，这种系统通常可以辅助合并操作，但是最终要靠人工去确定正误。</p>
+<h4 id="锁定-修改-解锁方案"><a href="#锁定-修改-解锁方案" class="headerlink" title="锁定-修改-解锁方案"></a>锁定-修改-解锁方案</h4><p>在这样的模型里，在一个时间段里配置库的一个文件只允许被一个人修改。 此模式不适合软件开发这种工作。</p>
+<h3 id="SVN安装"><a href="#SVN安装" class="headerlink" title="SVN安装"></a>SVN安装</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN003.jpg" alt="image"></p>
+<p>安装完毕后，在“资源管理器”里点击右键，会有如下菜单出现：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN004.jpg" alt="image"></p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN005.png" alt="image"></p>
+<h3 id="SVN使用流程"><a href="#SVN使用流程" class="headerlink" title="SVN使用流程"></a>SVN使用流程</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN006.png" alt="image"></p>
+<h3 id="SVN使用图标说明"><a href="#SVN使用图标说明" class="headerlink" title="SVN使用图标说明"></a>SVN使用图标说明</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN007.png" alt="image"></p>
+<h3 id="SVN-CheckOut检出"><a href="#SVN-CheckOut检出" class="headerlink" title="SVN CheckOut检出"></a>SVN CheckOut检出</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN008.png" alt="image"></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN009.png" alt="image"></p>
+<h3 id="SVN-CheckOut检出注意事项"><a href="#SVN-CheckOut检出注意事项" class="headerlink" title="SVN CheckOut检出注意事项"></a>SVN CheckOut检出注意事项</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN010.jpg" alt="image"></p>
+<p>检出深度：</p>
+<ol>
+<li><p>全递归(默认选择)</p>
+<p>检出完整的目录树，包含所有的文件或子目录。</p>
+</li>
+<li><p>直接节点，包含目录 </p>
+<p>检出目录，包含其中的文件或子目录，但是不递归展开子目录。</p>
+</li>
+<li><p>仅文件子节点</p>
+<p>检出指定目录，包含所有文件，但是不检出任何子目录。</p>
+</li>
+<li><p>仅此项。 </p>
+<p>只检出目录。不包含其中的文件或子目录。</p>
+</li>
+</ol>
+<p>省略外部引用：如果项目含有外部项目的引用，而这些引用我们不希望同时检出，请选中忽略外部项目复选框。如果选中了这个复选框，更新的时候要使用命令”更新至版本Update to Revision…”</p>
+<h3 id="SVN-Update更新"><a href="#SVN-Update更新" class="headerlink" title="SVN Update更新"></a>SVN Update更新</h3><p>作用：更新工作副本使其成为版本库中的最新版本</p>
+<p>SVN将显示出更新的文件和更新的次数</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN011.jpg" alt="image"></p>
+<h3 id="SVN-Commit提交"><a href="#SVN-Commit提交" class="headerlink" title="SVN Commit提交"></a>SVN Commit提交</h3><p>对工作副本进行编辑后提交到SVN</p>
+<p>在右键菜单中点击SVN Commit</p>
+<p>提交前写好信息，点击确定</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN012.jpg" alt="image"></p>
+<h3 id="SVN-权限控制"><a href="#SVN-权限控制" class="headerlink" title="SVN 权限控制"></a>SVN 权限控制</h3><p>当进行提交文件操作的时候您将看到权限提示信息</p>
+<p>输入您的用户名和密码</p>
+<p>保存权限设置（见红圈） ，可以避免将来重复输入用户名和密码</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN013.jpg" alt="image"></p>
+<h3 id="SVN-如何删除认证数据"><a href="#SVN-如何删除认证数据" class="headerlink" title="SVN 如何删除认证数据"></a>SVN 如何删除认证数据</h3><blockquote>
+<p> 步骤：点击右键 —— 选择设置  ——  以保存数据  ——  清除认证数据</p>
+</blockquote>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN014.jpg" alt="image"></p>
+<h3 id="SVN-Show-log显示日志"><a href="#SVN-Show-log显示日志" class="headerlink" title="SVN  Show log显示日志"></a>SVN  Show log显示日志</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN015.jpg" alt="image"></p>
+<h3 id="SVN-日志信息填写规则"><a href="#SVN-日志信息填写规则" class="headerlink" title="SVN  日志信息填写规则"></a>SVN  日志信息填写规则</h3><p>好的日志信息和糟糕的日志信息</p>
+<p>日志信息主要记录的是每次的修改内容。建议把一些重要数据、关键操作写到日志信息中。</p>
+<p>注：修改人和提交时间由软件自动记录，无需人工写入日志信息</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN016.jpg" alt="image"></p>
+<h3 id="SVN-如何得到历史版本"><a href="#SVN-如何得到历史版本" class="headerlink" title="SVN  如何得到历史版本"></a>SVN  如何得到历史版本</h3><p>工作副本右键 - 显示日志 - 选择所需的版本号 - 保存版本至</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN017.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN018.jpg" alt="image"></p>
+<h3 id="SVN-Revert-还原"><a href="#SVN-Revert-还原" class="headerlink" title="SVN  Revert(还原)"></a>SVN  Revert(还原)</h3><p>作用：撤销本地所有未提交的修改</p>
+<blockquote>
+<p>注意：还没有执行Commit操作之前执行此命令才可以，否则无效</p>
+</blockquote>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN019.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN020.jpg" alt="image"></p>
+<h3 id="SVN-Add添加"><a href="#SVN-Add添加" class="headerlink" title="SVN  Add添加"></a>SVN  Add添加</h3><p>选中文件/文件夹（在新文件/文件夹所在父文件夹点击右键），</p>
+<p>在菜单中选择“添加Add”命令。不需要受SVN控制的文件请取消打钩。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN021.jpg" alt="image"></p>
+<h3 id="SVN-Add-to-Ignore-List-（忽略文件）"><a href="#SVN-Add-to-Ignore-List-（忽略文件）" class="headerlink" title="SVN  Add to Ignore List （忽略文件）"></a>SVN  Add to Ignore List （忽略文件）</h3><ul>
+<li><p>添加忽略文件</p>
+<p>右键一个单独的未进入版本控制文件TortoiseSVN (加入忽略列表)Add to Ignore List，会出现一个子菜单允许你仅选择该文件，或者所有具有相同后缀的文件。 </p>
+</li>
+<li><p>删除忽略文件：</p>
+<p>如果你想从忽略列表中移除一个或多个条目，右击这些条目，选择TortoiseSVN → 从忽略列表删除。</p>
+</li>
+</ul>
+<p>已进入版本控制的文件或目录不能够忽略  </p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN022.jpg" alt="image"></p>
+<h3 id="SVN-版本分支"><a href="#SVN-版本分支" class="headerlink" title="SVN  版本分支"></a>SVN  版本分支</h3><p>这个版本历史分析图能够显示分支/标签从什么地方开始创建，以及什么时候删除。</p>
+<p>版本分支图将显示以下内容: </p>
+<ol>
+<li>增加文件/文件夹</li>
+<li>已删除文件/文件夹</li>
+<li>分支最新版本</li>
+<li>一般的文件/文件夹 </li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN023.jpg" alt="image"></p>
+<h3 id="SVN-如何创建分支"><a href="#SVN-如何创建分支" class="headerlink" title="SVN  如何创建分支"></a>SVN  如何创建分支</h3><p>两种方式：</p>
+<ol>
+<li>在版本库浏览器中创建分支</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN024.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN025.jpg" alt="image"></p>
+<ol>
+<li>在工作副本创建分支</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN026.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN027.jpg" alt="image"></p>
+<p>创建分支成功</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN028.jpg" alt="image"></p>
+<h3 id="SVN-Switch切换"><a href="#SVN-Switch切换" class="headerlink" title="SVN  Switch切换"></a>SVN  Switch切换</h3><p> 文件创建分支后，可通过Switch选择在主干工作或者在分支工作;</p>
+<p>注意:</p>
+<ol>
+<li>切换操作起来就象更新，因为它没有丢弃我们在本地做的修改。</li>
+<li>在工作副本里，当我们进行切换的时候，任何没有提交过的修改都会被混合。</li>
+</ol>
+<p>解决方法：</p>
+<ol>
+<li>在切换前提交修改;</li>
+<li>把工作副本恢复到一个已经提交过的版本(比如最新版本)。 </li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN029.jpg" alt="image"></p>
+<h3 id="SVN-合并"><a href="#SVN-合并" class="headerlink" title="SVN  合并"></a>SVN  合并</h3><p>假设我们在分支上进行修改：添加一条输出语句：</p>
+<p> System.out.println(“测试是否能将分支的修改合并到主干中!”) ;提交到配置库中，现在执行将分支合并到主干的操作</p>
+<p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN030.jpg" alt="image"></p>
+<h3 id="SVN-分支合并到主干"><a href="#SVN-分支合并到主干" class="headerlink" title="SVN  分支合并到主干"></a>SVN  分支合并到主干</h3><p>右键- 主干的文件- 选择合并</p>
+<p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN031.jpg" alt="image"><br> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN032.jpg" alt="image"><br> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN033.jpg" alt="image"><br> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN034.jpg" alt="image"></p>
+<h3 id="SVN-合并时出现冲突"><a href="#SVN-合并时出现冲突" class="headerlink" title="SVN  合并时出现冲突"></a>SVN  合并时出现冲突</h3><p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN035.jpg" alt="image"></p>
+<h3 id="SVN-编辑冲突"><a href="#SVN-编辑冲突" class="headerlink" title="SVN  编辑冲突"></a>SVN  编辑冲突</h3><p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN036.jpg" alt="image"></p>
+<h3 id="SVN-冲突已解决"><a href="#SVN-冲突已解决" class="headerlink" title="SVN  冲突已解决"></a>SVN  冲突已解决</h3><p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN037.jpg" alt="image"></p>
+<h3 id="SVN-合并成功"><a href="#SVN-合并成功" class="headerlink" title="SVN  合并成功"></a>SVN  合并成功</h3><p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN038.jpg" alt="image"></p>
+<h3 id="SVN-什么是冲突"><a href="#SVN-什么是冲突" class="headerlink" title="SVN  什么是冲突"></a>SVN  什么是冲突</h3><p>团队协同工作时，当多位团队成员同时修改同一个文件，造成本地文件与SVN系统中的文件版本不一致，而导致文件无法提交的情况</p>
+<h3 id="SVN-冲突产生原因"><a href="#SVN-冲突产生原因" class="headerlink" title="SVN  冲突产生原因"></a>SVN  冲突产生原因</h3><p>当团队协同工作的时候，多位团队成员同时操作一个文件。团队成员A操作完成后，将该文件提交到SVN上。此时，其他团队成员的本地文件与SVN上的文件版本不一致。当团队成员B操作完成并对文件进行提交操作时，就会产生冲突</p>
+<h3 id="SVN-冲突提示页面"><a href="#SVN-冲突提示页面" class="headerlink" title="SVN  冲突提示页面"></a>SVN  冲突提示页面</h3><h4 id="提交时产出冲突"><a href="#提交时产出冲突" class="headerlink" title="提交时产出冲突"></a>提交时产出冲突</h4><p> <img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN039.jpg" alt="image"></p>
+<h3 id="SVN-冲突解决方案"><a href="#SVN-冲突解决方案" class="headerlink" title="SVN  冲突解决方案"></a>SVN  冲突解决方案</h3><p>遇到冲突时，需要update该文件。我们将看到三个带问号的文件</p>
+<p>　filename.mine</p>
+<p>　filename.rOLDREV</p>
+<p>　filename.rNEWREV<br>　<br>　<img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN040.jpg" alt="image"><br>　<br>面对文件冲突，我们可以选择以下两种方式解决冲突</p>
+<p>使用工具解决冲突</p>
+<p>用revert放弃所做的修改</p>
+<h3 id="SVN-使用工具解决冲突"><a href="#SVN-使用工具解决冲突" class="headerlink" title="SVN  使用工具解决冲突"></a>SVN  使用工具解决冲突</h3><p>使用自带工具，如图所示</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN041.jpg" alt="image"></p>
+<p>对比两个版本的文件，解决冲突</p>
+<p>工具中会列出两个版本冲突的部分，并让我们选择使用哪个版本的内容</p>
+<h3 id="SVN-用revert放弃所做的修改"><a href="#SVN-用revert放弃所做的修改" class="headerlink" title="SVN  用revert放弃所做的修改"></a>SVN  用revert放弃所做的修改</h3><p>选择SVN还原（revert） 放弃自己所做的修改</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN042.jpg" alt="image"></p>
+<h3 id="SVN-解决冲突之后"><a href="#SVN-解决冲突之后" class="headerlink" title="SVN  解决冲突之后"></a>SVN  解决冲突之后</h3><p>通过上面所说的方法，解决冲突后要选择已解决的（resolved）</p>
+<p>解决后，带问号的三个文件将自动删除</p>
+<p>最后选择commit提交到SVN</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN043.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN044.jpg" alt="image"></p>
+<h3 id="SVN-关于冲突的建议"><a href="#SVN-关于冲突的建议" class="headerlink" title="SVN  关于冲突的建议"></a>SVN  关于冲突的建议</h3><p>修改文件之前，先进行一次update操作</p>
+<p>修改完成后，及时commit，不要在本地停留过长时间</p>
+<p>在多位团队成员协作时，尽量修改自己撰写的部分，尽量不要修改不属于自己撰写的部分</p>
+<p>出现冲突很正常，可以通过前面的方法解决，不要相互覆盖</p>
+<h3 id="SVN-其他SVN的功能"><a href="#SVN-其他SVN的功能" class="headerlink" title="SVN  其他SVN的功能"></a>SVN  其他SVN的功能</h3><ul>
+<li>Export（导出）</li>
+</ul>
+<p>导出你需要的文件，导出后不在受SVN控制；而checkout检出的文件仍受SVN控制；</p>
+<ul>
+<li>Import（导入）</li>
+</ul>
+<p>将需要的文件导入到版本库中；</p>
+<ul>
+<li>Relocated（重新定位）</li>
+</ul>
+<p>当服务器上的版本库目录已经改变，我们可以把工作复本重新定位；</p>
+<ul>
+<li>CleanUp（清理）</li>
+</ul>
+<p>递归的清理工作副本，删除锁定和保留的未完成操作，如果你得到工作副本已经锁定的错误，运行这个命令删除无用的锁定，并将工作副本恢复到可用的状态；</p>
+<h3 id="SVN-Subclipse的安装步骤（Eclipse集成）"><a href="#SVN-Subclipse的安装步骤（Eclipse集成）" class="headerlink" title="SVN  Subclipse的安装步骤（Eclipse集成）"></a>SVN  Subclipse的安装步骤（Eclipse集成）</h3><ol>
+<li><p>帮助 &gt; 软件更新 &gt;查找并安装 </p>
+</li>
+<li><p>选择“要安装的新功能部件” 选项并点击Next。</p>
+</li>
+<li><p>点击“新站点”并且创建一远程站点，</p>
+<p>名字:Subclipse</p>
+<p>URL:<a href="http://subclipse.tigris.org/update_1.2.x" target="_blank" rel="noopener">http://subclipse.tigris.org/update_1.2.x</a></p>
+</li>
+<li><p>在结果安装窗口中，把”Subeclipse in the Features”    选择到安装列表中，并且通过向导来开始安装插件。</p>
+</li>
+<li><p>完成这些之后，重新启动Eclipse。 </p>
+</li>
+</ol>
+<h3 id="SVN-在Eclipse下使用的图标"><a href="#SVN-在Eclipse下使用的图标" class="headerlink" title="SVN  在Eclipse下使用的图标"></a>SVN  在Eclipse下使用的图标</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN045.jpg" alt="image"></p>
+<h3 id="SVN-Eclipse下使用的主要功能"><a href="#SVN-Eclipse下使用的主要功能" class="headerlink" title="SVN  Eclipse下使用的主要功能"></a>SVN  Eclipse下使用的主要功能</h3><p>将版本库导入到SVN资源库</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN046.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN047.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN048.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN049.jpg" alt="image"></p>
+<p>将新建项目导入到版本库</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN050.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN051.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN052.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN053.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN054.jpg" alt="image"></p>
+<p>Eclipse中小组的使用</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN055.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN056.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN057.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN058.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN059.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN060.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN061.jpg" alt="image"><br><img src="http://ovi3ob9p4.bkt.clouddn.com/SVN/SVN062.jpg" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/57755.html" title="SVN的使用">http://www.iskei.cn/posts/57755.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVN/" rel="tag"># SVN</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/12381.html" rel="next" title="荒原，我的国">
+                <i class="fa fa-chevron-left"></i> 荒原，我的国
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/54584.html" rel="prev" title="项目运维中常用SQL">
+                项目运维中常用SQL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用配置管理"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用配置管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subversion-TortoiseSVN的版本控制系统"><span class="nav-number">2.</span> <span class="nav-text">Subversion/TortoiseSVN的版本控制系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置库（-Repository-）"><span class="nav-number">3.</span> <span class="nav-text">配置库（ Repository ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作副本（WorkSpace）"><span class="nav-number">4.</span> <span class="nav-text">工作副本（WorkSpace）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN工作模式"><span class="nav-number">5.</span> <span class="nav-text">SVN工作模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制-修改-合并方案-Subversion默认的模式"><span class="nav-number">5.1.</span> <span class="nav-text">复制-修改-合并方案(Subversion默认的模式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁定-修改-解锁方案"><span class="nav-number">5.2.</span> <span class="nav-text">锁定-修改-解锁方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN安装"><span class="nav-number">6.</span> <span class="nav-text">SVN安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构"><span class="nav-number">7.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN使用流程"><span class="nav-number">8.</span> <span class="nav-text">SVN使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN使用图标说明"><span class="nav-number">9.</span> <span class="nav-text">SVN使用图标说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-CheckOut检出"><span class="nav-number">10.</span> <span class="nav-text">SVN CheckOut检出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-CheckOut检出注意事项"><span class="nav-number">11.</span> <span class="nav-text">SVN CheckOut检出注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Update更新"><span class="nav-number">12.</span> <span class="nav-text">SVN Update更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Commit提交"><span class="nav-number">13.</span> <span class="nav-text">SVN Commit提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-权限控制"><span class="nav-number">14.</span> <span class="nav-text">SVN 权限控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-如何删除认证数据"><span class="nav-number">15.</span> <span class="nav-text">SVN 如何删除认证数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Show-log显示日志"><span class="nav-number">16.</span> <span class="nav-text">SVN  Show log显示日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-日志信息填写规则"><span class="nav-number">17.</span> <span class="nav-text">SVN  日志信息填写规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-如何得到历史版本"><span class="nav-number">18.</span> <span class="nav-text">SVN  如何得到历史版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Revert-还原"><span class="nav-number">19.</span> <span class="nav-text">SVN  Revert(还原)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Add添加"><span class="nav-number">20.</span> <span class="nav-text">SVN  Add添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Add-to-Ignore-List-（忽略文件）"><span class="nav-number">21.</span> <span class="nav-text">SVN  Add to Ignore List （忽略文件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-版本分支"><span class="nav-number">22.</span> <span class="nav-text">SVN  版本分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-如何创建分支"><span class="nav-number">23.</span> <span class="nav-text">SVN  如何创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Switch切换"><span class="nav-number">24.</span> <span class="nav-text">SVN  Switch切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-合并"><span class="nav-number">25.</span> <span class="nav-text">SVN  合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-分支合并到主干"><span class="nav-number">26.</span> <span class="nav-text">SVN  分支合并到主干</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-合并时出现冲突"><span class="nav-number">27.</span> <span class="nav-text">SVN  合并时出现冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-编辑冲突"><span class="nav-number">28.</span> <span class="nav-text">SVN  编辑冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-冲突已解决"><span class="nav-number">29.</span> <span class="nav-text">SVN  冲突已解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-合并成功"><span class="nav-number">30.</span> <span class="nav-text">SVN  合并成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-什么是冲突"><span class="nav-number">31.</span> <span class="nav-text">SVN  什么是冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-冲突产生原因"><span class="nav-number">32.</span> <span class="nav-text">SVN  冲突产生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-冲突提示页面"><span class="nav-number">33.</span> <span class="nav-text">SVN  冲突提示页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提交时产出冲突"><span class="nav-number">33.1.</span> <span class="nav-text">提交时产出冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-冲突解决方案"><span class="nav-number">34.</span> <span class="nav-text">SVN  冲突解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-使用工具解决冲突"><span class="nav-number">35.</span> <span class="nav-text">SVN  使用工具解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-用revert放弃所做的修改"><span class="nav-number">36.</span> <span class="nav-text">SVN  用revert放弃所做的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-解决冲突之后"><span class="nav-number">37.</span> <span class="nav-text">SVN  解决冲突之后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-关于冲突的建议"><span class="nav-number">38.</span> <span class="nav-text">SVN  关于冲突的建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-其他SVN的功能"><span class="nav-number">39.</span> <span class="nav-text">SVN  其他SVN的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Subclipse的安装步骤（Eclipse集成）"><span class="nav-number">40.</span> <span class="nav-text">SVN  Subclipse的安装步骤（Eclipse集成）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-在Eclipse下使用的图标"><span class="nav-number">41.</span> <span class="nav-text">SVN  在Eclipse下使用的图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN-Eclipse下使用的主要功能"><span class="nav-number">42.</span> <span class="nav-text">SVN  Eclipse下使用的主要功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">27:15</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      visitors.
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>Site overview
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times.
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+ 
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.2"></script>
+
+
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

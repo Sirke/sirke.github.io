@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="SpringBoot," />
+
+
+<meta name="description" content="Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。">
+<meta name="keywords" content="SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot开发新一代项目">
+<meta property="og:url" content="http://www.iskei.cn/posts/10370.html">
+<meta property="og:site_name" content="Kei&#39;s Note">
+<meta property="og:description" content="Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0024.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/springboot/springboot001.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/springboot/springboot002.png">
+<meta property="og:updated_time" content="2018-02-08T06:23:26.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Boot开发新一代项目">
+<meta name="twitter:description" content="Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0024.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kei's Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/10370.html"/>
+
+
+  <title>Spring Boot开发新一代项目 | Kei's Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kei's Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/10370.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kei's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Spring Boot开发新一代项目</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T22:34:36+08:00">2017-12-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/10370.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/10370.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/10370.html" class="leancloud_visitors" data-flag-title="Spring Boot开发新一代项目">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">24k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:24</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0024.jpg" alt="image"></p>
+<p>Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。<br><a id="more"></a></p>
+<h3 id="Spring-Boot特点"><a href="#Spring-Boot特点" class="headerlink" title="Spring Boot特点"></a>Spring Boot特点</h3><ol>
+<li>创建独立的Spring应用程序</li>
+<li>嵌入的Tomcat，无需部署WAR文件</li>
+<li>简化Maven配置</li>
+<li>自动配置Spring</li>
+<li>提供生产就绪型功能，如指标，健康检查和外部配置</li>
+<li>绝对没有代码生成和对XML没有要求配置</li>
+</ol>
+<h3 id="安装Spring-Boot"><a href="#安装Spring-Boot" class="headerlink" title="安装Spring Boot"></a>安装Spring Boot</h3><p>从最根本上来讲，Spring Boot就是一些库的集合，它能够被任意项目的构建系统所使用。简便起见，该框架也提供了命令行界面，它可以用来运行和测试Boot应用。框架的发布版本，包括集成的CLI（命令行界面），可以在Spring仓库中手动下载和安装。一种更为简便的方式是使用Groovy环境管理器（Groovy enVironment Manager，GVM），它会处理Boot版本的安装和管理。Boot及其CLI可以通过GVM的命令行gvm install springboot进行安装。在OS X上安装Boot可以使用Homebrew包管理器。为了完成安装，首先要使用brew tap pivotal/tap切换到Pivotal仓库中，然后执行brew install springboot命令。<br>要进行打包和分发的工程会依赖于像Maven或Gradle这样的构建系统。为了简化依赖图，Boot的功能是模块化的，通过导入Boot所谓的“starter”模块，可以将许多的依赖添加到工程之中。为了更容易地管理依赖版本和使用默认配置，框架提供了一个parent POM，工程可以继承它。</p>
+<h3 id="构建项目步骤"><a href="#构建项目步骤" class="headerlink" title="构建项目步骤"></a>构建项目步骤</h3><ol>
+<li>首先要下载maven</li>
+</ol>
+<p>用maven管理项目很方便，下载完maven配置好环境，maven我就不细说了。</p>
+<ol>
+<li>创建一个maven项目</li>
+</ol>
+<p>pom.xml文件里面写这些:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>springboot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>testSpringBoot<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>testSpringBoot<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 继承父包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span><span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- spring-boot的web启动的jar包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--jpa的jar包 ，操作数据库的，类似hibernate--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!--mysql驱动--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!--thymeleaf模板jar，是很不错的html数据传递取值，类似jsp的jstl--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--maven的插件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">&lt;!-- 配置java版本 不配置的话默认父类配置的是1.6--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginManagement</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.7<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginManagement</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建的文件目录如图:</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/springboot/springboot001.png" alt="image"></p>
+<ol>
+<li>在com.boot(即最外层目录文件)下写一个如下main方法:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.boot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">          SpringApplication.run(Application.class, args);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在com.boot.web下创建一个类如下:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.boot.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line"><span class="comment">//    @RequestMapping("")</span></span><br><span class="line"><span class="comment">//    public String index()&#123;</span></span><br><span class="line"><span class="comment">//        return "examples/index";</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">      <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">      <span class="meta">@ResponseBody</span></span><br><span class="line">      <span class="function">String <span class="title">home</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@RequestMapping     @ResponseBody</p>
+<p>这两个注解都是springMVC的,不懂得可以看springMVC</p>
+<ol>
+<li>在resources下增加一个application.properties文件</li>
+</ol>
+<p>文件内容如下配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.platform=mysql</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost/springboot?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true&amp;autoReconnect=true&amp;failOverReadOnly=false</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=root</span><br><span class="line">spring.datasource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line"># Advanced configuration...</span><br><span class="line">spring.datasource.max-active=50</span><br><span class="line">spring.datasource.max-idle=6</span><br><span class="line">spring.datasource.min-idle=2</span><br><span class="line">spring.datasource.initial-size=6</span><br><span class="line"></span><br><span class="line">#create table</span><br><span class="line">spring.jpa.hibernate.ddl-auto=validate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server.port=8080</span><br><span class="line">server.session-timeout=30</span><br><span class="line">server.tomcat.uri-encoding=UTF-8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">spring.thymeleaf.prefix=classpath:templates/</span><br><span class="line">spring.thymeleaf.suffix=.html</span><br><span class="line">spring.thymeleaf.mode=HTML5</span><br><span class="line">spring.thymeleaf.encoding=UTF-8</span><br><span class="line">spring.thymeleaf.content-type=text/html </span><br><span class="line">spring.thymeleaf.cache=false</span><br></pre></td></tr></table></figure>
+<p>该文件的配置可以参考springboot的官网</p>
+<p>该文件的全部参数配置；如下(摘自官网)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br></pre></td><td class="code"><pre><span class="line"># ===================================================================</span><br><span class="line"># COMMON SPRING BOOT PROPERTIES</span><br><span class="line">#</span><br><span class="line"># This sample file is provided as a guideline. Do NOT copy it in its</span><br><span class="line"># entirety to your own application.               ^^^</span><br><span class="line"># ===================================================================</span><br><span class="line"></span><br><span class="line"># ----------------------------------------</span><br><span class="line"># CORE PROPERTIES</span><br><span class="line"># ----------------------------------------</span><br><span class="line"></span><br><span class="line"># SPRING CONFIG (ConfigFileApplicationListener)</span><br><span class="line">spring.config.name= # config file name (default to &apos;application&apos;)</span><br><span class="line">spring.config.location= # location of config file</span><br><span class="line"></span><br><span class="line"># PROFILES</span><br><span class="line">spring.profiles.active= # comma list of active profiles</span><br><span class="line"></span><br><span class="line"># APPLICATION SETTINGS (SpringApplication)</span><br><span class="line">spring.main.sources=</span><br><span class="line">spring.main.web-environment= # detect by default</span><br><span class="line">spring.main.show-banner=true</span><br><span class="line">spring.main....= # see class for all properties</span><br><span class="line"></span><br><span class="line"># LOGGING</span><br><span class="line">logging.path=/var/logs</span><br><span class="line">logging.file=myapp.log</span><br><span class="line">logging.config= # location of config file (default classpath:logback.xml for logback)</span><br><span class="line">logging.level.*= # levels for loggers, e.g. &quot;logging.level.org.springframework=DEBUG&quot; (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)</span><br><span class="line"></span><br><span class="line"># IDENTITY (ContextIdApplicationContextInitializer)</span><br><span class="line">spring.application.name=</span><br><span class="line">spring.application.index=</span><br><span class="line"></span><br><span class="line"># EMBEDDED SERVER CONFIGURATION (ServerProperties)</span><br><span class="line">server.port=8080</span><br><span class="line">server.address= # bind to a specific NIC</span><br><span class="line">server.session-timeout= # session timeout in seconds</span><br><span class="line">server.context-path= # the context path, defaults to &apos;/&apos;</span><br><span class="line">server.servlet-path= # the servlet path, defaults to &apos;/&apos;</span><br><span class="line">server.ssl.client-auth= # want or need</span><br><span class="line">server.ssl.key-alias=</span><br><span class="line">server.ssl.key-password=</span><br><span class="line">server.ssl.key-store=</span><br><span class="line">server.ssl.key-store-password=</span><br><span class="line">server.ssl.key-store-provider=</span><br><span class="line">server.ssl.key-store-type=</span><br><span class="line">server.ssl.protocol=TLS</span><br><span class="line">server.ssl.trust-store=</span><br><span class="line">server.ssl.trust-store-password=</span><br><span class="line">server.ssl.trust-store-provider=</span><br><span class="line">server.ssl.trust-store-type=</span><br><span class="line">server.tomcat.access-log-pattern= # log pattern of the access log</span><br><span class="line">server.tomcat.access-log-enabled=false # is access logging enabled</span><br><span class="line">server.tomcat.internal-proxies=10\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;|\</span><br><span class="line">        192\.168\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;|\</span><br><span class="line">        169\.254\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;|\</span><br><span class="line">        127\.\d&#123;1,3&#125;\.\d&#123;1,3&#125;\.\d&#123;1,3&#125; # regular expression matching trusted IP addresses</span><br><span class="line">server.tomcat.protocol-header=x-forwarded-proto # front end proxy forward header</span><br><span class="line">server.tomcat.port-header= # front end proxy port header</span><br><span class="line">server.tomcat.remote-ip-header=x-forwarded-for</span><br><span class="line">server.tomcat.basedir=/tmp # base dir (usually not needed, defaults to tmp)</span><br><span class="line">server.tomcat.background-processor-delay=30; # in seconds</span><br><span class="line">server.tomcat.max-threads = 0 # number of threads in protocol handler</span><br><span class="line">server.tomcat.uri-encoding = UTF-8 # character encoding to use for URL decoding</span><br><span class="line"></span><br><span class="line"># SPRING MVC (HttpMapperProperties)</span><br><span class="line">http.mappers.json-pretty-print=false # pretty print JSON</span><br><span class="line">http.mappers.json-sort-keys=false # sort keys</span><br><span class="line">spring.mvc.locale= # set fixed locale, e.g. en_UK</span><br><span class="line">spring.mvc.date-format= # set fixed date format, e.g. dd/MM/yyyy</span><br><span class="line">spring.mvc.message-codes-resolver-format= # PREFIX_ERROR_CODE / POSTFIX_ERROR_CODE</span><br><span class="line">spring.view.prefix= # MVC view prefix</span><br><span class="line">spring.view.suffix= # ... and suffix</span><br><span class="line">spring.resources.cache-period= # cache timeouts in headers sent to browser</span><br><span class="line">spring.resources.add-mappings=true # if default mappings should be added</span><br><span class="line"></span><br><span class="line"># JACKSON (JacksonProperties)</span><br><span class="line">spring.jackson.date-format= # Date format string (e.g. yyyy-MM-dd HH:mm:ss), or a fully-qualified date format class name (e.g. com.fasterxml.jackson.databind.util.ISO8601DateFormat)</span><br><span class="line">spring.jackson.property-naming-strategy= # One of the constants on Jackson&apos;s PropertyNamingStrategy (e.g. CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES) or the fully-qualified class name of a PropertyNamingStrategy subclass</span><br><span class="line">spring.jackson.deserialization.*= # see Jackson&apos;s DeserializationFeature</span><br><span class="line">spring.jackson.generator.*= # see Jackson&apos;s JsonGenerator.Feature</span><br><span class="line">spring.jackson.mapper.*= # see Jackson&apos;s MapperFeature</span><br><span class="line">spring.jackson.parser.*= # see Jackson&apos;s JsonParser.Feature</span><br><span class="line">spring.jackson.serialization.*= # see Jackson&apos;s SerializationFeature</span><br><span class="line"></span><br><span class="line"># THYMELEAF (ThymeleafAutoConfiguration)</span><br><span class="line">spring.thymeleaf.prefix=classpath:/templates/</span><br><span class="line">spring.thymeleaf.suffix=.html</span><br><span class="line">spring.thymeleaf.mode=HTML5</span><br><span class="line">spring.thymeleaf.encoding=UTF-8</span><br><span class="line">spring.thymeleaf.content-type=text/html # ;charset=&lt;encoding&gt; is added</span><br><span class="line">spring.thymeleaf.cache=true # set to false for hot refresh</span><br><span class="line"></span><br><span class="line"># FREEMARKER (FreeMarkerAutoConfiguration)</span><br><span class="line">spring.freemarker.allowRequestOverride=false</span><br><span class="line">spring.freemarker.cache=true</span><br><span class="line">spring.freemarker.checkTemplateLocation=true</span><br><span class="line">spring.freemarker.charSet=UTF-8</span><br><span class="line">spring.freemarker.contentType=text/html</span><br><span class="line">spring.freemarker.exposeRequestAttributes=false</span><br><span class="line">spring.freemarker.exposeSessionAttributes=false</span><br><span class="line">spring.freemarker.exposeSpringMacroHelpers=false</span><br><span class="line">spring.freemarker.prefix=</span><br><span class="line">spring.freemarker.requestContextAttribute=</span><br><span class="line">spring.freemarker.settings.*=</span><br><span class="line">spring.freemarker.suffix=.ftl</span><br><span class="line">spring.freemarker.templateLoaderPath=classpath:/templates/ # comma-separated list</span><br><span class="line">spring.freemarker.viewNames= # whitelist of view names that can be resolved</span><br><span class="line"></span><br><span class="line"># GROOVY TEMPLATES (GroovyTemplateAutoConfiguration)</span><br><span class="line">spring.groovy.template.cache=true</span><br><span class="line">spring.groovy.template.charSet=UTF-8</span><br><span class="line">spring.groovy.template.configuration.*= # See Groovy&apos;s TemplateConfiguration</span><br><span class="line">spring.groovy.template.contentType=text/html</span><br><span class="line">spring.groovy.template.prefix=classpath:/templates/</span><br><span class="line">spring.groovy.template.suffix=.tpl</span><br><span class="line">spring.groovy.template.viewNames= # whitelist of view names that can be resolved</span><br><span class="line"></span><br><span class="line"># VELOCITY TEMPLATES (VelocityAutoConfiguration)</span><br><span class="line">spring.velocity.allowRequestOverride=false</span><br><span class="line">spring.velocity.cache=true</span><br><span class="line">spring.velocity.checkTemplateLocation=true</span><br><span class="line">spring.velocity.charSet=UTF-8</span><br><span class="line">spring.velocity.contentType=text/html</span><br><span class="line">spring.velocity.dateToolAttribute=</span><br><span class="line">spring.velocity.exposeRequestAttributes=false</span><br><span class="line">spring.velocity.exposeSessionAttributes=false</span><br><span class="line">spring.velocity.exposeSpringMacroHelpers=false</span><br><span class="line">spring.velocity.numberToolAttribute=</span><br><span class="line">spring.velocity.prefix=</span><br><span class="line">spring.velocity.properties.*=</span><br><span class="line">spring.velocity.requestContextAttribute=</span><br><span class="line">spring.velocity.resourceLoaderPath=classpath:/templates/</span><br><span class="line">spring.velocity.suffix=.vm</span><br><span class="line">spring.velocity.viewNames= # whitelist of view names that can be resolved</span><br><span class="line"></span><br><span class="line"># INTERNATIONALIZATION (MessageSourceAutoConfiguration)</span><br><span class="line">spring.messages.basename=messages</span><br><span class="line">spring.messages.cacheSeconds=-1</span><br><span class="line">spring.messages.encoding=UTF-8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># SECURITY (SecurityProperties)</span><br><span class="line">security.user.name=user # login username</span><br><span class="line">security.user.password= # login password</span><br><span class="line">security.user.role=USER # role assigned to the user</span><br><span class="line">security.require-ssl=false # advanced settings ...</span><br><span class="line">security.enable-csrf=false</span><br><span class="line">security.basic.enabled=true</span><br><span class="line">security.basic.realm=Spring</span><br><span class="line">security.basic.path= # /**</span><br><span class="line">security.filter-order=0</span><br><span class="line">security.headers.xss=false</span><br><span class="line">security.headers.cache=false</span><br><span class="line">security.headers.frame=false</span><br><span class="line">security.headers.contentType=false</span><br><span class="line">security.headers.hsts=all # none / domain / all</span><br><span class="line">security.sessions=stateless # always / never / if_required / stateless</span><br><span class="line">security.ignored=false</span><br><span class="line"></span><br><span class="line"># DATASOURCE (DataSourceAutoConfiguration &amp; DataSourceProperties)</span><br><span class="line">spring.datasource.name= # name of the data source</span><br><span class="line">spring.datasource.initialize=true # populate using data.sql</span><br><span class="line">spring.datasource.schema= # a schema (DDL) script resource reference</span><br><span class="line">spring.datasource.data= # a data (DML) script resource reference</span><br><span class="line">spring.datasource.sqlScriptEncoding= # a charset for reading SQL scripts</span><br><span class="line">spring.datasource.platform= # the platform to use in the schema resource (schema-$&#123;platform&#125;.sql)</span><br><span class="line">spring.datasource.continueOnError=false # continue even if can&apos;t be initialized</span><br><span class="line">spring.datasource.separator=; # statement separator in SQL initialization scripts</span><br><span class="line">spring.datasource.driver-class-name= # JDBC Settings...</span><br><span class="line">spring.datasource.url=</span><br><span class="line">spring.datasource.username=</span><br><span class="line">spring.datasource.password=</span><br><span class="line">spring.datasource.jndi-name # For JNDI lookup (class, url, username &amp; password are ignored when set)</span><br><span class="line">spring.datasource.max-active=100 # Advanced configuration...</span><br><span class="line">spring.datasource.max-idle=8</span><br><span class="line">spring.datasource.min-idle=8</span><br><span class="line">spring.datasource.initial-size=10</span><br><span class="line">spring.datasource.validation-query=</span><br><span class="line">spring.datasource.test-on-borrow=false</span><br><span class="line">spring.datasource.test-on-return=false</span><br><span class="line">spring.datasource.test-while-idle=</span><br><span class="line">spring.datasource.time-between-eviction-runs-millis=</span><br><span class="line">spring.datasource.min-evictable-idle-time-millis=</span><br><span class="line">spring.datasource.max-wait=</span><br><span class="line"></span><br><span class="line"># MONGODB (MongoProperties)</span><br><span class="line">spring.data.mongodb.host= # the db host</span><br><span class="line">spring.data.mongodb.port=27017 # the connection port (defaults to 27107)</span><br><span class="line">spring.data.mongodb.uri=mongodb://localhost/test # connection URL</span><br><span class="line">spring.data.mongo.repositories.enabled=true # if spring data repository support is enabled</span><br><span class="line"></span><br><span class="line"># JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)</span><br><span class="line">spring.jpa.properties.*= # properties to set on the JPA connection</span><br><span class="line">spring.jpa.openInView=true</span><br><span class="line">spring.jpa.show-sql=true</span><br><span class="line">spring.jpa.database-platform=</span><br><span class="line">spring.jpa.database=</span><br><span class="line">spring.jpa.generate-ddl=false # ignored by Hibernate, might be useful for other vendors</span><br><span class="line">spring.jpa.hibernate.naming-strategy= # naming classname</span><br><span class="line">spring.jpa.hibernate.ddl-auto= # defaults to create-drop for embedded dbs</span><br><span class="line">spring.data.jpa.repositories.enabled=true # if spring data repository support is enabled</span><br><span class="line"></span><br><span class="line"># JTA (JtaAutoConfiguration)</span><br><span class="line">spring.jta.log-dir= # transaction log dir</span><br><span class="line">spring.jta.*= # technology specific configuration</span><br><span class="line"></span><br><span class="line"># SOLR (SolrProperties&#125;)</span><br><span class="line">spring.data.solr.host=http://127.0.0.1:8983/solr</span><br><span class="line">spring.data.solr.zkHost=</span><br><span class="line">spring.data.solr.repositories.enabled=true # if spring data repository support is enabled</span><br><span class="line"></span><br><span class="line"># ELASTICSEARCH (ElasticsearchProperties&#125;)</span><br><span class="line">spring.data.elasticsearch.cluster-name= # The cluster name (defaults to elasticsearch)</span><br><span class="line">spring.data.elasticsearch.cluster-nodes= # The address(es) of the server node (comma-separated; if not specified starts a client node)</span><br><span class="line">spring.data.elasticsearch.repositories.enabled=true # if spring data repository support is enabled</span><br><span class="line"></span><br><span class="line"># DATA RESET (RepositoryRestConfiguration&#125;)</span><br><span class="line">spring.data.rest.baseUri=foo # base URI against which the exporter should calculate its links</span><br><span class="line"></span><br><span class="line"># FLYWAY (FlywayProperties)</span><br><span class="line">flyway.locations=classpath:db/migrations # locations of migrations scripts</span><br><span class="line">flyway.schemas= # schemas to update</span><br><span class="line">flyway.initVersion= 1 # version to start migration</span><br><span class="line">flyway.sql-migration-prefix=V</span><br><span class="line">flyway.sql-migration-suffix=.sql</span><br><span class="line">flyway.enabled=true</span><br><span class="line">flyway.url= # JDBC url if you want Flyway to create its own DataSource</span><br><span class="line">flyway.user= # JDBC username if you want Flyway to create its own DataSource</span><br><span class="line">flyway.password= # JDBC password if you want Flyway to create its own DataSource</span><br><span class="line"></span><br><span class="line"># LIQUIBASE (LiquibaseProperties)</span><br><span class="line">liquibase.change-log=classpath:/db/changelog/db.changelog-master.yaml</span><br><span class="line">liquibase.contexts= # runtime contexts to use</span><br><span class="line">liquibase.default-schema= # default database schema to use</span><br><span class="line">liquibase.drop-first=false</span><br><span class="line">liquibase.enabled=true</span><br><span class="line">liquibase.url= # specific JDBC url (if not set the default datasource is used)</span><br><span class="line">liquibase.user= # user name for liquibase.url</span><br><span class="line">liquibase.password= # password for liquibase.url</span><br><span class="line"></span><br><span class="line"># JMX</span><br><span class="line">spring.jmx.enabled=true # Expose MBeans from Spring</span><br><span class="line"></span><br><span class="line"># RABBIT (RabbitProperties)</span><br><span class="line">spring.rabbitmq.host= # connection host</span><br><span class="line">spring.rabbitmq.port= # connection port</span><br><span class="line">spring.rabbitmq.addresses= # connection addresses (e.g. myhost:9999,otherhost:1111)</span><br><span class="line">spring.rabbitmq.username= # login user</span><br><span class="line">spring.rabbitmq.password= # login password</span><br><span class="line">spring.rabbitmq.virtualHost=</span><br><span class="line">spring.rabbitmq.dynamic=</span><br><span class="line"></span><br><span class="line"># REDIS (RedisProperties)</span><br><span class="line">spring.redis.host=localhost # server host</span><br><span class="line">spring.redis.password= # server password</span><br><span class="line">spring.redis.port=6379 # connection port</span><br><span class="line">spring.redis.pool.max-idle=8 # pool settings ...</span><br><span class="line">spring.redis.pool.min-idle=0</span><br><span class="line">spring.redis.pool.max-active=8</span><br><span class="line">spring.redis.pool.max-wait=-1</span><br><span class="line">spring.redis.sentinel.master= # name of Redis server</span><br><span class="line">spring.redis.sentinel.nodes= # comma-separated list of host:port pairs</span><br><span class="line"></span><br><span class="line"># ACTIVEMQ (ActiveMQProperties)</span><br><span class="line">spring.activemq.broker-url=tcp://localhost:61616 # connection URL</span><br><span class="line">spring.activemq.user=</span><br><span class="line">spring.activemq.password=</span><br><span class="line">spring.activemq.in-memory=true # broker kind to create if no broker-url is specified</span><br><span class="line">spring.activemq.pooled=false</span><br><span class="line"></span><br><span class="line"># HornetQ (HornetQProperties)</span><br><span class="line">spring.hornetq.mode= # connection mode (native, embedded)</span><br><span class="line">spring.hornetq.host=localhost # hornetQ host (native mode)</span><br><span class="line">spring.hornetq.port=5445 # hornetQ port (native mode)</span><br><span class="line">spring.hornetq.embedded.enabled=true # if the embedded server is enabled (needs hornetq-jms-server.jar)</span><br><span class="line">spring.hornetq.embedded.serverId= # auto-generated id of the embedded server (integer)</span><br><span class="line">spring.hornetq.embedded.persistent=false # message persistence</span><br><span class="line">spring.hornetq.embedded.data-directory= # location of data content (when persistence is enabled)</span><br><span class="line">spring.hornetq.embedded.queues= # comma-separated queues to create on startup</span><br><span class="line">spring.hornetq.embedded.topics= # comma-separated topics to create on startup</span><br><span class="line">spring.hornetq.embedded.cluster-password= # customer password (randomly generated by default)</span><br><span class="line"></span><br><span class="line"># JMS (JmsProperties)</span><br><span class="line">spring.datasource.jndi-name= # JNDI location of a JMS ConnectionFactory</span><br><span class="line">spring.jms.pub-sub-domain= # false for queue (default), true for topic</span><br><span class="line"></span><br><span class="line"># SPRING BATCH (BatchDatabaseInitializer)</span><br><span class="line">spring.batch.job.names=job1,job2</span><br><span class="line">spring.batch.job.enabled=true</span><br><span class="line">spring.batch.initializer.enabled=true</span><br><span class="line">spring.batch.schema= # batch schema to load</span><br><span class="line"></span><br><span class="line"># AOP</span><br><span class="line">spring.aop.auto=</span><br><span class="line">spring.aop.proxy-target-class=</span><br><span class="line"></span><br><span class="line"># FILE ENCODING (FileEncodingApplicationListener)</span><br><span class="line">spring.mandatory-file-encoding=false</span><br><span class="line"></span><br><span class="line"># SPRING SOCIAL (SocialWebAutoConfiguration)</span><br><span class="line">spring.social.auto-connection-views=true # Set to true for default connection views or false if you provide your own</span><br><span class="line"></span><br><span class="line"># SPRING SOCIAL FACEBOOK (FacebookAutoConfiguration)</span><br><span class="line">spring.social.facebook.app-id= # your application&apos;s Facebook App ID</span><br><span class="line">spring.social.facebook.app-secret= # your application&apos;s Facebook App Secret</span><br><span class="line"></span><br><span class="line"># SPRING SOCIAL LINKEDIN (LinkedInAutoConfiguration)</span><br><span class="line">spring.social.linkedin.app-id= # your application&apos;s LinkedIn App ID</span><br><span class="line">spring.social.linkedin.app-secret= # your application&apos;s LinkedIn App Secret</span><br><span class="line"></span><br><span class="line"># SPRING SOCIAL TWITTER (TwitterAutoConfiguration)</span><br><span class="line">spring.social.twitter.app-id= # your application&apos;s Twitter App ID</span><br><span class="line">spring.social.twitter.app-secret= # your application&apos;s Twitter App Secret</span><br><span class="line"></span><br><span class="line"># SPRING MOBILE SITE PREFERENCE (SitePreferenceAutoConfiguration)</span><br><span class="line">spring.mobile.sitepreference.enabled=true # enabled by default</span><br><span class="line"></span><br><span class="line"># SPRING MOBILE DEVICE VIEWS (DeviceDelegatingViewResolverAutoConfiguration)</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.enabled=true # disabled by default</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.normalPrefix=</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.normalSuffix=</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.mobilePrefix=mobile/</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.mobileSuffix=</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.tabletPrefix=tablet/</span><br><span class="line">spring.mobile.devicedelegatingviewresolver.tabletSuffix=</span><br><span class="line"></span><br><span class="line"># ----------------------------------------</span><br><span class="line"># ACTUATOR PROPERTIES</span><br><span class="line"># ----------------------------------------</span><br><span class="line"></span><br><span class="line"># MANAGEMENT HTTP SERVER (ManagementServerProperties)</span><br><span class="line">management.port= # defaults to &apos;server.port&apos;</span><br><span class="line">management.address= # bind to a specific NIC</span><br><span class="line">management.contextPath= # default to &apos;/&apos;</span><br><span class="line">management.add-application-context-header= # default to true</span><br><span class="line"></span><br><span class="line"># ENDPOINTS (AbstractEndpoint subclasses)</span><br><span class="line">endpoints.autoconfig.id=autoconfig</span><br><span class="line">endpoints.autoconfig.sensitive=true</span><br><span class="line">endpoints.autoconfig.enabled=true</span><br><span class="line">endpoints.beans.id=beans</span><br><span class="line">endpoints.beans.sensitive=true</span><br><span class="line">endpoints.beans.enabled=true</span><br><span class="line">endpoints.configprops.id=configprops</span><br><span class="line">endpoints.configprops.sensitive=true</span><br><span class="line">endpoints.configprops.enabled=true</span><br><span class="line">endpoints.configprops.keys-to-sanitize=password,secret,key # suffix or regex</span><br><span class="line">endpoints.dump.id=dump</span><br><span class="line">endpoints.dump.sensitive=true</span><br><span class="line">endpoints.dump.enabled=true</span><br><span class="line">endpoints.env.id=env</span><br><span class="line">endpoints.env.sensitive=true</span><br><span class="line">endpoints.env.enabled=true</span><br><span class="line">endpoints.env.keys-to-sanitize=password,secret,key # suffix or regex</span><br><span class="line">endpoints.health.id=health</span><br><span class="line">endpoints.health.sensitive=false</span><br><span class="line">endpoints.health.enabled=true</span><br><span class="line">endpoints.health.time-to-live=1000</span><br><span class="line">endpoints.info.id=info</span><br><span class="line">endpoints.info.sensitive=false</span><br><span class="line">endpoints.info.enabled=true</span><br><span class="line">endpoints.metrics.id=metrics</span><br><span class="line">endpoints.metrics.sensitive=true</span><br><span class="line">endpoints.metrics.enabled=true</span><br><span class="line">endpoints.shutdown.id=shutdown</span><br><span class="line">endpoints.shutdown.sensitive=true</span><br><span class="line">endpoints.shutdown.enabled=false</span><br><span class="line">endpoints.trace.id=trace</span><br><span class="line">endpoints.trace.sensitive=true</span><br><span class="line">endpoints.trace.enabled=true</span><br><span class="line"></span><br><span class="line"># HEALTH INDICATORS</span><br><span class="line">health.diskspace.path=.</span><br><span class="line">health.diskspace.threshold=10485760</span><br><span class="line"></span><br><span class="line"># MVC ONLY ENDPOINTS</span><br><span class="line">endpoints.jolokia.path=jolokia</span><br><span class="line">endpoints.jolokia.sensitive=true</span><br><span class="line">endpoints.jolokia.enabled=true # when using Jolokia</span><br><span class="line"></span><br><span class="line"># JMX ENDPOINT (EndpointMBeanExportProperties)</span><br><span class="line">endpoints.jmx.enabled=true</span><br><span class="line">endpoints.jmx.domain= # the JMX domain, defaults to &apos;org.springboot&apos;</span><br><span class="line">endpoints.jmx.unique-names=false</span><br><span class="line">endpoints.jmx.staticNames=</span><br><span class="line"></span><br><span class="line"># JOLOKIA (JolokiaProperties)</span><br><span class="line">jolokia.config.*= # See Jolokia manual</span><br><span class="line"></span><br><span class="line"># REMOTE SHELL</span><br><span class="line">shell.auth=simple # jaas, key, simple, spring</span><br><span class="line">shell.command-refresh-interval=-1</span><br><span class="line">shell.command-path-patterns= # classpath*:/commands/**, classpath*:/crash/commands/**</span><br><span class="line">shell.config-path-patterns= # classpath*:/crash/*</span><br><span class="line">shell.disabled-plugins=false # don&apos;t expose plugins</span><br><span class="line">shell.ssh.enabled= # ssh settings ...</span><br><span class="line">shell.ssh.keyPath=</span><br><span class="line">shell.ssh.port=</span><br><span class="line">shell.telnet.enabled= # telnet settings ...</span><br><span class="line">shell.telnet.port=</span><br><span class="line">shell.auth.jaas.domain= # authentication settings ...</span><br><span class="line">shell.auth.key.path=</span><br><span class="line">shell.auth.simple.user.name=</span><br><span class="line">shell.auth.simple.user.password=</span><br><span class="line">shell.auth.spring.roles=</span><br><span class="line"></span><br><span class="line"># GIT INFO</span><br><span class="line">spring.git.properties= # resource ref to generated git info properties file</span><br></pre></td></tr></table></figure>
+<ol>
+<li>找到com.boot下的Application</li>
+</ol>
+<p>以java Application方式启动，然后打开浏览器输入localhost:8080就会出现Hello World!</p>
+<p>这样一个简单的web开发就搭建好了。</p>
+<ol>
+<li>启动图片:</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/springboot/springboot002.png" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/10370.html" title="Spring Boot开发新一代项目">http://www.iskei.cn/posts/10370.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/64619.html" rel="next" title="Wireshark抓包工具使用以及常用抓包规则">
+                <i class="fa fa-chevron-left"></i> Wireshark抓包工具使用以及常用抓包规则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/48216.html" rel="prev" title="Spring Boot微服框架学习(一)">
+                Spring Boot微服框架学习(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot特点"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Spring-Boot"><span class="nav-number">2.</span> <span class="nav-text">安装Spring Boot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建项目步骤"><span class="nav-number">3.</span> <span class="nav-text">构建项目步骤</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">27:15</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      visitors.
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>Site overview
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times.
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+ 
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.2"></script>
+
+
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

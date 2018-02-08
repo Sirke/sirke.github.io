@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="Spring," />
+
+
+<meta name="description" content="@RequestMapping 是 Spring Web 应用程序中最常被用到的注解之一。这个注解会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。在这篇文章中，你将会看到 @RequestMapping 注解在被用来进行 Spring MVC 控制器方法的映射可以如何发挥其多才多艺的功能的。">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Request Mapping 基础用法">
+<meta property="og:url" content="http://www.iskei.cn/posts/47293.html">
+<meta property="og:site_name" content="Kei&#39;s Note">
+<meta property="og:description" content="@RequestMapping 是 Spring Web 应用程序中最常被用到的注解之一。这个注解会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。在这篇文章中，你将会看到 @RequestMapping 注解在被用来进行 Spring MVC 控制器方法的映射可以如何发挥其多才多艺的功能的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0020.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Spring_mapping.png">
+<meta property="og:updated_time" content="2018-02-08T06:23:26.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Request Mapping 基础用法">
+<meta name="twitter:description" content="@RequestMapping 是 Spring Web 应用程序中最常被用到的注解之一。这个注解会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。在这篇文章中，你将会看到 @RequestMapping 注解在被用来进行 Spring MVC 控制器方法的映射可以如何发挥其多才多艺的功能的。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0020.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kei's Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/47293.html"/>
+
+
+  <title>Request Mapping 基础用法 | Kei's Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kei's Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/47293.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kei's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Request Mapping 基础用法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T09:15:22+08:00">2017-09-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/47293.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/47293.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/47293.html" class="leancloud_visitors" data-flag-title="Request Mapping 基础用法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">11k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:11</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0020.jpg" alt="image"></p>
+<p>@RequestMapping 是 Spring Web 应用程序中最常被用到的注解之一。这个注解会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上。<br>在这篇文章中，你将会看到 @RequestMapping 注解在被用来进行 Spring MVC 控制器方法的映射可以如何发挥其多才多艺的功能的。</p>
+<a id="more"></a>
+<h2 id="Request-Mapping-基础用法"><a href="#Request-Mapping-基础用法" class="headerlink" title="Request Mapping 基础用法"></a>Request Mapping 基础用法</h2><p>在 Spring MVC 应用程序中，RequestDispatcher (在 Front Controller 之下) 这个 servlet 负责将进入的 HTTP 请求路由到控制器的处理方法。</p>
+<p>在对 Spring MVC 进行的配置的时候, 你需要指定请求与处理方法之间的映射关系。</p>
+<p><a href="http://ovi3ob9p4.bkt.clouddn.com/Spring_mapping.png" target="_blank" rel="noopener"><img src="http://ovi3ob9p4.bkt.clouddn.com/Spring_mapping.png" alt="img"></a></p>
+<p>要配置 Web 请求的映射，就需要你用上 @RequestMapping 注解。</p>
+<p>@RequestMapping 注解可以在控制器类的级别和/或其中的方法的级别上使用。</p>
+<p>在类的级别上的注解会将一个特定请求或者请求模式映射到一个控制器之上。之后你还可以另外添加方法级别的注解来进一步指定到处理方法的映射关系。</p>
+<p>下面是一个同时在类和方法上应用了 @RequestMapping 注解的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function">String <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//mapped to hostname:port/home/</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from get"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/index"</span>)</span><br><span class="line">    <span class="function">String <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//mapped to hostname:port/home/index/</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上述代码所示，到 /home 的请求会由 get() 方法来处理，而到 /home/index 的请求会由 index() 来处理。</p>
+<h2 id="RequestMapping-来处理多个-URI"><a href="#RequestMapping-来处理多个-URI" class="headerlink" title="@RequestMapping 来处理多个 URI"></a>@RequestMapping 来处理多个 URI</h2><p>你可以将多个请求映射到一个方法上去，只需要添加一个带有请求路径值列表的 @RequestMapping 注解就行了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = &#123;</span><br><span class="line">        <span class="string">""</span>,</span><br><span class="line">        <span class="string">"/page"</span>,</span><br><span class="line">        <span class="string">"page*"</span>,</span><br><span class="line">        <span class="string">"view/*,**/msg"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">String <span class="title">indexMultipleMapping</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from index multiple mapping."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如你在这段代码中所看到的，@RequestMapping 支持统配符以及ANT风格的路径。前面这段代码中，如下的这些 URL 都会由 indexMultipleMapping() 来处理：</p>
+<ul>
+<li>localhost:8080/home</li>
+<li>localhost:8080/home/</li>
+<li>localhost:8080/home/page</li>
+<li>localhost:8080/home/pageabc</li>
+<li>localhost:8080/home/view/</li>
+<li>localhost:8080/home/view/view</li>
+</ul>
+<h2 id="带有-RequestParam-的-RequestMapping"><a href="#带有-RequestParam-的-RequestMapping" class="headerlink" title="带有 @RequestParam 的 @RequestMapping"></a>带有 @RequestParam 的 @RequestMapping</h2><p>@RequestParam 注解配合 @RequestMapping 一起使用，可以将请求的参数同处理方法的参数绑定在一起。</p>
+<p>@RequestParam 注解使用的时候可以有一个值，也可以没有值。这个值指定了需要被映射到处理方法参数的请求参数, 代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/id"</span>)</span><br><span class="line">    <span class="function">String <span class="title">getIdByValue</span><span class="params">(@RequestParam(<span class="string">"id"</span>)</span> String personId) </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ID is "</span> + personId);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Get ID from query string of URL with value element"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/personId"</span>)</span><br><span class="line">    <span class="function">String <span class="title">getId</span><span class="params">(@RequestParam String personId)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ID is "</span> + personId);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Get ID from query string of URL without value element"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在代码的第6行，id 这个请求参数被映射到了 thegetIdByValue() 这个处理方法的参数 personId 上。</p>
+<p>如果请求参数和处理方法参数的名称一样的话，@RequestParam 注解的 value 这个参数就可省掉了, 如代码的第11行所示。</p>
+<p>@RequestParam 注解的 required 这个参数定义了参数值是否是必须要传的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/name"</span>)</span><br><span class="line">    <span class="function">String <span class="title">getName</span><span class="params">(@RequestParam(value = <span class="string">"person"</span>, required = <span class="keyword">false</span>)</span> String personName) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Required element of request param"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，因为 required 被指定为 false，所以 getName() 处理方法对于如下两个 URL 都会进行处理：</p>
+<ul>
+<li>/home/name?person=xyz</li>
+<li>/home/name</li>
+</ul>
+<p>@RequestParam 的 defaultValue 取值就是用来给取值为空的请求参数提供一个默认值的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/name"</span>)</span><br><span class="line">    <span class="function">String <span class="title">getName</span><span class="params">(@RequestParam(value = <span class="string">"person"</span>, defaultValue = <span class="string">"John"</span>)</span> String personName) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Required element of request param"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，如果 person 这个请求参数为空，那么 getName() 处理方法就会接收 John 这个默认值作为其参数。</p>
+<h2 id="用-RequestMapping-处理-HTTP-的各种方法"><a href="#用-RequestMapping-处理-HTTP-的各种方法" class="headerlink" title="用 @RequestMapping 处理 HTTP 的各种方法"></a>用 @RequestMapping 处理 HTTP 的各种方法</h2><p>Spring MVC 的 @RequestMapping 注解能够处理 HTTP 请求的方法, 比如 GET, PUT, POST, DELETE 以及 PATCH。</p>
+<p>所有的请求默认都会是 HTTP GET 类型的。</p>
+<p>为了能降一个请求映射到一个特定的 HTTP 方法，你需要在 @RequestMapping 中使用 method 来声明 HTTP 请求所使用的方法类型，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function">String <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from get"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.DELETE)</span><br><span class="line">    <span class="function">String <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from delete"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.POST)</span><br><span class="line">    <span class="function">String <span class="title">post</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from post"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.PUT)</span><br><span class="line">    <span class="function">String <span class="title">put</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from put"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.PATCH)</span><br><span class="line">    <span class="function">String <span class="title">patch</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello from patch"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上述这段代码中， @RequestMapping 注解中的 method 元素声明了 HTTP 请求的 HTTP 方法的类型。</p>
+<p>所有的处理处理方法会处理从这同一个 URL( /home)进来的请求, 但要看指定的 HTTP 方法是什么来决定用哪个方法来处理。</p>
+<p>例如，一个 POST 类型的请求 /home 会交给 post() 方法来处理，而一个 DELETE 类型的请求 /home 则会由 delete() 方法来处理。</p>
+<p>你会看到 Spring MVC 将使用这样相同的逻辑来映射其它的方法。</p>
+<h2 id="用-RequestMapping-来处理生产和消费对象"><a href="#用-RequestMapping-来处理生产和消费对象" class="headerlink" title="用 @RequestMapping 来处理生产和消费对象"></a>用 @RequestMapping 来处理生产和消费对象</h2><p>可以使用 @RequestMapping 注解的 produces 和 consumes 这两个元素来缩小请求映射类型的范围。</p>
+<p>为了能用请求的媒体类型来产生对象, 你要用到 @RequestMapping 的 produces 元素再结合着 @ResponseBody 注解。</p>
+<p>你也可以利用 @RequestMapping 的 comsumes 元素再结合着 @RequestBody 注解用请求的媒体类型来消费对象。</p>
+<p>下面这段代码就用到的 @RequestMapping 的生产和消费对象元素：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/prod"</span>, produces = &#123;</span><br><span class="line">        <span class="string">"application/JSON"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function">String <span class="title">getProduces</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Produces attribute"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/cons"</span>, consumes = &#123;</span><br><span class="line">        <span class="string">"application/JSON"</span>,</span><br><span class="line">        <span class="string">"application/XML"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">String <span class="title">getConsumes</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Consumes attribute"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中， getProduces() 处理方法会产生一个 JSON 响应， getConsumes() 处理方法可以同时处理请求中的 JSON 和 XML 内容。</p>
+<h2 id="使用-RequestMapping-来处理消息头"><a href="#使用-RequestMapping-来处理消息头" class="headerlink" title="使用 @RequestMapping 来处理消息头"></a>使用 @RequestMapping 来处理消息头</h2><p>@RequestMapping 注解提供了一个 header 元素来根据请求中的消息头内容缩小请求映射的范围。</p>
+<p>在可以指定 header 元素的值，用 myHeader = myValue 这样的格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/head"</span>, headers = &#123;</span><br><span class="line">        <span class="string">"content-type=text/plain"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">String <span class="title">post</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Mapping applied along with headers"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面这段代码中， @RequestMapping 注解的 headers 属性将映射范围缩小到了 post() 方法。有了这个，post() 方法就只会处理到 /home/head 并且 content-typeheader 被指定为 text/plain 这个值的请求。</p>
+<p>你也可以像下面这样指定多个消息头：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/head"</span>, headers = &#123;</span><br><span class="line">        <span class="string">"content-type=text/plain"</span>,</span><br><span class="line">        <span class="string">"content-type=text/html"</span></span><br><span class="line">    &#125;) <span class="function">String <span class="title">post</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Mapping applied along with headers"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样， post() 方法就能同时接受 text/plain 还有 text/html 的请求了。</p>
+<h2 id="使用-RequestMapping-来处理请求参数"><a href="#使用-RequestMapping-来处理请求参数" class="headerlink" title="使用 @RequestMapping 来处理请求参数"></a>使用 @RequestMapping 来处理请求参数</h2><p>@RequestMapping 直接的 params 元素可以进一步帮助我们缩小请求映射的定位范围。使用 params 元素，你可以让多个处理方法处理到同一个URL 的请求, 而这些请求的参数是不一样的。</p>
+<p>你可以用 myParams = myValue 这种格式来定义参数，也可以使用通配符来指定特定的参数值在请求中是不受支持的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/fetch"</span>, params = &#123;</span><br><span class="line">        <span class="string">"personId=10"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">String <span class="title">getParams</span><span class="params">(@RequestParam(<span class="string">"personId"</span>)</span> String id) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Fetched parameter using params attribute = "</span> + id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/fetch"</span>, params = &#123;</span><br><span class="line">        <span class="string">"personId=20"</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function">String <span class="title">getParamsDifferent</span><span class="params">(@RequestParam(<span class="string">"personId"</span>)</span> String id) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Fetched parameter using params attribute = "</span> + id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，getParams() 和 getParamsDifferent() 两个方法都能处理相同的一个 URL (/home/fetch) ，但是会根据 params 元素的配置不同而决定具体来执行哪一个方法。</p>
+<p>例如，当 URL 是 /home/fetch?id=10 的时候, getParams() 会执行，因为 id 的值是10,。对于 localhost:8080/home/fetch?personId=20 这个URL, getParamsDifferent() 处理方法会得到执行，因为 id 值是 20。</p>
+<h2 id="使用-RequestMapping-处理动态-URI"><a href="#使用-RequestMapping-处理动态-URI" class="headerlink" title="使用 @RequestMapping 处理动态 URI"></a>使用 @RequestMapping 处理动态 URI</h2><p>@RequestMapping 注解可以同 @PathVaraible 注解一起使用，用来处理动态的 URI，URI 的值可以作为控制器中处理方法的参数。你也可以使用正则表达式来只处理可以匹配到正则表达式的动态 URI。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/fetch/&#123;id&#125;"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function">String <span class="title">getDynamicUriValue</span><span class="params">(@PathVariable String id)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"ID is "</span> + id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Dynamic URI parameter fetched"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/fetch/&#123;id:[a-z]+&#125;/&#123;name&#125;"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function">String <span class="title">getDynamicUriValueRegex</span><span class="params">(@PathVariable(<span class="string">"name"</span>)</span> String name) </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Name is "</span> + name);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Dynamic URI parameter fetched using regex"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，方法 getDynamicUriValue() 会在发起到 localhost:8080/home/fetch/10 的请求时执行。这里 getDynamicUriValue() 方法 id 参数也会动态地被填充为 10 这个值。</p>
+<p>方法 getDynamicUriValueRegex() 会在发起到 localhost:8080/home/fetch/category/shirt 的请求时执行。不过，如果发起的请求是 /home/fetch/10/shirt 的话，会抛出异常，因为这个URI并不能匹配正则表达式。</p>
+<p>@PathVariable 同 @RequestParam的运行方式不同。你使用 @PathVariable 是为了从 URI 里取到查询参数值。换言之，你使用 @RequestParam 是为了从 URI 模板中获取参数值。</p>
+<h2 id="RequestMapping-默认的处理方法"><a href="#RequestMapping-默认的处理方法" class="headerlink" title="@RequestMapping 默认的处理方法"></a>@RequestMapping 默认的处理方法</h2><p>在控制器类中，你可以有一个默认的处理方法，它可以在有一个向默认 URI 发起的请求时被执行。</p>
+<p>下面是默认处理方法的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>()</span><br><span class="line">    String</span><br><span class="line">    <span class="keyword">default</span> () &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"This is a default method for the class"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，向 /home 发起的一个请求将会由 default() 来处理，因为注解并没有指定任何值。</p>
+<h2 id="RequestMapping-快捷方式"><a href="#RequestMapping-快捷方式" class="headerlink" title="@RequestMapping 快捷方式"></a>@RequestMapping 快捷方式</h2><p><a href="https://spring.io/blog/2016/06/10/spring-framework-4-3-goes-ga" target="_blank" rel="noopener">Spring 4.3</a> 引入了方法级注解的变体，也被叫做 @RequestMapping 的组合注解。组合注解可以更好的表达被注解方法的语义。它们所扮演的角色就是针对 @RequestMapping 的封装，而且成了定义端点的标准方法。</p>
+<p>例如，@GetMapping 是一个组合注解，它所扮演的是 @RequestMapping(method =RequestMethod.GET) 的一个快捷方式。<br>方法级别的注解变体有如下几个：</p>
+<ul>
+<li>@GetMapping</li>
+<li>@PostMapping</li>
+<li>@PutMapping</li>
+<li>@DeleteMapping</li>
+<li>@PatchMapping</li>
+</ul>
+<p>如下代码展示了如何使用组合注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/home"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/person"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; getPerson() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from GET"</span>, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/person/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; getPersonById(<span class="meta">@PathVariable</span> String id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from GET with id "</span> + id, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/person"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; postPerson() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from POST method"</span>, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PutMapping</span>(<span class="string">"/person"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; putPerson() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from PUT method"</span>, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/person"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; deletePerson() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from DELETE method"</span>, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PatchMapping</span>(<span class="string">"/person"</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> ResponseEntity &lt; String &gt; patchPerson() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity &lt; String &gt; (<span class="string">"Response from PATCH method"</span>, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，每一个处理方法都使用 @RequestMapping 的组合变体进行了注解。尽管每个变体都可以使用带有方法属性的 @RequestMapping 注解来互换实现, 但组合变体仍然是一种最佳的实践 — 这主要是因为组合注解减少了在应用程序上要配置的元数据，并且代码也更易读。</p>
+<h2 id="RequestMapping-总结"><a href="#RequestMapping-总结" class="headerlink" title="@RequestMapping 总结"></a>@RequestMapping 总结</h2><p>如你在本文中所看到的，@RequestMapping 注解是非常灵活的。你可以使用该注解配置 Spring MVC 来处理大量的场景用例。它可以被用来在 Spring MVC 中配置传统的网页请求，也可以是 REST 风格的 Web 服务。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/47293.html" title="Request Mapping 基础用法">http://www.iskei.cn/posts/47293.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/37707.html" rel="next" title="FreeMarker自定义TemplateDirectiveModel(二)">
+                <i class="fa fa-chevron-left"></i> FreeMarker自定义TemplateDirectiveModel(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/14233.html" rel="prev" title="REST客户端编程实例">
+                REST客户端编程实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Request-Mapping-基础用法"><span class="nav-number">1.</span> <span class="nav-text">Request Mapping 基础用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestMapping-来处理多个-URI"><span class="nav-number">2.</span> <span class="nav-text">@RequestMapping 来处理多个 URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带有-RequestParam-的-RequestMapping"><span class="nav-number">3.</span> <span class="nav-text">带有 @RequestParam 的 @RequestMapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-RequestMapping-处理-HTTP-的各种方法"><span class="nav-number">4.</span> <span class="nav-text">用 @RequestMapping 处理 HTTP 的各种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-RequestMapping-来处理生产和消费对象"><span class="nav-number">5.</span> <span class="nav-text">用 @RequestMapping 来处理生产和消费对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-RequestMapping-来处理消息头"><span class="nav-number">6.</span> <span class="nav-text">使用 @RequestMapping 来处理消息头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-RequestMapping-来处理请求参数"><span class="nav-number">7.</span> <span class="nav-text">使用 @RequestMapping 来处理请求参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-RequestMapping-处理动态-URI"><span class="nav-number">8.</span> <span class="nav-text">使用 @RequestMapping 处理动态 URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestMapping-默认的处理方法"><span class="nav-number">9.</span> <span class="nav-text">@RequestMapping 默认的处理方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestMapping-快捷方式"><span class="nav-number">10.</span> <span class="nav-text">@RequestMapping 快捷方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestMapping-总结"><span class="nav-number">11.</span> <span class="nav-text">@RequestMapping 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">27:15</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      visitors.
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>Site overview
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times.
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+ 
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.2"></script>
+
+
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
