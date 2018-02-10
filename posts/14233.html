@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="restClient," />
+
+
+<meta name="description" content="导读JAX-RS 2.0 又称 JSR 339 不仅定义了一套用于构建 RESTful 网络服务的 API，同时也通过增强客户端 API 功能简化了REST 客户端的构建过程。">
+<meta name="keywords" content="restClient">
+<meta property="og:type" content="article">
+<meta property="og:title" content="REST客户端编程实例">
+<meta property="og:url" content="http://www.iskei.cn/posts/14233.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="导读JAX-RS 2.0 又称 JSR 339 不仅定义了一套用于构建 RESTful 网络服务的 API，同时也通过增强客户端 API 功能简化了REST 客户端的构建过程。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0055.jpg">
+<meta property="og:updated_time" content="2018-02-10T13:12:48.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="REST客户端编程实例">
+<meta name="twitter:description" content="导读JAX-RS 2.0 又称 JSR 339 不仅定义了一套用于构建 RESTful 网络服务的 API，同时也通过增强客户端 API 功能简化了REST 客户端的构建过程。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0055.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/14233.html"/>
+
+
+  <title>REST客户端编程实例 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/14233.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">REST客户端编程实例</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T19:41:52+08:00">2017-09-18</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/14233.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/14233.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/14233.html" class="leancloud_visitors" data-flag-title="REST客户端编程实例">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">14k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:14</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0055.jpg" alt="image"></p>
+<h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>JAX-RS 2.0 又称 JSR 339 不仅定义了一套用于构建 RESTful 网络服务的 API，同时也通过增强客户端 API 功能简化了REST 客户端的构建过程。<br><a id="more"></a></p>
+<blockquote>
+<p>JAX-RS: Java API for RESTful Web Services是一个<a href="http://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java编程语言</a>的<a href="http://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">应用程序接口</a>,支持按照 <a href="http://zh.wikipedia.org/wiki/REST" target="_blank" rel="noopener">表象化状态转变</a> (REST)架构风格创建Web服务<a href="http://zh.wikipedia.org/wiki/Web%E6%9C%8D%E5%8A%A1" target="_blank" rel="noopener">Web服务</a><a href="http://zh.wikipedia.org/wiki/JAX-RS#cite_note-1" target="_blank" rel="noopener">[1]</a>. JAX-RS使用了<a href="http://zh.wikipedia.org/wiki/Java_SE" target="_blank" rel="noopener">Java SE 5</a>引入的<a href="http://zh.wikipedia.org/wiki/Java_%E6%A0%87%E6%B3%A8" target="_blank" rel="noopener">Java 标注</a>来简化Web服务客户端和服务端的开发和部署 [<a href="http://zh.wikipedia.org/wiki/JAX-RS" target="_blank" rel="noopener">wikipedia</a>]。</p>
+</blockquote>
+<p>在下面的教程中，我们将为一个预先设置好的 REST 服务构建一个客户端，并在这个过程中探索新的构建选项。例如，如何处理同步或者异步的请求，如何给一个请求注册一个回调，如何指定调用对象来构建一个请求使得请求可以被延迟执行。再或者比如，如何使用客户端请求和相应的过滤方法来过滤客户端与服务器之前的通信。</p>
+<h1 id="我们开始吧"><a href="#我们开始吧" class="headerlink" title="我们开始吧"></a>我们开始吧</h1><p>对于想要重建下述客户端例子的读者，我已经使用 Maven 创建好了一个完整的 RESTful 网络服务程序。程序中有内嵌的应用程序服务器，以及一个可独立运行的应用服务器 （war-file 可以通过下文中的下载地址获取）。</p>
+<p>请根据下面的一系列命令来下载并启动 REST 服务器 （下载所有依赖可能会耗费些时间……）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clone https://bitbucket.org/hascode/jaxrs2-client-tutorial.git &amp;&amp; cd jaxrs2-client-tutorial &amp;&amp; make rest-server</span><br></pre></td></tr></table></figure>
+<p>现在，让我们先来看看这个 REST 服务的一些实现细节和我们的客户端示例中要用到的对象。如果你对这些没什么兴趣，大可以略过服务端的细节直接去看客户端示例。</p>
+<h2 id="REST-服务"><a href="#REST-服务" class="headerlink" title="REST 服务"></a>REST 服务</h2><p>下面的代码就是个客户端提供服务的 REST 服务。这里的 BookRepository 就是一个由 <em>@Singleton</em> 和 <em>@Startup</em> 修饰的简单 session bean，这个 bean 用来模拟存储或获取 Book Entity。服务对外提供了保存一本书、删除一本书、根据标识查找书籍和获取所有可用书籍的接口。当一本书被保存在服务端时，服务器会为该书生成一个 id，并会返回一个 entity 或一组 entity 的 JSON 数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hascode.tutorial.jaxrs.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.ejb.EJB;</span><br><span class="line"><span class="keyword">import</span> javax.ejb.Stateless;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.Consumes;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.DELETE;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.GET;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.POST;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.Path;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.PathParam;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.Produces;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.core.GenericEntity;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.core.MediaType;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.core.Response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hascode.tutorial.jaxrs.entity.Book;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Stateless</span></span><br><span class="line"><span class="meta">@Path</span>(<span class="string">"/book"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookStoreService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@EJB</span></span><br><span class="line">    <span class="keyword">private</span> BookRepository bookRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@POST</span></span><br><span class="line">    <span class="meta">@Consumes</span>(MediaType.APPLICATION_JSON)</span><br><span class="line">    <span class="meta">@Produces</span>(MediaType.APPLICATION_JSON)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">saveBook</span><span class="params">(<span class="keyword">final</span> Book book)</span> </span>&#123;</span><br><span class="line">        Book bookPersisted = bookRepository.saveBook(book);</span><br><span class="line">        <span class="keyword">return</span> Response.ok(bookPersisted).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DELETE</span></span><br><span class="line">    <span class="meta">@Path</span>(<span class="string">"/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">deleteBook</span><span class="params">(<span class="keyword">final</span> @PathParam(<span class="string">"id"</span>)</span> String id) </span>&#123;</span><br><span class="line">        bookRepository.deleteBook(id);</span><br><span class="line">        <span class="keyword">return</span> Response.ok().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="meta">@Produces</span>(MediaType.APPLICATION_JSON)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">getAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;Book&gt; books = bookRepository.getAll();</span><br><span class="line">        GenericEntity&lt;List&lt;Book&gt;&gt; bookWrapper = <span class="keyword">new</span> GenericEntity&lt;List&lt;Book&gt;&gt;(books) &#123;&#125;;</span><br><span class="line">        <span class="keyword">return</span> Response.ok(bookWrapper).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="meta">@Path</span>(<span class="string">"/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="meta">@Produces</span>(MediaType.APPLICATION_JSON)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">getById</span><span class="params">(<span class="keyword">final</span> @PathParam(<span class="string">"id"</span>)</span> String id) </span>&#123;</span><br><span class="line">        Book book = bookRepository.getById(id);</span><br><span class="line">        <span class="keyword">return</span> Response.ok(book).build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>备注：</strong>我修改了应用服务器，以便使用 Jackson 提供的服务发现机制处理 JSON 数据。</p>
+<h2 id="Book-Entity"><a href="#Book-Entity" class="headerlink" title="Book Entity"></a>Book Entity</h2><p>下面代码中的 bean 就是贯穿本教程的 Book Entity，它包含id、书名、价格和出版日期属性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hascode.tutorial.jaxrs.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line">    <span class="keyword">private</span> Calendar published;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getter+setter..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="创建并绑定一个客户端"><a href="#创建并绑定一个客户端" class="headerlink" title="创建并绑定一个客户端"></a>创建并绑定一个客户端</h1><p>我们可以创建一个 REST 客户端，将其绑定到一个特定的目标 URL 上。并且为它指定专属的、参数化的路径。具体步骤如下：</p>
+<ul>
+<li><strong>通过 ClientBuilder 获取一个客户端的引用：*</strong>Client client = ClientBuilder.newClient();*</li>
+<li><strong>使用 target() 方法将客户端绑定到 REST 服务上提供的某个 URL：*</strong>client.target(“<a href="http://localhost:8080/myrestservice”);*" target="_blank" rel="noopener">http://localhost:8080/myrestservice”);*</a></li>
+<li><strong>通过 path() 和 resolveTemplate() 方法来处理动态的 URL 路径参数：*</strong>client.target(..).path(“{id}”).resolveTemplate(“id”, someId);*</li>
+<li>使用 request() 函数来<strong>初始化一个请求</strong>并用后续的 post 或者 get 等方法来指定请求的类型，例如：<em>client.target(..).request().get();</em></li>
+<li>每一步都提供了<strong>多样的可选择的参数和配置选项</strong>，稍后的教程中我将用到其中的一些配置像异步请求、回调处理、还有过滤器注册和特性类等。</li>
+</ul>
+<p>现在，让我们先看一些具备说明性的例子。</p>
+<h1 id="客户端例子"><a href="#客户端例子" class="headerlink" title="客户端例子"></a>客户端例子</h1><p>由于我把所有客户端示例都融进了 jUnit 和 Hamcrest 驱动的测试用例，因此下面的代码实际上在每一个测试用例中都有使用。不过为了让文章尽量简练，重复代码将在后面的代码示例中省略。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String REST_SERVICE_URL = <span class="string">"http://localhost:8080/tutorial/rs/book"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TITLE = <span class="string">"One big book"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> BigDecimal PRICE = <span class="keyword">new</span> BigDecimal(<span class="string">"20.0"</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> GregorianCalendar PUBLISHED = <span class="keyword">new</span> GregorianCalendar(</span><br><span class="line">, <span class="number">12</span>, <span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">Client client = ClientBuilder.newClient().register(JacksonFeature.class);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">mockBook</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Book book = <span class="keyword">new</span> Book();</span><br><span class="line">	book.setTitle(TITLE);</span><br><span class="line">	book.setPrice(PRICE);</span><br><span class="line">	book.setPublished(PUBLISHED);</span><br><span class="line">	<span class="keyword">return</span> book;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>唯一值得注意的是，我在客户端运行时中加入了 Jackson 框架，因此可以通过<em> javax.ws.rs.client.ClientBuilder</em> 来获取客户端实例。</p>
+<h2 id="Maven-整合"><a href="#Maven-整合" class="headerlink" title="Maven 整合"></a>Maven 整合</h2><p>所有代码示例运行都需要用到下面依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.glassfish.jersey.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jersey-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.glassfish.jersey.media<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jersey-media-json-jackson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><p>下面的示例中我们首先将一个书本实体的信息序列化成 JSON 格式，通过 POST 请求发送到服务端来保存这本书。</p>
+<p>之后，我们使用客户端提供的<em> path() </em>和 <em>resolveTemplate() </em>方法通过匹配服务端返回值的协议来获取该本书的标识。</p>
+<p>第三步， 我们获取所有可用图书的列表，并在最后删除掉刚才保存的那本书。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">crudExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 1. Save a new book</span></span><br><span class="line">	Book book = mockBook();</span><br><span class="line">	Book bookPersisted = client</span><br><span class="line">			.target(REST_SERVICE_URL)</span><br><span class="line">			.request()</span><br><span class="line">			.post(Entity.entity(book, MediaType.APPLICATION_JSON),</span><br><span class="line">					Book.class);</span><br><span class="line"></span><br><span class="line">	String bookId = bookPersisted.getId();</span><br><span class="line">	assertThat(bookId, notNullValue());</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. Fetch book by id</span></span><br><span class="line">	Book book2 = client.target(REST_SERVICE_URL).path(<span class="string">"/&#123;bookId&#125;"</span>)</span><br><span class="line">			.resolveTemplate(<span class="string">"bookId"</span>, bookId).request().get(Book.class);</span><br><span class="line">	assertThat(book2, notNullValue());</span><br><span class="line">	assertThat(book2.getTitle(), equalTo(TITLE));</span><br><span class="line">	assertThat(book2.getPrice(), equalTo(PRICE));</span><br><span class="line">	assertThat(book2.getPublished().getTime(), equalTo(PUBLISHED.getTime()));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. Fetch all books</span></span><br><span class="line">	GenericType&lt;List&lt;Book&gt;&gt; bookType = <span class="keyword">new</span> GenericType&lt;List&lt;Book&gt;&gt;() &#123;</span><br><span class="line">	&#125;; <span class="comment">// generic type to wrap a generic list of books</span></span><br><span class="line">	List&lt;Book&gt; books = client.target(REST_SERVICE_URL).request()</span><br><span class="line">			.get(bookType);</span><br><span class="line">	assertThat(books.size(), equalTo(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. Delete a book</span></span><br><span class="line">	client.target(REST_SERVICE_URL).path(<span class="string">"/&#123;bookId&#125;"</span>)</span><br><span class="line">			.resolveTemplate(<span class="string">"bookId"</span>, bookId).request().delete();</span><br><span class="line">	List&lt;Book&gt; books2 = client.target(REST_SERVICE_URL).request()</span><br><span class="line">			.get(bookType);</span><br><span class="line">	assertThat(books2.isEmpty(), equalTo(<span class="keyword">true</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h2><p>只要给请求构造器加一个简单的 <em>async() </em>方法，我们就可以使用 Java 的 <em>Future </em>API 提供的多种途径来异步地处理请求。</p>
+<p>下面的例子中，我们在第一个请求中添加一本书，然后再删除它。最后获取所有可用图书的列表。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asyncExample</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Book book = mockBook();</span><br><span class="line"></span><br><span class="line">	Future&lt;Book&gt; fb = client</span><br><span class="line">			.target(REST_SERVICE_URL)</span><br><span class="line">			.request()</span><br><span class="line">			.async()</span><br><span class="line">			.post(Entity.entity(book, MediaType.APPLICATION_JSON),</span><br><span class="line">					Book.class);</span><br><span class="line"></span><br><span class="line">	Book bookPersisted = fb.get();</span><br><span class="line"></span><br><span class="line">	String bookId = bookPersisted.getId();</span><br><span class="line">	assertThat(bookId, notNullValue());</span><br><span class="line"></span><br><span class="line">	client.target(REST_SERVICE_URL).path(<span class="string">"/&#123;bookId&#125;"</span>)</span><br><span class="line">			.resolveTemplate(<span class="string">"bookId"</span>, bookId).request().async().delete()</span><br><span class="line">			.get();</span><br><span class="line"></span><br><span class="line">	Future&lt;List&lt;Book&gt;&gt; bookRequest = client.target(REST_SERVICE_URL)</span><br><span class="line">			.request().async().get(<span class="keyword">new</span> GenericType&lt;List&lt;Book&gt;&gt;() &#123;</span><br><span class="line">			&#125;);</span><br><span class="line">	List&lt;Book&gt; books2 = bookRequest.get();</span><br><span class="line">	assertThat(books2.isEmpty(), equalTo(<span class="keyword">true</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发起回调"><a href="#发起回调" class="headerlink" title="发起回调"></a>发起回调</h2><p>在客户端与服务器通信过程中，我们还有另一种方式可以对服务器的相应进行修改，那就是在请求中加入一个 InvocationCallback 回调处理。</p>
+<p>可以看到，下面代码段中有着很多缩进那部分就是我们的回调函数了，这些回调可以打印保存成功的图书的完整信息，或者在出现错误的情况下则打印错误和堆栈信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invocationCallbackExample</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Book book = mockBook();</span><br><span class="line">	client.target(REST_SERVICE_URL)</span><br><span class="line">			.request()</span><br><span class="line">			.async()</span><br><span class="line">			.post(Entity.entity(book, MediaType.APPLICATION_JSON),</span><br><span class="line">					<span class="keyword">new</span> InvocationCallback&lt;Book&gt;() &#123;</span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">(<span class="keyword">final</span> Book bookPersisted)</span> </span>&#123;</span><br><span class="line">							System.out.println(<span class="string">"book saved: "</span></span><br><span class="line">									+ bookPersisted);</span><br><span class="line">							assertThat(bookPersisted.getId(),</span><br><span class="line">									notNullValue());</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">						<span class="meta">@Override</span></span><br><span class="line">						<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failed</span><span class="params">(<span class="keyword">final</span> Throwable throwable)</span> </span>&#123;</span><br><span class="line">							throwable.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;).get();</span><br><span class="line"></span><br><span class="line">	client.target(REST_SERVICE_URL).request().async()</span><br><span class="line">			.get(<span class="keyword">new</span> InvocationCallback&lt;List&lt;Book&gt;&gt;() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completed</span><span class="params">(<span class="keyword">final</span> List&lt;Book&gt; books)</span> </span>&#123;</span><br><span class="line">					System.out.println(books.size() + <span class="string">" books received"</span>);</span><br><span class="line">					assertThat(books.size(), greaterThanOrEqualTo(<span class="number">1</span>));</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failed</span><span class="params">(<span class="keyword">final</span> Throwable throwable)</span> </span>&#123;</span><br><span class="line">					throwable.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;).get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="延迟调用-请求构建"><a href="#延迟调用-请求构建" class="headerlink" title="延迟调用 / 请求构建"></a>延迟调用 / 请求构建</h2><p>通过 <em>javax.ws.rs.client.Invocation</em> 类，我们可以先构建一个请求而不用即时发送。这个请求可以是同步的, 也可以是异步的。</p>
+<p>在下面的示例中，我们构建了两个调用但并不马上使用—— 一个请求用来保存图书，另一个请求则是获取所有可用的图书。然后，我们在后面调用时才使用这两个构建好的请求。</p>
+<p>我们应当使用<em> invoke() </em>方法来同步地调用一个请求。当需要使用异步请求时，则需要用<em> submit() </em>方法——两种调用都会返回一个<em> javax.ws.rs.core.Response </em>对象。如果调用者在调用参数中给定了返回实体的类，则上述方法会返回该类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestPreparationExample</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Book book = mockBook();</span><br><span class="line">	Invocation saveBook = client.target(REST_SERVICE_URL).request()</span><br><span class="line">			.buildPost(Entity.entity(book, MediaType.APPLICATION_JSON));</span><br><span class="line">	Invocation listBooks = client.target(REST_SERVICE_URL).request()</span><br><span class="line">			.buildGet();</span><br><span class="line"></span><br><span class="line">	Response response = saveBook.invoke();</span><br><span class="line">	Book b1 = response.readEntity(Book.class);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// alternative: Book b1 = saveBook.invoke(Book.class);</span></span><br><span class="line">	assertThat(b1.getId(), notNullValue());</span><br><span class="line"></span><br><span class="line">	<span class="comment">// async invocation</span></span><br><span class="line">	Future&lt;List&lt;Book&gt;&gt; b = listBooks.submit(<span class="keyword">new</span> GenericType&lt;List&lt;Book&gt;&gt;() &#123;</span><br><span class="line">	&#125;);</span><br><span class="line">	List&lt;Book&gt; books = b.get();</span><br><span class="line">	assertThat(books.size(), greaterThanOrEqualTo(<span class="number">2</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="客户端请求过滤器"><a href="#客户端请求过滤器" class="headerlink" title="客户端请求过滤器"></a>客户端请求过滤器</h2><p>JAX-RS 允许我们使用请求过滤器来截获客户端发送到服务器的请求。</p>
+<p>为了达成这个目标，只需要实现<em> javax.ws.rs.client.ClientRequestFilter </em>这个接口。当创建客户端时，使用客户端的<em> register() </em>方法将<em> ClientRequestFilter </em>的具体实现注册到客户端中。</p>
+<p><em>javax.ws.rs.client.ClientRequestContext </em>对象将赋予访问信息请求足够的权限。</p>
+<p>下面就是一个客户端请求过滤的例子。这个例子中，所有客户端发出的 POST 请求中如果包含书籍实体，则书籍价格都会被这个过滤器修改（虽然这不是一个好的实际示例）。对价格的修改则依据相应的税率。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hascode.tutorial.client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.client.ClientRequestContext;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.client.ClientRequestFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.hascode.tutorial.jaxrs.entity.Book;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TaxAdjustmentFilter</span> <span class="keyword">implements</span> <span class="title">ClientRequestFilter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> BigDecimal TAX_RATE = <span class="keyword">new</span> BigDecimal(<span class="string">"2.5"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">filter</span><span class="params">(<span class="keyword">final</span> ClientRequestContext rc)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String method = rc.getMethod();</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">"POST"</span>.equals(method) &amp;&amp; rc.hasEntity()) &#123;</span><br><span class="line">			Book book = (Book) rc.getEntity();</span><br><span class="line">			BigDecimal priceWithTaxes = book.getPrice().multiply(TAX_RATE);</span><br><span class="line">			book.setPrice(priceWithTaxes);</span><br><span class="line">			rc.setEntity(book);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在我们的测试用例中，只要把这个过滤器注册到客户端上，随后就会看到：保存书籍时候，书本的价格就会根据税率进行的调整。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clientRequestFilterExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Book book = mockBook();</span><br><span class="line"></span><br><span class="line">	Client client = ClientBuilder.newClient()</span><br><span class="line">			.register(JacksonFeature.class)</span><br><span class="line">			.register(TaxAdjustmentFilter.class);</span><br><span class="line">	Book bookPersisted = client</span><br><span class="line">			.target(REST_SERVICE_URL)</span><br><span class="line">			.request()</span><br><span class="line">			.post(Entity.entity(book, MediaType.APPLICATION_JSON),</span><br><span class="line">					Book.class);</span><br><span class="line"></span><br><span class="line">	String bookId = bookPersisted.getId();</span><br><span class="line">	assertThat(bookId, notNullValue());</span><br><span class="line">	assertThat(bookPersisted.getPrice(),</span><br><span class="line">			equalTo(PRICE.multiply(TaxAdjustmentFilter.TAX_RATE)));</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="客户端响应过滤器"><a href="#客户端响应过滤器" class="headerlink" title="客户端响应过滤器"></a>客户端响应过滤器</h2><p>为了获得对服务器相应的控制，有一个十分类似的办法：客户端相应过滤器。</p>
+<p>同样地，只要实现<em> javax.ws.rs.client.ClientResponseFilter </em>这个接口，就能够修改或者截获服务器返回的响应。</p>
+<p>下面这个响应过滤器能够将一些 HTTP 响应头打印到标准输出（STDOUT）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hascode.tutorial.client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map.Entry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.client.ClientRequestContext;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.client.ClientResponseContext;</span><br><span class="line"><span class="keyword">import</span> javax.ws.rs.client.ClientResponseFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientResponseLoggingFilter</span> <span class="keyword">implements</span> <span class="title">ClientResponseFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">filter</span><span class="params">(<span class="keyword">final</span> ClientRequestContext reqCtx,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">final</span> ClientResponseContext resCtx)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"status: "</span> + resCtx.getStatus());</span><br><span class="line">		System.out.println(<span class="string">"date: "</span> + resCtx.getDate());</span><br><span class="line">		System.out.println(<span class="string">"last-modified: "</span> + resCtx.getLastModified());</span><br><span class="line">		System.out.println(<span class="string">"location: "</span> + resCtx.getLocation());</span><br><span class="line">		System.out.println(<span class="string">"headers:"</span>);</span><br><span class="line">		<span class="keyword">for</span> (Entry&lt;String, List&lt;String&gt;&gt; header : resCtx.getHeaders()</span><br><span class="line">				.entrySet()) &#123;</span><br><span class="line">			System.out.print(<span class="string">"\t"</span> + header.getKey() + <span class="string">" :"</span>);</span><br><span class="line">			<span class="keyword">for</span> (String value : header.getValue()) &#123;</span><br><span class="line">				System.out.print(value + <span class="string">", "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.print(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"media-type: "</span> + resCtx.getMediaType().getType());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要使用这个过滤器，只需要把它注册到我们的客户端程序中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clientResponseFilterExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Book book = mockBook();</span><br><span class="line"></span><br><span class="line">	Client client = ClientBuilder.newClient()</span><br><span class="line">			.register(JacksonFeature.class)</span><br><span class="line">			.register(ClientResponseLoggingFilter.class);</span><br><span class="line">	client.target(REST_SERVICE_URL)</span><br><span class="line">			.request()</span><br><span class="line">			.post(Entity.entity(book, MediaType.APPLICATION_JSON),</span><br><span class="line">					Book.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用内嵌的 GlassFish 服务，POST 请求将有如下结果：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">status: 200</span><br><span class="line">date: Sat Dec 28 18:50:16 CET 2013</span><br><span class="line">last-modified: null</span><br><span class="line">location: null</span><br><span class="line">headers:</span><br><span class="line"> Date :Sat, 28 Dec 2013 17:50:16 GMT,</span><br><span class="line"> Transfer-Encoding :chunked,</span><br><span class="line"> Content-Type :application/json,</span><br><span class="line"> Server :GlassFish Server Open Source Edition 3.1,</span><br><span class="line"> X-Powered-By :Servlet/3.0 JSP/2.2 (GlassFish Server Open Source Edition 3.1 Java/Oracle Corporation/1.7),</span><br><span class="line">media-type: application</span><br></pre></td></tr></table></figure>
+<p><em>译注：GlassFish是SUN所研发的开放源代码应用服务器，GlassFish以Java编写以增加跨平台性[wikipedia]。</em></p>
+<h1 id="教程源码"><a href="#教程源码" class="headerlink" title="教程源码"></a>教程源码</h1><p>欢迎下载本教程中的源码，你可以用 Git 来 Fork 或者直接 Clone：<a href="https://bitbucket.org/hascode/jaxrs2-client-tutorial" target="_blank" rel="noopener">Bitbucket代码仓库</a>。</p>
+<h1 id="下载-war-File-REST-服务器"><a href="#下载-war-File-REST-服务器" class="headerlink" title="下载 war-File REST 服务器"></a>下载 war-File REST 服务器</h1><p>你可以从这里下载 war-file 然后运行自己的 RESTful 服务：<a href="https://bitbucket.org/hascode/jaxrs2-client-tutorial/downloads" target="_blank" rel="noopener">https://bitbucket.org/hascode/jaxrs2-client-tutorial/downloads</a></p>
+<h1 id="JAX-RS-1-0-and-JAX-B"><a href="#JAX-RS-1-0-and-JAX-B" class="headerlink" title="JAX-RS 1.0 and JAX-B"></a>JAX-RS 1.0 and JAX-B</h1><p>如果你对旧版本的协议感兴趣，<a href="http://www.hascode.com/2010/11/creating-a-rest-client-step-by-step-using-jax-rs-jax-b-and-jersey/" target="_blank" rel="noopener">这篇文章</a>正是你需要的。</p>
+<p> 翻译： ImportNew.com  - 靳禹</p>
+<p>译文链接： <a href="http://www.importnew.com/8939.html" target="_blank" rel="noopener">http://www.importnew.com/8939.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/14233.html" title="REST客户端编程实例">http://www.iskei.cn/posts/14233.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/restClient/" rel="tag"># restClient</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/47293.html" rel="next" title="Request Mapping 基础用法">
+                <i class="fa fa-chevron-left"></i> Request Mapping 基础用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/46218.html" rel="prev" title="深入浅出REST">
+                深入浅出REST <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-gitlab"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导读"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我们开始吧"><span class="nav-number">2.</span> <span class="nav-text">我们开始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#REST-服务"><span class="nav-number">2.1.</span> <span class="nav-text">REST 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Book-Entity"><span class="nav-number">2.2.</span> <span class="nav-text">Book Entity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建并绑定一个客户端"><span class="nav-number">3.</span> <span class="nav-text">创建并绑定一个客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端例子"><span class="nav-number">4.</span> <span class="nav-text">客户端例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven-整合"><span class="nav-number">4.1.</span> <span class="nav-text">Maven 整合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础操作"><span class="nav-number">4.2.</span> <span class="nav-text">基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步处理"><span class="nav-number">4.3.</span> <span class="nav-text">异步处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发起回调"><span class="nav-number">4.4.</span> <span class="nav-text">发起回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟调用-请求构建"><span class="nav-number">4.5.</span> <span class="nav-text">延迟调用 / 请求构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端请求过滤器"><span class="nav-number">4.6.</span> <span class="nav-text">客户端请求过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端响应过滤器"><span class="nav-number">4.7.</span> <span class="nav-text">客户端响应过滤器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教程源码"><span class="nav-number">5.</span> <span class="nav-text">教程源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-war-File-REST-服务器"><span class="nav-number">6.</span> <span class="nav-text">下载 war-File REST 服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JAX-RS-1-0-and-JAX-B"><span class="nav-number">7.</span> <span class="nav-text">JAX-RS 1.0 and JAX-B</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.7m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">28:14</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      visitors.
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>Site overview
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times.
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+ 
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.2"></script>
+
+
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
