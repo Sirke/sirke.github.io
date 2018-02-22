@@ -35,8 +35,7 @@
 	</div>
 	<ol id="playlist"></ol>
 </div>
-<script src="/static/js/jquery.marquee.min.js"></script>
-<script src="/static/js/player.js"></script>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
 <script>
   var playlist = [];
   {% for src in theme.audio.sources %}
@@ -45,6 +44,7 @@
   var isRotate = true;
   var autoplay = false;
 </script>
+<script src="/static/js/player.js"></script>
 <script>
   function bgChange(){
 	var lis= $('.lib');
