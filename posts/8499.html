@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="case," />
+
+
+<meta name="description" content="本手册以系统中的各功能模块为线索，以医院服务主要流程为导向，简单描述了医院信息管理系统中各主要模块的功能及操作方法，主要面向广大的软东医院信息管理系统的用户，目的在于协助其尽快掌握软件的基础使用与操作，同时也可以作为集中培训的基础教材。">
+<meta name="keywords" content="case">
+<meta property="og:type" content="article">
+<meta property="og:title" content="医院信息管理信息系统">
+<meta property="og:url" content="http://www.iskei.cn/posts/8499.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="本手册以系统中的各功能模块为线索，以医院服务主要流程为导向，简单描述了医院信息管理系统中各主要模块的功能及操作方法，主要面向广大的软东医院信息管理系统的用户，目的在于协助其尽快掌握软件的基础使用与操作，同时也可以作为集中培训的基础教材。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0111.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image002.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image004.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image006.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image008.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image010.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image012.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image013.gif">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image015.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image017.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image019.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image020.gif">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image022.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image024.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image026.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image028.gif">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image030.gif">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image032.gif">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image034.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image036.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image038.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image040.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image042.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image044.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image046.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image048.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image050.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image052.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image054.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image056.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image058.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image060.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image062.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image064.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image066.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image068.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image070.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image072.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image074.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image076.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image078.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image080.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image082.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image084.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image086.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image088.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image090.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image092.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image094.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image096.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image098.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image100.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image102.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image104.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image106.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image108.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image110.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image112.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image114.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image116.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image118.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image120.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image122.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image124.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image126.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image128.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image130.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image132.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image134.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image136.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image138.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image140.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image142.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image144.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image146.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image148.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image150.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image152.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image154.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image156.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image158.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image160.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image162.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image164.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image166.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image168.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image170.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image172.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image174.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image176.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image178.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image180.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image182.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image184.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image186.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image188.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image190.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image192.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image194.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image196.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image198.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image200.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image202.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image204.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image206.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image208.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image210.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image212.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image214.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image216.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image218.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image220.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image222.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image224.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image226.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image228.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image230.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image232.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image234.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image236.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image238.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image240.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image242.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image244.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image246.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image248.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image250.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image252.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image254.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image256.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image258.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image260.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image262.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image264.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image266.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image268.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image270.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image272.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image274.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image276.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image278.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image280.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image282.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image284.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image286.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image288.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image290.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image292.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image294.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image296.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image298.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image300.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image302.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image304.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image306.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image308.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image310.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image312.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image314.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image316.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image318.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image320.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image322.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image324.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image326.jpg">
+<meta property="og:updated_time" content="2018-02-22T02:15:40.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="医院信息管理信息系统">
+<meta name="twitter:description" content="本手册以系统中的各功能模块为线索，以医院服务主要流程为导向，简单描述了医院信息管理系统中各主要模块的功能及操作方法，主要面向广大的软东医院信息管理系统的用户，目的在于协助其尽快掌握软件的基础使用与操作，同时也可以作为集中培训的基础教材。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0111.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/8499.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>医院信息管理信息系统 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/8499.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">医院信息管理信息系统</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-04T15:44:36+08:00">2018-02-04</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/case/" itemprop="url" rel="index"><span itemprop="name">case</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/8499.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8499.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/8499.html" class="leancloud_visitors" data-flag-title="医院信息管理信息系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">9.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:09</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0111.jpg" alt="image"></p>
+<p>本手册以系统中的各功能模块为线索，以医院服务主要流程为导向，简单描述了医院信息管理系统中各主要模块的功能及操作方法，主要面向广大的软东医院信息管理系统的用户，目的在于协助其尽快掌握软件的基础使用与操作，同时也可以作为集中培训的基础教材。<br><a id="more"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><a href="">前言</a></h1><p>因本手册其旨在于给医院各岗位工作人员提供快速操作指导，内容不足之处，敬请原谅，若有疑难问题请致电公司客服中心，我们将竭诚为您服务！</p>
+<h1 id="系统简介"><a href="#系统简介" class="headerlink" title="系统简介"></a><a href="">系统简介</a></h1><p>“软东医院信息管理信息系统”是一套集成门诊挂号收费、住院收费、</p>
+<p>药品管理等工作站的医院网络管理系统，本系统适应于二级医院，它操作简单方便，性能稳定；支持按大类收费和明细收费；大类项目和明细项目都能自定义；支持多种发票格式和收据格式，并且每种发票格式都可以自由修改；药品管理部分参考了国外一些优秀医院网络系统的先进经验，具有完善的药品进销存管理包括药品调价报损退库等强到管理功能，处方从门诊收费到药房完全通过网络传输，完全实现无纸化，数据一次性发生，摆药发药全部自动完成，99% 以上的操作实现了零输入。本系统采用先进的服务器客户端结构，客户端运行的只是和用户交互的界面，安装方便，对硬件的要求也极低，只要能运行winXP 以上操作系统的计算机都能正常运行。</p>
+<h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a><a href="">系统配置</a></h1><table>
+<thead>
+<tr>
+<th>服 务 器</th>
+<th>硬件最低配置</th>
+<th>2.0G CPU/2G内存/250G双硬盘</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬件推荐配置</td>
+<td>2.8G CPU/4G内存/500G双硬盘  支持Raid-1</td>
+<td></td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Windows 2003 server</td>
+<td></td>
+</tr>
+<tr>
+<td>数据库平台</td>
+<td>MS SQLserver2008</td>
+<td></td>
+</tr>
+<tr>
+<td>工 作 站</td>
+<td>操作系统Windows 2003/XP</td>
+</tr>
+</tbody>
+</table>
+<h1 id="系统登录"><a href="#系统登录" class="headerlink" title="系统登录"></a><a href="">系统登录</a></h1><p>点击RdClientManage.exe<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image002.jpg" alt="img">进入系统后，会有登录界面出现。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image004.jpg" alt="img"></p>
+<p>输入用户名的助记码，按回车键，如果用户存在，系统将自动显示该用户所对应的科室，输入口令，单击登录或者按回车键。如果口令正确，将根据系统管理员设置给该操作员的权限来登录系统。若口令不正确，系统将提示错误信息。如果不想进入系统点击取消即可。</p>
+<h1 id="门诊部分"><a href="#门诊部分" class="headerlink" title="门诊部分"></a><a href="">门诊部分</a></h1><h2 id="1-1挂号管理"><a href="#1-1挂号管理" class="headerlink" title="1.1挂号管理"></a><a href="">1.1</a>挂号管理</h2><h3 id="1-1-1门急诊挂号"><a href="#1-1-1门急诊挂号" class="headerlink" title="1.1.1门急诊挂号"></a>1.1.1门急诊挂号</h3><p>  在左边导航栏中出现“挂号管理”的子系统图标，右边会列出挂号管理子系统的主要模块。如下!</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image006.jpg" alt="img"></p>
+<p>找到门急诊挂号模块图标点击进入。如下!</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image008.jpg" alt="img"></p>
+<p>根据要求填写相关信息，输入病人姓名等信息，可以使用回车键进行下一栏的输入（诊疗号不需要手动输入，系统会自动生成），填写完之后单击‘保存’，保存的病人信息会在挂号信息处显示。(保存完成后，系统会自动产生诊疗号和门诊号)如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image010.jpg" alt="img"></p>
+<p>如果要查看是否有预约患者的话，可以单击预约患者信息来查看。</p>
+<p>如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image012.jpg" alt="img"></p>
+<p>如果未领票或票已用完系统也会给出提示信息.<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image013.gif" alt="img"></p>
+<p>如果在保存之前不对该病人进行信息输入，可以单击‘取消’。保存之前，但是信息已经输入完整，可以对该病人信息进行‘删除’。操作完成后，单击‘退出’以退出该界面。</p>
+<h3 id="1-1-2-挂号退号"><a href="#1-1-2-挂号退号" class="headerlink" title="1.1.2 挂号退号"></a>1.1.2 挂号退号</h3><p>   在挂号管理窗口中选择挂号退号，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image015.jpg" alt="img"></p>
+<p>输入该病人所对应的发票号或门诊号，单击‘查询’，选中该病人信息，单击‘确定’即可对该病人进行退号。发票号或门诊号输入错误时，单击‘取消’，重新输入。</p>
+<h3 id="1-1-3-门诊病人信息修改"><a href="#1-1-3-门诊病人信息修改" class="headerlink" title="1.1.3 门诊病人信息修改"></a>1.1.3 门诊病人信息修改</h3><p>  在挂号管理窗口中选择门诊病人信息修改，进入如下界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image017.jpg" alt="img"></p>
+<p>输入病人挂号时的门诊号或诊疗号，单击‘查询’，就可以对查出来的病人的信息进行修改，修改完成后单击‘确定’，否则单击‘取消’，操作完成后单击‘退出’。</p>
+<p>1.1.5 操作员挂号报账单</p>
+<p>在挂号管理窗口中选择专家挂号，进入如下界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image019.jpg" alt="img"></p>
+<p>选择起始时间和结束时间以及需要的统计类型和打印方式、所要报账的操作员，单击确定。</p>
+<h3 id="1-2-1门诊管理"><a href="#1-2-1门诊管理" class="headerlink" title="1.2.1门诊管理"></a>1.2.1门诊管理</h3><p>  在左边导航栏中找到门诊医生站子系统图标点击进入门诊管理子系统，右边会列出门诊管理子系统的主要模块。找到门诊医生工作站模块图标点击进入。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image020.gif" alt="img"><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image022.jpg" alt="img"></p>
+<p>门诊医生工作站窗口打开：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image024.jpg" alt="img"></p>
+<p>如果病人是按专家挂号或者选择了相关医师，那么就选择左边的‘个人’按钮，如果病人按科室挂号，那么就选择左边的‘科室’按钮。</p>
+<p>如果挂过号的病人信息没有出现，那么就单击‘刷新列表’。</p>
+<p>若病人信息为白色，可以按鼠标右键，弹出菜单，点击‘呼叫病人’就可以将病人转化为待诊状态。</p>
+<p>也可以将处于待诊状态的病人通过按鼠标右键的方法将其转为续诊。</p>
+<p>若病人信息为橘黄色，则表明该病人处于待诊状态，可以就诊，双击病人信息，就会将病人的详细信息输出，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image026.jpg" alt="img"></p>
+<p>.医生可以根据病人的情况填写相关内容（门诊病历、检查治疗、药品处方）。在填写过程中，输入栏中出现<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image028.gif" alt="img">图标时，表示可以进行选择，也可以手动输入。如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image030.gif" alt="img"></p>
+<p>使用<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image032.gif" alt="img">从待选项移到已选项，也可以手动输入进行筛选，然后单击‘确定’。</p>
+<p>在输入‘检查治疗’‘药品处方’‘中草药处方’时，单击‘新增’就可以输入相关内容，选择处方内容时，可以输入药品名称汉语拼音的第一个字母按‘回车键’就可以出现相关信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image034.jpg" alt="img"></p>
+<p>完成后单击‘保存’， </p>
+<h3 id="1-2-2诊断证明"><a href="#1-2-2诊断证明" class="headerlink" title="1.2.2诊断证明"></a>1.2.2诊断证明</h3><p>在右边列出的门诊管理子系统的主要模块中找到诊断证明模块图标点击进入。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image036.jpg" alt="img"></p>
+<h3 id="1-2-3个人处方维护"><a href="#1-2-3个人处方维护" class="headerlink" title="1.2.3个人处方维护"></a>1.2.3个人处方维护</h3><p>在右边列出的门诊管理子系统的主要模块中找到个人处方模块图标点击进入：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image038.jpg" alt="img"></p>
+<p>个人处方维护所列出的组合名称只能为常用药品、常用检查、常用检验，在此维护的信息将在门诊医生工作站处调用。</p>
+<h3 id="1-2-4门诊医生接诊患者信息查询"><a href="#1-2-4门诊医生接诊患者信息查询" class="headerlink" title="1.2.4门诊医生接诊患者信息查询"></a>1.2.4门诊医生接诊患者信息查询</h3><p>在右边列出的门诊管理子系统的主要模块中找到门诊医生急诊患者信息查询模块图标点击进入。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image040.jpg" alt="img"></p>
+<p>输入要查询的条件，单击‘查询’即可找到要查询的科室、医师所对应的所有病人信息。</p>
+<h2 id="1-3-门诊收费站"><a href="#1-3-门诊收费站" class="headerlink" title="1.3 门诊收费站"></a><a href="">1.3 </a>门诊收费站</h2><h3 id="1-3-1门诊划价收费"><a href="#1-3-1门诊划价收费" class="headerlink" title="1.3.1门诊划价收费"></a>1.3.1门诊划价收费</h3><p>在左边导航栏中找到门诊管理子系统，右边会列出门诊收费站子系统的主要模块。找到门诊划价收费模块图标点击进入。输入就诊号或挂号号如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image042.jpg" alt="img"></p>
+<p>单击‘确定’，屏幕中会列出该病人所有要划价的费用，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image044.jpg" alt="img"></p>
+<p>单击‘保存’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image046.jpg" alt="img"></p>
+<p>最后单击确定即可。如果以上信息输入不正确，可以单击‘取消’，重新输入。</p>
+<h3 id="1-3-2-病人信息维护"><a href="#1-3-2-病人信息维护" class="headerlink" title="1.3.2 病人信息维护"></a>1.3.2 病人信息维护</h3><p>在右边的主要模块中找到病人信息维护模块图标点击进入，如图：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image048.jpg" alt="img"></strong></p>
+<p>根据需要输入相关信息（所有部门、检索条件、是否在院都是可选的），单击回车键或‘查询‘按钮，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image050.jpg" alt="img"></p>
+<p>选中要修改的病人，单击‘编辑’按钮，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image052.jpg" alt="img"></p>
+<p>修改完成后单击‘确定’即可。</p>
+<h3 id="1-3-3-门诊发票重打"><a href="#1-3-3-门诊发票重打" class="headerlink" title="1.3.3 门诊发票重打"></a>1.3.3 门诊发票重打</h3><p>在右边的主要模块中找到门诊发票重打模块图标点击进入，如图：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image054.jpg" alt="img"></strong></p>
+<p>单击要重新打印的发票或输入要打印的发票号，单击‘确定‘，如图;</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image056.jpg" alt="img">需要重打的话单击‘确定‘，不需要的话单击‘取消’。</p>
+<h3 id="1-3-4-门诊退费"><a href="#1-3-4-门诊退费" class="headerlink" title="1.3.4 门诊退费"></a>1.3.4 门诊退费</h3><p>在右边的主要模块中找到门诊退费模块图标点击进入，输入诊疗号或发票号，如图：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image058.jpg" alt="img"></strong></p>
+<p>双击该发票号对应的信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image060.jpg" alt="img"></p>
+<p>选择要退的费用，单击‘保存’</p>
+<p>如图：<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image062.jpg" alt="img"> 单击‘确定’即可退费，否则不退费。</p>
+<h3 id="1-3-5-门诊日结账（在启用日结配置的情况下才能使用）"><a href="#1-3-5-门诊日结账（在启用日结配置的情况下才能使用）" class="headerlink" title="1.3.5 门诊日结账（在启用日结配置的情况下才能使用）"></a>1.3.5 门诊日结账（在启用日结配置的情况下才能使用）</h3><p>在右边的主要模块中找到门诊操作员结账模块图标点击进入，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image064.jpg" alt="img"></p>
+<p>根据具体需要进行选择。</p>
+<h3 id="1-3-6-结账信息取消（该功能慎用）"><a href="#1-3-6-结账信息取消（该功能慎用）" class="headerlink" title="1.3.6 结账信息取消（该功能慎用）"></a>1.3.6 结账信息取消（该功能慎用）</h3><p>在右边的主要模块中找到结账信息取消模块图标点击进入，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image066.jpg" alt="img"></p>
+<p>输入要撤销结账的操作员代码，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image068.jpg" alt="img"></p>
+<p>如果要撤销记账的话，选中要撤销的账目，如果需要的话选中删除结账信息单选框，直接单击‘撤销结账数据’，如图：<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image070.jpg" alt="img"></p>
+<h1 id="住院部分"><a href="#住院部分" class="headerlink" title="住院部分"></a><a href="">住院部分</a></h1><p>根据系统管理员设置给该操作员的权限来登录系统。若口令不正确，系统将提示错误信息。如果不想进入系统点击取消即可。点击左边的住院管理系统，右边会出现相关模块</p>
+<h2 id="2-1入院"><a href="#2-1入院" class="headerlink" title="2.1入院"></a><a href="">2.1</a>入院</h2><h3 id="2-1-1-入院登记"><a href="#2-1-1-入院登记" class="headerlink" title="2.1.1 入院登记"></a>2.1.1 入院登记</h3><p>双击右边的入院登记模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image072.jpg" alt="img"></strong></p>
+<p>单击‘新增’按钮，输入要住院的病人信息（从‘姓名栏’开始可以用‘回车键’依次输入其他信息），单击保存，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image074.jpg" alt="img">然后单击‘确定’，出现如下对话框：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image076.jpg" alt="img">如果要打印病历首页的话，单击‘确定’，否则单击‘取消’。</p>
+<h3 id="2-1-2-新生儿入院登记"><a href="#2-1-2-新生儿入院登记" class="headerlink" title="2.1.2 新生儿入院登记"></a>2.1.2 新生儿入院登记</h3><p>双击右边的新生儿入院登记模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image078.jpg" alt="img"></strong></p>
+<p>单击‘新增’，输入相关信息（输入母亲的住院号，按‘回车键’进行其他项的选择），完成后单击 ‘保存’，出现如下对话框：<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image080.jpg" alt="img"></p>
+<p>再次输入母亲住院号，单击回车键，会出现对应孩子的信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image082.jpg" alt="img"></p>
+<p>双击该婴儿的信息，就可以对婴儿信息进行编辑。</p>
+<h3 id="2-1-3-入院登记许可项配置"><a href="#2-1-3-入院登记许可项配置" class="headerlink" title="2.1.3 入院登记许可项配置"></a>2.1.3 入院登记许可项配置</h3><p>双击右边的入院登记许可项配置模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image084.jpg" alt="img"></strong></p>
+<p>对需要的项打上勾，然后单击提交。</p>
+<h2 id="2-2住院医生站"><a href="#2-2住院医生站" class="headerlink" title="2.2住院医生站"></a><a href="">2.2</a>住院医生站</h2><h3 id="2-2-1-导航管理"><a href="#2-2-1-导航管理" class="headerlink" title="2.2.1 导航管理"></a>2.2.1 导航管理</h3><p>双击右边的导航管理模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image086.jpg" alt="img"></p>
+<p>选中某一病人，单击鼠标右键，会出现长期医嘱、临时医嘱、账目查询、电子病历、床头卡等选项，根据需要进行选择。</p>
+<p>例：建立长期医嘱：如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image088.jpg" alt="img"></p>
+<p>单击‘新增’，输入要增加的长期医嘱，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image090.jpg" alt="img"></p>
+<p>输入完成后，单击保存，如图：<img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image092.jpg" alt="img">，保存完成后，要进行‘确认’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image094.jpg" alt="img"></p>
+<p>之后再单击‘保存’，如图</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image096.jpg" alt="img"></p>
+<p>如果确定该遗嘱的话，单击确定即可，否则单击取消，对该医嘱进行‘追加’、‘修改’、‘作废’等操作。对该病人进行长期医嘱时，也可填写临时医嘱。</p>
+<h3 id="2-2-2-住院电子病历"><a href="#2-2-2-住院电子病历" class="headerlink" title="2.2.2 住院电子病历"></a>2.2.2 住院电子病历</h3><p>双击右边的住院电子病历模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image098.jpg" alt="img"></strong></p>
+<p>用鼠标选中左边的病人信息，右击鼠标，会出现收治患者、病案首页、书写病历、病历套打、会诊管理等选项，根据要求进行选择。</p>
+<p>例： ‘病案首页’：（如果登录医生不是该病人的主治医生，那么如果要为该病人书写病案首页时，就要先收治该病人）</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image100.jpg" alt="img"></p>
+<p>填写病人的基本情况、诊断情况、治疗情况，完成后单击‘保存’即可。</p>
+<h2 id="2-3住院收费"><a href="#2-3住院收费" class="headerlink" title="2.3住院收费"></a><a href="">2.3</a>住院收费</h2><h3 id="2-3-1-住院划价记账"><a href="#2-3-1-住院划价记账" class="headerlink" title="2.3.1 住院划价记账"></a>2.3.1 住院划价记账</h3><p>双击右边的住院划价记账模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image102.jpg" alt="img"></strong></p>
+<p>可以在对应的科室下面选择病人，也可以输入病人的住院号，按回车键调出病人的相关信息，输入执行科室和收费项目（收费项目可以输入项目的汉语拼音的第一个字母按回车键进行选择），然后单击保存。如果该病人余额不足，如果有“欠费权限的话”可以在‘允许欠费’栏输入金额或者在有担保人的情况下可以填写相关的担保金额。</p>
+<h3 id="2-3-2-允许欠费金额设置"><a href="#2-3-2-允许欠费金额设置" class="headerlink" title="2.3.2 允许欠费金额设置"></a>2.3.2 允许欠费金额设置</h3><p>双击右边的允许欠费金额设置模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image104.jpg" alt="img"></strong></p>
+<p>输入相关的检索条件，单击‘查询’，就可以调出该病人的信息（用以核对），如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image106.jpg" alt="img"></p>
+<p>然后在设定允许欠费金额文本框中输入允许欠费金额，单击‘设定’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image108.jpg" alt="img"></p>
+<p>表示设定成功。</p>
+<h3 id="2-3-8-增加担保人"><a href="#2-3-8-增加担保人" class="headerlink" title="2.3.8 增加担保人"></a>2.3.8 增加担保人</h3><p>双击右边的增加担保人模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image110.jpg" alt="img"></strong></p>
+<p>在左边的菜单栏根据科室选择病人或输入病人的住院号，按‘回车键’调出病人的相关信息，然后填写担保人、担保金额等内容。输入完成后，单击‘保存’即可。</p>
+<h3 id="2-3-3-预交款管理"><a href="#2-3-3-预交款管理" class="headerlink" title="2.3.3 预交款管理"></a>2.3.3 预交款管理</h3><p>双击右边的预交款管理模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image112.jpg" alt="img"></strong></p>
+<p>在左边的菜单栏根据科室选择病人或输入住院号，按回车键，调出病人的相关信息，然后输入缴款金额，单击‘收费’按钮即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image114.jpg" alt="img"></p>
+<p>该页面的下面还会出现该病人的明细账信息，如果要该病人要退费的话，可以选择相关的要退的费用，单击‘退费’按钮即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image116.jpg" alt="img"></p>
+<h3 id="2-3-4-预交款发票重打"><a href="#2-3-4-预交款发票重打" class="headerlink" title="2.3.4 预交款发票重打"></a>2.3.4 预交款发票重打</h3><p>双击右边的预交款发票重打模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image118.jpg" alt="img"></strong></p>
+<p>在左边的菜单中根据科室选择病人或输入住院号，按回车键，页面中会出现该病人所有的预交款信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image120.jpg" alt="img"></p>
+<p>选择要重打的发票，单击‘重打’按钮进行重打，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image122.jpg" alt="img"></p>
+<p>单击‘确定’即可重打，否则‘取消’。</p>
+<h3 id="2-3-5-住院收入按科室统计"><a href="#2-3-5-住院收入按科室统计" class="headerlink" title="2.3.5 住院收入按科室统计"></a>2.3.5 住院收入按科室统计</h3><p>双击右边的住院收入按科室统计模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image124.jpg" alt="img"></strong></p>
+<p>选择要统计的起止时间、科室等信息，单击‘确定’即可。</p>
+<h3 id="2-3-6-住院收入按医师统计"><a href="#2-3-6-住院收入按医师统计" class="headerlink" title="2.3.6 住院收入按医师统计"></a>2.3.6 住院收入按医师统计</h3><p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image126.jpg" alt="img"></strong></p>
+<p>选择要统计的起止时间、医师等信息，单击‘确定’即可。</p>
+<h3 id="2-3-7-病人费用类别修改"><a href="#2-3-7-病人费用类别修改" class="headerlink" title="2.3.7 病人费用类别修改"></a>2.3.7 病人费用类别修改</h3><p>双击右边的病人费用类别修改模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image128.jpg" alt="img"></strong></p>
+<p>输入住院号，按回车键调出病人基本信息，然后输入要修改的病人费用类别信息，单击‘转换’即可。</p>
+<h3 id="2-3-9-住院退费"><a href="#2-3-9-住院退费" class="headerlink" title="2.3.9 住院退费"></a>2.3.9 住院退费</h3><p>双击右边的住院退费模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image130.jpg" alt="img"></p>
+<p>在左边的菜单中根据科室选择病人或输入住院号，按回车键调出病人的相关信息和相关费用，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image132.jpg" alt="img"></p>
+<p>选中需要退的费用，然后单击‘保存’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image134.jpg" alt="img"></p>
+<p>需要退的话，单击‘确定’，否则单击‘取消’。</p>
+<p>退费成功后，可以单击‘显示退费’，即可以看到该病人的退费情况。如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image136.jpg" alt="img"></p>
+<h3 id="2-3-10-滚动退费"><a href="#2-3-10-滚动退费" class="headerlink" title="2.3.10 滚动退费"></a>2.3.10 滚动退费</h3><p>双击右边的滚动退费模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image138.jpg" alt="img"></strong></p>
+<p>在左边的菜单中根据科室选择病人或输入住院号，按回车键调出病人信息和相关的滚动费用，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image140.jpg" alt="img"></p>
+<p>选择要退的滚动费用，单击保存即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image142.jpg" alt="img"></p>
+<h3 id="2-3-11-病人账目查询"><a href="#2-3-11-病人账目查询" class="headerlink" title="2.3.11 病人账目查询"></a>2.3.11 病人账目查询</h3><p>双击右边的病人账目查询模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image144.jpg" alt="img"></strong></p>
+<p>输入病人的住院号，按回车键，调出病人的相关信息。如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image146.jpg" alt="img"></p>
+<p>可以通过按‘总账信息’，‘明细账信息’，‘未发药品信息’，‘未记账医嘱’按钮得出相关信息。</p>
+<h3 id="2-3-12-病人账目结算"><a href="#2-3-12-病人账目结算" class="headerlink" title="2.3.12 病人账目结算"></a>2.3.12 病人账目结算</h3><p>双击右边的病人账目结算模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image148.jpg" alt="img"></p>
+<p>输入病人的住院号，按回车键调出病人信息，（如果该病人有未发药品，系统会出现如下对话框：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image150.jpg" alt="img"></p>
+<p>发药动作完成后，就可以正常结算，单击‘确定’，会出现“确定现在办理患者结算手续吗”的对话框，单击‘确定’即可办理结算手续，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image152.jpg" alt="img"></p>
+<p>。</p>
+<h3 id="2-3-13-结算召回"><a href="#2-3-13-结算召回" class="headerlink" title="2.3.13 结算召回"></a>2.3.13 结算召回</h3><p>  双击右边的结算召回模块进入如图界面：</p>
+<p>  <img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image154.jpg" alt="img"></p>
+<p>在左边的菜单中根据科室选择结算的病人信息或输入要召回的病人的住院号，单击‘查询’，如果确定要召回该病人的话就单击‘确定’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image156.jpg" alt="img"></p>
+<h3 id="2-3-14-住院结账"><a href="#2-3-14-住院结账" class="headerlink" title="2.3.14 住院结账"></a>2.3.14 住院结账</h3><p>双击右边的住院结账模块进入如图界面：</p>
+<h3 id="2-3-15-催拖欠款"><a href="#2-3-15-催拖欠款" class="headerlink" title="2.3.15 催拖欠款"></a>2.3.15 催拖欠款</h3><p>  双击右边的催拖欠款模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image158.jpg" alt="img"></p>
+<p>以上即为所有欠款病人的信息。</p>
+<h3 id="2-3-16出院发票重打"><a href="#2-3-16出院发票重打" class="headerlink" title="2.3.16出院发票重打"></a>2.3.16出院发票重打</h3><p>双击右边的出发票重打模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image160.jpg" alt="img"></p>
+<p>左边的菜单会列出相关的出院病人信息，选择出院病人或输入住院号，按回车键调出出院的病人信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image162.jpg" alt="img"></p>
+<p>单击‘确定’即可完成发票重打。</p>
+<h3 id="2-3-17-出院收入按医师统计"><a href="#2-3-17-出院收入按医师统计" class="headerlink" title="2.3.17 出院收入按医师统计"></a>2.3.17 出院收入按医师统计</h3><p>  双击右边的出院收入按医师统计模块进入如图界面：</p>
+<p> <img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image164.jpg" alt="img"></p>
+<p>输入要统计的信息，按‘确定’即可。</p>
+<h3 id="2-3-18出院收入按科室统计"><a href="#2-3-18出院收入按科室统计" class="headerlink" title="2.3.18出院收入按科室统计"></a>2.3.18出院收入按科室统计</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image166.jpg" alt="img"></p>
+<p>输入要统计的信息，按‘确定’即可。</p>
+<h3 id="2-3-19出院病人账目查询"><a href="#2-3-19出院病人账目查询" class="headerlink" title="2.3.19出院病人账目查询"></a>2.3.19出院病人账目查询</h3><p>双击右边的出院病人账目查询模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image168.jpg" alt="img"></strong></p>
+<p>输入要查询的病人的住院号，按‘回车键’调出病人的相关信息，通过按‘总账信息’，‘明细账信息’查出对应的账目信息。</p>
+<h2 id="2-4护士站"><a href="#2-4护士站" class="headerlink" title="2.4护士站"></a><a href="">2.4</a>护士站</h2><h3 id="2-4-1-导航管理"><a href="#2-4-1-导航管理" class="headerlink" title="2.4.1 导航管理"></a>2.4.1 导航管理</h3><p><strong>  </strong>双击右边的导航管理模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image170.jpg" alt="img"></strong></p>
+<p>选择要执行医嘱的病人信息，按鼠标左键，会出现长期医嘱、临时医嘱、床位调整、账目查询、出院结算等选项卡。以长期医嘱为例，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image172.jpg" alt="img"></p>
+<p>如果该护士对该病人执行了以上操作，就可以单击‘查对’，如果病人余额不足，就可以选择部分查对，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image174.jpg" alt="img"></p>
+<h3 id="2-4-2-长期医嘱单"><a href="#2-4-2-长期医嘱单" class="headerlink" title="2.4.2 长期医嘱单"></a>2.4.2 长期医嘱单</h3><p>双击右边的长期医嘱单模块进入如图界面：</p>
+<p><strong><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image176.jpg" alt="img"></strong></p>
+<p>输入已经执行的长期医嘱的病人的住院号，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image178.jpg" alt="img"></p>
+<p>单击确定，就可以看到该病人的长期医嘱单。</p>
+<h3 id="2-4-3-临时医嘱单"><a href="#2-4-3-临时医嘱单" class="headerlink" title="2.4.3 临时医嘱单"></a>2.4.3 临时医嘱单</h3><p>临时医嘱单的操作同长期医嘱单。</p>
+<h3 id="2-4-4-转床管理"><a href="#2-4-4-转床管理" class="headerlink" title="2.4.4 转床管理"></a>2.4.4 转床管理</h3><p>双击右边的转床管理模块进入如图界面；</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image180.jpg" alt="img"></p>
+<p>输入要转床的病人的住院号按回车键就会调出病人的原床位号，然后输入病人要转入的现床位号，单击保存即可。</p>
+<h3 id="2-4-5-包床设置"><a href="#2-4-5-包床设置" class="headerlink" title="2.4.5 包床设置"></a>2.4.5 包床设置</h3><p>双击右边的包床设置模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image182.jpg" alt="img"></p>
+<p>输入住院号，调出相关信息，按‘包床’键即可</p>
+<h3 id="2-4-6-临时加床"><a href="#2-4-6-临时加床" class="headerlink" title="2.4.6 临时加床"></a>2.4.6 临时加床</h3><p>双击临时加床模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image184.jpg" alt="img"></p>
+<p>选择科室名，对该科室按照提示进行临时加床。</p>
+<h3 id="2-4-7-临时撤床"><a href="#2-4-7-临时撤床" class="headerlink" title="2.4.7 临时撤床"></a>2.4.7 临时撤床</h3><p>双击右边的临时撤床模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image186.jpg" alt="img"></p>
+<p>选择科室名，对该科室按照提示进行临时撤床。</p>
+<h3 id="2-4-8-转科管理"><a href="#2-4-8-转科管理" class="headerlink" title="2.4.8 转科管理"></a>2.4.8 转科管理</h3><p>双击右边的转科管理模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image188.jpg" alt="img"></p>
+<h3 id="2-4-9-在院病人一日清单"><a href="#2-4-9-在院病人一日清单" class="headerlink" title="2.4.9 在院病人一日清单"></a>2.4.9 在院病人一日清单</h3><p>双击右边的在院病人一日清单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image190.jpg" alt="img"></p>
+<p>选择要统计的方式（按住院号还是按科室），修改要统计的起止时间，按‘确定’键即可。</p>
+<h3 id="2-5-10-出院病人一日清单"><a href="#2-5-10-出院病人一日清单" class="headerlink" title="2.5.10 出院病人一日清单"></a>2.5.10 出院病人一日清单</h3><p>双击右边的出院病人一日清单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image192.jpg" alt="img"></p>
+<p>出院病人一日清单操作同在院病人一日清单</p>
+<h3 id="2-5-11-请领药单（汇总）"><a href="#2-5-11-请领药单（汇总）" class="headerlink" title="2.5.11 请领药单（汇总）"></a>2.5.11 请领药单（汇总）</h3><p>双击右边的请领药单（汇总）模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image194.jpg" alt="img"></p>
+<p>如果是住院药房的话选择住院药房，起始时间为上次打印或预览的时间，终止时间为当前时间，根据需要进行选择（重打（注：要输入申请号）、预览、打印），单击‘确定’即可。</p>
+<h3 id="2-5-12-请领药单（明细）"><a href="#2-5-12-请领药单（明细）" class="headerlink" title="2.5.12 请领药单（明细）"></a>2.5.12 请领药单（明细）</h3><p>双击右边的请领药单（明细）模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image196.jpg" alt="img"></p>
+<p>选择医嘱类型和药品类别，其他操作同请领药单（汇总）</p>
+<h3 id="2-5-13-静滴单（输液卡）"><a href="#2-5-13-静滴单（输液卡）" class="headerlink" title="2.5.13 静滴单（输液卡）"></a>2.5.13 静滴单（输液卡）</h3><p>双击右边的静滴单（输液卡）模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image198.jpg" alt="img"></p>
+<p>输入住院号，选择要打印或预览的静滴单的起止时间，单击确定即可，如果要按科室查询的话，就选择‘是否按科室查询’单选框，单击确定即可。</p>
+<h3 id="2-5-14-请领药单（口服和非口服）"><a href="#2-5-14-请领药单（口服和非口服）" class="headerlink" title="2.5.14 请领药单（口服和非口服）"></a>2.5.14 请领药单（口服和非口服）</h3><p>双击右边的请领药单（口服和非口服）模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image200.jpg" alt="img"></p>
+<p>操作同请领药单（汇总）。</p>
+<h3 id="2-5-15-口服药单"><a href="#2-5-15-口服药单" class="headerlink" title="2.5.15 口服药单"></a>2.5.15 口服药单</h3><p>双击右边的口服药单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image202.jpg" alt="img"></p>
+<p>基本操作同静滴单</p>
+<h3 id="2-5-16-注射单"><a href="#2-5-16-注射单" class="headerlink" title="2.5.16 注射单"></a>2.5.16 注射单</h3><p>双击右边的注射单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image204.jpg" alt="img"></p>
+<p>操作同口服药单。</p>
+<h3 id="2-5-17-处置单（医技）"><a href="#2-5-17-处置单（医技）" class="headerlink" title="2.5.17 处置单（医技）"></a>2.5.17 处置单（医技）</h3><p>双击右边的处置单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image206.jpg" alt="img"></p>
+<p>操作同上。</p>
+<h3 id="2-5-18-治疗处方单"><a href="#2-5-18-治疗处方单" class="headerlink" title="2.5.18 治疗处方单"></a>2.5.18 治疗处方单</h3><p>双击右边的治疗处方单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image208.jpg" alt="img"></p>
+<h3 id="2-5-19-皮试结果查询"><a href="#2-5-19-皮试结果查询" class="headerlink" title="2.5.19 皮试结果查询"></a>2.5.19 皮试结果查询</h3><p>双击右边的皮试结果查询模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image210.jpg" alt="img"></p>
+<p>输入住院号就会出现做过皮试的病人的皮试结果信息查询。</p>
+<h3 id="2-5-20-护理记录单"><a href="#2-5-20-护理记录单" class="headerlink" title="2.5.20 护理记录单"></a>2.5.20 护理记录单</h3><p>双击右边的护理记录单模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image212.jpg" alt="img"></p>
+<p>记录护士在护理过程中病人的基本信息。</p>
+<h2 id="2-5出院"><a href="#2-5出院" class="headerlink" title="2.5出院"></a><a href="">2.5</a>出院</h2><h3 id="2-5-1-出院"><a href="#2-5-1-出院" class="headerlink" title="2.5.1 出院"></a>2.5.1 出院</h3><p>  双击右边的出院模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image214.jpg" alt="img"></p>
+<p>左边菜单会出现相关的可以出院的病人或输入住院号，按回车键，单击‘确定’如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image216.jpg" alt="img"></p>
+<p>要办理出院的话，直接单击‘确定’即可。否则单击‘取消’。</p>
+<h3 id="2-5-2-出院病人召回管理"><a href="#2-5-2-出院病人召回管理" class="headerlink" title="2.5.2 出院病人召回管理"></a>2.5.2 出院病人召回管理</h3><p>双击右边的出院病人召回管理模块进入如图界面：<em>**</em></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image218.jpg" alt="img"></p>
+<p>输入要召回的病人的住院号，按‘回车键’调出病人的信息，单击‘确定’即可。</p>
+<h1 id="药库药房部分"><a href="#药库药房部分" class="headerlink" title="药库药房部分"></a><a href="">药库药房部分</a></h1><h2 id="3-1-药库管理"><a href="#3-1-药库管理" class="headerlink" title="3.1 药库管理"></a><a href="">3.1 </a>药库管理</h2><p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image220.jpg" alt="img"></p>
+<h3 id="3-1-1-药品初始录入"><a href="#3-1-1-药品初始录入" class="headerlink" title="3.1.1. 药品初始录入"></a>3.1.1. 药品初始录入</h3><p>双击右边的药品初始录入模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image222.jpg" alt="img"></p>
+<p>选择药房名称、库房名称等信息（输入药品名称的时可以输入药品名称的汉语拼音的首字母，按回车键，选择相关药品）。输入完成后，单击‘保存’即可。</p>
+<h3 id="3-1-2药品入库"><a href="#3-1-2药品入库" class="headerlink" title="3.1.2药品入库"></a>3.1.2药品入库</h3><p>双击右边的药品入库模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image224.jpg" alt="img"></p>
+<p>点击‘新增’，输入入库的药品信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image226.jpg" alt="img"></p>
+<p>单击‘保存’即可。</p>
+<h3 id="3-1-3-药品库存调整"><a href="#3-1-3-药品库存调整" class="headerlink" title="3.1.3 药品库存调整"></a>3.1.3 药品库存调整</h3><p>双击右边的药品库存调整模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image228.jpg" alt="img"></p>
+<p>输入调整部门，点击‘显示’，屏幕中会列出该药房的所有药品信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image230.jpg" alt="img"></p>
+<p>也可以在按拼音码检索中输入药品的汉语拼音的首字母，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image232.jpg" alt="img"></p>
+<p>选中要调整的药品，，输入实际库存和调整原因，单击‘确定’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image234.jpg" alt="img"></p>
+<p>点击‘调整’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image236.jpg" alt="img"></p>
+<h3 id="3-1-4-药品调拨管理"><a href="#3-1-4-药品调拨管理" class="headerlink" title="3.1.4 药品调拨管理"></a>3.1.4 药品调拨管理</h3><p>双击右边的药品调拨管理模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image238.jpg" alt="img"></p>
+<p>单击‘新增’，输入要调拨的库房名称和药品，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image240.jpg" alt="img"></p>
+<p>单击‘保存’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image242.jpg" alt="img"></p>
+<p>也可以对已经调拨的药品进行编辑，单击‘编辑’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image244.jpg" alt="img"></p>
+<p>选择要编辑的药品，进行‘编辑’即可。</p>
+<p>保存完成后，要对药品信息要进行审核，单击‘审核’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image246.jpg" alt="img"></p>
+<p>选中要审核的药品信息，双击即可。</p>
+<h3 id="3-1-5-药品盘点"><a href="#3-1-5-药品盘点" class="headerlink" title="3.1.5 药品盘点"></a>3.1.5 药品盘点</h3><p>双击右边的药品盘点模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image248.jpg" alt="img"></p>
+<p>单击‘新增盘点表’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image250.jpg" alt="img"></p>
+<p>如果要显示这些药品对应的库存，可以单击‘导入库存’，盘点完成后，单击‘保存’，数据无误后，单击‘审核’、‘保存’，药品盘点任务完成。</p>
+<h3 id="3-1-6药品库存上下限维护"><a href="#3-1-6药品库存上下限维护" class="headerlink" title="3.1.6药品库存上下限维护"></a>3.1.6药品库存上下限维护</h3><p>双击右边的药品库存上下限维护模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image252.jpg" alt="img"></p>
+<p>输入库存下限和库存上限，单击‘保存’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image254.jpg" alt="img"></p>
+<h3 id="3-1-7药品调价"><a href="#3-1-7药品调价" class="headerlink" title="3.1.7药品调价"></a>3.1.7药品调价</h3><p>双击右边的药品调价模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image256.jpg" alt="img"></p>
+<p>单击‘新增’，输入相关信息（文件号、调价原因必写），输入药品的新购入价如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image258.jpg" alt="img"></p>
+<p>单击保存即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image260.jpg" alt="img"></p>
+<p>保存之后，要对修改过的信息进行审核，点击‘审核’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image262.jpg" alt="img"></p>
+<p>选择部门，单击‘查询’，选择要审核的调价号，单击‘确定’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image264.jpg" alt="img"></p>
+<p>选中要审核的药品信息，单击‘确定’即可。</p>
+<h3 id="3-1-8药品报损管理"><a href="#3-1-8药品报损管理" class="headerlink" title="3.1.8药品报损管理"></a>3.1.8药品报损管理</h3><p>双击右边的药品报损管理模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image266.jpg" alt="img"></p>
+<p>单击‘新增’，选择损益类别，输入报损的药品数量，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image268.jpg" alt="img"></p>
+<p>单击‘保存’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image270.jpg" alt="img"></p>
+<p>保存完成后，要对输入的信息进行审核，单击‘审核’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image272.jpg" alt="img"></p>
+<p>双击要审核报损信息或者选择该审核报损信息单击‘确定’，再次单击‘保存’即可审计成功，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image274.jpg" alt="img"></p>
+<p>单击‘确定’；</p>
+<h3 id="3-1-9药品购物计划"><a href="#3-1-9药品购物计划" class="headerlink" title="3.1.9药品购物计划"></a>3.1.9药品购物计划</h3><p>双击右边的药品购物计划模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image276.jpg" alt="img"></p>
+<p>单击‘新增’，输入相关信息，即可出现该库房的药品记录信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image278.jpg" alt="img"></p>
+<p>如果只想显示小于库存下限的药品信息，可以在药品信息（仅显示小于库存下限的药品）前面方框点击即可。也可以利用辅助查找（输入药品汉语拼音的第一个字母）来查找有关药品信息。</p>
+<p>选中某一药品，右击，会出现‘定位查找’，‘添加到购物计划明细’对话框。</p>
+<p>定位查找，如图：点击‘ok’进行查找。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image280.jpg" alt="img"></p>
+<p>也可以利用单价进行查找。</p>
+<p>添加到购物计划明细，输入采购数量和购入价等相关信息，单击‘保存’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image282.jpg" alt="img"></p>
+<p>确定信息无误后，单击‘审核’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image284.jpg" alt="img"></p>
+<p>选中要审核的药品，单击‘保存’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image286.jpg" alt="img"></p>
+<p>完成购物计划后，点击‘保存’即可。会出现相关的审核单；</p>
+<h3 id="3-1-10药品退货管理"><a href="#3-1-10药品退货管理" class="headerlink" title="3.1.10药品退货管理"></a>3.1.10药品退货管理</h3><p>双击右边的药品退货管理模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image288.jpg" alt="img"></p>
+<p>单击‘新增’，输入相关信息和要退的药品信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image290.jpg" alt="img"></p>
+<p>单击‘保存’即可。保存完成后，也要对该信息进行审核。</p>
+<h3 id="3-1-11-药库药品出入库汇总"><a href="#3-1-11-药库药品出入库汇总" class="headerlink" title="3.1.11 药库药品出入库汇总"></a>3.1.11 药库药品出入库汇总</h3><p>双击右边的药库药品出入库汇总模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image292.jpg" alt="img"></p>
+<p>选择要统计的药库名称、历史数据、汇总数据的时间，单击‘汇总’即可。</p>
+<h3 id="3-1-12-药房药品出入库汇总"><a href="#3-1-12-药房药品出入库汇总" class="headerlink" title="3.1.12 药房药品出入库汇总"></a>3.1.12 药房药品出入库汇总</h3><p>双击右边的药房药品出入库汇总模块进入如图界面：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image294.jpg" alt="img"></p>
+<p>选择要统计的药库名称、历史数据、汇总数据的时间，单击‘汇总’即可。</p>
+<h2 id="3-2药房"><a href="#3-2药房" class="headerlink" title="3.2药房"></a><a href="">3.2</a>药房</h2><p>药房操作员根据自己的代码进入药房管理系统，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image296.jpg" alt="img"></p>
+<h3 id="3-2-1药房发药"><a href="#3-2-1药房发药" class="headerlink" title="3.2.1药房发药"></a>3.2.1药房发药</h3><p>双击右边的药房发药模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image298.jpg" alt="img"></p>
+<p>确定是门诊发药还是住院发药，选择药方名称，系统会调出相关的未发药的病人信息，如果病人过多的话，也可以通过输入诊疗号按回车键调出该病人的未发药的信息。如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image300.jpg" alt="img"></p>
+<p>发完药后，点击‘确定’即可，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image302.jpg" alt="img"></p>
+<p>点击‘确定’之后，会打印相应的发药单；</p>
+<h3 id="3-2-2药房退药"><a href="#3-2-2药房退药" class="headerlink" title="3.2.2药房退药"></a>3.2.2药房退药</h3><p>双击右边的药房发药模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image304.jpg" alt="img"></p>
+<p>选择退药的部门，单击‘查询’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image306.jpg" alt="img"></p>
+<p>选择要退药的病人信息，单击‘确定’，然后双击该病人信息，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image308.jpg" alt="img"></p>
+<p>选择要退的药品，单击‘确定’，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image310.jpg" alt="img"></p>
+<p>单击是，即可完成退药，否则单击‘否’。</p>
+<h3 id="3-2-3-药品有效期管理"><a href="#3-2-3-药品有效期管理" class="headerlink" title="3.2.3 药品有效期管理"></a>3.2.3 药品有效期管理</h3><p>双击右边的药品有效期管理模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image312.jpg" alt="img"></p>
+<p>根据提示，输入要查询的药品的有效期，单击‘查询’即可。</p>
+<h3 id="3-2-4药房药品维护"><a href="#3-2-4药房药品维护" class="headerlink" title="3.2. 4药房药品维护"></a>3.2. 4药房药品维护</h3><p>双击右边的药房药品维护模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image314.jpg" alt="img"></p>
+<p>输入库存上下限，单击‘保存’即可。</p>
+<h3 id="3-2-5药品医保类型维护"><a href="#3-2-5药品医保类型维护" class="headerlink" title="3.2.5药品医保类型维护"></a>3.2.5药品医保类型维护</h3><p>双击右边的药品医保类型维护模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image316.jpg" alt="img"></p>
+<p>输入要将修改的药品的汉语拼音的首字母或药品编号、药品名称等相关信息，调出该药品的信息，选择‘修改’按钮，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image318.jpg" alt="img"></p>
+<p>选择该药品的医保类型，最后‘保存’即可。</p>
+<h3 id="3-2-6药品划价"><a href="#3-2-6药品划价" class="headerlink" title="3.2. 6药品划价"></a>3.2. 6药品划价</h3><p>双击右边的药品划价模块，如图所示：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image320.jpg" alt="img"></p>
+<p>左边列出了已挂号未划价的病人信息，对该病人信息进行双击，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image322.jpg" alt="img"></p>
+<p>输入处方的药品名称，如图：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image324.jpg" alt="img"></p>
+<p>单击保存即可：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/yxmgr/clip_image326.jpg" alt="img"></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/8499.html" title="医院信息管理信息系统">http://www.iskei.cn/posts/8499.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/case/" rel="tag"># case</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/63607.html" rel="next" title="技术变化那么快，如何做到不被淘汰">
+                <i class="fa fa-chevron-left"></i> 技术变化那么快，如何做到不被淘汰
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/54252.html" rel="prev" title="软件工程文档汇编">
+                软件工程文档汇编 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统简介"><span class="nav-number">2.</span> <span class="nav-text">系统简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统配置"><span class="nav-number">3.</span> <span class="nav-text">系统配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统登录"><span class="nav-number">4.</span> <span class="nav-text">系统登录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#门诊部分"><span class="nav-number">5.</span> <span class="nav-text">门诊部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1挂号管理"><span class="nav-number">5.1.</span> <span class="nav-text">1.1挂号管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1门急诊挂号"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1.1门急诊挂号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-挂号退号"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.1.2 挂号退号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-门诊病人信息修改"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.1.3 门诊病人信息修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1门诊管理"><span class="nav-number">5.1.4.</span> <span class="nav-text">1.2.1门诊管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2诊断证明"><span class="nav-number">5.1.5.</span> <span class="nav-text">1.2.2诊断证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3个人处方维护"><span class="nav-number">5.1.6.</span> <span class="nav-text">1.2.3个人处方维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-4门诊医生接诊患者信息查询"><span class="nav-number">5.1.7.</span> <span class="nav-text">1.2.4门诊医生接诊患者信息查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-门诊收费站"><span class="nav-number">5.2.</span> <span class="nav-text">1.3 门诊收费站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1门诊划价收费"><span class="nav-number">5.2.1.</span> <span class="nav-text">1.3.1门诊划价收费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-病人信息维护"><span class="nav-number">5.2.2.</span> <span class="nav-text">1.3.2 病人信息维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-门诊发票重打"><span class="nav-number">5.2.3.</span> <span class="nav-text">1.3.3 门诊发票重打</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-门诊退费"><span class="nav-number">5.2.4.</span> <span class="nav-text">1.3.4 门诊退费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-门诊日结账（在启用日结配置的情况下才能使用）"><span class="nav-number">5.2.5.</span> <span class="nav-text">1.3.5 门诊日结账（在启用日结配置的情况下才能使用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-结账信息取消（该功能慎用）"><span class="nav-number">5.2.6.</span> <span class="nav-text">1.3.6 结账信息取消（该功能慎用）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#住院部分"><span class="nav-number">6.</span> <span class="nav-text">住院部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1入院"><span class="nav-number">6.1.</span> <span class="nav-text">2.1入院</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-入院登记"><span class="nav-number">6.1.1.</span> <span class="nav-text">2.1.1 入院登记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-新生儿入院登记"><span class="nav-number">6.1.2.</span> <span class="nav-text">2.1.2 新生儿入院登记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-入院登记许可项配置"><span class="nav-number">6.1.3.</span> <span class="nav-text">2.1.3 入院登记许可项配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2住院医生站"><span class="nav-number">6.2.</span> <span class="nav-text">2.2住院医生站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-导航管理"><span class="nav-number">6.2.1.</span> <span class="nav-text">2.2.1 导航管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-住院电子病历"><span class="nav-number">6.2.2.</span> <span class="nav-text">2.2.2 住院电子病历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3住院收费"><span class="nav-number">6.3.</span> <span class="nav-text">2.3住院收费</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-住院划价记账"><span class="nav-number">6.3.1.</span> <span class="nav-text">2.3.1 住院划价记账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-允许欠费金额设置"><span class="nav-number">6.3.2.</span> <span class="nav-text">2.3.2 允许欠费金额设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-8-增加担保人"><span class="nav-number">6.3.3.</span> <span class="nav-text">2.3.8 增加担保人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-预交款管理"><span class="nav-number">6.3.4.</span> <span class="nav-text">2.3.3 预交款管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-预交款发票重打"><span class="nav-number">6.3.5.</span> <span class="nav-text">2.3.4 预交款发票重打</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-5-住院收入按科室统计"><span class="nav-number">6.3.6.</span> <span class="nav-text">2.3.5 住院收入按科室统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-6-住院收入按医师统计"><span class="nav-number">6.3.7.</span> <span class="nav-text">2.3.6 住院收入按医师统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-7-病人费用类别修改"><span class="nav-number">6.3.8.</span> <span class="nav-text">2.3.7 病人费用类别修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-9-住院退费"><span class="nav-number">6.3.9.</span> <span class="nav-text">2.3.9 住院退费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-10-滚动退费"><span class="nav-number">6.3.10.</span> <span class="nav-text">2.3.10 滚动退费</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-11-病人账目查询"><span class="nav-number">6.3.11.</span> <span class="nav-text">2.3.11 病人账目查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-12-病人账目结算"><span class="nav-number">6.3.12.</span> <span class="nav-text">2.3.12 病人账目结算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-13-结算召回"><span class="nav-number">6.3.13.</span> <span class="nav-text">2.3.13 结算召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-14-住院结账"><span class="nav-number">6.3.14.</span> <span class="nav-text">2.3.14 住院结账</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-15-催拖欠款"><span class="nav-number">6.3.15.</span> <span class="nav-text">2.3.15 催拖欠款</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-16出院发票重打"><span class="nav-number">6.3.16.</span> <span class="nav-text">2.3.16出院发票重打</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-17-出院收入按医师统计"><span class="nav-number">6.3.17.</span> <span class="nav-text">2.3.17 出院收入按医师统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-18出院收入按科室统计"><span class="nav-number">6.3.18.</span> <span class="nav-text">2.3.18出院收入按科室统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-19出院病人账目查询"><span class="nav-number">6.3.19.</span> <span class="nav-text">2.3.19出院病人账目查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4护士站"><span class="nav-number">6.4.</span> <span class="nav-text">2.4护士站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-导航管理"><span class="nav-number">6.4.1.</span> <span class="nav-text">2.4.1 导航管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-长期医嘱单"><span class="nav-number">6.4.2.</span> <span class="nav-text">2.4.2 长期医嘱单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-临时医嘱单"><span class="nav-number">6.4.3.</span> <span class="nav-text">2.4.3 临时医嘱单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-转床管理"><span class="nav-number">6.4.4.</span> <span class="nav-text">2.4.4 转床管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-包床设置"><span class="nav-number">6.4.5.</span> <span class="nav-text">2.4.5 包床设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-6-临时加床"><span class="nav-number">6.4.6.</span> <span class="nav-text">2.4.6 临时加床</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-7-临时撤床"><span class="nav-number">6.4.7.</span> <span class="nav-text">2.4.7 临时撤床</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-8-转科管理"><span class="nav-number">6.4.8.</span> <span class="nav-text">2.4.8 转科管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-9-在院病人一日清单"><span class="nav-number">6.4.9.</span> <span class="nav-text">2.4.9 在院病人一日清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-10-出院病人一日清单"><span class="nav-number">6.4.10.</span> <span class="nav-text">2.5.10 出院病人一日清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-11-请领药单（汇总）"><span class="nav-number">6.4.11.</span> <span class="nav-text">2.5.11 请领药单（汇总）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-12-请领药单（明细）"><span class="nav-number">6.4.12.</span> <span class="nav-text">2.5.12 请领药单（明细）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-13-静滴单（输液卡）"><span class="nav-number">6.4.13.</span> <span class="nav-text">2.5.13 静滴单（输液卡）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-14-请领药单（口服和非口服）"><span class="nav-number">6.4.14.</span> <span class="nav-text">2.5.14 请领药单（口服和非口服）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-15-口服药单"><span class="nav-number">6.4.15.</span> <span class="nav-text">2.5.15 口服药单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-16-注射单"><span class="nav-number">6.4.16.</span> <span class="nav-text">2.5.16 注射单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-17-处置单（医技）"><span class="nav-number">6.4.17.</span> <span class="nav-text">2.5.17 处置单（医技）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-18-治疗处方单"><span class="nav-number">6.4.18.</span> <span class="nav-text">2.5.18 治疗处方单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-19-皮试结果查询"><span class="nav-number">6.4.19.</span> <span class="nav-text">2.5.19 皮试结果查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-20-护理记录单"><span class="nav-number">6.4.20.</span> <span class="nav-text">2.5.20 护理记录单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5出院"><span class="nav-number">6.5.</span> <span class="nav-text">2.5出院</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-出院"><span class="nav-number">6.5.1.</span> <span class="nav-text">2.5.1 出院</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-出院病人召回管理"><span class="nav-number">6.5.2.</span> <span class="nav-text">2.5.2 出院病人召回管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#药库药房部分"><span class="nav-number">7.</span> <span class="nav-text">药库药房部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-药库管理"><span class="nav-number">7.1.</span> <span class="nav-text">3.1 药库管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-药品初始录入"><span class="nav-number">7.1.1.</span> <span class="nav-text">3.1.1. 药品初始录入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2药品入库"><span class="nav-number">7.1.2.</span> <span class="nav-text">3.1.2药品入库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-药品库存调整"><span class="nav-number">7.1.3.</span> <span class="nav-text">3.1.3 药品库存调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-药品调拨管理"><span class="nav-number">7.1.4.</span> <span class="nav-text">3.1.4 药品调拨管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-5-药品盘点"><span class="nav-number">7.1.5.</span> <span class="nav-text">3.1.5 药品盘点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-6药品库存上下限维护"><span class="nav-number">7.1.6.</span> <span class="nav-text">3.1.6药品库存上下限维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-7药品调价"><span class="nav-number">7.1.7.</span> <span class="nav-text">3.1.7药品调价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-8药品报损管理"><span class="nav-number">7.1.8.</span> <span class="nav-text">3.1.8药品报损管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-9药品购物计划"><span class="nav-number">7.1.9.</span> <span class="nav-text">3.1.9药品购物计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-10药品退货管理"><span class="nav-number">7.1.10.</span> <span class="nav-text">3.1.10药品退货管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-11-药库药品出入库汇总"><span class="nav-number">7.1.11.</span> <span class="nav-text">3.1.11 药库药品出入库汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-12-药房药品出入库汇总"><span class="nav-number">7.1.12.</span> <span class="nav-text">3.1.12 药房药品出入库汇总</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2药房"><span class="nav-number">7.2.</span> <span class="nav-text">3.2药房</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1药房发药"><span class="nav-number">7.2.1.</span> <span class="nav-text">3.2.1药房发药</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2药房退药"><span class="nav-number">7.2.2.</span> <span class="nav-text">3.2.2药房退药</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-药品有效期管理"><span class="nav-number">7.2.3.</span> <span class="nav-text">3.2.3 药品有效期管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4药房药品维护"><span class="nav-number">7.2.4.</span> <span class="nav-text">3.2. 4药房药品维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5药品医保类型维护"><span class="nav-number">7.2.5.</span> <span class="nav-text">3.2.5药品医保类型维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-6药品划价"><span class="nav-number">7.2.6.</span> <span class="nav-text">3.2. 6药品划价</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.7m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">28:21</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="/static/js/jquery.marquee.min.js"></script>
+<script src="/static/js/player.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.4"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

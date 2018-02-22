@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="Lucene," />
+
+
+<meta name="description" content="Lucene是apache软件基金会4 jakarta项目组的一个子项目，是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎（英文与德文两种西方语言）。Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎。Luce">
+<meta name="keywords" content="Lucene">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lucene实现文档进行全文检索功能">
+<meta property="og:url" content="http://www.iskei.cn/posts/10596.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="Lucene是apache软件基金会4 jakarta项目组的一个子项目，是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎（英文与德文两种西方语言）。Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎。Luce">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0053.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20170728180442138?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZG9uZ2Rvbmc5MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170728180503680?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZG9uZ2Rvbmc5MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-02-22T02:15:40.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lucene实现文档进行全文检索功能">
+<meta name="twitter:description" content="Lucene是apache软件基金会4 jakarta项目组的一个子项目，是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎（英文与德文两种西方语言）。Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎。Luce">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0053.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/10596.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Lucene实现文档进行全文检索功能 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/10596.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Lucene实现文档进行全文检索功能</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-30T12:34:36+08:00">2017-11-30</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Lucene/" itemprop="url" rel="index"><span itemprop="name">Lucene</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/10596.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/10596.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/10596.html" class="leancloud_visitors" data-flag-title="Lucene实现文档进行全文检索功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">9.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:10</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0053.jpg" alt="image"></p>
+<p>Lucene是apache软件基金会4 jakarta项目组的一个子项目，是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎（英文与德文两种西方语言）。Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎。Lucene是一套用于全文检索和搜寻的开源程式库，由Apache软件基金会支持和提供。Lucene提供了一个简单却强大的应用程式接口，能够做全文索引和搜寻。在Java开发环境里Lucene是一个成熟的免费开源工具。就其本身而言，Lucene是当前以及最近几年最受欢迎的免费Java信息检索程序库。人们经常提到信息检索程序库，虽然与搜索引擎有关，但不应该将信息检索程序库与搜索引擎相混淆。<br><a id="more"></a><br>这里讲一下使用Lucene对doc、docx、pdf、txt文档进行全文检索功能的实现。</p>
+<p>涉及到的类一共有两个：</p>
+<p>LuceneCreateIndex，创建索引：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yhd.test.poi;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.Analyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.standard.StandardAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.DateTools;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Field;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.Directory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.SimpleFSDirectory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.util.Version;</span><br><span class="line"><span class="keyword">import</span> org.apache.pdfbox.pdfparser.PDFParser;</span><br><span class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.PDDocument;</span><br><span class="line"><span class="keyword">import</span> org.apache.pdfbox.util.PDFTextStripper;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.hwpf.extractor.WordExtractor;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.extractor.XWPFWordExtractor;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.xwpf.usermodel.XWPFDocument;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneCreateIndex</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 保存word文件的路径</span></span><br><span class="line">        String dataDirectory = <span class="string">"D:\\Studying\\poi\\test\\dataDirectory"</span>;</span><br><span class="line">        <span class="comment">// 保存Lucene索引文件的路径</span></span><br><span class="line">        String indexDirectory = <span class="string">"D:\\Studying\\poi\\test\\indexDirectory"</span>;</span><br><span class="line">        <span class="comment">// 创建Directory对象 ，也就是分词器对象</span></span><br><span class="line">        Directory directory = <span class="keyword">new</span> SimpleFSDirectory(<span class="keyword">new</span> File(indexDirectory));</span><br><span class="line">        <span class="comment">// 创建一个简单的分词器,可以对数据进行分词</span></span><br><span class="line">        Analyzer analyzer = <span class="keyword">new</span> StandardAnalyzer(Version.LUCENE_30);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建索引实例</span></span><br><span class="line">        <span class="comment">// 第1个参数是Directory,</span></span><br><span class="line">        <span class="comment">// 第2个是分词器,</span></span><br><span class="line">        <span class="comment">// 第3个表示是否是创建, true代表覆盖原先数据, 如果为false为在此基础上面修改,</span></span><br><span class="line">        <span class="comment">// 第4个MaxFieldLength表示对每个Field限制建立分词索引的最大数目，</span></span><br><span class="line">        <span class="comment">// 如果是MaxFieldLength.UNLIMITED，表示长度没有限制;</span></span><br><span class="line">        <span class="comment">// 如果是MaxFieldLength.LIMITED则表示有限制，可以通过IndexWriter对象的setMaxFieldLength（int</span></span><br><span class="line">        <span class="comment">// n）进行指定</span></span><br><span class="line">        IndexWriter indexWriter = <span class="keyword">new</span> IndexWriter(directory, analyzer, <span class="keyword">true</span>,</span><br><span class="line">                IndexWriter.MaxFieldLength.UNLIMITED);</span><br><span class="line">        <span class="comment">// 获取所有需要建立索引的文件</span></span><br><span class="line">        File[] files = <span class="keyword">new</span> File(dataDirectory).listFiles();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 文件是第几个</span></span><br><span class="line">            System.out.println(<span class="string">"这是第"</span> + i + <span class="string">"个文件----------------"</span>);</span><br><span class="line">            <span class="comment">// 文件的完整路径</span></span><br><span class="line">            System.out.println(<span class="string">"完整路径："</span> + files[i].toString());</span><br><span class="line">            <span class="comment">// 获取文件名称</span></span><br><span class="line">            String fileName = files[i].getName();</span><br><span class="line">            <span class="comment">// 获取文件后缀名，将其作为文件类型</span></span><br><span class="line">            String fileType = fileName.substring(fileName.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>,</span><br><span class="line">                    fileName.length()).toLowerCase();</span><br><span class="line">            <span class="comment">// 文件名称</span></span><br><span class="line">            System.out.println(<span class="string">"文件名称："</span> + fileName);</span><br><span class="line">            <span class="comment">// 文件类型</span></span><br><span class="line">            System.out.println(<span class="string">"文件类型："</span> + fileType);</span><br><span class="line"></span><br><span class="line">            Document doc = <span class="keyword">new</span> Document();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// String fileCode = FileType.getFileType(files[i].toString());</span></span><br><span class="line">            <span class="comment">// 查看各个文件的文件头标记的类型</span></span><br><span class="line">            <span class="comment">// System.out.println("fileCode=" + fileCode);</span></span><br><span class="line"></span><br><span class="line">            InputStream in = <span class="keyword">new</span> FileInputStream(files[i]);</span><br><span class="line">            InputStreamReader reader = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (fileType != <span class="keyword">null</span> &amp;&amp; !fileType.equals(<span class="string">""</span>)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (fileType.equals(<span class="string">"doc"</span>)) &#123;</span><br><span class="line">                    <span class="comment">// 获取doc的word文档</span></span><br><span class="line">                    WordExtractor wordExtractor = <span class="keyword">new</span> WordExtractor(in);</span><br><span class="line">                    <span class="comment">// 创建Field对象，并放入doc对象中</span></span><br><span class="line">                    <span class="comment">// Field的各个字段含义如下：</span></span><br><span class="line">                    <span class="comment">// 第1个参数是设置field的name，</span></span><br><span class="line">                    <span class="comment">// 第2个参数是value，value值可以是文本（String类型，Reader类型或者是预分享的TokenStream）,</span></span><br><span class="line">                    <span class="comment">// 二进制（byet[]）, 或者是数字（一个 Number类型）</span></span><br><span class="line">                    <span class="comment">// 第3个参数是Field.Store，选择是否存储，如果存储的话在检索的时候可以返回值</span></span><br><span class="line">                    <span class="comment">// 第4个参数是Field.Index，用来设置索引方式</span></span><br><span class="line">                    doc.add(<span class="keyword">new</span> Field(<span class="string">"contents"</span>, wordExtractor.getText(),</span><br><span class="line">                            Field.Store.YES, Field.Index.ANALYZED));</span><br><span class="line">                    <span class="comment">// 关闭文档</span></span><br><span class="line">                    wordExtractor.close();</span><br><span class="line">                    System.out.println(<span class="string">"注意：已为文件“"</span> + fileName + <span class="string">"”创建了索引"</span>);</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fileType.equals(<span class="string">"docx"</span>)) &#123;</span><br><span class="line">                    <span class="comment">// 获取docx的word文档</span></span><br><span class="line">                    XWPFWordExtractor xwpfWordExtractor = <span class="keyword">new</span> XWPFWordExtractor(</span><br><span class="line">                            <span class="keyword">new</span> XWPFDocument(in));</span><br><span class="line">                    <span class="comment">// 创建Field对象，并放入doc对象中</span></span><br><span class="line">                    doc.add(<span class="keyword">new</span> Field(<span class="string">"contents"</span>, xwpfWordExtractor.getText(),</span><br><span class="line">                            Field.Store.YES, Field.Index.ANALYZED));</span><br><span class="line">                    <span class="comment">// 关闭文档</span></span><br><span class="line">                    xwpfWordExtractor.close();</span><br><span class="line">                    System.out.println(<span class="string">"注意：已为文件“"</span> + fileName + <span class="string">"”创建了索引"</span>);</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fileType.equals(<span class="string">"pdf"</span>)) &#123;</span><br><span class="line">                    <span class="comment">// 获取pdf文档</span></span><br><span class="line">                    PDFParser parser = <span class="keyword">new</span> PDFParser(in);</span><br><span class="line">                    parser.parse();</span><br><span class="line">                    PDDocument pdDocument = parser.getPDDocument();</span><br><span class="line">                    PDFTextStripper stripper = <span class="keyword">new</span> PDFTextStripper();</span><br><span class="line">                    <span class="comment">// 创建Field对象，并放入doc对象中</span></span><br><span class="line">                    doc.add(<span class="keyword">new</span> Field(<span class="string">"contents"</span>, stripper.getText(pdDocument),</span><br><span class="line">                            Field.Store.NO, Field.Index.ANALYZED));</span><br><span class="line">                    <span class="comment">// 关闭文档</span></span><br><span class="line">                    pdDocument.close();</span><br><span class="line">                    System.out.println(<span class="string">"注意：已为文件“"</span> + fileName + <span class="string">"”创建了索引"</span>);</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fileType.equals(<span class="string">"txt"</span>)) &#123;</span><br><span class="line">                    <span class="comment">// 建立一个输入流对象reader  </span></span><br><span class="line">                    reader = <span class="keyword">new</span> InputStreamReader(in); </span><br><span class="line">                    <span class="comment">// 建立一个对象，它把文件内容转成计算机能读懂的语言</span></span><br><span class="line">                    BufferedReader br = <span class="keyword">new</span> BufferedReader(reader);   </span><br><span class="line">                    String txtFile = <span class="string">""</span>;</span><br><span class="line">                    String line = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;  </span><br><span class="line">                        <span class="comment">// 一次读入一行数据</span></span><br><span class="line">                        txtFile += line;   </span><br><span class="line">                    &#125;  </span><br><span class="line">                    <span class="comment">// 创建Field对象，并放入doc对象中</span></span><br><span class="line">                    doc.add(<span class="keyword">new</span> Field(<span class="string">"contents"</span>, txtFile, Field.Store.NO,</span><br><span class="line">                            Field.Index.ANALYZED));</span><br><span class="line">                    System.out.println(<span class="string">"注意：已为文件“"</span> + fileName + <span class="string">"”创建了索引"</span>);</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                    System.out.println();</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 创建文件名的域，并放入doc对象中</span></span><br><span class="line">            doc.add(<span class="keyword">new</span> Field(<span class="string">"filename"</span>, files[i].getName(), Field.Store.YES,</span><br><span class="line">                    Field.Index.NOT_ANALYZED));</span><br><span class="line">            <span class="comment">// 创建时间的域，并放入doc对象中</span></span><br><span class="line">            doc.add(<span class="keyword">new</span> Field(<span class="string">"indexDate"</span>, DateTools.dateToString(<span class="keyword">new</span> Date(),</span><br><span class="line">                    DateTools.Resolution.DAY), Field.Store.YES,</span><br><span class="line">                    Field.Index.NOT_ANALYZED));</span><br><span class="line">            <span class="comment">// 写入IndexWriter</span></span><br><span class="line">            indexWriter.addDocument(doc);</span><br><span class="line">            <span class="comment">// 换行</span></span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 查看IndexWriter里面有多少个索引</span></span><br><span class="line">        System.out.println(<span class="string">"numDocs="</span> + indexWriter.numDocs());</span><br><span class="line">        <span class="comment">// 关闭索引</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LuceneSearch，进行搜索：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yhd.test.poi;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.analysis.standard.StandardAnalyzer;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.document.Document;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.queryParser.ParseException;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.queryParser.QueryParser;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.IndexSearcher;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.Query;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.ScoreDoc;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.search.TopDocs;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.Directory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.store.SimpleFSDirectory;</span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.util.Version;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearch</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ParseException </span>&#123;</span><br><span class="line">        <span class="comment">// 保存索引文件的地方</span></span><br><span class="line">        String indexDirectory = <span class="string">"D:\\Studying\\poi\\test\\indexDirectory"</span>;</span><br><span class="line">        <span class="comment">// 创建Directory对象 ，也就是分词器对象</span></span><br><span class="line">        Directory directory = <span class="keyword">new</span> SimpleFSDirectory(<span class="keyword">new</span> File(indexDirectory));</span><br><span class="line">        <span class="comment">// 创建 IndexSearcher对象，相比IndexWriter对象，这个参数就要提供一个索引的目录就行了</span></span><br><span class="line">        IndexSearcher indexSearch = <span class="keyword">new</span> IndexSearcher(directory);</span><br><span class="line">        <span class="comment">// 创建QueryParser对象,</span></span><br><span class="line">        <span class="comment">// 第1个参数表示Lucene的版本,</span></span><br><span class="line">        <span class="comment">// 第2个表示搜索Field的字段,</span></span><br><span class="line">        <span class="comment">// 第3个表示搜索使用分词器</span></span><br><span class="line">        QueryParser queryParser = <span class="keyword">new</span> QueryParser(Version.LUCENE_30,</span><br><span class="line">                <span class="string">"contents"</span>, <span class="keyword">new</span> StandardAnalyzer(Version.LUCENE_30));</span><br><span class="line">        <span class="comment">// 生成Query对象</span></span><br><span class="line">        Query query = queryParser.parse(<span class="string">"百度"</span>);</span><br><span class="line">        <span class="comment">// 搜索结果 TopDocs里面有scoreDocs[]数组，里面保存着索引值</span></span><br><span class="line">        TopDocs hits = indexSearch.search(query, <span class="number">10</span>);</span><br><span class="line">        <span class="comment">// hits.totalHits表示一共搜到多少个</span></span><br><span class="line">        System.out.println(<span class="string">"找到了"</span> + hits.totalHits + <span class="string">"个"</span>);</span><br><span class="line">        <span class="comment">// 循环hits.scoreDocs数据，并使用indexSearch.doc方法把Document还原，再拿出对应的字段的值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; hits.scoreDocs.length; i++) &#123;</span><br><span class="line">            ScoreDoc sdoc = hits.scoreDocs[i];</span><br><span class="line">            Document doc = indexSearch.doc(sdoc.doc);</span><br><span class="line">            System.out.println(doc.get(<span class="string">"filename"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        indexSearch.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详细的解释在代码注释里都有了，就不做过多解释了。需要的jar包如下：</p>
+<p><img src="http://img.blog.csdn.net/20170728180442138?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZG9uZ2Rvbmc5MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>读取poi的类到<a href="https://poi.apache.org/" target="_blank" rel="noopener">poi官网</a>下载，读取pdf的类到<a href="https://pdfbox.apache.org/download.cgi" target="_blank" rel="noopener">Apache PDFBox官网</a>下载，这里用的1.8.13版本，2.0版本的调用方式与1.0版本已经不太一样了。</p>
+<p>项目整体结构如下：</p>
+<p><img src="http://img.blog.csdn.net/20170728180503680?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZG9uZ2Rvbmc5MjIz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>先运行类：</p>
+<p>LuceneCreateIndex</p>
+<p>会读取目录dataDirectory，即：</p>
+<blockquote>
+<p>D:\Studying\poi\test\dataDirectory</p>
+</blockquote>
+<p>下的文件，建立索引，索引会保存在目录indexDirectory，即：</p>
+<blockquote>
+<p>D:\Studying\poi\test\indexDirectory</p>
+</blockquote>
+<p>下，然后运行：</p>
+<p>LuceneSearch</p>
+<p>使用索引进行查询，就能看到效果了。</p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/40393.html" rel="bookmark">Lucene的Field域和索引维护</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/3536.html" rel="bookmark">Lucene全文搜索解析</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/10596.html" title="Lucene实现文档进行全文检索功能">http://www.iskei.cn/posts/10596.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Lucene/" rel="tag"># Lucene</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/32102.html" rel="next" title="使用 Travis CI 自动更新 GitHub Pages">
+                <i class="fa fa-chevron-left"></i> 使用 Travis CI 自动更新 GitHub Pages
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/3536.html" rel="prev" title="Lucene全文搜索解析">
+                Lucene全文搜索解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.7m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">28:21</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="/static/js/jquery.marquee.min.js"></script>
+<script src="/static/js/player.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.4"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

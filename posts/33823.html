@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="JavaScript," />
+
+
+<meta name="description" content="我们查看了数千个项目的数据库，发现了 JavaScript 中频度最高的 10 种错误。我们会告诉你什么原因导致了这些错误，以及如何防止这些错误发生。如果你能够避免落入这些 “陷阱”，你将会成为一个更好的开发者。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10 种最常见的 Javascript 错误">
+<meta property="og:url" content="http://www.iskei.cn/posts/33823.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="我们查看了数千个项目的数据库，发现了 JavaScript 中频度最高的 10 种错误。我们会告诉你什么原因导致了这些错误，以及如何防止这些错误发生。如果你能够避免落入这些 “陷阱”，你将会成为一个更好的开发者。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0119.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js001.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js002.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js003.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js004.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js005.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js006.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js007.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js007.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js008.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js009.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/js/js010.jpg">
+<meta property="og:updated_time" content="2018-02-22T02:15:40.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 种最常见的 Javascript 错误">
+<meta name="twitter:description" content="我们查看了数千个项目的数据库，发现了 JavaScript 中频度最高的 10 种错误。我们会告诉你什么原因导致了这些错误，以及如何防止这些错误发生。如果你能够避免落入这些 “陷阱”，你将会成为一个更好的开发者。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0119.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/33823.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>10 种最常见的 Javascript 错误 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/33823.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">10 种最常见的 Javascript 错误</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T21:44:36+08:00">2018-02-09</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/33823.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/33823.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/33823.html" class="leancloud_visitors" data-flag-title="10 种最常见的 Javascript 错误">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">8.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:09</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0119.jpg" alt="image"></p>
+<p>我们查看了数千个项目的数据库，发现了 JavaScript 中频度最高的 10 种错误。我们会告诉你什么原因导致了这些错误，以及如何防止这些错误发生。如果你能够避免落入这些 “陷阱”，你将会成为一个更好的开发者。<br><a id="more"></a></p>
+<blockquote>
+<p>原文：<a href="https://rollbar.com/blog/top-10-javascript-errors/" target="_blank" rel="noopener">https://rollbar.com/blog/top-10-javascript-errors/</a></p>
+</blockquote>
+<p>数据才是王道，我们收集并分析了出现频次排前 10 的 JavaScript 错误。 Rollbar 会收集每个项目的所有错误，并总结每个错误发生的次数。我们通过根据 “指纹”（rollbar 用到的一种算法，详见：<a href="https://rollbar.com/docs/grouping-algorithm/）对错误进行分组。基本上，如果第二个错误只是第一个错误的重复，我们会把两个错误分到同一组。这会给用户一个很好的概括，而不是像在日志文件中看到的那样直接一大堆让人感觉到十分压迫的" target="_blank" rel="noopener">https://rollbar.com/docs/grouping-algorithm/）对错误进行分组。基本上，如果第二个错误只是第一个错误的重复，我们会把两个错误分到同一组。这会给用户一个很好的概括，而不是像在日志文件中看到的那样直接一大堆让人感觉到十分压迫的</a> dump。</p>
+<p>我们专注于最有可能影响您和您的用户的错误。为此，我们通过研究各种不同公司的项目集来对于错误进行排列。如果我们只查看每个错误发生的总次数，那么客户量大的的项目产生的错误可能会压倒其他错误，导致实际收集到的是与大多数读者无关的错误数据集。</p>
+<h3 id="JavaScript-错误-Top-10："><a href="#JavaScript-错误-Top-10：" class="headerlink" title=" JavaScript 错误 Top 10："></a><strong> JavaScript 错误 Top 10：</strong></h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js001.jpg" alt="img"></p>
+<p>为了便于阅读，我们将每个错误描述都缩短了。接下来，让我们深入到每一个错误，来确定什么会导致它，以及如何避免创建它。</p>
+<h3 id="1-Uncaught-TypeError-Cannot-read-property"><a href="#1-Uncaught-TypeError-Cannot-read-property" class="headerlink" title="1. Uncaught TypeError: Cannot read property"></a><strong>1. Uncaught TypeError: Cannot read property</strong></h3><p>如果你是一个 JavaScript 开发人员，可能你看到这个错误的次数比你敢承认的要多（LOL…）。当你读取一个未定义的对象的属性或调用其方法时，这个错误会在 Chrome 中出现。 您可以很容易的在 Chrome 开发者控制台中进行测试（尝试）。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js002.jpg" alt="img"></p>
+<p>发生这种情况的原因很多，但常见的一种是在渲染 UI 组件时对于状态的初始化操作不当。</p>
+<p>我们来看一个在真实应用程序中发生的例子：我们选择 React，但该情况也同样适用于 Angular、Vue 或任何其他框架。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Quiz</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  componentWillMount() &#123;</span><br><span class="line">    axios.get(<span class="string">'/thedata'</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: res.data&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.state.items.map(<span class="function"><span class="params">item</span> =&gt;</span></span><br><span class="line">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        )&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/u</span>l&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里有两件重要的事情要实现：</p>
+<ol>
+<li>组件的状态（例如 this.state）从 undefined 开始。</li>
+<li>当异步获取数据时，不管它是在构造函数componentWillMount还是componentDidMount中获取的，组件在数据加载之前至少会呈现一次，当 Quiz 第一次呈现时，this.state.items 是未定义的。 这又意味着 ItemList 将 items 定义为 undefined，并且在控制台中出现错误 - “Uncaught TypeError: Cannot read property ‘map’ of undefined”。</li>
+</ol>
+<p>这很容易解决。最简单的方法：在构造函数中用合理的默认值来初始化 state。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Quiz</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Added this:</span></span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="comment">// Assign state itself, and a default value for items</span></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      items: []</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  componentWillMount() &#123;</span><br><span class="line">    axios.get(<span class="string">'/thedata'</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">items</span>: res.data&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &#123;<span class="keyword">this</span>.state.items.map(<span class="function"><span class="params">item</span> =&gt;</span></span><br><span class="line">          &lt;li key=&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        )&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/u</span>l&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在你的应用程序中的具体代码可能是不同的，但我们希望我们已经给你足够的线索，以解决或避免在你的应用程序中出现的这个问题。如果还没有，请继续阅读，因为我们将在下面覆盖更多相关错误的示例。</p>
+<h3 id="2-TypeError-‘undefined’-is-not-an-object"><a href="#2-TypeError-‘undefined’-is-not-an-object" class="headerlink" title="2. TypeError: ‘undefined’ is not an object"></a><strong>2. TypeError: ‘undefined’ is not an object</strong></h3><p>这是在 Safari 中读取属性或调用未定义对象上的方法时发生的错误。您可以在 Safari Developer Console 中轻松测试。这与 1 中提到的 Chrome 的错误基本相同，但 Safari 使用了不同的错误消息提示语。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js003.jpg" alt="img"></p>
+<h3 id="3-TypeError-null-is-not-an-object"><a href="#3-TypeError-null-is-not-an-object" class="headerlink" title="3. TypeError: null is not an object"></a><strong>3. TypeError: null is not an object</strong></h3><p>这是在 Safari 中读取属性或调用空对象上的方法时发生的错误。 您可以在 Safari Developer Console 中轻松测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js004.jpg" alt="img"></p>
+<p>有趣的是，在 JavaScript 中，null 和 undefined 是不一样的，这就是为什么我们看到两个不同的错误信息。undefined 通常是一个尚未分配的变量，而 null 表示该值为空。 要验证它们不相等，请尝试使用严格的相等运算符 ===：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js005.jpg" alt="img"></p>
+<p>在现实世界的例子中，这种错误可能发生的一种场景是：如果在加载元素之前尝试在 JavaScript 中使用元素。 因为 DOM API 对于空白的对象引用返回值为 null。</p>
+<p>任何执行和处理 DOM 元素的 JS 代码都应该在创建 DOM 元素之后执行。 JS 代码按照 HTML 中的规定从上到下进行解释。 所以，如果 DOM 元素之前有一个标签，脚本标签内的 JS 代码将在浏览器解析 HTML 页面时执行。 如果在加载脚本之前尚未创建 DOM 元素，则会出现此错误。</p>
+<p>在这个例子中，我们可以通过添加一个事件监听器来解决这个问题，这个监听器会在页面准备好的时候通知我们。 一旦 addEventListener被触发，init() 方法就可以使用 DOM 元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myButton = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</span><br><span class="line">    <span class="keyword">var</span> myTextfield = <span class="built_in">document</span>.getElementById(<span class="string">"myTextfield"</span>);</span><br><span class="line">    myButton.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> userName = myTextfield.value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">document</span>.addEventListener(<span class="string">'readystatechange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.readyState === <span class="string">"complete"</span>) &#123;</span><br><span class="line">      init();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;form&gt;</span></span><br><span class="line"><span class="regexp">  &lt;input type="text" id="myTextfield" placeholder="Type your name" /</span>&gt;</span><br><span class="line">  &lt;input type=<span class="string">"button"</span> id=<span class="string">"myButton"</span> value=<span class="string">"Go"</span> /&gt;</span><br><span class="line">&lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-unknown-Script-error"><a href="#4-unknown-Script-error" class="headerlink" title="4. (unknown): Script error"></a><strong>4. (unknown): Script error</strong></h3><p>当未捕获的 JavaScript 错误（通过window.onerror处理程序引发的错误，而不是捕获在try-catch中）被浏览器的跨域策略限制时，会产生这类的脚本错误。 例如，如果您将您的 JavaScript 代码托管在 CDN 上，则任何未被捕获的错误将被报告为“脚本错误” 而不是包含有用的堆栈信息。这是一种浏览器安全措施，旨在防止跨域传递数据，否则将不允许进行通信。</p>
+<p>要获得真正的错误消息，请执行以下操作：</p>
+<ol>
+<li>发送 ‘Access-Control-Allow-Origin’ 头部</li>
+</ol>
+<p>将 Access-Control-Allow-Origin 标头设置为 * 表示可以从任何域正确访问资源。 如有必要，您可以将域替换为您的域：例如，Access-Control-Allow-Origin：www.example.com。 但是，处理多个域会变得棘手，如果你使用 CDN，可能由此产生更多的缓存问题会让你感觉到这种努力并不值得。 在这里看到更多。</p>
+<p>这里有一些关于如何在各种环境中设置这个头文件的例子：</p>
+<p>Apache</p>
+<p>在 JavaScript 文件所在的文件夹中，使用以下内容创建一个 .htaccess 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Header add Access-Control-Allow-Origin &quot;*&quot;</span><br></pre></td></tr></table></figure>
+<p>Nginx</p>
+<p>将 add_header 指令添加到提供 JavaScript 文件的位置块中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; location ~ ^/assets/ &#123;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     add_header Access-Control-Allow-Origin *;</span><br><span class="line">&gt; &#125;</span><br></pre></td></tr></table></figure>
+<p>HAProxy</p>
+<p>将以下内容添加到您为 JavaScript 文件提供资源服务的后端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; rspadd Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 &lt;script 中设置 crossorigin=”anonymous”</li>
+</ol>
+<p>在您的 HTML 代码中，对于您设置了Access-Control-Allow-Origin header 的每个脚本，在 script 标签上设置crossorigin =“anonymous”。在脚本标记中添加 crossorigin 属性之前，请确保验证上述 header 正确发送。 在 Firefox 中，如果存在crossorigin属性，但Access-Control-Allow-Origin头不存在，则脚本将不会执行。</p>
+<h3 id="5-TypeError-Object-doesn’t-support-property"><a href="#5-TypeError-Object-doesn’t-support-property" class="headerlink" title="5. TypeError: Object doesn’t support property"></a><strong>5. TypeError: Object doesn’t support property</strong></h3><p>这是您在调用未定义的方法时发生在 IE 中的错误。 您可以在 IE 开发者控制台中进行测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js006.jpg" alt="img"></p>
+<p>这相当于 Chrome 中的 “TypeError：”undefined“ is not a function” 错误。 是的，对于相同的逻辑错误，不同的浏览器可能具有不同的错误消息。</p>
+<p>对于使用 JavaScript 命名空间的 Web 应用程序，这是一个 IE l浏览器的常见的问题。 在这种情况下，99.9％ 的原因是 IE 无法将当前名称空间内的方法绑定到 this 关键字。 例如：如果你 JS 中有一个命名空间 Rollbar 以及方法 isAwesome 。 通常，如果您在 Rollbar 命名空间内，则可以使用以下语法调用isAwesome方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; this.isAwesome();</span><br></pre></td></tr></table></figure>
+<p>Chrome，Firefox 和 Opera 会欣然接受这个语法。 另一方面 IE，不会。 因此，使用 JS 命名空间时最安全的选择是始终以实际名称空间作为前缀。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Rollbar.isAwesome();</span><br></pre></td></tr></table></figure>
+<h3 id="6-TypeError-‘undefined’-is-not-a-function"><a href="#6-TypeError-‘undefined’-is-not-a-function" class="headerlink" title="6. TypeError: ‘undefined’ is not a function"></a><strong>6. TypeError: ‘undefined’ is not a function</strong></h3><p>当您调用未定义的函数时，这是 Chrome 中产生的错误。 您可以在 Chrome 开发人员控制台和 Mozilla Firefox 开发人员控制台中进行测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js007.jpg" alt="img"></p>
+<p>随着 JavaScript 编码技术和设计模式在过去几年中变得越来越复杂，回调和关闭中的自引用范围也相应增加，这是这种/那种混淆的相当常见的来源。</p>
+<p>考虑这个代码片段：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.clearLocalStorage();</span><br><span class="line">  <span class="keyword">this</span>.timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.clearBoard();    <span class="comment">// what is "this"?</span></span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码会导致以下错误：“Uncaught TypeError：undefined is not a function”。 你得到上述错误的原因是，当你调用setTimeout()时，实际上是调用window.setTimeout()。 因此，在窗口对象的上下文中定义了一个传递给setTimeout()的匿名函数，该函数没有clearBoard()方法。</p>
+<p>一个传统的，旧浏览器兼容的解决方案是简单地将您的 this 保存在一个变量，然后可以由闭包继承。 例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.clearLocalStorage();</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;   <span class="comment">// save reference to 'this', while it's still this!</span></span><br><span class="line">  <span class="keyword">this</span>.timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    self.clearBoard();  </span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>或者，在较新的浏览器中，可以使用bind()方法传递适当的引用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.clearLocalStorage();</span><br><span class="line">  <span class="keyword">this</span>.timer = setTimeout(<span class="keyword">this</span>.reset.bind(<span class="keyword">this</span>), <span class="number">0</span>);  <span class="comment">// bind to 'this'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.clearBoard();    <span class="comment">//back in the context of the right 'this'!</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="7-Uncaught-RangeError-Maximum-call-stack"><a href="#7-Uncaught-RangeError-Maximum-call-stack" class="headerlink" title="7. Uncaught RangeError: Maximum call stack"></a><strong>7. Uncaught RangeError: Maximum call stack</strong></h3><p>这是 Chrome 在一些情况下会发生的错误。 一个是当你调用一个不终止的递归函数。您可以在 Chrome 开发者控制台中进行测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js007.jpg" alt="img"></p>
+<p>此外，如果您将值传递给超出范围的函数，也可能会发生这种情况。 许多函数只接受其输入值的特定范围的数字。 例如：Number.toExponential(digits) 和 Number.toFixed(digits) 接受 0 到 20 的数字，Number.toPrecision(digits) 接受 1 到 21 的数字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">4294967295</span>);  <span class="comment">//OK</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">-1</span>); <span class="comment">//range error</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">2.555555</span>;</span><br><span class="line"><span class="built_in">document</span>.writeln(num.toExponential(<span class="number">4</span>));  <span class="comment">//OK</span></span><br><span class="line"><span class="built_in">document</span>.writeln(num.toExponential(<span class="number">-2</span>)); <span class="comment">//range error!</span></span><br><span class="line">num = <span class="number">2.9999</span>;</span><br><span class="line"><span class="built_in">document</span>.writeln(num.toFixed(<span class="number">2</span>));   <span class="comment">//OK</span></span><br><span class="line"><span class="built_in">document</span>.writeln(num.toFixed(<span class="number">25</span>));  <span class="comment">//range error!</span></span><br><span class="line">num = <span class="number">2.3456</span>;</span><br><span class="line"><span class="built_in">document</span>.writeln(num.toPrecision(<span class="number">1</span>));   <span class="comment">//OK</span></span><br><span class="line"><span class="built_in">document</span>.writeln(num.toPrecision(<span class="number">22</span>));  <span class="comment">//range error!</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-TypeError-Cannot-read-property-‘length’"><a href="#8-TypeError-Cannot-read-property-‘length’" class="headerlink" title="8. TypeError: Cannot read property ‘length’"></a><strong>8. TypeError: Cannot read property ‘length’</strong></h3><p>这是 Chrome 中发生的错误，因为读取未定义变量的长度属性。 您可以在 Chrome 开发者控制台中进行测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js008.jpg" alt="img"></p>
+<p>您通常会在数组中找到定义的长度，但是如果数组未初始化或者变量名称在另一个上下文中隐藏，则可能会遇到此错误。让我们用下面的例子来理解这个错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testArray = [<span class="string">"Test"</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span>(<span class="params">testArray</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; testArray.length; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(testArray[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">testFunction();</span><br></pre></td></tr></table></figure>
+<p>当你用参数声明一个函数时，这些参数变成了函数作用域内的本地参数。这意味着即使你函数外有名为 testArray 的变量，在一个函数中具有相同名字的参数也会被视为本地参数。</p>
+<p>您有两种方法可以解决您的问题：</p>
+<ol>
+<li>删除函数声明语句中的参数（事实上你想访问那些声明在函数之外的变量，所以你不需要函数的参数）：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testArray = [<span class="string">"Test"</span>];</span><br><span class="line"><span class="comment">/* Precondition: defined testArray outside of a function */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span>(<span class="params"><span class="regexp">/* No params */</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; testArray.length; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(testArray[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">testFunction();</span><br></pre></td></tr></table></figure>
+<ol>
+<li>用声明的数组调用该函数：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testArray = [<span class="string">"Test"</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunction</span>(<span class="params">testArray</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; testArray.length; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(testArray[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">testFunction(testArray);</span><br></pre></td></tr></table></figure>
+<h3 id="9-Uncaught-TypeError-Cannot-set-property"><a href="#9-Uncaught-TypeError-Cannot-set-property" class="headerlink" title="9. Uncaught TypeError: Cannot set property"></a><strong>9. Uncaught TypeError: Cannot set property</strong></h3><p>当我们尝试访问一个未定义的变量时，它总是返回 undefined，我们不能获取或设置任何未定义的属性。 在这种情况下，应用程序将抛出 “Uncaught TypeError: Cannot set property”。</p>
+<p>例如，在 Chrome 浏览器中：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js009.jpg" alt="img"></p>
+<p>如果测试对象不存在，错误将会抛出 “Uncaught TypeErrorUncaught TypeError: Cannot set property”。</p>
+<p><strong>10. ReferenceError: event is not defined</strong></p>
+<p>当您尝试访问未定义的变量或超出当前范围的变量时，会引发此错误。 您可以在 Chrome 浏览器中轻松测试。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/js/js010.jpg" alt="img"></p>
+<p>如果在使用事件处理系统时遇到此错误，请确保使用传入的事件对象作为参数。像 IE 这样的旧浏览器提供了一个全局变量事件，但并不是所有浏览器都支持。像 jQuery 这样的库试图规范化这种行为。尽管如此，最好使用传入事件处理函数的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    event = event.which || event.keyCode;</span><br><span class="line">    <span class="keyword">if</span>(event.keyCode===<span class="number">13</span>)&#123;</span><br><span class="line">       alert(event.keyCode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h3><p>我们希望你学到了新的东西，可以避免将来的错误，或者本指南帮助你解决了头痛的问题。</p>
+<p>尽管如此，即使有最佳实践，生产中也会出现意想不到的错误。能够查看影响用户的错误，并拥有快速解决问题的好工具，这一点非常重要。推荐 Rollbar。</p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/42994.html" rel="bookmark">Java知识梳理（三）—— html&JavaScript&ajax部分</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/55294.html" rel="bookmark">JavaScript中的Bind，Call和Apply</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/12197.html" rel="bookmark">jQuery使用技巧</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/33823.html" title="10 种最常见的 Javascript 错误">http://www.iskei.cn/posts/33823.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/5502.html" rel="next" title="设计模式（Design pattern）简介">
+                <i class="fa fa-chevron-left"></i> 设计模式（Design pattern）简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-错误-Top-10："><span class="nav-number">1.</span> <span class="nav-text"> JavaScript 错误 Top 10：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Uncaught-TypeError-Cannot-read-property"><span class="nav-number">2.</span> <span class="nav-text">1. Uncaught TypeError: Cannot read property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-TypeError-‘undefined’-is-not-an-object"><span class="nav-number">3.</span> <span class="nav-text">2. TypeError: ‘undefined’ is not an object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-TypeError-null-is-not-an-object"><span class="nav-number">4.</span> <span class="nav-text">3. TypeError: null is not an object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-unknown-Script-error"><span class="nav-number">5.</span> <span class="nav-text">4. (unknown): Script error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-TypeError-Object-doesn’t-support-property"><span class="nav-number">6.</span> <span class="nav-text">5. TypeError: Object doesn’t support property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-TypeError-‘undefined’-is-not-a-function"><span class="nav-number">7.</span> <span class="nav-text">6. TypeError: ‘undefined’ is not a function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Uncaught-RangeError-Maximum-call-stack"><span class="nav-number">8.</span> <span class="nav-text">7. Uncaught RangeError: Maximum call stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-TypeError-Cannot-read-property-‘length’"><span class="nav-number">9.</span> <span class="nav-text">8. TypeError: Cannot read property ‘length’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Uncaught-TypeError-Cannot-set-property"><span class="nav-number">10.</span> <span class="nav-text">9. Uncaught TypeError: Cannot set property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">11.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.7m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">28:21</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="/static/js/jquery.marquee.min.js"></script>
+<script src="/static/js/player.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.4"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

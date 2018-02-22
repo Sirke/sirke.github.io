@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  <meta name="keywords" content="SASS," />
+
+
+<meta name="description" content="SASS 是 CSS 的一个预处理工具，简单来说，它通过自己的一套语法规则来写源码，然后通过编译器，得到 CSS 代码。">
+<meta name="keywords" content="SASS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS是什么">
+<meta property="og:url" content="http://www.iskei.cn/posts/16024.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="SASS 是 CSS 的一个预处理工具，简单来说，它通过自己的一套语法规则来写源码，然后通过编译器，得到 CSS 代码。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0104.jpg">
+<meta property="og:updated_time" content="2018-02-22T02:15:40.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SASS是什么">
+<meta name="twitter:description" content="SASS 是 CSS 的一个预处理工具，简单来说，它通过自己的一套语法规则来写源码，然后通过编译器，得到 CSS 代码。">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0104.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/16024.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>SASS是什么 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photo">
+          <a href="/photo/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/16024.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="IIsKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SASS是什么</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T15:44:36+08:00">2018-01-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SASS/" itemprop="url" rel="index"><span itemprop="name">SASS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/16024.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/16024.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/16024.html" class="leancloud_visitors" data-flag-title="SASS是什么">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">10k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">0:10</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0104.jpg" alt="image"></p>
+<p><em>SASS</em> 是 CSS 的一个预处理工具，简单来说，它通过自己的一套语法规则来写源码，然后通过编译器，得到 CSS 代码。<br><a id="more"></a></p>
+<h1 id="1-SASS是什么"><a href="#1-SASS是什么" class="headerlink" title="1. SASS是什么"></a>1. SASS是什么</h1><p>为什么需要这东西呢？因为如果每天都要写很多的 CSS ，那么里面重复的内容会很多，同时，CSS 本身并没有相应的逻辑抽像工具，这就造成在项目中要对样式做有效的管理，似乎没有什么好办法了。</p>
+<p><em>SASS</em> 本身是来源于 Ruby 的一个项目，它目前的标准，应该是一个叫 <em>libSass</em> 的 C 语言库，有了这个 C 语言的实现之后，各种语言就可以很方便地 bind 过去了，从官网上的信息看，目前 C, Go, Java, Javascript, Lua, .NET, Node, Perl, PHP, Python, Ruby, Scala 这些语言上都有实现。</p>
+<p><em>SASS</em> 支持两种格式的源码写法，一种叫 SASS ，另一种叫 SCSS ，区别只是前者使用缩进，后者使用大括号。（我就不明白了，为什么有人喜欢大括号，你写了大括号不也要缩进么）</p>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h1><p>这里，使用 Node 上的实现，叫 <strong>node-sass</strong> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g node-sass</span><br></pre></td></tr></table></figure>
+<p>安装之后，除了相应的 node 模块，还会有一个命令行可执行程序，叫 <code>node-sass</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node-sass a.sass</span><br></pre></td></tr></table></figure>
+<p>通过 <code>--output-style</code> 参数可以控制输出的 CSS 的格式，我喜欢用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node-sass --output-style compact a.sass</span><br></pre></td></tr></table></figure>
+<p>这样输出的 CSS ，是一行一条。（以前喜欢这种形式，是因为一行一条的格式，可以方便地在编辑器中使用列编辑作批量修改）</p>
+<h1 id="3-变量-赋值-数据类型"><a href="#3-变量-赋值-数据类型" class="headerlink" title="3. 变量, 赋值, 数据类型"></a>3. 变量, 赋值, 数据类型</h1><p>SASS 中使用 <em>$</em> 开头来标识一个变量名，使用 <em>:</em> 完成赋值的操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a: 123</span><br></pre></td></tr></table></figure>
+<p>数据类型有以下几种：</p>
+<ul>
+<li><p><em>数字</em></p>
+<p><code>123</code> , <code>1.2</code> , <code>12px</code> , <code>12%</code>, 这些是数字类型。比较特殊的一点，可能在于， SASS 把带有 CSS 单位的标识也作为数字处理，在后面的运算符行为时，单位部分也会一并处理。</p>
+</li>
+</ul>
+<ul>
+<li><p><em>字符串</em></p>
+<p><code>abc</code> 或 <code>&quot;abc&quot;</code> 或 <code>&#39;abc&#39;</code> 。简单来说，单引号，双引号都可以，不要引号也可以。但是，因为 CSS 中大部分的描述都是不要引号的形式，比如 <code>color: red</code> ，而不是 <code>color: &#39;red&#39;</code> ，所以，在引号的处理上，要小心。</p>
+</li>
+</ul>
+<ul>
+<li><p><em>颜色</em></p>
+<p><code>red</code> , <code>#abcd</code> , <code>rgb(123,255,67)</code> , <code>rgba(123, 255, 67, 0.5)</code> , CSS 中表示颜色的形式，在 SASS 中作为颜色类型处理。这里注意，第一个 <code>red</code> ，跟字符串的形式一样的。（我猜这类标识具有混合属性吧）</p>
+</li>
+</ul>
+<ul>
+<li><p><em>列表</em></p>
+<p><code>10px 2px 0 0</code> 或 <code>Helvtica, Arial, sans-serif</code> ，以空格，或者以逗号分割的数据形式，为列表。主要对应于 CSS 中的对应形式，比如 <code>margin: 10px 2px 0 0</code> ， <code>font-family: Helvtica, Arial, sans-serif</code> 。 同时，列表这种类型，在处理函数的参数时也有用。</p>
+</li>
+</ul>
+<ul>
+<li><p><em>映射</em></p>
+<p><code>(k1: v1, k2: v2)</code> ，映射其实就是一个嵌套的列表，形如 <code>(k1 v1), (k2 v2)</code> ，主要用于迭代的一些控制结构中。</p>
+</li>
+</ul>
+<h1 id="4-变量符号化"><a href="#4-变量符号化" class="headerlink" title="4. 变量符号化"></a>4. 变量符号化</h1><p>这里的“符号化”说法，意思就是“行内求值”。简单来说，就是把变量的值，在任何地方，转换为语法结构的一部分（因为按语法规则，“这里”是不能使用变量的）。举一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a cls</span><br><span class="line"></span><br><span class="line">.$a:</span><br><span class="line">    color: red</span><br></pre></td></tr></table></figure>
+<p>这肯定是错误的。因为 “规则” / “选择器” 部分，是不允许使用变量的。但是你可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a cls</span><br><span class="line"></span><br><span class="line">.#&#123;$a&#125;</span><br><span class="line">    color: red</span><br></pre></td></tr></table></figure>
+<p>这样，就是正确的了，编译出来是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.cls &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>同时，还有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a: &apos;red&apos;</span><br><span class="line"></span><br><span class="line">.cls</span><br><span class="line">    color: $a</span><br></pre></td></tr></table></figure>
+<p>这样写，虽然编译没有问题，但是结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.cls &#123; color: &apos;red&apos;; &#125;</span><br></pre></td></tr></table></figure>
+<p>这是不对的。换成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$a: &apos;red&apos;</span><br><span class="line"></span><br><span class="line">.cls</span><br><span class="line">    color: #&#123;$a&#125;</span><br></pre></td></tr></table></figure>
+<p>就可以正确得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.cls &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>所以， <strong>#{}</strong> 的功能，算是非常有用且强大。</p>
+<h1 id="5-嵌套规则与引用"><a href="#5-嵌套规则与引用" class="headerlink" title="5. 嵌套规则与引用"></a>5. 嵌套规则与引用</h1><p>CSS 简单来说，只有两部分内容，一是规则，或者说选择器。二是属性描述。DOM 本身是一个层级结构，所以我们在书写规则时，也是层级下降的方式，这样，如果直接写 CSS ，就不可避免地要写很多重复的前置规则，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.project &gt; .header &gt; .title &#123; color: red; &#125;</span><br><span class="line">.project &gt; .header &gt; .content &#123; color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>SASS 最直观的一个功能，就是可以以一种嵌套的层级形式，来处理规则的书写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.project</span><br><span class="line">    &gt; .header</span><br><span class="line">        &gt; .title</span><br><span class="line">            color: red</span><br><span class="line">        &gt; .content</span><br><span class="line">            color: blue</span><br></pre></td></tr></table></figure>
+<p>这样不光可以少写很多代码，而且最重要的，是容易维护。</p>
+<p>这种嵌套的层级结构，有一个特别的功能，就是使用 <strong>&amp;</strong> 可以作为当前选择的引用，这个功能，一般用于伪类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.project</span><br><span class="line">  &gt; .header</span><br><span class="line">    &gt; .title</span><br><span class="line">      color: red</span><br><span class="line">      </span><br><span class="line">      &gt; a</span><br><span class="line">        color: yellow</span><br><span class="line">        </span><br><span class="line">        &amp;:hover</span><br><span class="line">          text-decoration: none</span><br></pre></td></tr></table></figure>
+<p>编译得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.project &gt; .header &gt; .title &#123; color: red; &#125;</span><br><span class="line">.project &gt; .header &gt; .title &gt; a &#123; color: yellow; &#125;</span><br><span class="line">.project &gt; .header &gt; .title &gt; a:hover &#123; text-decoration: none; &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="6-运算符-逻辑判断-控制结构"><a href="#6-运算符-逻辑判断-控制结构" class="headerlink" title="6. 运算符, 逻辑判断, 控制结构"></a>6. 运算符, 逻辑判断, 控制结构</h1><p>SASS 虽然不是完整的一门编程语言，但是，运算符和控制结构的概念还是有的。</p>
+<p>这里先说一下， <strong>SASS 中可以使用 @debug 作标准输出。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$a: 1px + 1px</span><br><span class="line">$b: 1px * 20</span><br><span class="line">$c: 10px - 2px</span><br><span class="line">$d: 10px / 2</span><br><span class="line">$e: 10 + 2 - 3 + 0px</span><br><span class="line">$e2: 10 + 2 - 3 + 0%</span><br><span class="line">$e3: (10 + 2) * 3 / 100 * 100%</span><br><span class="line"></span><br><span class="line">@debug $a, $b, $c, $d, $e, $e2, $e3</span><br></pre></td></tr></table></figure>
+<p>四则运算时，单位需要匹配，或者，你也可以在最后再处理单位。</p>
+<p>控制结构方面，目前有 <em>@for</em>, <em>@each</em>, <em>@while</em>, <em>@if</em> 。</p>
+<ul>
+<li><p><em>@for</em></p>
+<p>单纯的数字范围的迭代：<code>@for $i from 1 through 10  @debug $i</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>@each</em></p>
+<p>对列表的迭代：<code>@each $i in 1,2,3,4  @debug $i</code>支持多值匹配：<code>@each $a, $b, $c in (a, b, c), (red, 1, blue)  @debug $a, $b, $c</code></p>
+</li>
+<li><p><em>@while</em></p>
+<p><code>$i: 0@while $i &lt; 10  @debug $i  $i: $i + 1</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>@if</em></p>
+<p>这里随便把逻辑判断一起用了：<code>$i: 0@while $i &lt; 10  @if $i == 0    @debug zero  @if $i &gt; 2    @debug gtwo  @else    @debug ltwo  @if $i != 0    @debug other  $i: $i + 1</code></p>
+</li>
+</ul>
+<h1 id="7-函数定义"><a href="#7-函数定义" class="headerlink" title="7. 函数定义"></a>7. 函数定义</h1><p>先说清楚这里的函数定义，传入参数，返回值，返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@function add($a, $b)</span><br><span class="line">  @return $a + $b</span><br><span class="line"></span><br><span class="line">@debug add(1, 2)</span><br></pre></td></tr></table></figure>
+<p>函数的参数，跟 Python 一样，可以有默认值，可以有关键词参数：</p>
+<p>默认值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@function add($a, $b:3)</span><br><span class="line">  @return $a + $b</span><br><span class="line"></span><br><span class="line">@debug add(1)</span><br></pre></td></tr></table></figure>
+<p>关键词参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@function add($a:2, $b:3)</span><br><span class="line">  @return $a + $b</span><br><span class="line"></span><br><span class="line">@debug add($b:1)</span><br></pre></td></tr></table></figure>
+<h1 id="8-mixin-宏"><a href="#8-mixin-宏" class="headerlink" title="8. @mixin, 宏"></a>8. @mixin, 宏</h1><p><em>Mixin</em> 是官方的叫的名字， <em>宏</em> 是我自己叫的，因为，这东西的行为就像“宏”一样，可以生成代码片段。</p>
+<p><em>Mixin</em> 是 SASS 中地位很重要，还特别给它了一种简写形式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@mixin em</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.header.em</span><br><span class="line">  @include em</span><br></pre></td></tr></table></figure>
+<p>简写形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">=em</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.header.em</span><br><span class="line">  +em</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header.em &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>Mixin 也可以带参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=em-back($color:yellow, $font-size: 14px)</span><br><span class="line">  color: red</span><br><span class="line">  background-color: $color</span><br><span class="line">  font-size: $font-size</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  +em-back($font-size: 20px)</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header.true &#123; color: red; background-color: yellow; font-size: 20px; &#125;</span><br></pre></td></tr></table></figure>
+<p>还可以直接传入代码块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=em</span><br><span class="line">  color: red</span><br><span class="line">  @content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  +em</span><br><span class="line">    font-size: 14px</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header.true &#123; color: red; font-size: 14px; &#125;</span><br></pre></td></tr></table></figure>
+<p>注意， <em>Mixin</em> 的结果是代码块，所以，它不光可以返回属性块，还可以连带规则块一起处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">=em</span><br><span class="line">  span</span><br><span class="line">    color: red</span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  +em</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header.true span &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>引用 <em>&amp;</em> 也可以照常使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">=hover</span><br><span class="line">  &amp;:hover</span><br><span class="line">    @content</span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  color: white</span><br><span class="line"></span><br><span class="line">  +hover</span><br><span class="line">    color: red</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.header.true &#123; color: white; &#125;</span><br><span class="line">.header.true:hover &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>配合 <em>@at-root</em> 和 <em>&amp;</em> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">=hover</span><br><span class="line">  @at-root</span><br><span class="line">    &amp;</span><br><span class="line">      @content</span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  color: white</span><br><span class="line"></span><br><span class="line">  +hover</span><br><span class="line">    color: red</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.header.true &#123; color: white; &#125;</span><br><span class="line">.header.true &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p><em>Mixin</em> 本身是可以嵌套的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">=em</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">=hover</span><br><span class="line">  +em</span><br><span class="line">  @content</span><br><span class="line"></span><br><span class="line">.header.true</span><br><span class="line">  +hover</span><br><span class="line">    background-color: aqua</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header.true &#123; color: red; background-color: aqua; &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="9-extend-续写"><a href="#9-extend-续写" class="headerlink" title="9. @extend 续写"></a>9. @extend 续写</h1><p>前面说的 <em>@mixin</em> 是处理抽象的可复用代码，现在说的 <em>@extend</em> 是处理具体的已存在的可复用代码。其实两者的机制都是 Mixin ，这里说的 “续写” 是我自己叫的一个名字，因为我实在不想叫“继承”。</p>
+<h2 id="9-1-最简单情况"><a href="#9-1-最简单情况" class="headerlink" title="9.1. 最简单情况"></a>9.1. 最简单情况</h2><p><em>@extend</em> 的作用，是通过指定标识符，在当前块中引用对应的属性定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">  @extend .a</span><br><span class="line">  background-color: blue</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a, .b &#123; color: red; &#125;</span><br><span class="line">.b &#123; background-color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>这里，你也可以看成是生成了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.a &#123; color: red; &#125;</span><br><span class="line">.b &#123; color: red; &#125;</span><br><span class="line">.b &#123; background-color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a &#123; color: red; &#125;</span><br><span class="line">.b &#123; color: red; background-color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的行为，可以注意一点，用 <strong>@extend 的块自己本身一定还有一条定义</strong> ，这里的就是最前面的 <code>.b</code> 有自己单独的一条。如果 <code>.b</code> 中没有 <code>background-color</code> ，也可以看成是 <code>.b</code> 会有两条相同的，仅有 <code>color</code> 的属性定义。</p>
+<h2 id="9-2-复合规则"><a href="#9-2-复合规则" class="headerlink" title="9.2. 复合规则"></a>9.2. 复合规则</h2><p>当然，这是最简单的情况，复杂一点的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.g.a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">  @extend .a</span><br><span class="line">  background-color: blue</span><br></pre></td></tr></table></figure>
+<p>生成的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.g.a, .g.b &#123; color: red; &#125;</span><br><span class="line">.b &#123; background-color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的行为，可以总结为， <strong>@extend 部分，不会更改原有的规则限制</strong>。这里就是 <code>.a</code> 有 <code>.g</code> 这个限制，那么引用 <code>.a</code> 的 <code>.b</code> ，在引用部分，也有 <code>.g</code> 的限制。</p>
+<p>把 <code>.a</code> 换成 <code>.g</code> 的话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.g.a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">  @extend .g</span><br><span class="line">  background-color: blue</span><br></pre></td></tr></table></figure>
+<p>那么生成的就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.g.a, .a.b &#123; color: red; &#125;</span><br><span class="line">.b &#123; background-color: blue; &#125;</span><br></pre></td></tr></table></figure>
+<p>上面的例子，把 <code>.g.a</code> 换成 <code>.g .a</code> 结果相同。</p>
+<p>这里的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.g.a, .a.b &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>也可以看成是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.g.a, .b.a &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-3-伪类"><a href="#9-3-伪类" class="headerlink" title="9.3. 伪类"></a>9.3. 伪类</h2><p>伪类本身是一个限定，所以，如果碰到伪类的情况，就把它看成是一个普通类限定， <em>@extend</em> 就只是指定了一个复合条件而已。</p>
+<p>先看复合条件的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.g .x.y.z</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.m</span><br><span class="line">  @extend .x.y</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.g .x.y.z, .g .z.m &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.g .x.y.z, .g .m.z &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>伪类同样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.g img.user:hover</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">  @extend img:hover</span><br></pre></td></tr></table></figure>
+<p>把 <code>:hover</code> 看成 <code>.hover</code> 就好了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.g img.user:hover, .g .user.b &#123; color: red; &#125;</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">.g img.user:hover, .g .b.user &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>不过伪类一般会这么用吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.g img.user:hover</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.b</span><br><span class="line">  &amp;:hover</span><br><span class="line">    @extend img:hover</span><br></pre></td></tr></table></figure>
+<p>生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.g img.user:hover, .g .user.b:hover &#123; color: red; &#125;</span><br><span class="line"></span><br><span class="line">-&gt;</span><br><span class="line"></span><br><span class="line">.g img.user:hover, .g .b.user:hover &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-4-序列规则下的使用"><a href="#9-4-序列规则下的使用" class="headerlink" title="9.4. 序列规则下的使用"></a>9.4. 序列规则下的使用</h2><p>前面的例子， <em>@extend</em> 所在的规则，本身都比较简单。最复杂的情况，就是 <em>@extend</em> 所在的规则是多重限定，并且 <em>@extend</em> 指定的条件是多重限定，同时，目标定义时，又有多重限定，最后，目标可能还有多个。</p>
+<p>四个点， <em>@extend</em> 所在的块， <em>@extend</em> 本身， <em>@extend</em> 可能碰到的目标， <em>@extend</em> 可能碰到的多个目标。</p>
+<p>当然，现实情况不会这样，太复杂了 SASS 自己也搞不定。所以， SASS 中， <em>@extend</em> 本身的规则，是不允许有“序列条件”的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.x a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.header &gt; a</span><br><span class="line">  @extend .x a</span><br></pre></td></tr></table></figure>
+<p>这种情况，不被允许。</p>
+<p><em>@extend</em> 本身简单了一点，但是情况还是有些伤脑筋：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.x &gt; .side .m.a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.y .m.a</span><br><span class="line">  background-color: yellow</span><br><span class="line"></span><br><span class="line">.header .title a</span><br><span class="line">  @extend .m.a</span><br></pre></td></tr></table></figure>
+<p>当 <em>@extend</em> 的目标有多个时，我们一个一个来看就好了，先看 <code>.x &gt; .side .m.a</code> 。</p>
+<p>前面说过， <em>@extend</em> 不会改变原来的限定，所以， <code>.x &gt; .side</code> 这个条件是不会变的。但是，这里的情况有些不一样，因为， <em>@extend</em> 所在的块，本身还有一个 <code>.header .title</code> 的前置限定条件。</p>
+<p>那么现在的问题就是，对于 <code>.header .title a</code> 中的这个 <strong>a</strong> ，它有两组前置限定条件了。</p>
+<p>这里的两组条件，其实跟前面是一回事。最开始的一条，就说了，别忘了在 <em>@extend</em> 所在的块本身，还会有一条定义生成。不同的是，这里 <em>@extend</em> 所在的块本身，会被附加限定条件。</p>
+<p>所以，单看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.x &gt; .side .m.a</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.header .title a</span><br><span class="line">  @extend .m.a</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一步： <em>目标照写</em>， <code>.x &gt; .side .m.a { color: red }</code> 。</li>
+<li>第二步： <em>自己照写</em>， <code>.header .title .x &gt; .side a { color: red }</code> 。</li>
+<li>第三步： <em>目标 -&gt; @extend</em>， <code>.x &gt; .side .header .title a { color: red }</code> 。</li>
+</ul>
+<p>换作最简单情况的话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.em</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.side .content</span><br><span class="line">  @extend .em</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一步： <em>目标照写</em>， <code>.em { color: red }</code> 。</li>
+<li>第二步： <em>自己照写</em>， <code>.side .content { color: red }</code> 。</li>
+<li>第三步： <em>目标 -&gt; @extend</em>， <code>.side .content { color: red }</code> 。</li>
+</ul>
+<h2 id="9-5-总结"><a href="#9-5-总结" class="headerlink" title="9.5. 总结"></a>9.5. 总结</h2><p>总结起来，对于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[PRE_A] TARGET_A</span><br><span class="line">    color: red</span><br><span class="line"></span><br><span class="line">[PRE_B] TARGET_B</span><br><span class="line">    @extend TARGET_A</span><br></pre></td></tr></table></figure>
+<p>结果就是：</p>
+<ul>
+<li><p><code>[PRE_A] TARGET_A { color: red }</code></p>
+</li>
+<li><p><code>... TARGET_B { color: red }</code></p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">... TARGET_B &#123; color: red &#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>然后放</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PRE_A] [PRE_B]</span><br></pre></td></tr></table></figure>
+<p>  和</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[PRE_B] [PRE_A]</span><br></pre></td></tr></table></figure>
+<p>  两种情况，得到：</p>
+<p>  ​</p>
+<ul>
+<li><p><code>[PRE_A] TARGET_A { color: red }</code></p>
+</li>
+<li><p><code>[PRE_A] [PRE_B] TARGET_B { color: red }</code></p>
+</li>
+<li><p><code>[PRE_B] [PRE_A] TARGET_B { color: red }</code></p>
+</li>
+</ul>
+<p>看之前的第二个目标实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.y .m.a</span><br><span class="line">  background-color: yellow</span><br><span class="line"></span><br><span class="line">.header .title a</span><br><span class="line">  @extend .m.a</span><br></pre></td></tr></table></figure>
+<p>自然就是生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.y .m.a &#123; background-color: yellow &#125;</span><br><span class="line">... a &#123; background-color: yellow &#125;</span><br><span class="line">... a &#123; background-color: yellow &#125;</span><br></pre></td></tr></table></figure>
+<p>补充上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.y .m.a &#123; background-color: yellow &#125;</span><br><span class="line">.header .title .y a &#123; background-color: yellow &#125;</span><br><span class="line">.y .header .title a &#123; background-color: yellow &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-6-抽象块"><a href="#9-6-抽象块" class="headerlink" title="9.6. 抽象块"></a>9.6. 抽象块</h2><p>SASS 还真是把 <em>@extend</em> 搞得复杂哦。 SASS 中还有一种“抽象块”的概述，相对于“抽象类”去理解吧。就是，定义的规则块，只是用来被 <em>@extend</em> 的，它自己不会出现在最终的 CSS 中，这种块，使用 <em>%name</em> 结尾来标识：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.x .y a%only</span><br><span class="line">  color: red</span><br><span class="line"></span><br><span class="line">.title div .link</span><br><span class="line">  @extend %only</span><br></pre></td></tr></table></figure>
+<p>结果就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.x .y a &#123; color: red; &#125;</span><br><span class="line">... a.link &#123; color: red; &#125;</span><br><span class="line">... a.link &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.x .y a &#123; color: red; &#125;</span><br><span class="line">.x .y .title div a.link &#123; color: red; &#125;</span><br><span class="line">.title div .x .y a.link &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>最后去掉不要的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.x .y .title div a.link &#123; color: red; &#125;</span><br><span class="line">.title div .x .y a.link &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p>抽象块最后 <code>a.link</code> 的处理，跟普通 <em>@extend</em> 行为不一样，普通的 <em>@extend</em> 不会保留 <code>a</code> ，只有 <code>.link</code> 。</p>
+<h1 id="10-import-引入其它文件"><a href="#10-import-引入其它文件" class="headerlink" title="10. @import 引入其它文件"></a>10. @import 引入其它文件</h1><p><em>@import</em> ，首先有原本的功能，即可以引入一段其它的 CSS 。</p>
+<p>同时， SASS 中的 <em>@import</em> 也可以引入自己的 SASS 文件，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;reset.sass&quot;</span><br><span class="line"></span><br><span class="line">.ok</span><br><span class="line">  @extend .em</span><br></pre></td></tr></table></figure>
+<p><code>reset.sass</code> 中有定义 <code>.em { color: red; }</code> ，最后编译就可以得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.em, .ok &#123; color: red; &#125;</span><br></pre></td></tr></table></figure>
+<p><em>@import</em> 的其它使用形式还有：</p>
+<ul>
+<li><code>@import &quot;a&quot;, &quot;b&quot;</code> 引入多个文件</li>
+<li><code>@import &quot;a&quot; screen</code> 使用媒体查询</li>
+<li><code>@import url(&quot;http://fonts.googleapis.com/css?family=#{$family}&quot;)</code> 使用变量</li>
+</ul>
+<p><code>@import</code> 可以在规则中使用，它的行为类似单纯的宏替换，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a1</span><br><span class="line">  @import &quot;a.sass&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="11-media-媒体查询"><a href="#11-media-媒体查询" class="headerlink" title="11. @media 媒体查询"></a>11. @media 媒体查询</h1><p><em>@media</em> 的写法与其在 CSS 中是一样的，SASS 中， <em>@media</em> 的额外能力，就是你可以把它写在规则下面，编译的时候，会自动整理代码，把 <em>@media</em> 部分抽到最外面去：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.a</span><br><span class="line">  color: red</span><br><span class="line">  @media print</span><br><span class="line">    color: black</span><br></pre></td></tr></table></figure>
+<p>会生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.a &#123; color: red; &#125;</span><br><span class="line">@media print &#123; .a &#123; color: black; &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="IIsKei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="IIsKei 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>IIsKei</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/16024.html" title="SASS是什么">http://www.iskei.cn/posts/16024.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SASS/" rel="tag"># SASS</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/30235.html" rel="next" title="日志组件slf4j介绍及配置详解">
+                <i class="fa fa-chevron-left"></i> 日志组件slf4j介绍及配置详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/13911.html" rel="prev" title="Gson和Jackson的使用">
+                Gson和Jackson的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/HBimg.jpg"
+                alt="IIsKei" />
+            
+              <p class="site-author-name" itemprop="name">IIsKei</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Vii's note" target="_blank">Vii's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Vii's Blog" target="_blank">Vii's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SASS是什么"><span class="nav-number">1.</span> <span class="nav-text">1. SASS是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装"><span class="nav-number">2.</span> <span class="nav-text">2. 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-变量-赋值-数据类型"><span class="nav-number">3.</span> <span class="nav-text">3. 变量, 赋值, 数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-变量符号化"><span class="nav-number">4.</span> <span class="nav-text">4. 变量符号化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-嵌套规则与引用"><span class="nav-number">5.</span> <span class="nav-text">5. 嵌套规则与引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-运算符-逻辑判断-控制结构"><span class="nav-number">6.</span> <span class="nav-text">6. 运算符, 逻辑判断, 控制结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-函数定义"><span class="nav-number">7.</span> <span class="nav-text">7. 函数定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-mixin-宏"><span class="nav-number">8.</span> <span class="nav-text">8. @mixin, 宏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-extend-续写"><span class="nav-number">9.</span> <span class="nav-text">9. @extend 续写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-最简单情况"><span class="nav-number">9.1.</span> <span class="nav-text">9.1. 最简单情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-复合规则"><span class="nav-number">9.2.</span> <span class="nav-text">9.2. 复合规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-3-伪类"><span class="nav-number">9.3.</span> <span class="nav-text">9.3. 伪类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-4-序列规则下的使用"><span class="nav-number">9.4.</span> <span class="nav-text">9.4. 序列规则下的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-5-总结"><span class="nav-number">9.5.</span> <span class="nav-text">9.5. 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-6-抽象块"><span class="nav-number">9.6.</span> <span class="nav-text">9.6. 抽象块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-import-引入其它文件"><span class="nav-number">10.</span> <span class="nav-text">10. @import 引入其它文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-media-媒体查询"><span class="nav-number">11.</span> <span class="nav-text">11. @media 媒体查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">IIsKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数&#58;</span>
+    
+    <span title="站点总字数">1.7m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长&#58;</span>
+    
+    <span title="站点总阅读时长">28:21</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp; Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="/static/js/jquery.marquee.min.js"></script>
+<script src="/static/js/player.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'JULY',artist:'IIskei',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'TIME',artist:'mc',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'大鱼',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Monody',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'Victory',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  playlist.push({title:'光辉岁月',artist:'IIskei',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.4"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
