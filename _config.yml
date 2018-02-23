@@ -7,7 +7,7 @@ title: Keis Note
 subtitle: Java developer's professional blog.
 description: Java technology blog.
 author: IIsKei
-language: zh-CN
+language: en
 timezone: Asia/Shanghai
 
 # URL
@@ -134,10 +134,10 @@ leancloud_counter_security:
 douban:
   user: sirkei
   book:
-    title: '书是人类灵魂的窗户'
+    title: 'books'
     quote: 'Books are the Windows of the human soul.'
   movie:
-    title: '梦想始于剧本。'
+    title: 'movie'
     quote: 'The dream begins with the play.'
     
 # Deployment
