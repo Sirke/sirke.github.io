@@ -2469,5 +2469,267 @@ public class StringBufferDemo11 {
 }
 ```
 
+# Java 常用类——String类
+String类在java.lang包中，java使用String类创建一个字符串变量，字符串变量属于对象。java把String类声明的final类，不能有类。String类对象创建后不能修改，由0或多个字符组成，包含在一对双引号之间。
 
+下面是 String 类支持的方法，更多详细，参看 [Java String API](http://www.runoob.com/manual/jdk1.6/java/lang/String.html) 文档:
+
+| SN(序号) | 方法描述                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1        | [char charAt(int index)](http://www.runoob.com/java/java-string-charat.html)返回指定索引处的 char 值。 |
+| 2        | [int compareTo(Object o)](http://www.runoob.com/java/java-string-compareto.html)把这个字符串和另一个对象比较。 |
+| 3        | [int compareTo(String anotherString)](http://www.runoob.com/java/java-string-compareto.html)按字典顺序比较两个字符串。 |
+| 4        | [int compareToIgnoreCase(String str)](http://www.runoob.com/java/java-string-comparetoignorecase.html)按字典顺序比较两个字符串，不考虑大小写。 |
+| 5        | [String concat(String str)](http://www.runoob.com/java/java-string-concat.html)将指定字符串连接到此字符串的结尾。 |
+| 6        | [boolean contentEquals(StringBuffer sb)](http://www.runoob.com/java/java-string-contentequals.html)当且仅当字符串与指定的StringButter有相同顺序的字符时候返回真。 |
+| 7        | [static String copyValueOf(char[\] data)](http://www.runoob.com/java/java-string-copyvalueof.html)返回指定数组中表示该字符序列的 String。 |
+| 8        | [static String copyValueOf(char[\] data, int offset, int count)](http://www.runoob.com/java/java-string-copyvalueof.html)返回指定数组中表示该字符序列的 String。 |
+| 9        | [boolean endsWith(String suffix)](http://www.runoob.com/java/java-string-endswith.html)测试此字符串是否以指定的后缀结束。 |
+| 10       | [boolean equals(Object anObject)](http://www.runoob.com/java/java-string-equals.html)将此字符串与指定的对象比较。 |
+| 11       | [boolean equalsIgnoreCase(String anotherString)](http://www.runoob.com/java/java-string-equalsignorecase.html)将此 String 与另一个 String 比较，不考虑大小写。 |
+| 12       | [byte[\] getBytes()](http://www.runoob.com/java/java-string-getbytes.html) 使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。 |
+| 13       | [byte[\] getBytes(String charsetName)](http://www.runoob.com/java/java-string-getbytes.html)使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。 |
+| 14       | [void getChars(int srcBegin, int srcEnd, char[\] dst, int dstBegin)](http://www.runoob.com/java/java-string-getchars.html)将字符从此字符串复制到目标字符数组。 |
+| 15       | [int hashCode()](http://www.runoob.com/java/java-string-hashcode.html)返回此字符串的哈希码。 |
+| 16       | [int indexOf(int ch)](http://www.runoob.com/java/java-string-indexof.html)返回指定字符在此字符串中第一次出现处的索引。 |
+| 17       | [int indexOf(int ch, int fromIndex)](http://www.runoob.com/java/java-string-indexof.html)返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。 |
+| 18       | [int indexOf(String str)](http://www.runoob.com/java/java-string-indexof.html) 返回指定子字符串在此字符串中第一次出现处的索引。 |
+| 19       | [int indexOf(String str, int fromIndex)](http://www.runoob.com/java/java-string-indexof.html)返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。 |
+| 20       | [String intern()](http://www.runoob.com/java/java-string-intern.html) 返回字符串对象的规范化表示形式。 |
+| 21       | [int lastIndexOf(int ch)](http://www.runoob.com/java/java-string-lastindexof.html) 返回指定字符在此字符串中最后一次出现处的索引。 |
+| 22       | [int lastIndexOf(int ch, int fromIndex)](http://www.runoob.com/java/java-string-lastindexof.html)返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。 |
+| 23       | [int lastIndexOf(String str)](http://www.runoob.com/java/java-string-lastindexof.html)返回指定子字符串在此字符串中最右边出现处的索引。 |
+| 24       | [int lastIndexOf(String str, int fromIndex)](http://www.runoob.com/java/java-string-lastindexof.html) 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。 |
+| 25       | [int length()](http://www.runoob.com/java/java-string-length.html)返回此字符串的长度。 |
+| 26       | [boolean matches(String regex)](http://www.runoob.com/java/java-string-matches.html)告知此字符串是否匹配给定的正则表达式。 |
+| 27       | [boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)](http://www.runoob.com/java/java-string-regionmatches.html)测试两个字符串区域是否相等。 |
+| 28       | [boolean regionMatches(int toffset, String other, int ooffset, int len)](http://www.runoob.com/java/java-string-regionmatches.html)测试两个字符串区域是否相等。 |
+| 29       | [String replace(char oldChar, char newChar)](http://www.runoob.com/java/java-string-replace.html)返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。 |
+| 30       | [String replaceAll(String regex, String replacement](http://www.runoob.com/java/java-string-replaceall.html)使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。 |
+| 31       | [String replaceFirst(String regex, String replacement)](http://www.runoob.com/java/java-string-replacefirst.html) 使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。 |
+| 32       | [String[\] split(String regex)](http://www.runoob.com/java/java-string-split.html)根据给定正则表达式的匹配拆分此字符串。 |
+| 33       | [String[\] split(String regex, int limit)](http://www.runoob.com/java/java-string-split.html)根据匹配给定的正则表达式来拆分此字符串。 |
+| 34       | [boolean startsWith(String prefix)](http://www.runoob.com/java/java-string-startswith.html)测试此字符串是否以指定的前缀开始。 |
+| 35       | [boolean startsWith(String prefix, int toffset)](http://www.runoob.com/java/java-string-startswith.html)测试此字符串从指定索引开始的子字符串是否以指定前缀开始。 |
+| 36       | [CharSequence subSequence(int beginIndex, int endIndex)](http://www.runoob.com/java/java-string-subsequence.html) 返回一个新的字符序列，它是此序列的一个子序列。 |
+| 37       | [String substring(int beginIndex)](http://www.runoob.com/java/java-string-substring.html)返回一个新的字符串，它是此字符串的一个子字符串。 |
+| 38       | [String substring(int beginIndex, int endIndex)](http://www.runoob.com/java/java-string-substring.html)返回一个新字符串，它是此字符串的一个子字符串。 |
+| 39       | [char[\] toCharArray()](http://www.runoob.com/java/java-string-tochararray.html)将此字符串转换为一个新的字符数组。 |
+| 40       | [String toLowerCase()](http://www.runoob.com/java/java-string-tolowercase.html)使用默认语言环境的规则将此 String 中的所有字符都转换为小写。 |
+| 41       | [String toLowerCase(Locale locale)](http://www.runoob.com/java/java-string-tolowercase.html) 使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。 |
+| 42       | [String toString()](http://www.runoob.com/java/java-string-tostring.html) 返回此对象本身（它已经是一个字符串！）。 |
+| 43       | [String toUpperCase()](http://www.runoob.com/java/java-string-touppercase.html)使用默认语言环境的规则将此 String 中的所有字符都转换为大写。 |
+| 44       | [String toUpperCase(Locale locale)](http://www.runoob.com/java/java-string-touppercase.html)使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。 |
+| 45       | [String trim()](http://www.runoob.com/java/java-string-trim.html)返回字符串的副本，忽略前导空白和尾部空白。 |
+| 46       | [static String valueOf(primitive data type x)](http://www.runoob.com/java/java-string-valueof.html)返回给定data type类型x参数的字符串表示形式。 |
+
+## String类对象的创建
+
+字符串声明：String stringName;
+字符串创建：stringName = new String(字符串常量);或stringName = 字符串常量;
+## String类构造方法
+1. public String()
+
+无参构造方法，用来创建空字符串的String对象。
+ 1 String str1 = new String(); 
+2. public String(String value)
+用已知的字符串value创建一个String对象。
+ 1 String str2 = new String("asdf"); 2 String str3 = new String(str2); 
+3. public String(char[] value)
+用字符数组value创建一个String对象。
+
+```
+1 char[] value = {"a","b","c","d"};
+2 String str4 = new String(value);//相当于String str4 = new String("abcd");
+```
+
+4. public String(char chars[], int startIndex, int numChars)
+用字符数组chars的startIndex开始的numChars个字符创建一个String对象。
+
+```
+1 char[] value = {"a","b","c","d"};
+2 String str5 = new String(value, 1, 2);//相当于String str5 = new String("bc");
+```
+
+5. public String(byte[] values)
+用比特数组values创建一个String对象。
+
+```
+1 byte[] strb = new byte[]{65,66};
+2 String str6 = new String(strb);//相当于String str6 = new String("AB");
+```
+
+## String类常用方法
+
+1. 求字符串长度
+public int length()//返回该字符串的长度
+
+```
+1 String str = new String("asdfzxc");
+2 int strlength = str.length();//strlength = 7
+```
+
+2. 求字符串某一位置字符
+public char charAt(int index)//返回字符串中指定位置的字符；注意字符串中第一个字符索引是0，最后一个是length()-1。
+
+```
+1 String str = new String("asdfzxc");
+2 char ch = str.charAt(4);//ch = z
+```
+
+3. 提取子串
+用String类的substring方法可以提取字符串中的子串，该方法有两种常用参数:
+1)public String substring(int beginIndex)//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回。
+2)public String substring(int beginIndex, int endIndex)//该方法从beginIndex位置起，从当前字符串中取出到endIndex-1位置的字符作为一个新的字符串返回。
+
+```
+1 String str1 = new String("asdfzxc");
+2 String str2 = str1.substring(2);//str2 = "dfzxc"
+3 String str3 = str1.substring(2,5);//str3 = "dfz"
+```
+
+4. 字符串比较
+1)public int compareTo(String anotherString)//该方法是对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系。若当前对象比参数大则返回正整数，反之返回负整数，相等返回0。
+2)public int compareToIgnore(String anotherString)//与compareTo方法相似，但忽略大小写。
+3)public boolean equals(Object anotherObject)//比较当前字符串和参数字符串，在两个字符串相等的时候返回true，否则返回false。
+4)public boolean equalsIgnoreCase(String anotherString)//与equals方法相似，但忽略大小写。
+
+
+
+```
+1 String str1 = new String("abc");
+2 String str2 = new String("ABC");
+3 int a = str1.compareTo(str2);//a>0
+4 int b = str1.compareTo(str2);//b=0
+5 boolean c = str1.equals(str2);//c=false
+6 boolean d = str1.equalsIgnoreCase(str2);//d=true
+```
+
+
+
+5. 字符串连接
+public String concat(String str)//将参数中的字符串str连接到当前字符串的后面，效果等价于"+"。
+
+```
+1 String str = "aa".concat("bb").concat("cc");
+2 相当于String str = "aa"+"bb"+"cc";
+```
+
+6. 字符串中单个字符查找
+1)public int indexOf(int ch/String str)//用于查找当前字符串中字符或子串，返回字符或子串在当前字符串中从左边起首次出现的位置，若没有出现则返回-1。
+2)public int indexOf(int ch/String str, int fromIndex)//改方法与第一种类似，区别在于该方法从fromIndex位置向后查找。
+3)public int lastIndexOf(int ch/String str)//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。
+4)public int lastIndexOf(int ch/String str, int fromIndex)//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。
+
+
+
+```
+1 String str = "I am a good student";
+2 int a = str.indexOf('a');//a = 2
+3 int b = str.indexOf("good");//b = 7
+4 int c = str.indexOf("w",2);//c = -1
+5 int d = str.lastIndexOf("a");//d = 5
+6 int e = str.lastIndexOf("a",3);//e = 2
+```
+
+
+
+7. 字符串中字符的大小写转换
+1)public String toLowerCase()//返回将当前字符串中所有字符转换成小写后的新串
+2)public String toUpperCase()//返回将当前字符串中所有字符转换成大写后的新串
+
+```
+1 String str = new String("asDF");
+2 String str1 = str.toLowerCase();//str1 = "asdf"
+3 String str2 = str.toUpperCase();//str2 = "ASDF"
+```
+
+8. 字符串中字符的替换
+1)public String replace(char oldChar, char newChar)//用字符newChar替换当前字符串中所有的oldChar字符，并返回一个新的字符串。
+2)public String replaceFirst(String regex, String replacement)//该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。
+3)public String replaceAll(String regex, String replacement)//该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。
+
+```
+1 String str = "asdzxcasd";
+2 String str1 = str.replace('a','g');//str1 = "gsdzxcgsd"
+3 String str2 = str.replace("asd","fgh");//str2 = "fghzxcfgh"
+4 String str3 = str.replaceFirst("asd","fgh");//str3 = "fghzxcasd"
+5 String str4 = str.replaceAll("asd","fgh");//str4 = "fghzxcfgh"
+```
+
+9. 其他类方法
+1)String trim()//截去字符串两端的空格，但对于中间的空格不处理。
+
+```
+1 String str = " a sd ";
+2 String str1 = str.trim();
+3 int a = str.length();//a = 6
+4 int b = str1.length();//b = 4
+```
+
+2)boolean statWith(String prefix)或boolean endWith(String suffix)//用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset。
+
+```
+1 String str = "asdfgh";
+2 boolean a = str.statWith("as");//a = true
+3 boolean b = str.endWith("gh");//b = true
+```
+
+3)regionMatches(boolean b, int firstStart, String other, int otherStart, int length)//从当前字符串的firstStart位置开始比较，取长度为length的一个子字符串，other字符串从otherStart位置开始，指定另外一个长度为length的字符串，两字符串比较，当b为true时字符串不区分大小写。
+4)contains(String str)//判断参数s是否被包含在字符串中，并返回一个布尔类型的值。
+
+```
+1 String str = "student";
+2 str.contains("stu");//true
+3 str.contains("ok");//false
+```
+
+5)String[] split(String str)//将str作为分隔符进行字符串分解，分解后的字字符串在字符串数组中返回。
+
+```
+1 String str = "asd!qwe|zxc#";
+2 String[] str1 = str.split("!|#");//str1[0] = "asd";str1[1] = "qwe";str1[2] = "zxc";
+```
+
+##  字符串与基本类型的转换
+
+1. 字符串转换为基本类型
+java.lang包中有Byte. Short、Integer、Float、Double类的调用方法：
+1)public static byte parseByte(String s)
+2)public static short parseShort(String s)
+3)public static short parseInt(String s)
+4)public static long parseLong(String s)
+5)public static float parseFloat(String s)
+6)public static double parseDouble(String s)
+例如：
+
+```
+1 int n = Integer.parseInt("12");
+2 float f = Float.parseFloat("12.34");
+3 double d = Double.parseDouble("1.124");
+```
+
+2. 基本类型转换为字符串类型
+String类中提供了String valueOf()放法，用作基本类型转换为字符串类型。
+1)static String valueOf(char data[])
+2)static String valueOf(char data[], int offset, int count)
+3)static String valueOf(boolean b)
+4)static String valueOf(char c)
+5)static String valueOf(int i)
+6)static String valueOf(long l)
+7)static String valueOf(float f)
+8)static String valueOf(double d)
+例如：
+
+```
+1 String s1 = String.valueOf(12);
+2 String s1 = String.valueOf(12.34);
+```
+
+3. 进制转换
+使用Long类中的方法得到整数之间的各种进制转换的方法：
+Long.toBinaryString(long l)
+Long.toOctalString(long l)
+Long.toHexString(long l)
+Long.toString(long l, int p)//p作为任意进制
 
