@@ -876,33 +876,47 @@ class BufferedWriterDemo {
   装饰设计模式：：：：
 
   要求：自定义一些Reader类，读取不同的数据(装饰和继承的区别)
-  MyReader //专门用于读取数据的类
-  ​    |--MyTextReader
-  ​        |--MyBufferTextReader
-  ​    |--MyMediaReader
-  ​        |--MyBufferMediaReader
-  ​    |--MyDataReader
-  ​        |--MyBufferDataReader
+
+-   MyReader //专门用于读取数据的类
+
+-   MyTextReader
+- MyBufferTextReader
+- MyMediaReader
+- MyBufferMediaReader
+- MyDataReader
+- MyBufferDataReader
+
   如果将他们抽取出来，设计一个MyBufferReader，可以根据传入的类型进行增强
+
+```java
   class MyBufferReader {
-  ​    MyBufferReader (MyTextReader text) {}
-  ​    MyBufferReader (MyMediaReader media) {}
-  ​    MyBufferReader (MyDataReader data) {}
+  MyBufferReader (MyTextReader text) {}
+      MyBufferReader (MyMediaReader media) {}
+      MyBufferReader (MyDataReader data) {}
   }
+```
+
+
   但是上面的类拓展性很差。找到其参数的共同类型，通过多态的形式，可以提高拓展性
+
+```java
   class MyBufferReader  extends MyReader{
-  ​    private MyReader r;                        //从继承变为了组成模式  装饰设计模式
-  ​    MyBufferReader(MyReader r) {}
+      private MyReader r;                        //从继承变为了组成模式  装饰设计模式
+      MyBufferReader(MyReader r) {}
   }
+```
+
   优化后的体系：
-  ​    |--MyTextReader
-  ​    |--MyMediaReader
-  ​    |--MyDataReader
-  ​    |--MyBufferReader        //增强上面三个。装饰模式比继承灵活，
+
+- MyTextReader
+- MyMediaReader
+- MyDataReader
+- MyBufferReader        //增强上面三个。装饰模式比继承灵活，
+
   ​                              避免继承体系的臃肿。降低类与类之间的耦合性
   装饰类只能增强已有的对象，具备的功能是相同的。所以装饰类和被装饰类属于同一个体系
 
-  
+
 
   MyBuffereReader类：  自己写一个MyBuffereReader类，功能与BuffereReader相同
 
@@ -1116,15 +1130,17 @@ public Object call() throws Exception {
 ```
 
 代码说明：
-上述代码中Executors类，提供了一系列工厂方法用于创建线程池，返回的线程池都实现了ExecutorService接口。
-public static ExecutorService newFixedThreadPool(int nThreads) 
-创建固定数目线程的线程池。
-public static ExecutorService newCachedThreadPool() 
-创建一个可缓存的线程池，调用execute 将重用以前构造的线程（如果线程可用）。如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。
-public static ExecutorService newSingleThreadExecutor() 
-创建一个单线程化的Executor。
-public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) 
-创建一个支持定时及周期性的任务执行的线程池，多数情况下可用来替代Timer类。
-ExecutoreService提供了submit()方法，传递一个Callable，或Runnable，返回Future。如果Executor后台线程池还没有完成Callable的计算，这调用返回Future对象的get()方法，会阻塞直到计算完成。
+
+- 上述代码中Executors类，提供了一系列工厂方法用于创建线程池，返回的线程池都实现了ExecutorService接口。
+
+- public static ExecutorService newFixedThreadPool(int nThreads) 
+- 创建固定数目线程的线程池。
+- public static ExecutorService newCachedThreadPool() 
+- 创建一个可缓存的线程池，调用execute 将重用以前构造的线程（如果线程可用）。如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。
+- public static ExecutorService newSingleThreadExecutor() 
+- 创建一个单线程化的Executor。
+- public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) 
+- 创建一个支持定时及周期性的任务执行的线程池，多数情况下可用来替代Timer类。
+- ExecutoreService提供了submit()方法，传递一个Callable，或Runnable，返回Future。如果Executor后台线程池还没有完成Callable的计算，这调用返回Future对象的get()方法，会阻塞直到计算完成。
 
 软件-注重思想、逻
