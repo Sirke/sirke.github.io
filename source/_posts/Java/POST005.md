@@ -1,5 +1,5 @@
 ---
-title: Java成神之路-JavaSE（四）
+title: Java成神之路-JavaSE（五）
 tags: Java
 category: Java
 date: 2018-02-23 13:44:36
@@ -23,8 +23,6 @@ Java Virtual Machine，是java程序跨平台的关键，不同的平台有不�
 ## 3.java程序运行过程
 
 程序员编写的源码经编译器编译转化为字节码，字节码被加载到JVM，由JVM解释成机器码在计算机上运行。
-
-![img](https://images2015.cnblogs.com/blog/1173487/201707/1173487-20170714174029322-511011418.png)
 
 ## 4.java版本
 
@@ -61,13 +59,7 @@ Application Programming Interface，应用程序编程接口，是使用java语�
 
 ## 下载JDK
 
-首先我们需要下载java开发工具包JDK，下载地址：<http://www.oracle.com/technetwork/java/javase/downloads/index.html>，点击如下下载按钮：
-
-![img](http://www.runoob.com/wp-content/uploads/2013/12/java-download.jpg)
-
-在下载页面中你需要选择接受许可，并根据自己的系统选择对应的版本，本文以 Window 64位系统为例：
-
-![img](http://www.runoob.com/wp-content/uploads/2013/12/java-download-1.jpg)
+首先我们需要下载java开发工具包JDK，下载地址：<http://www.oracle.com/technetwork/java/javase/downloads/index.html>，
 
 下载后JDK的安装根据提示进行，还有安装JDK的时候也会安装JRE，一并安装就可以了。
 
@@ -161,7 +153,7 @@ Application Programming Interface，应用程序编程接口，是使用java语�
 
 ## 使用 Eclipse 运行第一个 Java 程序
 
-视频演示如下所示：
+演示如下所示：
 
 HelloWorld.java 文件代码：
 
@@ -207,8 +199,6 @@ public class HelloWorld {
 3. 引用类型
 
 数组、 类（对象）、接口
-
-
 
 说明： 
 
@@ -1139,5 +1129,5 @@ java.util.Arrays 类能方便地操作数组，它提供的所有方法都是静
    -9
    ```
 
-   ​
+   
 
