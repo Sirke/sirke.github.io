@@ -968,7 +968,7 @@ class MyBufferedReader1  extends Reader{
 参考： http://blog.csdn.net/qq_28261343/article/details/52678681
 
 # Java 多线程
-# JAVA多线程实现的四种方式
+JAVA多线程实现的四种方式
 
 [Java](http://lib.csdn.net/base/javaee)多线程实现方式主要有四种：继承Thread类、实现Runnable接口、实现Callable接口通过FutureTask包装器来创建Thread线程、使用ExecutorService、Callable、Future实现有返回结果的多线程。
 
