@@ -1,12 +1,12 @@
 ---
-title: Java成神之路-Java异常处理、集合框架（六）
+title: Java成神之路-Java异常处理、集合框架和IO流（六）
 tags: Java
 category: Java
 date: 2018-02-23 14:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0131.jpg)
 
-Java成神之路-Java异常处理、集合框架
+Java成神之路-Java异常处理、集合框架、IO
 <!--more-->
 # Java异常处理
 
@@ -540,3 +540,415 @@ ArrayList 和Vector是采用数组方式存储数据，此数组元素数大于�
 1. 同步性:Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的。
 2. HashMap允许存在一个为null的key，多个为null的value 。
 3. hashtable的key和value都不允许为null。
+
+# Java IO流
+## 一、IO流概述
+
+概述：
+
+​         IO流简单来说就是Input和Output流，IO流主要是用来处理设备之间的数据传输，java对于数据的操作都是通过流实现，而java用于操作流的对象都在IO包中。
+
+分类：
+
+​        按操作数据分为：字节流和字符流。 如：Reader和InpurStream
+
+​        按流向分：输入流和输出流。如：InputStream和OutputStream
+
+IO流常用的基类：
+
+​         * InputStream    ，    OutputStream
+
+字符流的抽象基类：
+
+​         * Reader       ，         Writer
+
+由上面四个类派生的子类名称都是以其父类名作为子类的后缀：
+
+​            如：FileReader和FileInputStream
+
+## 二、字符流
+
+### 1. 字符流简介：
+
+\* 字符流中的对象融合了编码表，也就是系统默认的编码表。我们的系统一般都是GBK编码。
+
+\* 字符流只用来处理文本数据，字节流用来处理媒体数据。
+
+\* 数据最常见的表现方式是文件，字符流用于操作文件的子类一般是FileReader和FileWriter。
+
+### 2.字符流读写：
+
+注意事项：
+
+* 写入文件后必须要用flush()刷新。
+
+* 用完流后记得要关闭流
+
+* 使用流对象要抛出IO异常
+
+  ​
+
+
+* 定义文件路径时，可以用“/”或者“\\”。
+
+* 在创建一个文件时，如果目录下有同名文件将被覆盖。
+
+* 在读取文件时，必须保证该文件已存在，否则出异常
+
+  ​
+
+示例1：在硬盘上创建一个文件,并写入一些文字数据
+
+```java
+class FireWriterDemo {
+	public static void main(String[] args) throws IOException {             //需要对IO异常进行处理 
+
+		//创建一个FileWriter对象，该对象一被初始化就必须要明确被操作的文件。
+		//而且该文件会被创建到指定目录下。如果该目录有同名文件，那么该文件将被覆盖。
+
+		FileWriter fw = new FileWriter("F:\\1.txt");//目的是明确数据要存放的目的地。
+
+		//调用write的方法将字符串写到流中
+		fw.write("hello world!");
+	
+		//刷新流对象缓冲中的数据，将数据刷到目的地中
+		fw.flush();
+
+		//关闭流资源，但是关闭之前会刷新一次内部缓冲中的数据。当我们结束输入时候，必须close();
+		fw.write("first_test");
+		fw.close();
+		//flush和close的区别：flush刷新后可以继续输入，close刷新后不能继续输入。
+
+	}
+}
+```
+
+示例2：FileReader的reade()方法.
+
+要求：用单个字符和字符数组进行分别读取
+
+```java
+class FileReaderDemo {
+	public static void main(String[] args) {
+		characters();
+	}
+
+/*****************字符数组进行读取*********************/
+	private static void characters() {
+
+		try {
+
+			FileReader fr = new FileReader("Demo.txt");
+			char []  buf = new char[6]; 
+			//将Denmo中的文件读取到buf数组中。
+			int num = 0;	
+			while((num = fr.read(buf))!=-1) {
+
+				//String(char[] value , int offest,int count) 分配一个新的String,包含从offest开始的count个字符
+				sop(new String(buf,0,num));
+			}
+			sop('\n');
+			fr.close();
+		}
+		catch (IOException e) {
+			sop(e.toString());
+		}
+	}
+
+/*****************单个字母读取*************************/
+	private static void singleReader() {
+		
+		try {
+
+			//创建一个文件读取流对象，和指定名称的文件关联。
+			//要保证文件已经存在，否则会发生异常：FileNotFoundException
+			FileReader fr = new FileReader("Demo.txt");
+
+		
+			//如何调用读取流对象的read方法？
+			//read()方法，一次读取一个字符，并且自动往下读。如果到达末尾则返回-1
+			int ch = 0;
+			while ((ch=fr.read())!=-1) {
+				sop((char)ch);
+			}
+			sop('\n');
+			fr.close();
+
+			/*int ch = fr.read();
+			sop("ch=" + (char)ch);
+
+			int ch2 = fr.read();
+			sop("ch2=" + (char)ch2);
+
+			//使用结束注意关闭流
+			fr.close();	*/	
+		}
+		catch (IOException e) {
+			sop(e.toString());
+		}
+	}
+
+/**********************Println************************/
+	private static void sop(Object obj) {
+		System.out.print(obj);
+	}
+
+}
+```
+
+
+
+示例3：对已有文件的数据进行续写
+
+```java
+import java.io.*;
+
+class  FileWriterDemo3 {
+	public static void main(String[] args) {
+		
+		try {
+			//传递一个参数,代表不覆盖已有的数据。并在已有数据的末尾进行数据续写
+			FileWriter fw = new FileWriter("F:\\java_Demo\\day9_24\\demo.txt",true);
+			fw.write(" is charactor table?");
+			fw.close();
+		}
+		catch (IOException e) {
+			sop(e.toString());
+		}
+		
+	}
+
+/**********************Println************************/
+	private static void sop(Object obj)
+	{
+		System.out.println(obj);
+	}
+}
+```
+
+
+
+ 练习：
+
+  将F盘的一个文件复制到E盘。 
+
+ 思考：
+
+  其实就是将F盘下的文件数据存储到D盘的一个文件中。
+
+ 步骤：
+
+  1.在D盘创建一个文件，存储F盘中文件的数据。
+  2.定义读取流和F：盘文件关联。
+  3.通过不断读写完成数据存储。
+  4.关闭资源。
+
+ 源码：
+
+```java
+import java.io.*;
+import java.util.Scanner;
+
+class CopyText {
+	public static void main(String[] args) throws IOException {
+		sop("请输入要拷贝的文件的路径:");
+		Scanner in = new Scanner(System.in);
+		String source = in.next();
+		sop("请输入需要拷贝到那个位置的路径以及生成的文件名:");
+		String destination = in.next();
+		in.close();
+		CopyTextDemo(source,destination);
+
+	}
+
+/*****************文件Copy*********************/
+	private static void CopyTextDemo(String source,String destination) {
+
+		try {
+			FileWriter fw = new FileWriter(destination);
+			FileReader fr = new FileReader(source);
+			char []  buf = new char[1024]; 
+			//将Denmo中的文件读取到buf数组中。
+			int num = 0;	
+			while((num = fr.read(buf))!=-1) {
+                               //String(char[] value , int offest,int count) 分配一个新的String,包含从offest开始的count个字符
+				fw.write(new String(buf,0,num));
+			}
+			fr.close();
+			fw.close();
+		}
+		catch (IOException e) {
+			sop(e.toString());
+		}
+	}
+
+/**********************Println************************/
+	private static void sop(Object obj) {
+		System.out.println(obj);
+	}
+}
+```
+
+## 三、缓冲区
+
+ ### 1. 字符流的缓冲区
+
+BufferedReader和BufferedWreiter
+
+* 缓冲区的出现时为了提高流的操作效率而出现的.
+* 需要被提高效率的流作为参数传递给缓冲区的构造函数
+* 在缓冲区中封装了一个数组，存入数据后一次取出
+
+ BufferedReader示例：
+
+  读取流缓冲区提供了一个一次读一行的方法readline，方便对文本数据的获取。
+  readline()只返回回车符前面的字符，不返回回车符。如果是复制的话，必须加入newLine()，写入回车符
+
+  newLine()是java提供的多平台换行符写入方法。
+
+```java
+import java.io.*;
+
+
+class BufferedReaderDemo {
+	public static void main(String[] args)  throws IOException {
+
+		//创建一个字符读取流流对象，和文件关联
+		FileReader rw = new FileReader("buf.txt");
+
+		//只要将需要被提高效率的流作为参数传递给缓冲区的构造函数即可
+		BufferedReader brw = new BufferedReader(rw);
+
+		
+		for(;;) {
+			String s = brw.readLine();
+			if(s==null) break;
+			System.out.println(s);
+		}
+		
+		brw.close();//关闭输入流对象
+
+	}
+}
+```
+
+ BufferedWriter示例：
+
+```java
+import java.io.*;
+
+
+class BufferedWriterDemo {
+	public static void main(String[] args)  throws IOException {
+
+		//创建一个字符写入流对象
+		FileWriter fw = new FileWriter("buf.txt");
+
+		//为了提高字符写入效率，加入了缓冲技术。
+		//只要将需要被提高效率的流作为参数传递给缓冲区的构造函数即可
+		BufferedWriter bfw = new BufferedWriter(fw);
+
+		//bfw.write("abc\r\nde");
+		//bfw.newLine();               这行代码等价于bfw.write("\r\n"),相当于一个跨平台的换行符
+		//用到缓冲区就必须要刷新
+		for(int x = 1; x < 5; x++) {
+			bfw.write("abc");
+			bfw.newLine();					//java提供了一个跨平台的换行符newLine();
+			bfw.flush();
+		}
+
+
+
+		bfw.flush();												//刷新缓冲区
+		bfw.close();												//关闭缓冲区，但是必须要先刷新
+
+		//注意，关闭缓冲区就是在关闭缓冲中的流对象
+		fw.close();													//关闭输入流对象
+
+	}
+}
+```
+
+
+
+ ### 2.装饰设计模式
+
+  装饰设计模式：：：：
+
+  要求：自定义一些Reader类，读取不同的数据(装饰和继承的区别)
+  MyReader //专门用于读取数据的类
+  ​    |--MyTextReader
+  ​        |--MyBufferTextReader
+  ​    |--MyMediaReader
+  ​        |--MyBufferMediaReader
+  ​    |--MyDataReader
+  ​        |--MyBufferDataReader
+  如果将他们抽取出来，设计一个MyBufferReader，可以根据传入的类型进行增强
+  class MyBufferReader {
+  ​    MyBufferReader (MyTextReader text) {}
+  ​    MyBufferReader (MyMediaReader media) {}
+  ​    MyBufferReader (MyDataReader data) {}
+  }
+  但是上面的类拓展性很差。找到其参数的共同类型，通过多态的形式，可以提高拓展性
+  class MyBufferReader  extends MyReader{
+  ​    private MyReader r;                        //从继承变为了组成模式  装饰设计模式
+  ​    MyBufferReader(MyReader r) {}
+  }
+  优化后的体系：
+  ​    |--MyTextReader
+  ​    |--MyMediaReader
+  ​    |--MyDataReader
+  ​    |--MyBufferReader        //增强上面三个。装饰模式比继承灵活，
+  ​                              避免继承体系的臃肿。降低类与类之间的耦合性
+  装饰类只能增强已有的对象，具备的功能是相同的。所以装饰类和被装饰类属于同一个体系
+
+  
+
+  MyBuffereReader类：  自己写一个MyBuffereReader类，功能与BuffereReader相同
+
+```java
+class MyBufferedReader1  extends Reader{             
+    private Reader r;
+    MyBufferedReader1(Reader r){
+        this.r  = r;
+    }
+
+    //一次读一行数据的方法
+    public String myReaderline()  throws IOException {
+        //定义一个临时容器，原BufferReader封装的是字符数组。
+        //为了演示方便。定义一个StringBuilder容器。最终要将数据变成字符串
+        StringBuilder sb = new StringBuilder();
+        int ch = 0;
+        while((ch = r.read()) != -1)
+        {
+            if(ch == '\r') 
+                continue;
+            if(ch == '\n')                    //遇到换行符\n,返回字符串
+                return sb.toString();
+            else
+            sb.append((char)ch);
+        }
+        if(sb.length()!=0)                    //当最后一行不是以\n结束时候，这里需要判断
+            return sb.toString();
+        return null;
+    }
+    /*
+    需要覆盖Reader中的抽象方法close()，read();
+    */
+    public void close()throws IOException {
+        r.close();
+    }
+
+    public int read(char[] cbuf,int off, int len)throws IOException {   //覆盖read方法
+        return r.read(cbuf,off,len);
+    }
+
+    public void myClose() throws IOException{
+        r.close();
+    }
+}
+```
+
+## 四、字节流
+
+参考： http://blog.csdn.net/qq_28261343/article/details/52678681
