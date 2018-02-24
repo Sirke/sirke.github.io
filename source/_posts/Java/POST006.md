@@ -1,12 +1,12 @@
 ---
-title: Java成神之路-Java异常处理、集合框架、IO流和多线程（六）
+title: Java成神之路-Java异常、集合、IO流、多线程和反射（六）
 tags: Java
 category: Java
 date: 2018-02-23 14:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0131.jpg)
 
-Java成神之路-Java异常处理、集合框架、IO、多线程
+Java成神之路-Java异常、集合、IO流、多线程和反射
 <!--more-->
 # Java异常处理
 
@@ -1144,3 +1144,301 @@ public Object call() throws Exception {
 - ExecutoreService提供了submit()方法，传递一个Callable，或Runnable，返回Future。如果Executor后台线程池还没有完成Callable的计算，这调用返回Future对象的get()方法，会阻塞直到计算完成。
 
 软件-注重思想、逻
+
+# Java反射机制详解
+
+​     Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。
+
+## 1、关于Class
+
+​    1、Class是一个类，一个描述类的类（也就是描述类本身），封装了描述方法的Method，描述字段的Filed，描述构造器的Constructor等属性
+​    2、对象照镜子后（反射）可以得到的信息：某个类的数据成员名、方法和构造器、某个类到底实现了哪些接口。
+​    3、对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。
+​        一个 Class 对象包含了特定某个类的有关信息。
+​    4、Class 对象只能由系统建立对象
+​    5、一个类在 JVM 中只会有一个Class实例
+
+```java
+package com.java.reflection;
+
+public class Person {
+    String name;
+    private int age;
+
+    public Person() {
+        System.out.println("无参构造器");
+    }
+
+    public Person(String name, int age) {
+        System.out.println("有参构造器");
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+```
+
+
+
+## 2、反射机制获取类有三种方法
+
+```java
+
+    /**
+     * 反射机制获取类有三种方法
+     */
+    @Test
+    public void testGetClass() throws ClassNotFoundException {
+        Class clazz = null;
+
+        //1 直接通过类名.Class的方式得到
+        clazz = Person.class;
+        System.out.println("通过类名: " + clazz);
+
+        //2 通过对象的getClass()方法获取,这个使用的少（一般是传的是Object，不知道是什么类型的时候才用）
+        Object obj = new Person();
+        clazz = obj.getClass();
+        System.out.println("通过getClass(): " + clazz);
+
+        //3 通过全类名获取，用的比较多，但可能抛出ClassNotFoundException异常
+        clazz = Class.forName("com.java.reflection.Person");
+        System.out.println("通过全类名获取: " + clazz);
+    }
+```
+
+- 通过类名: class com.java.reflection.Person
+- 无参构造器
+- 通过getClass(): class com.java.reflection.Person
+- 通过全类名获取: class com.java.reflection.Person
+
+## 3、利用newInstance创建对象：调用的类必须有无参的构造器
+
+```java
+/** 
+ * Class类的newInstance()方法，创建类的一个对象。 
+ */  
+@Test  
+public void testNewInstance()  
+        throws ClassNotFoundException, IllegalAccessException, InstantiationException {  
+  
+    Class clazz = Class.forName("com.java.reflection.Person");  
+  
+    //使用Class类的newInstance()方法创建类的一个对象  
+    //实际调用的类的那个 无参数的构造器（这就是为什么写的类的时候，要写一个无参数的构造器，就是给反射用的）  
+    //一般的，一个类若声明了带参数的构造器，也要声明一个无参数的构造器  
+    Object obj = clazz.newInstance();  
+    System.out.println(obj);  
+}  
+```
+
+- 无参构造器
+  Person{name='null', age=0}
+
+1. /** 
+2.  * Class类的newInstance()方法，创建类的一个对象。 
+3.  */  
+4. @Test  
+5. public void testNewInstance()  
+6. ​        throws ClassNotFoundException, IllegalAccessException, InstantiationException {  
+7.   ​
+8. ​    Class clazz = Class.forName("com.java.reflection.Person");  
+9.   ​
+10. ​    //使用Class类的newInstance()方法创建类的一个对象  
+11. ​    //实际调用的类的那个 无参数的构造器（这就是为什么写的类的时候，要写一个无参数的构造器，就是给反射用的）  
+12. ​    //一般的，一个类若声明了带参数的构造器，也要声明一个无参数的构造器  
+13. ​    Object obj = clazz.newInstance();  
+14. ​    System.out.println(obj);  
+15. }  
+
+## 4、ClassLoader类加载器
+
+类加载器详解：<http://blog.csdn.net/ochangwen/article/details/51473120>
+
+```java
+    /**
+     * ClassLoader类装载器
+     */
+    @Test
+    public void testClassLoader1() throws ClassNotFoundException, IOException {
+        //1、获取一个系统的类加载器
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        System.out.println("系统的类加载器-->" + classLoader);
+
+        //2、获取系统类加载器的父类加载器(扩展类加载器（extensions classLoader）)
+        classLoader = classLoader.getParent();
+        System.out.println("扩展类加载器-->" + classLoader);
+
+        //3、获取扩展类加载器的父类加载器
+        //输出为Null,无法被Java程序直接引用
+        classLoader = classLoader.getParent();
+        System.out.println("启动类加载器-->" + classLoader);
+
+        //
+
+        //4、测试当前类由哪个类加载器进行加载 ,结果就是系统的类加载器
+        classLoader = Class.forName("com.java.reflection.Person").getClassLoader();
+        System.out.println("当前类由哪个类加载器进行加载-->"+classLoader);
+
+        //5、测试JDK提供的Object类由哪个类加载器负责加载的
+        classLoader = Class.forName("java.lang.Object").getClassLoader();
+        System.out.println("JDK提供的Object类由哪个类加载器加载-->" + classLoader);
+    }
+```
+
+- 系统的类加载器-->sun.misc.Launcher$AppClassLoader@43be2d65
+- 扩展类加载器-->sun.misc.Launcher$ExtClassLoader@7a9664a1
+- 启动类加载器-->null
+- 当前类由哪个类加载器进行加载-->sun.misc.Launcher$AppClassLoader@43be2d65
+- JDK提供的Object类由哪个类加载器加载-->null
+
+#### getResourceAsStream方法
+
+```java
+ @Test  
+    public void testGetResourceAsStream() throws ClassNotFoundException, IOException {  
+//          这么写的话，文件需要放到src目录下  
+        //       InputStream in = new FileInputStream("test.properties");  
+  
+        //5、关于类加载器的一个主要方法  
+        //调用getResourceAsStream 获取类路径下的文件对应的输入流  
+        InputStream in = this.getClass().getClassLoader()  
+                .getResourceAsStream("com/java/reflection/test.properties");  
+        System.out.println("in: " +in);  
+  
+        Properties properties = new Properties();  
+        properties.load(in);  
+  
+        String driverClass = properties.getProperty("dirver");  
+        String jdbcUrl = properties.getProperty("jdbcUrl");  
+        //中文可能会出现乱码，需要转换一下  
+        String user = new String(properties.getProperty("user").getBytes("ISO-8859-1"), "UTF-8");  
+        String password = properties.getProperty("password");  
+  
+        System.out.println("diverClass: "+driverClass);  
+        System.out.println("user: " + user);  
+    }  
+```
+
+
+
+## 5、Method: 对应类中的方法
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    //新增一个私有方法
+    private void privateMthod(){
+    }
+    
+    public Person() {
+        System.out.println("无参构造器");
+    }
+
+    public Person(String name, int age) {
+        System.out.println("有参构造器");
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 
+     * @param age  类型用Integer，不用int
+     */
+    public void setName(String name , int age){
+        System.out.println("name: " + name);
+        System.out.println("age:"+ age);
+
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+```
+
+```java
+    @Test
+    public void testMethod() throws ClassNotFoundException, NoSuchMethodException, 
+            IllegalAccessException, InstantiationException, InvocationTargetException {
+        Class clazz = Class.forName("com.java.reflection.Person");
+
+        //1、得到clazz 对应的类中有哪些方法,不能获取private方法
+        Method[] methods =clazz.getMethods();
+        System.out.print("        getMethods: ");
+        for (Method method : methods){
+            System.out.print(method.getName() + ", ");
+        }
+
+        //2、获取所有的方法(且只获取当着类声明的方法，包括private方法）
+        Method[] methods2 = clazz.getDeclaredMethods();
+        System.out.print("\ngetDeclaredMethods: ");
+        for (Method method : methods2){
+            System.out.print(method.getName() + ", ");
+        }
+
+        //3、获取指定的方法
+        Method method = clazz.getDeclaredMethod("setName",String.class);//第一个参数是方法名，后面的是方法里的参数
+        System.out.println("\nmethod : " + method);
+
+        Method method2 = clazz.getDeclaredMethod("setName",String.class ,int.class);//第一个参数是方法名，后面的是方法里的参数
+        System.out.println("method2: " + method2);
+
+        //4、执行方法！
+        Object obj = clazz.newInstance();
+        method2.invoke(obj, "changwen", 22);
+    }
+```
+
+>   getMethods: toString, getName, setName, setName, setAge, getAge, wait, wait, wait, equals, hashCode, getClass, notify, notifyAll,
+> getDeclaredMethods: toString, getName, setName, setName, setAge, getAge, privateMthod,
+> method : public void com.java.reflection.Person.setName(java.lang.String)
+> method2: public void com.java.reflection.Person.setName(java.lang.String,int)
+> 无参构造器
+> name: changwen
+> age:22
+
