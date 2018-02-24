@@ -1,12 +1,12 @@
 ---
-title: Java成神之路-jQuery（四）
+title: Java成神之路-jQuery和XML（四）
 tags: Java
 category: Java
 date: 2018-02-23 12:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0129.jpg)
 
-Java成神之路-jQuery
+Java成神之路-jQuery和XML
 <!--more-->
 ## jQuery 的选择器
 
@@ -1702,3 +1702,147 @@ jQuery 库拥有完整的 Ajax 兼容套件。其中的函数和方法允许我�
 - open深度开源——服务器相关，网址实用性高，涵盖量比较广.
 
 参考网址：<http://www.open-open.com/lib/list/76?pn=1>
+
+## XML和约束模式
+
+### 一、XML语法
+
+xml 可扩展标记语言，w3c组织发布的，用于保存有关系的数据，作为配置文件，描述程序模块之间的关系
+
+xml 文件开头必须包括下面的标签：
+
+```
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+```
+
+encoding 用来指定XML文档的字符编码，一般都是 UTF-8
+
+standalone 用来说明文档是否独立，默认是no，通常用不到这属性（如果是 yes 则表示XML既不需要约束文件来验证标记是否有效，也不需要XSL、CSS控制外观显示）
+
+ 
+
+**元素：**由一个标记来定义，包括开始和结束标记以及其中的内容，如 <book>深入体验java web开发内幕</book> （标记可以嵌套；格式良好的xml文档有且仅有一个根标签，其他标签都是根标签的子孙标签；在xml中空行和空格都会被作为原始内容解析）。XML只可有一个根节点。
+
+**命名规范：**区分大小写，<A></A>和<a></a>是两种不同的标签；不能以数字、下划线或者xml开头；不能包含空格、冒号：
+
+**属性：**XML解析属性的速度比解析子标记快，属性值必须用双引或单引引起来，属性也可被改为子标签的形式存储
+
+```
+<input name="txt1" />
+<input>
+    <name>txt1</name>
+</input>
+```
+
+**CDATA区：**其中的内容不会被xml解析引擎解析，而是作为原始内容显示，如 <![CDATA[这是是CDATA区的内容]]> 
+
+**处理指令：**简称PI，用来指挥xml解析引擎如何解析xml，以“<?”开头，以“?>”结尾，例如：文档声明 <?xml version="1.0" ?> ； <?xml-stylesheet type="text/css" href="1.css" ?> ，它用来通知xml解析引擎使用css文件控制xml显示外观
+
+### **二、XML约束模式**
+
+约束模式定义了XML文档的标记和结构，类似于数据表结构。XML约束模式的内容也要遵循一定的语法规则，其中主流有2种：**XML DTD** 和 **XML Schema**
+
+#### 2.1、XML DTD
+
+DTD约束即可以作为一个单独的文件（以.dtd为后缀）编写，也可以在XML文件内编写。其中包括元素之间的关系定义、元素属性定义、实体和符号的定义。
+
+1. 定义dtn文件bookshelf.dtd（“书”和括号“()”之间有空格，“名称”和“(#PCDATA)”之间同样也有）
+
+```
+<!ELEMENT 书架 (书+)>
+<!ELEMENT 书 (名称,作者,售价)>
+<!ELEMENT 名称 (#PCDATA)>
+<!ELEMENT 作者 (#PCDATA)>
+<!ELEMENT 售价 (#PCDATA)>
+```
+
+2. 在book.xml引入dtd约束文件
+
+
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 书架 SYSTEM "bookshelf.dtd" >
+<书架>
+    <书>
+        <名称>深入体验java web开发内幕</名称>
+        <作者>张孝祥</作者>
+        <售价>59元</售价>
+    </书>
+</书架>
+```
+
+
+
+3. 在chrome浏览器中的显示如下
+
+![img](https://images2015.cnblogs.com/blog/753478/201612/753478-20161217092121417-433671501.png)
+
+ 
+
+**XML文档引用外部DTD约束的2种方式**
+
+- 引用本地dtd文件 <!DOCTYPE 文档根结点 SYSTEM "DTD文件的URL"> 
+- 引用公用dtd文件 <!DOCTYPE 文档根结点 PUBLIC "DTD名称" "DTD文件的URL"> 
+
+```
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+```
+
+也可以把dtd约束写在xml文件中
+
+
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 书架[
+    <!ELEMENT 书架 (书+)>
+    <!ELEMENT 书 (名称,作者,售价)>
+    <!ELEMENT 名称 (#PCDATA)>
+    <!ELEMENT 作者 (#PCDATA)>
+    <!ELEMENT 售价 (#PCDATA)>
+]>
+<书架>
+    <书>
+        <名称>深入体验java web开发内幕</名称>
+        <作者>张孝祥</作者>
+        <售价>59元</售价>
+    </书>
+</书架>
+```
+
+
+
+ 
+
+#### 2.2、XML Schema
+
+schema比dtd好，已经成为w3c组织的标准，正逐步取代dtd
+
+**名称空间：**使用名称空间来区分每个约束模式文档，每个名称空间都用一个唯一的URI表示。
+
+**名称空间声明：**在XML文件中为一个约束模式文档的名称空间指定一个临时的简称，这个简称将作为元素和属性的前缀名。名称空间声明和元素的属性定义非常类似，可以位于任何一个元素的开始标记中，并且一个元素中可以声明多个名称空间；名称空间声明的基本格式为 xmlns:前缀名称="URI" ，其中的前缀名称就是临时的简称。 （xmlns是xml namespace的简写）。默认名称空间 xmlns="URI" ，即省略掉前缀名称。
+
+```
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema">
+```
+
+ 
+
+**使用名称空间引入XML Schema文档**
+
+由上面的标记只能知道 "http://www.w3.org/2001/XMLSchema" 是代表某个名称空间的URI，并不能知道名称空间XML Schema文档的访问地址，那就无法对XML文档进行校验。
+
+使用 xs:schemaLocation 以键值对的形式指定名称空间和其对应的xsd文件地址。使用之前，必须先引入xs的命名空间，这样才能使用 xs:schemaLocation 。因为 xmlns:xs="http://www.w3.org/2001/XMLSchema" 这个名称空间众所周知，所有无需指定它的访问地址。
+
+
+
+```
+<书架 xmlns="http://www.xxx.com/bookshelfSchema" 
+　　　　xmlns:test="http://www.demo.com/testSchema" 
+　　　　xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+　　　　xs:schemaLocation="http://www.xxx.com/bookshelfSchema http://www.xxx.com/xsd/bookshelf.xsd 
+                          http://www.demo.com/testSchema http://www.xxx.com/xsd/test.xsd                          
+       "
+>
+```
