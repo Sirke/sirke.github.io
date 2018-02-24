@@ -1129,5 +1129,1345 @@ java.util.Arrays 类能方便地操作数组，它提供的所有方法都是静
    -9
    ```
 
-   
+   # Java面向对象基础知识总结
+
+## 面向对象
+
+将跟对象有关的功能都封装在其内
+
+面向对象三大特征：封装，继承，多态
+
+找对象，创建对象，使用对象，并维护对象之间的关系
+
+1.  类：对现实中事物的描述
+
+2. 对象：就是实实在在 存在的事物映射到java中，描述就是class定义的类具体对象就是对应java在堆内存new建立的实体
+
+3. 类与对象：设计图纸就是类，里面包含对象的描述：比如说车的颜色，轮胎数，发动机....
+
+   > Note：对象建立的时候，属性值都会先置为null，显式初始化后才会变成具体的值
+
+
+
+## 成员变量VS局部变量
+
+根据定义变量位置的不同，可以将变量分为成员变量和局部变量
+
+* 成员变量是在类范围内定义的变量
+* 局部变量是在一个方法内定义的变量
+
+
+成员变量可以分为：
+
+* 实例属性 （不用static修饰） 随着实例属性的存在而存在
+* 类属性 （static修饰）随着类的存在而存在
+
+
+成员变量无需显式初始化，系统会自动对其进行默认初始化
+
+局部变量可分为：
+
+- 形参（形式参数）//在整个方法内有效
+- 方法局部变量 （方法内定义）// 从定义这个变量开始到方法结束这一段时间内有效  
+- 代码块局部变量 （代码块内定义）  //从定义这个变量开始到代码块结束这一段时间内有效
+
+局部变量除了形参外，都必须显示初始化，也就是要指定一个初始值，否则不能访问。
+
+示例：
+
+```java
+package object;
+
+/
+ * 成员变量和局部变量
+ * 
+ * */
+public class VariableTest {
+    
+    //成员变量
+    public static String staticname = "类属性";
+    public String nostaticname = "实例属性";
+    
+    //没有初始化的成员变量
+    public static String staticname1;
+    public String nostaticname1;
+    
+    //定义一个方法
+    public void info(){
+        //在方法中定义一个局部变量i
+        //int i;
+        //直接输出是输出不出来的，因为没有初始化
+        //System.out.println(i);
+        //定义一个局部变量i并初始化
+        int i = 10;
+        //输出i
+        System.out.println(i);
+    }
+    
+    //定义了一个静态的方法
+    public static void infos(){
+        int i = 20;
+        System.out.println(i);
+    }
+    
+    public static void main(String[] args) {
+        /*第一问：类属性和实例属性的范围一样吗？*/
+        //在没创建实例之前 可以调用类属性,但不能调用实例属性
+        System.out.println(VariableTest.staticname);//结果：类属性
+        //实例化对象之后,就可以调用实例属性了
+        VariableTest vt = new VariableTest();
+        System.out.println(vt.nostaticname);//结果：实例属性
+        /*--- 结论：在成员变量中，类属性的范围比实例属性大一点 ---*/
+        
+        System.out.println("----------");
+        
+        /*第二问：成员变量需要显性初始化吗？*/
+        //直接调用没有初始化的类属性
+        System.out.println(VariableTest.staticname1);//结果：null
+        //用实例化对象调用没有初始化的实例属性
+        System.out.println(vt.nostaticname1);//结果：null
+        /*--- 结论：成员变量会自动隐性初始化，赋给变量一个默认值  ---*/
+        
+        System.out.println("----------");
+        
+        /*第三问：如果用实例化后的对象去调用类属性会怎么样？*/
+        //vt.staticname; 
+        //这样会报错
+        //Syntax error, insert "VariableDeclarators" to complete LocalVariableDeclaration
+        //翻译：语法错误,插入“变量声明符”来完成局部变量声明
+        /*为什么会报错。一开始我以为是因为eclipse出错了
+         *后来我直接用文本文档重写了一个test
+         *编译文件后，报不是语句的错，然后我又试了一下
+         *VariableTest.staticname
+         *也是报错，说明这种写法是不正确的，具体为什么有待研究*/
+        vt.staticname = "改变了的类属性";
+        //如果同时给类属性赋值，就不会报错...有警告
+        //The static field Variable Test.static name should be accessed in a static way
+        //翻译：静态字段变量测试。静态的名字应该在一个静态方法访问
+        System.out.println(vt.staticname);//结果：改变了的类属性
+        //这样就不会报错，但是会有警告，同上↑
+        /*结论：用实例化后的对象调用类属性，格式正确的情况下，是可以调用的，但有警告
+         *通过对象调用类属性，同样可以改变类属性的值*/
+        
+        System.out.println("----------");
+        
+        //定义在方法中的局部变量
+        /*第四问：定义在方法中的局部变量，出了方法还能访问吗？*/
+        //调用方法
+        vt.info();//结果：10
+        //现在还能用info中的i吗？
+        //System.out.println(i);
+        //报错：i cannot be resolved to a variable
+        //翻译：i 不能转换成一个变量
+        /*结论：定义在方法中的局部变量，出了方法就不能被访问了*/
+        
+        System.out.println("----------");
+        
+        //定义在代码块中的局部变量
+        /*第五问：定义在代码块中的局部变量，出了代码块还能访问吗？*/
+        {
+            int j = 11;
+            System.out.println(j);//结果：11
+        }
+        //出了代码块
+        //System.out.println(j);
+        //同样报错，内容与上面的一样
+        /*定义在代码块中的局部变量，出了代码块就不能访问了*/
+        
+        System.out.println("----------");
+        
+        //后续：一个静态方法
+        infos();//结果：20
+        //这样依然报错
+        //System.out.println(i);
+        
+    }
+}
+```
+
+java允许局部变量和成员变量重名，局部变量会覆盖成员变量的值
+
+代码示例：
+
+```java
+package object;
+
+/
+ * 局部变量覆盖成员变量
+ * */
+public class VariableCover {
+    
+    /*当实例变量与方法中的局部变量同名时，
+     *局部变量的值会覆盖实例变量*/
+    //定义实例变量
+    public String city = "合肥";
+    private static String citys = "滁州";
+    //定义一个方法
+    public void function(){
+        String city = "蚌埠";
+        //输出
+        //方法中的同名局部变量会覆盖实例变量
+        System.out.println(city);//结果：蚌埠
+        //要想调用实例变量，可以用this
+        System.out.println(this.city);//结果：合肥
+    }
+    
+    public static void main(String[] args) {
+        String citys = "南京";
+        //方法中的同名局部变量会覆盖实例变量
+        System.out.println(citys);//结果：南京
+        //可以通过类名调用被覆盖的类属性
+        System.out.println(VariableCover.citys);//结果：滁州
+        
+        String city = "上海";
+        System.out.println(city);//结果：上海
+        //这样也可以
+        System.out.println(new VariableCover().city);//结果：合肥
+        new VariableCover().function();
+    }
+}
+```
+
+## 匿名对象：没有定义名称的对象
+
+匿名对象的传值调用：调用结束后，在堆内存新生成的对象成为垃圾（无指向）,因此过一段时间就会被垃圾回收机制回收.
+
+new Car().run(); 
+
+## 封装
+
+隐藏对象的属性和实现细节，仅仅提供公共访问方式；关键字：private 权限修饰符，只在本类中有效私有只是封装的一种表现形式；一般情况下，把属性都隐藏，提供公共访问方式访问；对访问的数据进行操作，提高代码的健壮性。
+
+1. 对外提供公开的用于设置对象属性的public方法
+
+​        设置set     获取get
+
+2. 在set方法中加入逻辑判断，过滤掉非法数据。
+3. 将所有的成员变量封装加上private，提供get、set方法
+
+## 构造函数
+
+函数名和类名一致，不能用return；对象一建立就会调用构造函数，可以用于对特定对象进行初始化；
+
+若类中没有定义构造函数，系统会默认加入一个空参数的构造函数；构造函数也可以私有化，私有化后不能使用该函数创建对象；如果所有构造函数都私有化，那么就不能创建对象；一般方法是对象调用才运行，可以被调用多次；构造代码块：给所有对象的共性进行初始化，对象一建立就运行，优先于构造函数执行
+
+  构造函数的最大作用就是创建对象时完成初始化，当我们在new一个对象并传入参数的时候，会自动调用构造函数并完成参数的初始化。
+
+## this
+
+代表当前调用对象（当变量前面加了this，该变量可以认为是成员变量）
+
+当本类功能内部需要使用本类对象时，都用this来表示
+
+## static
+
+静态，修饰成员（包括变量和方法,不能修饰局部），表示共性数据可以被类名调用：类名.静态成员被所有对象共享，只占一块内存（方法区，共享区，数据区）随着类的加载而加载，随着类的消失而消失，生命周期最长优先于对象存在被所有对象所共享可以直接被类名调用（可以不创建对象）
+
+String name；//成员变量，实例变量，随着对象的建立而存在
+
+static String country = "CN";//静态变量，类变量
+
+## 静态变量和成员变量的区别
+
+1. 存放位置：
+
+实例变量随着对象的建立存在于堆内存中，
+
+类变量随着类的加载存在于方法区中
+
+2. 生命周期：
+
+实例变量随着对象消失而消失
+
+类变量随着类消失而消失
+
+3. 使用注意事项：
+
+静态方法只能访问静态成员
+
+静态方法中不可以定义this, super关键字（因为静态有限于对象存在）
+
+主函数是静态的，作为程序入口，可以被jvm调用
+
+* 利：    对共享数据进行单独空间存储，节省空间.
+
+可以直接被类名调用
+
+* 弊：    生命周期过长，访问出现局限性（只能访问静态）
+
+public static void main(String[] args)解析：
+
+/*
+
+public：代表这该函数访问权限最大
+
+static：代表主函数随着类的加载就已经存在
+
+void：没有返回值
+
+main:特殊单词，可以被jvm识别
+
+String[] args:参数是一个数组，该数组中的元素是字符串
+
+*/
+
+静态变量：当对象中出现共享数据时
+
+静态函数： 当功能内部没有访问到非静态数据时
+
+若编译时，当前调用的class不存在时，会先去当前目录下找相应的java文件，如果有，则会直接编译，生成class文件
+
+静态代码块：随着类的加载而执行，只执行一次，优先于主函数
+
+用于给类进行初始化
+
+构造代码块会执行多次；
+
+运行顺序：静态代码块，构造代码块，构造函数
+
+
+
+一个对象的建立过程：
+
+Person p= new Person("zhangsan",20);
+
+1. 找到Person.class文件并加载到内存中
+2. 执行static代码块
+3. 在堆内存中开辟空间，分配内存地址（main函数开始）
+4. 在堆内存中建立对象的特有属性，并进行默认初始化
+5. 对属性进行显示初始化
+6. 对对象进行构造代码块初始化
+7. 对对象进行对应的构造函数初始化
+8. 将内存地址赋值给栈内存中的p变量
+
+初始化过程：默认初始化，显式初始化，构造初始化
+
+## 继承
+
+将类的共有属性提取出来，将之变为超类，父类提高了代码复用性、让类与类之间产生了关系，因此有了多态的特性，只支持单继承，不支持多继承。
+
+（容易带来安全隐患：当多个父类中定义了相同功能，但内容不同时，子类不确定执行哪个功能）
+
+但是java保留了这种机制，并用另一种体现形式来完成表示(接口的多实现);java支持多层继承，爷爷类-父亲类-孙子类，也叫做继承体系;在具体调用时，只需创建最子类的对象；父类可能不能创建对象;创建子类对象可以使用更多功能，包括共有的和特有的;查阅父类功能，创建子类对象使用功能; 聚集，聚合，组合
+
+1. 若子类和父类有同名变量：
+
+子类访问本类中的变量，前面加this；
+
+子类要访问父类的变量，前面加super；
+
+若变量不同名，则this和super（如果父类中有该变量）指向同一个变量
+
+若子类和父类中函数同名，则会使用子类的函数；父类的函数被覆盖（重写,overide）
+
+沿袭父类功能，但是重写功能内容.
+
+2. 子类方法覆盖父类方法条件：
+
+静态只能覆盖静态
+
+必须保证子类权限大于父类,（父类的权限不能为(private)）
+
+public >默认权限>private
+
+重载：只看参数列表
+
+重写：两个方法需要一模一样(包括返回值，参数类型)
+
+
+
+子类和父类的构造函数：绝对不能重写！
+
+父类先于子类加载，因为在子类的所有构造函数之前都有一句隐世的super()（空参数的父类构造函数）；
+
+父类中若有空参数的父类构造函数，子类中的构造函数可以不写super();
+
+父类中若没有空参数的构造函数，则子类的每个构造函数第一句需要显式的写明super(XXX);
+
+父类中的数据子类可以直接获取，子类对象在建立时，需要先查看父类是如何对这些数据进行初始化的；
+
+因此子类在对象初始化时，要先访问父类中的构造函数。
+
+this();或者super();都只能写在第一行，只能存在一个.
+
+子类中至少有一个构造函数会访问父类中的构造函数；
+
+extends Object（所有类的上帝，默认父类）
+
+ 
+
+## final
+
+修饰类，函数，变量
+
+被修饰的类不可以被继承
+
+被修饰的方法不可以被复写
+
+被修饰的变量是一个常量，只能赋值一次，可以修饰成员变量和局部变量
+
+所有字母都大写
+
+修饰类：public final
+
+## 抽象类和抽象方法
+
+abstract class Student//抽象方法必须存在于抽象类中，不能用该类创建对象，因为没有意义
+
+{
+
+abstract void study();//抽象方法，内容待定，要被使用，必须有子类复写该方法
+
+}
+
+子类如果不覆盖所有的抽象方法，则子类还是一个抽象类
+
+父类可以强制子类执行抽象方法；
+
+抽象类和一般类：抽象类多了一些不确定的功能（抽象方法），需要子类具体执行
+
+ 
+
+## 接口
+
+Interface,不能创建对象
+
+特点：
+
+1.所以变量都是public static final
+
+2.所有方法都是public abstract class interfaceTest implements Interface1
+
+接口可以被类多实现，一个类中可以实现多个interface：因为多个接口的方法都没有主体；
+
+一个类在继承一个父类的同时，可以实现多个接口；
+
+接口之间可以继承，并且一个接口可以继承多个接口
+
+接口的特点：降低了耦合性
+
+ 
+
+## 多态
+
+函数的多态体现：重载和覆盖
+
+1. 多态的体现：
+
+父类的引用指向了自己的子类对象
+
+父类的引用也可以接受自己的子类对象
+
+2. 多态的前提：
+
+类与类有关系，要么是继承，要么是实现;
+
+存在覆盖;
+
+3. 多态的好处：
+
+提高了程序的扩展性，但是只能使用父类的引用访问父类中的成员
+
+4. 多态的应用:
+
+多态中（非静态）成员函数的特点：
+
+编译时期：参阅引用型变量所属的类中是否有调用的方法，如果有，则编译可以通过
+
+运行时期：参阅对象所属类中是否有调用方法
+
+Fu z = new zi();
+
+编译时，看左边的Fu类
+
+运行时，看右边的zi类
+
+面试注意点：
+
+多态中成员变量和（静态）成员函数的特点：
+
+无论编译或运行，都参考左边
+
+静态绑定，只看引用，只参考左边；
+
+动态绑定，
+
+如果每个子类每次都要调用父类中的共性方法，可以在主函数中或者一个类中创建一个共性方法，
+
+参数以父类对象为准，调用的时候只需要将子类对象传入即可.
+
+object类：所有类的直接或间接父类
+
+## 内部类
+
+在Java中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。广泛意义上的内部类一般来说包括这四种：成员内部类、局部内部类、匿名内部类和静态内部类。
+
+内部类不用建立对象就可以访问外部类的成员变量和函数，包括私有；外部类要访问内部类，必须建立内部类对象；建立在非所属类中时，需先建立外部类，Outer.Inner in = new Outer().new Inner();内部类可以私有
+
+内部类访问外部类成员变量    Outer.this.x。
+
+注意：当内部类中定义了静态成员，则该内部类必须也是静态的
+
+当外部类中的静态方法访问内部类时，内部类也必须是静态的
+
+局部内部类不能静态
+
+内部类定义在局部时，不可以被成员修饰符修饰
+
+可以直接访问外部类中的成员
+
+但是不可以访问所在局部中的变量，只能访问被final修饰的局部变量
+
+成员修饰符(Static,private…)只能修饰成员变量
+
+匿名内部类：
+
+前提，内部类必须是继承一个类或者实现接口
+
+```java
+abstract class Absdemo{    
+	abstract void show();
+}
+		class Outer{
+			...
+		public void function(){
+			new Absdemo()//这是一个Absdemo的一个匿名子类对象
+							{
+			void show(){
+				System.out.println("匿名内部类！")；
+						}
+					}.show();
+				}
+...
+}
+```
+
+ 
+
+格式：new 父类或者接口(){定义子类内容}；
+
+其实匿名内部类是一个匿名子类对象，而且这个对象是带有内容的
+
+匿名内部类中定义的方法最好不要超过3个(方法比较多的话就直接创建一个有名字的子类)
+
+内部类参考: https://www.cnblogs.com/dolphin0520/p/3811445.html
+
+# Java常用类——Object的通用方法
+
+Java类层次结构的顶层是`Object`类，所有的其他类都隐式的继承于它。因此，所有的类也都从`Object`中继承了方法，其中最重要的几个方法如下表：
+
+| 方法                                                         | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `protected Object clone()`                                   | 创建并返回当前对象的一份拷贝                                 |
+| `protected void finalize()`                                  | 当垃圾回收器判断出该对象不再被引用时，就会调用finalize()方法。在[对象的创建与销毁](https://segmentfault.com/a/1190000004390247)中有对finalizers的介绍。 |
+| `boolean equals(Object obj)`                                 | 判断另外一个对象是否与当前对象相等                           |
+| `int hasCode()`                                              | 返回当前对象的哈希值                                         |
+| `String toString()`                                          | 返回一个表示当前对象的字符串                                 |
+| `void notify()`                                              | 唤醒一个等待当前对象的锁监视器的线程。我们将会在第9篇文章并发最佳实践中详细介绍此方法 |
+| `void notifyAll()`                                           | 唤醒所有等待当前对象的锁监视器的线程。我们将会在第9篇文章并发最佳实践中详细介绍此方法 |
+| `void wait()` `void wait(long timeout)` `void wait(long timeout, int nanos)` | 使当前线程进入等待状态直到其他线程调用了当前对象的`notify()`或`notifyAll()`方法。我们将会在第9篇文章并发最佳实践中详细介绍此方法 |
+
+表1
+
+重点介绍`equals`、`hashCode`、`toString`和`clone`方法。
+
+## equlas和hashCode方法
+
+默认情况下，Java 中任何两个对象引用(或类实例引用)只有指向相同的内存地址时才认为是相等的(引用相等)。但是Java允许通过重载`Object`的`equals()`方法给类自定义判等规则。听起来这是个很强大的概念，然而在适当的`equals()`方法实现需要满足以下几个规则限制：
+
+- 自反性：对象x必须与其自身相等，equals(x)返回true
+- 对称性：如果equals(y)为true，则y.equals(x)也要返回true
+- 传递性：如果equals(y)为true，并且y.equals(z)也为true，则x.equals(z)也要为true
+- 一致性：多次调用equals()方法应该返回相同值，除非对用于判等的任何一个属性进行了修改
+- 与null判等：equals(null)总是要返回false
+
+不幸的是Java编译器并不会在编译时对以上规则进行检查。然而，不遵守上述规则时可能会引入非常怪异并难以解决的问题。通用的建议是：如果需要重写`equals()`方法，请至少思考两次重写的必要性。遵循以上规则，我们为`Person`类重写一个简单的`equals()`实现。
+
+```java
+package com.javacodegeeks.advanced.objects;
+
+public class Person {
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    
+    public Person( final String firstName, final String lastName, final String email ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+
+    // Step 0: Please add the @Override annotation, it will ensure that your
+    // intention is to change the default implementation.
+    @Override
+    public boolean equals( Object obj ) {
+        // Step 1: Check if the 'obj' is null
+        if ( obj == null ) {
+            return false;
+        }
+        
+        // Step 2: Check if the 'obj' is pointing to the this instance
+        if ( this == obj ) {
+            return true;
+        }
+        
+        // Step 3: Check classes equality. Note of caution here: please do not use the 
+        // 'instanceof' operator unless class is declared as final. It may cause 
+        // an issues within class hierarchies.
+        if ( getClass() != obj.getClass() ) {
+            return false;
+        }
+        
+        // Step 4: Check individual fields equality
+        final Person other = (Person) obj;
+        if ( email == null ) {
+            if ( other.email != null ) {
+                return false;
+            } 
+        } else if( !email.equals( other.email ) ) {
+            return false;
+        }
+        
+        if ( firstName == null ) {
+            if ( other.firstName != null ) {
+                return false;
+            } 
+        } else if ( !firstName.equals( other.firstName ) ) {
+            return false;
+        }
+            
+        if ( lastName == null ) {
+            if ( other.lastName != null ) {
+                return false;
+            }
+        } else if ( !lastName.equals( other.lastName ) ) {
+            return false;
+        }
+        
+        return true;
+    }        
+}
+```
+
+在此部分介绍`hashCode()`方法并不是偶然的，至少要记住下面这条规则：任何时候重载`equals()`方法时，需要一并重载`hashCode()`方法。如果两个对象通过`equals()`方法判等时返回true，则每个对象的`hashCode()`方法需要返回相同的整数值（反过来并没有限制：如果两个对象通过`equals()`方法返回false，则`hashCode()`方法可以返回相同或不同的整数值）。下面看一下`Person`类的`hashCode()`方法：
+
+```java
+// Please add the @Override annotation, it will ensure that your
+// intention is to change the default implementation.
+@Override
+public int hashCode() {
+    final int prime = 31;
+        
+    int result = 1;
+    result = prime * result + ( ( email == null ) ? 0 : email.hashCode() );
+    result = prime * result + ( ( firstName == null ) ? 0 : firstName.hashCode() );
+    result = prime * result + ( ( lastName == null ) ? 0 : lastName.hashCode() );
+        
+    return result;
+}      
+```
+
+为了避免得到不可预期的结果，尽可能在实现`equals()`和`hashCode()`方法时使用`final`字段，从而保证方法的结果不会受到字段变化的影响(尽管真实场景中未必发生)。
+
+最后，要确保在实现`equals()`和`hashCode()`方法是使用相同的字段，以确保在不可预期的字段调整时保证这两个方法行为的一致性。
+
+## toString方法
+
+`toString()`是最让人感兴趣的方法，并且被重载的频率也更高。此方法的目的是提供对象(类实例)的字符串表现。如果对`toString()`方法重载恰当，能极大的简化debug难度和分析解决问题的过程。
+
+默认情况下，`toString()`的结果仅仅返回以`@`符分隔的全类名与对象哈希值串，然而这个结果在大多场景下并没什么用途。如下：
+
+```
+com.javacodegeeks.advanced.objects.Person@6104e2ee
+```
+
+我们来通过重写Person和`toString()`方法以使其输出更有用，下面是其中一种实例：
+
+```java
+// Please add the @Override annotation, it will ensure that your
+// intention is to change the default implementation.
+@Override
+public String toString() {
+    return String.format( "%s[email=%s, first name=%s, last name=%s]", 
+        getClass().getSimpleName(), email, firstName, lastName );
+}
+```
+
+现在我们在`toString()`方法中包含了Person的所有字段，然后执行下面的代码片段：
+
+```java
+final Person person = new Person( "John", "Smith", "john.smith@domain.com" );
+System.out.println( person.toString() );
+```
+
+控制台中将输出以下结果：
+
+```java
+Person[email=john.smith@domain.com, first name=John, last name=Smith]
+```
+
+遗憾的是在Java标准库中对`toString()`方法实现的支持有限，不过还是有几个有用的方法：`Objects.toString()`, `Arrays.toString() / Arrays.deepToString()`。下面看一下`Office`类以及其`toString()`的实现。
+
+```java
+package com.javacodegeeks.advanced.objects;
+
+import java.util.Arrays;
+
+public class Office {
+    private Person[] persons;
+
+    public Office( Person ... persons ) {
+         this.persons = Arrays.copyOf( persons, persons.length );
+    }
+    
+    @Override
+    public String toString() {
+        return String.format( "%s{persons=%s}", 
+            getClass().getSimpleName(), Arrays.toString( persons ) );
+    }
+    
+    public Person[] getPersons() {
+        return persons;
+    }
+}
+```
+
+相应的控制台输出如下(同时也有`Person`实例的字符串值)：
+
+```
+Office{persons=[Person[email=john.smith@domain.com, first name=John, last name=Smith]]}
+```
+
+Java社区实例了大量有用的类库以简化`toString()`的实现。其中广泛使用的有`Google Guava`的[Objects.toStringHelper](http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Objects.ToStringHelper.html)和`Apache Commons Lang`的[ToStringBuilder](http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/ToStringBuilder.html)
+
+## clone方法
+
+如果举出Java中最声名狼藉的方法，当属`clone()`无疑。`clone()`方法的目的很简单——返回对象实例的拷贝，然而有一堆理由可证明其使用并不像听起来那么轻而易举。
+
+首先，实现自定义的`clone()`方法时需要遵守[Java文档](http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#clone())中列出的一系列约定。其次，在`Object`类中`clone()`方法被声明为`protected`，所以为了提高方法的可见性，在重载时需要声明为`public`并把返回值类型调整为重载类自身类型。再次，重载类需要实现`Cloneable`接口(尽管该接口作为一种声明，并未提供任何方法定义)，否则将会抛出`CloneNotSupportedException`异常。最后，在实现`clone()`方法时要先调用`super.clone()`然后再执行其他需要的动作。下面看一下`Person`类中的实现：
+
+```java
+public class Person implements Cloneable {
+    // Please add the @Override annotation, it will ensure that your
+    // intention is to change the default implementation.
+    @Override
+    public Person clone() throws CloneNotSupportedException {
+        return ( Person )super.clone();
+    }
+}
+```
+
+上面的实现看起来简单直接，然而却隐藏着错误。当类实例的clone动作被执行时，未调用任何构造方法，后果将导致预料外的数据泄露。下面再看下`Office`类中的定义：
+
+```java
+package com.javacodegeeks.advanced.objects;
+
+import java.util.Arrays;
+
+public class Office implements Cloneable {
+    private Person[] persons;
+
+    public Office( Person ... persons ) {
+         this.persons = Arrays.copyOf( persons, persons.length );
+    }
+
+    @Override
+    public Office clone() throws CloneNotSupportedException {
+        return ( Office )super.clone();
+    }
+    
+    public Person[] getPersons() {
+        return persons;
+    }
+}
+```
+
+在这个实现中，`Office`实例克隆出来的所有对象都将共享相同的person数组，然而这并不是我们预期的行为。为了让`clone()`实现正确的行为，我们还要做一些额外的工作：
+
+```java
+@Override
+public Office clone() throws CloneNotSupportedException {
+    final Office clone = ( Office )super.clone();
+    clone.persons = persons.clone();
+    return clone;
+}
+```
+
+看起来是正确了，但如果对persons字段声明为`final`就将破坏这种正确性，因此`final`字段不能被重新赋值，从而导致数据再次被共享。
+
+总之，当需要类实例的拷贝时，尽可能避免使用`clone()` / `Cloneable`，相反可以选择其他更简单的替代方案(例如：C++程序员熟悉的复制构造方法，或者工厂方法——在[对象的创建与销毁](https://segmentfault.com/a/1190000004390247)中讨论过的一种有用的构造模式)。
+
+## equals方法与"=="操作符
+
+在Java中，`==`操作符与equals()方法有种奇怪的关系，却会引入大量的问题与困惑。大多数情况下(除比较基本数据类型)，==操作符执行的是引用相等：只要两个引用指向同一个对象时为true，否则返回false。下面举例说明二者的区别：
+
+```java
+final String str1 = new String( "bbb" );
+System.out.println( "Using == operator: " + ( str1 == "bbb" ) );
+System.out.println( "Using equals() method: " + str1.equals( "bbb" ) );
+```
+
+从我们人类的视角来看，str1 == "bbb" 和 str1.equals("bbb")并无区别：str1仅仅是"bbb"的一个引用，所以结果应该是相同的；但对于Java来说却不尽然：
+
+```
+Using == operator: false
+Using equals() method: true
+```
+
+尽管两个字符串看起来完全一样，但事实上却是两个不同的`String`实例。作为建议，在处理对象引用时要使用`equals()`或`Objects.equals()`进行判等，除非你真的是要判断两个引用是否指向同一个实例。
+
+## 有用的帮助类
+
+从Java 7发布以来，一批有用的帮助类加入到了标准Java库中，`Objects`便是其中之一。具体来说，以下三个方法可以简化你的`equals()`和`hashCode()`方法实现。
+
+| 方法                                        | 描述                                            |
+| ------------------------------------------- | ----------------------------------------------- |
+| `static boolean equals(Object a, Object b)` | 当参数中的两个对象相等时返回true，否则返回false |
+| `static int hash(Object...values)`          | 为参数列表生成哈希值                            |
+| `static int hashCode(Object o)`             | 为非null参数生成哈希值，如果参数为null返回0     |
+
+如果使用上面的方法来重写`Person`的`equals()`和`hashCode()`实现，代码量将会大大缩减，同时代码的可读性也将大大增强。
+
+```java
+@Override
+public boolean equals( Object obj ) {
+    if ( obj == null ) {
+        return false;
+    }
+        
+    if ( this == obj ) {
+        return true;
+    }
+        
+    if ( getClass() != obj.getClass() ) {
+        return false;
+    }
+        
+    final PersonObjects other = (PersonObjects) obj;
+    if( !Objects.equals( email, other.email ) ) {
+        return false;
+    } else if( !Objects.equals( firstName, other.firstName ) ) {
+        return false;            
+    } else if( !Objects.equals( lastName, other.lastName ) ) {
+        return false;            
+    }
+        
+    return true;
+}
+        
+@Override
+public int hashCode() {
+    return Objects.hash( email, firstName, lastName );
+}      
+```
+
+# Java API ——StringBuffer类
+
+## StringBuffer类概述
+
+　　1）我们如果对字符串进行拼接操作，每次拼接，都会构建一个新的String对象，既耗时，又浪费空间。而StringBuffer就可以解决这个问题
+
+　　2）线程安全的可变字符序列
+
+　　3）StringBuffer和String的区别
+
+　　　　· 前者长度和内容可变，后者不可变。
+
+​        　 · 如果使用前者做字符串的拼接，不会浪费太多的资源。
+
+ 
+
+## 构造方法
+
+​     StringBuffer 方法
+
+以下是 StringBuffer 类支持的主要方法：
+
+| 序号 | 方法描述                                                     |
+| ---- | ------------------------------------------------------------ |
+| 1    | public StringBuffer append(String s)将指定的字符串追加到此字符序列。 |
+| 2    | public StringBuffer reverse() 将此字符序列用其反转形式取代。 |
+| 3    | public delete(int start, int end)移除此序列的子字符串中的字符。 |
+| 4    | public insert(int offset, int i)将 `int` 参数的字符串表示形式插入此序列中。 |
+| 5    | replace(int start, int end, String str)使用给定 `String` 中的字符替换此序列的子字符串中的字符。 |
+
+下面的列表里的方法和 String 类的方法类似：
+
+| 序号 | 方法描述                                                     |
+| ---- | ------------------------------------------------------------ |
+| 1    | int capacity()返回当前容量。                                 |
+| 2    | char charAt(int index)返回此序列中指定索引处的 `char` 值。   |
+| 3    | void ensureCapacity(int minimumCapacity)确保容量至少等于指定的最小值。 |
+| 4    | void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)将字符从此序列复制到目标字符数组 `dst`。 |
+| 5    | int indexOf(String str)返回第一次出现的指定子字符串在该字符串中的索引。 |
+| 6    | int indexOf(String str, int fromIndex)从指定的索引处开始，返回第一次出现的指定子字符串在该字符串中的索引。 |
+| 7    | int lastIndexOf(String str)返回最右边出现的指定子字符串在此字符串中的索引。 |
+| 8    | int lastIndexOf(String str, int fromIndex)返回 String 对象中子字符串最后出现的位置。 |
+| 9    | int length() 返回长度（字符数）。                            |
+| 10   | void setCharAt(int index, char ch)将给定索引处的字符设置为 `ch`。 |
+| 11   | void setLength(int newLength)设置字符序列的长度。            |
+| 12   | CharSequence subSequence(int start, int end)返回一个新的字符序列，该字符序列是此序列的子序列。 |
+| 13   | String substring(int start)返回一个新的 `String`，它包含此字符序列当前所包含的字符子序列。 |
+| 14   | String substring(int start, int end)返回一个新的 `String`，它包含此序列当前所包含的字符子序列。 |
+| 15   | String toString()返回此序列中数据的字符串表示形式。          |
+
+
+
+```java
+public class StringBufferDemo01 {
+    public static void main(String[] args) {
+        // public StringBuffer():无参构造方法
+        StringBuffer sb = new StringBuffer();
+        System.out.println("sb:"+sb);
+        System.out.println("sb.capacity:"+sb.capacity()); //16
+        System.out.println("sb.length:"+sb.length()); //0
+        System.out.println("--------------------------");
+        // public StringBuffer(int capacity):指定容量的字符串缓冲区对象
+        StringBuffer sb2 = new StringBuffer(50);
+        System.out.println("sb2:"+sb2);
+        System.out.println("sb2.capacity:"+sb2.capacity()); //50
+        System.out.println("sb2.length:"+sb2.length()); //0
+        System.out.println("--------------------------");
+        // public StringBuffer(String str):指定字符串内容的字符串缓冲区对象
+        StringBuffer sb3 = new StringBuffer("hello");
+        System.out.println("sb3:"+sb3); //"hello"
+        System.out.println("sb3.capacity:"+sb3.capacity()); //21
+        System.out.println("sb3.length:"+sb3.length());//5
+        System.out.println("--------------------------");
+    }
+}
+```
+
+
+
+注意返回值，可以查看源码，默认空间是16。
+
+
+
+```java
+/
+     * Constructs a string buffer with no characters in it and an
+     * initial capacity of 16 characters.
+     */
+    public StringBuffer() {
+        super(16);
+    }
+    /
+     * Constructs a string buffer with no characters in it and
+     * the specified initial capacity.
+     *
+     * @param      capacity  the initial capacity.
+     * @exception  NegativeArraySizeException  if the <code>capacity</code>
+     *               argument is less than <code>0</code>.
+     */
+    public StringBuffer(int capacity) {
+        super(capacity);
+    }
+    /
+     * Constructs a string buffer initialized to the contents of the
+     * specified string. The initial capacity of the string buffer is
+     * <code>16</code> plus the length of the string argument.
+     *
+     * @param   str   the initial contents of the buffer.
+     * @exception NullPointerException if <code>str</code> is <code>null</code>
+     */
+    public StringBuffer(String str) {
+        super(str.length() + 16);
+        append(str);
+    }
+```
+
+
+
+ 
+
+## StringBuffer类的成员方法
+
+### 添加功能
+
+​            · public StringBuffer append(String str)：可以把任意类型数据添加到字符串缓冲区里面，并返回字符串缓冲区本身
+
+​            · public StringBuffer insert(int offset,String str)：在指定位置把任意类型的数据插入到字符串缓冲区里面，并返回字符串缓冲区本身
+
+
+
+```java
+public class StringBufferDemo02 {
+    public static void main(String[] args) {
+        // 创建字符串缓冲区对象
+        StringBuffer sb = new StringBuffer();
+        //返回对象本身
+        StringBuffer sb2 = sb.append("hello");
+        System.out.println("sb:"+sb); //sb:hello
+        System.out.println("sb2:"+sb2); //sb2:hello
+        System.out.println(sb == sb2); //true
+        //一步一步的添加数据
+        StringBuffer sb3 = new StringBuffer();
+        sb3.append("hello");
+        sb3.append(true);
+        sb3.append(12);
+        sb3.append(34.56);
+        System.out.println("sb3:"+sb3); //sb3:hellotrue1234.56
+        //链式编程
+        StringBuffer sb4 = new StringBuffer();
+        sb4.append("hello").append(true).append(12).append(34.56);
+        System.out.println("sb4:"+sb4); //sb4:hellotrue1234.56
+        //StringBuffer insert(int offset,Stringstr):插入数据
+        sb3.insert(5,"hello");
+        System.out.println("sb3:"+sb3); //sb3:hellohellotrue1234.56
+    }
+}
+```
+
+
+
+### 删除功能
+
+​            · public StringBuffer deleteCharAt(int index)：删除指定位置的字符，并返回本身
+
+​            · public StringBuffer delete(int start,int end)：删除从指定位置开始指定位置结束的内容，并返回本身
+
+
+
+```java
+public class StringBufferDemo03 {
+    public static void main(String[] args) {
+        // 创建对象
+        StringBuffer sb1 = new StringBuffer();
+        // 创建对象
+        sb1.append("hello").append("world").append("java");
+        System.out.println("sb1:"+sb1); //sb1:helloworldjava
+        // public StringBuffer deleteCharAt(int index):删除指定位置的字符，并返回本身
+        // 需求：我要删除e这个字符
+        sb1.deleteCharAt(1);
+        // 需求:我要删除第一个l这个字符
+        sb1.deleteCharAt(1);
+        System.out.println("sb1:"+sb1);  //sb1:hloworldjava
+        System.out.println("----------------");
+        // public StringBuffer delete(int start,int end):删除从指定位置开始指定位置结束的内容，并返回本身
+        StringBuffer sb2 = new StringBuffer("Hello World Java");
+        System.out.println("sb2:"+sb2); //sb2:Hello World Java
+        // 需求：我要删除World这个字符串
+        sb2.delete(5,11);
+        System.out.println("sb2:"+sb2); //sb2:Hello Java
+        // 需求:我要删除所有的数据
+        sb2.delete(0, sb2.length());
+        System.out.println("sb2:"+sb2); //sb2:
+    }
+}
+```
+
+
+
+### 替换功能
+
+​            · public StringBuffer replace(int start,int end,String str)：使用给定String中的字符替换词序列的子字符串中的字符
+
+
+
+```java
+public class StringBufferDemo04 {
+    public static void main(String[] args) {
+        // 创建字符串缓冲区对象
+        StringBuffer sb = new StringBuffer();
+        // 添加数据
+        sb.append("hello");
+        sb.append("world");
+        sb.append("java");
+        System.out.println("sb:" + sb); //sb:helloworldjava
+        // public StringBuffer replace(int start,int end,String str):从start开始到end用str替换
+        // 需求：我要把world这个数据替换为"节日快乐"
+        sb.replace(5,10,"节日快乐");
+        System.out.println("sb:"+sb); //sb:hello节日快乐java
+    }
+}
+```
+
+
+
+### 反转功能  
+
+​            · public StringBuffer reverse()：将此字符序列用其反转形式取代，返回对象本身
+
+
+
+```java
+public class StringBufferDemo05 {
+    public static void main(String[] args) {
+        //创建字符串缓冲区对象
+        StringBuffer sb = new StringBuffer();
+        //添加数据
+        sb.append("林青霞爱我");
+        System.out.println("sb:"+sb); //sb:林青霞爱我
+        //public StringBuffer reverse()
+        sb.reverse();
+        System.out.println("sb:"+sb); //sb:我爱霞青林
+    }
+}
+```
+
+
+
+### 截取功能
+
+​            · public String substring(int start)：返回一个新的String，它包含此字符序列当前所包含的字符子序列
+
+​            · public String substring(int start,int end)：返回一个新的String，它包含此序列当前所包含的字符子序列
+
+​        注意：截取功能和前面几个功能的不同
+
+​            · 返回值类型是String类型，本身没有发生改变
+
+
+
+```java
+public class StringBufferDemo06 {
+    public static void main(String[] args) {
+        //创建字符串缓冲区对象
+        StringBuffer sb = new StringBuffer();
+        sb.append("hello").append("world").append("java");
+        System.out.println("sb:"+sb); //sb:helloworldjava
+        //截取功能
+        String s = sb.substring(5);
+        System.out.println("s:"+s); //s:worldjava
+        System.out.println("sb:"+sb); //sb:helloworldjava
+        String ss = sb.substring(5,10);
+        System.out.println("ss:"+ss); //ss:world
+        System.out.println("sb:"+sb); //sb:helloworldjava
+    }
+}
+```
+
+
+
+ 
+
+## String与StringBuffer的相互转换
+
+
+
+```java
+public class StringBufferDemo07 {
+    public static void main(String[] args) {
+        //String --> StringBuffer
+        String s = "hello";
+        // 注意：不能把字符串的值直接赋值给StringBuffer
+        // StringBuffer sb = "hello";
+        // StringBuffer sb = s;
+        //方式一：通过构造方法
+        StringBuffer sb = new StringBuffer(s);
+        //方式二：通过append方法
+        StringBuffer sb2 = new StringBuffer();
+        sb2.append(s);
+        System.out.println("sb:"+sb); //sb:hello
+        System.out.println("sb2:"+sb2); //sb2:hello
+        System.out.println("-------------------------");
+        //StringBuffer --> String
+         StringBuffer buffer = new StringBuffer("java");
+        //方式一：通过构造方法
+        String str = new String(buffer);
+        //方式二：通过toString()方法
+        String str2 = buffer.toString();
+        System.out.println("str:"+str); //str:java
+        System.out.println("str2:"+str2); //str2:java
+    }
+}
+```
+
+
+
+## 把数组拼接成一个字符串
+
+
+
+```java
+public class StringBufferDemo08 {
+    public static void main(String[] args) {
+        //定义一个数组
+        int[] arr = {44,33,55,11,22};
+        //定义功能
+        //方式一：用String做拼接的方式
+        String result1 = arrayToString1(arr);
+        System.out.println("result1:"+result1); //result1:[44,33,55,11,22]
+        //方式二：用StringBuffer做拼接的方式
+        String result2 = arrayToString2(arr);
+        System.out.println("result2:"+result2); //result2:[44,33,55,11,22]
+    }
+    public static String arrayToString1(int[] arr){
+        String s = "";
+        s += "[";
+        for(int x = 0; x < arr.length; x++){
+            if (x == arr.length - 1){
+                s += arr[x];
+            }else{
+                s += arr[x];
+                s += ',';
+            }
+        }
+        s += ']';
+        return s;
+    }
+    public static String arrayToString2(int[] arr){
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        for(int x = 0; x < arr.length; x++){
+            if (x == arr.length-1){
+                sb.append(arr[x]);
+            }else{
+                sb.append(arr[x]).append(",");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
+```
+
+
+
+## 把字符串反转
+
+
+
+```java
+public class StringBufferDemo09 {
+    public static void main(String[] args) {
+        String s = "I love Java";
+        String result1 = myReverse1(s);
+        System.out.println("result1:"+result1); //result1:avaJ evol I
+        String result2 = myReverse2(s);
+        System.out.println("result2:"+result2); //result2:avaJ evol I
+    }
+    public static String myReverse1(String s){
+        String result = "";
+        char[] ch = s.toCharArray();
+        for(int x = s.length()-1; x >= 0; x--){
+            result += ch[x];
+        }
+        return result;
+    }
+    public static String myReverse2(String s){
+        return new StringBuffer(s).reverse().toString();
+    }
+}
+```
+
+
+
+## 判断一个字符串是否是对称的
+
+
+
+```java
+public class StringBufferDemo10 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一个字符串：");
+        String str = sc.nextLine();  //abcba
+        boolean result1 = isSymmertrical1(str);
+        System.out.println("result1:"+result1); //result1:true
+        boolean result2 = isSymmertrical2(str); //result2:true
+        System.out.println("result2:"+result2);
+    }
+    public static boolean isSymmertrical1(String s){
+        boolean flag = true;
+        char ch[] = s.toCharArray();
+        for(int start = 0, end = ch.length-1; start <= end;start++,end--){
+            if (ch[start] != ch[end]){
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+    public static boolean isSymmertrical2(String s){
+        return new StringBuffer(s).reverse().toString().equals(s);
+    }
+}
+```
+
+
+
+ 
+
+## 了解一下StringBuilder类
+
+​        一个可变的字符序列。此类提供一个与 `StringBuffer` 兼容的 API，但不保证同步。该类被设计用作 `StringBuffer` 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 `StringBuffer` 要快。
+
+​        只要将StringBuffer的功能替换到StringBuilder就可以了。
+
+## String,StringBuffer,StringBuilder的区别
+
+　　1）String是内容不可变的，而StringBuffer,StringBuilder都是内容可变的。
+
+　　2）StringBuffer是同步的，数据安全,效率低;StringBuilder是不同步的,数据不安全,效率高
+
+ 
+
+10、StringBuffer和数组的区别？
+
+​            A：二者都可以看出是一个容器，装其他的数据。
+
+​            B：但是呢，StringBuffer的数据最终是一个字符串数据。
+
+​            C：而数组可以放置多种数据，但必须是同一种数据类型的。
+
+11、
+
+​        A：String作为参数传递
+
+​        B：StringBuffer作为参数传递
+
+​        形式参数：
+
+　　　　　　基本类型：形式参数的改变不影响实际参数
+
+　　　　　　引用类型：形式参数的改变直接影响实际参数
+
+​        注意：
+
+　　　　String作为参数传递，效果和基本类型作为参数传递是一样的。
+
+
+
+```java
+public class StringBufferDemo11 {
+    public static void main(String[] args) {
+        String s1 = "hello";
+        String s2 = "world";
+        System.out.println(s1 + "---" + s2);//hello---world
+        change(s1, s2);
+        System.out.println(s1 + "---" + s2);//hello---world
+        StringBuffer sb1 = new StringBuffer("hello");
+        StringBuffer sb2 = new StringBuffer("world");
+        System.out.println(sb1 + "---" + sb2);//hello---world
+        change(sb1, sb2);
+        System.out.println(sb1 + "---" + sb2);//hello---worldworld
+    }
+    //Stringz作为形参传递不会改变实参
+    public static void change(String s1, String s2) {
+        s1 = s2;
+        s2 = s1 + s2;
+    }
+    //StringBuffer作为形参，如果直接赋值则不会影响实参，但是如果是使用方法改变形参则会影响实参
+    public static void change(StringBuffer sb1, StringBuffer sb2) {
+        sb1 = sb2;
+        sb2.append(sb1);
+    }
+}
+```
+
+
 
