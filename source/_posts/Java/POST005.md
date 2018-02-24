@@ -2732,4 +2732,177 @@ Long.toBinaryString(long l)
 Long.toOctalString(long l)
 Long.toHexString(long l)
 Long.toString(long l, int p)//p作为任意进制
+# Java类——Math类
+
+## java.math.Math类常用的常量和方法
+
+```java
+Math.PI //记录的圆周率
+Math.E//记录e的常量
+Math.abs //求绝对值
+Math.sin //正弦函数 Math.asin 反正弦函数
+Math.cos //余弦函数 Math.acos 反余弦函数
+Math.tan //正切函数 Math.atan 反正切函数&amp;nbsp;Math.atan2 商的反正切函数
+Math.toDegrees //弧度转化为角度 Math.toRadians 角度转化为弧度
+Math.ceil //得到不小于某数的最大整数
+Math.floor //得到不大于某数的最大整数
+例如：Math.floor(12.7) =12.0
+ceil()//是天花板，即向上取整。floor是地板，向下取整。round是四舍五入。
+Math.IEEEremainder //求余
+Math.max //求两数中最大
+Math.min //求两数中最小
+Math.sqrt //求开方
+Math.pow //求某数的任意次方, 抛出ArithmeticException处理溢出异常
+Math.sqrt(x)：//平方根
+Math.pow(x,y)：//x的y次方
+Math.exp //求e的任意次方
+Math.log10 //以10为底的对数
+Math.log //自然对数
+Math.rint //求距离某数最近的整数（可能比某数大，也可能比它小）
+Math.round //同上，返回int型或者long型（上一个函数返回double型）
+Math.random //返回0，1之间的一个随机数</p>
+java.math.BigInteger(大整数)：
+BigInteger bi1=new BigInteger("1234567890123456890");
+BigInteger bi2=BigInteger.valueOf(123L);
+bi1=bi1.add(bi2);//b1+b2
+bi1=bi1.multiply(bi2);//b1*b
+bi1=bi1.subtract(bi2);//b1-b2
+bi1=bi1.divide(bi2);// b1/b2
+java.math.BigDecimal(大浮点数):
+BigDecimal bd = new BigDecimal("3.1415926");
+bd = bd.setScale(2,BigDecimal.ROUND_DOWN);//取3.1415926小数点后面二位
+```
+
+## Java的Math类封装了很多与数学有关的属性和方法，大致如下：
+
+```java
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(Math.E);//比任何其他值都更接近 e（即自然对数的底数）的 double 值。
+		System.out.println(Math.PI);//比任何其他值都更接近 pi（即圆的周长与直径之比）的 double 值。
+		/*
+		 * 1.abs绝对值函数
+		 * 对各种数据类型求绝对值
+		 */
+		System.out.println(Math.abs(-10));//输出10
+		
+		/*
+		 * 2.三角函数与反三角函数
+		 * cos求余弦
+		 * sin求正弦
+		 * tan求正切
+		 * acos求反余弦
+		 * asin求反正弦
+		 * atan求反正切
+		 * atan2(y,x)求向量(x,y)与x轴夹角
+		 */
+		System.out.println(Math.acos(-1.0));//输出圆周率3.14...
+		System.out.println(Math.atan2(1.0, 1.0));//输出 π/4 的小数值
+		
+		/*
+		 * 3.开根号
+		 * cbrt(x)开立方
+		 * sqrt(x)开平方
+		 * hypot(x,y)求sqrt(x*x+y*y)在求两点间距离时有用sqrt((x1-x2)^2+(y1-y2)^2)
+		 */
+		System.out.println(Math.sqrt(4.0));//输出2.0
+		System.out.println(Math.cbrt(8.0));//输出2.0
+		System.out.println(Math.hypot(3.0, 4.0));//输出5.0
+		
+		/*
+		 * 4.最值
+		 * max(a,b)求最大值
+		 * min(a,b)求最小值
+		 */
+		System.out.println(Math.max(1, 2));//输出2
+		System.out.println(Math.min(1.9, -0.2));//输出-0.2
+		/*
+		 * 5.对数
+		 * log(a) a的自然对数(底数是e)
+		 * log10(a) a 的底数为10的对数
+		 * log1p(a) a+1的自然对数
+		 * 值得注意的是，前面其他函数都有重载，对数运算的函数只能传double型数据并返回double型数据
+		 */
+		System.out.println(Math.log(Math.E));//输出1.0
+		System.out.println(Math.log10(10));//输出1.0
+		System.out.println(Math.log1p(Math.E-1.0));//输出1.0
+		/*
+		 * 6.幂
+		 * exp(x) 返回e^x的值
+		 * expm1(x) 返回e^x - 1的值
+		 * pow(x,y) 返回x^y的值
+		 * 这里可用的数据类型也只有double型
+		 */
+		System.out.println(Math.exp(2));//输出E^2的值
+		System.out.println(Math.pow(2.0, 3.0));//输出8.0
+		
+		/*
+		 * 7.随机数
+		 * random()返回[0.0,1.0)之间的double值
+		 * 这个产生的随机数其实可以通过*x控制
+		 * 比如(int)(random*100)后可以得到[0,100)之间的整数
+		 */
+		System.out.println((int)(Math.random()*100));//输出[0,100)间的随机数
+		
+		/*
+		 * 8.转换
+		 * toDegrees(a) 弧度换角度
+		 * toRadians(a) 角度换弧度
+		 */
+		System.out.println(Math.toDegrees(Math.PI));//输出180.0
+		System.out.println(Math.toRadians(180));//输出 π 的值
+		/*
+		 * 9.其他
+		 */
+		
+		//copySign(x,y) 返回 用y的符号取代x的符号后新的x值
+		System.out.println(Math.copySign(-1.0, 2.0));//输出1.0
+		System.out.println(Math.copySign(2.0, -1.0));//输出-2.0
+		
+		//ceil(a) 返回大于a的第一个整数所对应的浮点数(值是整的，类型是浮点型)
+		//可以通过强制转换将类型换成整型
+		System.out.println(Math.ceil(1.3443));//输出2.0
+		System.out.println((int)Math.ceil(1.3443));//输出2
+		
+		//floor(a) 返回小于a的第一个整数所对应的浮点数(值是整的，类型是浮点型)
+		System.out.println(Math.floor(1.3443));//输出1.0
+		
+		//rint(a) 返回最接近a的整数的double值
+		System.out.println(Math.rint(1.2));//输出1.0
+		System.out.println(Math.rint(1.8));//输出2.0
+		
+		
+		//nextAfter(a,b) 返回(a,b)或(b,a)间与a相邻的浮点数 b可以比a小
+		System.out.println(Math.nextAfter(1.2, 2.7));//输出1.2000000000000002
+		System.out.println(Math.nextAfter(1.2, -1));//输出1.1999999999999997	
+		//所以这里的b是控制条件
+		
+		//nextUp(a) 返回比a大一点点的浮点数
+		System.out.println(Math.nextUp(1.2));//输出1.2000000000000002
+		
+		//nextDown(a) 返回比a小一点点的浮点数
+		System.out.println(Math.nextDown(1.2));//输出1.1999999999999997	
+	}
+}
+```
+
+另外，当我尝试这样使用数学类的时候是错误的：
+
+ ```
+   Math m = new Math();m.sqrt(4.0);  
+ ```
+
+为什么呢？
+
+查了下Math的源码，惊呆了！它的构造方法居然是这样写的：
+
+```
+private Math() {}  
+```
+
+构造方法写成私有的
+
+所以根本就不能创建对象。
 
