@@ -1,12 +1,12 @@
 ---
-title: Java成神之路-数据库（七）
+title: Java成神之路-数据库、PowerDesigner（七）
 tags: Java
 category: Java
 date: 2018-02-23 15:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0132.jpg)
 
-Java成神之路-数据库
+Java成神之路-数据库、PowerDesigner
 <!--more-->
 # Mysql数据库
 
@@ -564,3 +564,22 @@ FROM   opendatasource( 'SQLOLEDB ',  'Data Source=ip/ServerName;User ID=登陆�
 insert opendatasource( 'SQLOLEDB ',  'Data Source=ip/ServerName;User ID=登陆名;Password=密码 ').数据库.dbo.表名
 select * from 本地表
 ```
+# PowerDesigner设计建造MySQL数据库
+
+## 制作建库脚本
+
+1. 设计CDM(Conceptual Data Model)
+2. 选择 Tools -> Generate Physical Data Model ，选择对应的DBMS为MySQL，生成PDM
+3. 选择 Database -> Generate Database ，在弹出的 Database Generation 对话框中选择脚本存取路径及脚本文件名称
+4. 点击确定后生成数据库建库脚本(*.sql)
+
+## 执行sql脚本 
+
+### 第一种方法: 
+
+在命令行下(未连接数据库),输入 mysql -h localhost -u root -p123456 < F:/mytest/testdb.sql (注意路径不用加引号的!!) 回车即可. 
+
+### 第二种方法: 
+
+在命令行下(已连接数据库,此时的提示符为 mysql> ),输入 source F:/mytest/testdb.sql (注意路径不用加引号的) 回车即可
+
