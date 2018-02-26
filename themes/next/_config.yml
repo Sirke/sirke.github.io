@@ -82,7 +82,8 @@ footer:
   custom_text: <a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp;
                 <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp;
                 <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp;
-                <a href="http://skei.gitee.io/" target="_blank" title="Mirror Website"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">MirrorSite</span></a>&nbsp;
+                <a href="/sitemap.xml" target="_blank" title="SiteMap"><i class="fa fa-2x fa-fw fa-sitemap"></i> <span class="hidden">Map</span></a>&nbsp;
+                <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp;
                 Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp;
                 <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a>
 # ---------------------------------------------------------------
