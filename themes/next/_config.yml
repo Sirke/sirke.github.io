@@ -84,7 +84,7 @@ footer:
                 <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp;
                 <a href="/sitemap.xml" target="_blank" title="SiteMap"><i class="fa fa-2x fa-fw fa-sitemap"></i> <span class="hidden">Map</span></a>&nbsp;
                 <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp;
-                Hosted by <a href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a>&nbsp;
+                <a href="https://pages.coding.me" style="font-weight:bold"><img style="height:28px" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png">Coding</a>&nbsp;
                 <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a>
 # ---------------------------------------------------------------
 # SEO Settings
