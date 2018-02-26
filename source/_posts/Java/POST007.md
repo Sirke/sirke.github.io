@@ -1,12 +1,12 @@
 ---
-title: Java成神之路-数据库、PowerDesigner（七）
+title: Java成神之路-数据库、PowerDesigner、JDBC（七）
 tags: Java
 category: Java
 date: 2018-02-23 15:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0132.jpg)
 
-Java成神之路-数据库、PowerDesigner
+Java成神之路-数据库、PowerDesigner、JDBC
 <!--more-->
 # Mysql数据库
 
@@ -582,4 +582,419 @@ select * from 本地表
 ### 第二种方法: 
 
 在命令行下(已连接数据库,此时的提示符为 mysql> ),输入 source F:/mytest/testdb.sql (注意路径不用加引号的) 回车即可
+
+# JDBC
+
+## JDBC概念
+
+JDBC（Java DataBase Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。
+
+## 一、JDBC常用接口、类介绍
+
+JDBC提供对独立于数据库统一的API，用以执行SQL命令。API常用的类、接口如下：
+
+### **DriverManager**
+
+管理JDBC驱动的服务类，主要通过它获取Connection数据库链接，常用方法如下：
+
+
+```java
+public static synchronized Connection getConnection(String url, String user, String password) throws Exception;
+```
+
+该方法获得url对应的数据库的连接。
+
+### **Connection**常用数据库操作方法：
+
+
+```java
+Statement createStatement throws SQLException: //该方法返回一个Statement对象。
+
+PreparedStatement prepareStatement(String sql) throws SQLException;//该方法返回预编译的Statement对象， 即将SQL语句提交到数据库进行预编译。
+
+CallableStatement prepareCall(String sql) throws SQLException：//该方法返回CallableStatement对象，该对象用于存储过程的调用。
+```
+
+上面的三个方法都是返回执行SQL语句的Statement对象，PreparedStatement、CallableStatement的对象是Statement的子类，只有获得Statement之后才可以执行SQL语句。
+
+### Connection控制事务
+
+
+```java
+Savepoint setSavepoint(): //创建一个保存点
+
+Savepoint setSavepoint(String name)：//创建一个带有名称的保存点
+
+void setTransactionIsolation(int level)://设置事务隔离级别
+
+void rollback()：//回滚事务
+
+void rollback(Savepoint savepoint)：//回滚到指定保存点
+
+void setAutoCommit(boolean autoCommit): //关闭自动提交，打开事务
+
+void commit()：提交事务
+```
+
+
+### **Statement**
+
+
+用于执行SQL语句的API接口，该对象可以执行DDL、DCL语句，也可以执行DML语句，还可以执行SQL查询语句，当执行查询语句是返回结果集，常用方法如下：
+
+
+```java
+ResultSet executeQuery(String sql) throws SQLException：//该方法用于执行查询语句，并返回查询结果对应的ResultSet对象，该方法只用于查询语句。
+
+int executeUpdate(String sql) throws SQLException：//该方法用于执行DML语句，并返回受影响的行数；该方法也可以执行DDL，执行DDL返回0；
+
+boolean execute(String sql) throws SQLException：//该方法可以执行任何SQL语句，如果执行后第一个结果是ResultSet对象，则返回true；如果执行后第一个结果为受影响的行数或没有任何结果，则返回false；
+```
+
+### **PreparedStatement**
+
+
+预编译的statement对象，PreparedStatement是Statement的子接口，它允许数据库预编译SQL（通常指带参数SQL）语句，以后每次只改变SQL命令参数，避免数据库每次都编译SQL语句，这样性能就比较好。而相对于Statement而言，使用PreparedStatement执行SQL语句时，无需重新传入SQL语句，因为它已经预编译了SQL语句。
+
+但是PreparedStatement需要为编译的SQL语句传入参数值，所以它比了如下方法：
+
+```
+void setXxx(int index, value)//根据该方法传入的参数值的类型不同，需要使用不同的方法。
+```
+
+传入的值的类型根据传入的SQL语句参数而定。
+
+
+### **ResultSet**
+
+
+```java
+void close() throws SQLException：//释放、关闭ResultSet对象
+
+boolean absolute(int row)://将结果集移动到第几行，如果row是负数，则移动到倒数第几行。如果移动到的记录指针指向一条有效记录，则该方法返回true；
+
+void beforeFisrt(): //将ResultSet的记录指针定位到首行之前，这是ResultSet结果集记录指针的初始状态：记录指针的起始位置位于第一行之前。
+
+boolean first()：//将ResultSet的记录指针定位到首行。如果移动后的记录指针指向一条有效记录，则该方法返回true。
+
+boolean previous()：//将ResultSet的记录指针定位到上一行，如果移动后的记录指针指向一条有效记录，则该方法返回true。
+
+boolean next()：//将ResultSet的记录指针定位到下一行。如果移动后的记录指针指向一条有效记录，则返回true。
+
+boolean last()：//将ResultSet的记录指针定位到最后一行。如果移动后的记录指针指向一条有效记录，则返回true。
+
+void afterLast()：//将ResultSet的记录指针定位到最后一行之后。
+```
+
+
+注意：在JDK1.4以前只支持next移动，且每次移动一个位置。到JDK1.5就可以随意定位。
+
+
+## 二、JDBC编程步骤
+
+进行jdbc编程步骤大致如下：
+
+1. 加载数据库驱动
+
+Class.forName(driverClass)
+上面的dirverClass就是数据库驱动类所对应的类路径字符串，根据不同数据库厂商提供的驱动也不同。
+
+2. 通过DriverManager获取数据库的链接
+
+DriverManager.getConnection(String url, Stirng user, String pass)
+当使用DriverManager来获取链接，需要传入三个参数：分别是数据量的url、用户名、密码。
+
+3. 通过Connection对象创建Statement对象，Connection创建Statement的方法如下三个：
+
+createStatement()创建基本的Statement对象。
+prepareStatement(String sql)：根据传入的sql语句创建预编译的Statement对象。
+prepareCall(String sql)：根据传入的sql语句创建CallableStatement对象
+
+4. Statement执行SQL语句，Statement有三大方法来执行SQL语句：
+
+execute：可以执行任何SQL语句，单比较麻烦
+executeUpdate：可以执行DML、DDL语句。执行DML返回受影响的SQL语句行数，执行DDL返回0；
+executeQuery：只能执行查询语句，执行后返回代表查询结果的ResultSet对象。
+
+5. 操作结果集，针对ResultSet
+
+主要移动指针和获得值
+
+next、previous、first、last、beforeFrist、afterLast、absolute等移动指针的方法。
+
+getXxx获得移动指针指向行，特定列、索引的值。使用列名作为获取值的参数可读性好、使用索引作为获取参数性能好。
+
+
+## 三、JDBC执行SQL语句
+
+1. executeUpdate执行DDL、DML语句
+
+Statement提供了execute、executeUpdate、executeQuery三种方法执行，下面用executeUpdate来执行DDL、DML语句，executeUpdate执行DDL返回值是0，执行了DML是返回影响后的记录条数。
+
+
+2. execute执行SQL语句
+
+当我们知道SQL语句是完成修改语句时，我们就知道使用executeUpdate语句来完成操作；如果SQL语句是完成查询操作的时候，我们就使用executeQuery来完成。
+
+如果我们不知道SQL语句完成什么操作的时候，就可以使用execute方法来完成。
+
+当我们使用Statement对象的execute方法执行SQL语句后返回的是boolean值，这就说明该语句能否返回ResultSet对象。
+
+那么，如何判断是否是ResultSet对象？方法如下：
+
+getResultSet()：获取该Statement执行查询语句返回的ResultSet对象
+
+getUpdateCount()：获取该Statement执行修改语句影响的行数
+
+3. PrepareStatement执行SQL语句
+
+
+对于我们操作数据库的时候，执行某一条SQL语句的时候。只有它的参数不同，而SQL语句相同。
+
+我们可以使用占位符来设置我们的参数信息，PrepareStatement中的占位符是？，用？代替参数的位置。
+
+
+```sql
+insert into table values(?, ‘abc’, ?);
+```
+
+占位符仅仅支持PrepareStatement，而Statement不支持占位符。PrepareStatement是预编译SQL语句的，然后将占位符替换成参数。而Statement就不能做到。
+
+
+PrepareStatement对象也有execute、executeUpdate、executeQuery这三个方法，但这三个方法都无需传递参数。只需用PrepareStatement来设置占位符的参数，通过用setXxxx(index, value)来完成设置参数信息即可。PrepareStatement的效率要比Statement的效率高。PrepareStatement设置参数可以不拼接字符串，而Statement设置参数信息的时候需要手动拼接字符串。拼接字符串容易操作程序错误、可读性降低、维护性升高、程序性能下降。而PrepareStatement直接设置参数信息就降低了编程的复杂度。并且它可以放在SQL注入。因为它是通过setXxx方法进行设置参数信息，而Statement是通过拼接字符串，很容易就造成SQL注入。
+
+
+综上所述，PrepareStatement比Statement有以下优点：
+
+- 预编译SQL语句，性能更好
+- 无需拼接SQL语句，编程更简单
+- 可以防止SQL语句注入，安全性更好
+
+
+4. CallableStatement调用存储过程
+
+
+存储过程的调用可以通过CallableStatement，通过Connection对象的prepareCall方法来创建CallableStatement对象。
+
+然后传入存储过程的SQL语句，即可调用存储过程，格式如下：
+
+
+```sql
+{call proc_name(?, ?, ?)}
+```
+
+上面的?是占位符，表示传递的参数。
+
+存储过程有传入参数、传出参数。传入参数是程程序必须传入的参数，可以 通过setXxx方法进行设置参数值。
+
+而传出参数则需要通过程序进行设置，可以用CallableStatement对象的registerOutParameter方法来注册输出参数，cs.registerOutParameter(3, Types.STRING);
+
+设置完毕后，当调用存储过程后要获取输出参数值，可以通过getXxx方法来完成。
+
+
+## 四、操作结果集(ResultSet)
+
+JDBC是通过ResultSet来管理结果集，操作ResultSet可以通过移动其指针来指向不同的行记录，然后取出当前记录即可。并且ResultSet可以完成更新记录，还提供了ResultSetMetaData来获得对象相关信息。
+
+1. 可移动、可更新的ResultSet
+
+前面介绍过ResultSet的相关方法，可以通过一系列的方法来移动记录指针，如：absolute、previous、next、first、last、beforeFirst、afterLast等方法。
+
+ResultSet默认是不支持更新的，如果希望ResultSet完成更新操作，必须在创建Statement或PrepareStatement时传入一些参数。
+
+Connection对象在创建Statement或PrepareStatement时可以传入两个参数：
+
+
+
+### resultSetType：控制ResultSet的类型，该参数有以下三个值：
+
+- ResultSet.TYPE_FORWARD_ONLY该常量控制记录指针只能向前移动。Jdk1.4的默认值
+- ResultSet.TYPE_SCROLL_INSENSITIVE：该常量控制记录指针自由移动(可滚动结果集)，但底层的数据改变不影响结果集ResultSet的内容
+- ResultSet.TYPE_SCROLL_SENSITIVE：该常量控制记录指针自由移动，但底层数据的影响会改变结果集ResultSet的内容
+
+
+### resultSetConcurrency：控制ResultSet的并发类型，该参数可以接收如下两个值：
+
+- ResultSet.CONCUR_READ_ONLY：该常量表示ResultSet是只读并发模式
+- ResultSet.CONCUR_UPDATABLE：该常量表示ResultSet是更新并发模式
+
+通过PrepareStatement、Statement的创建时进行参数设置来创建可滚动、可更新的ResultSet，然后通过rs的updateXxx方法来完成某列的更新值设置，通过updateRow来提交修改。
+
+2. ResultSet中的二进制Blob数据处理
+
+
+Blob类型通常用来存储文件，如：图片、音频、视频文件。将文件转换成二进制保存在数据库中，取出来的时候可以二进制数据恢复成文件。
+
+如果要插入图片到数据库，显然不能直接设置SQL参数拼接字符串进行插入。因为二进制常量无法表示。
+
+但是将Blob类型数据插入到数据可以用PrepareStatement，通过PrepareStatement对象的setBinaryStatement方法将参数传入到二进制输入流；也可以用Blob对象的getBytes方法直接取出数据。
+
+3. 利用ResultSetMetaData操作ResultSet结果集
+
+
+在我们查询数据返回的结果集中，我们不清楚结果集存放的数据类型、数据列数。
+
+那样我们就可以用ResultSetMetaData来读取ResultSet的信息。
+
+通过ResultSet的getMetaData()的方法可以获取ResultSetMetaData对象。
+
+然后可以用ResultSetMetaData对象的方法来操作ResultSet，常用方法如下：
+
+- int getColumnCount()：返回ResultSet的列名数量
+- int getColumnType(int column)：返回指定索引的类型
+- String getColumnName(int column)：返回指定索引的列名
+
+## 五、JDBC事务
+
+1. 事务介绍
+
+
+事务是一步或多步组成操作序列组成的逻辑执行单元，这个序列要么全部执行，要么则全部放弃执行。
+
+事务的四个特性：原子性（Atomicity）、一致性（Consistency）、隔离性（IsoIation）和持续性（Durability）
+
+- 原子性（****Atomicity****）：事务应用最小的执行单元，不可再分。是事务中不可再分的最小逻辑执行体。
+
+- 一致性（****Consistency****）：事务的执行结果，必须使数据库的从一个一致性的状态变到另一个一致性的状态。
+
+- 隔离线（****IsoIation****）：各个事务的执行互不干扰，任意一个事务的内部操作对其他并发的事务，都是隔离的。也就是：并发执行的事务之间不能看到对方的中间状态，并发执行的事务之间不能互相影响。
+
+- 持续性（****Durability****）：持续性也称为持久性（Persistence），指事务一旦提交，对数据所做的任何改变，都要记录到永久存储器中，通常就是保存在物理数据库中。
+
+
+通常数据库的事务涉及到的语句有：
+
+一组DML（Data Munipulation Language，数据操作语言）语句，这组DML语句修改后数据将保持较好的一致性；
+
+操作表的语句，如插入、修改、删除等；
+
+一个DDL（Data Definition Language，数据定义语言）语句，操作数据对象的语言，有create、alter、drop。
+
+一个DCL（Data Control Language，数据控制语言）语句，主要有grant、revoke语句。
+
+DDL和DCL语句最多只能有一个，因为它们都会导致事务的立即提交。
+
+当事务所包含的全部数据库操作都成功执行后，应该提交事务，使这些修改永久生效。
+
+事务提交有两种方式：显示提交和自动提交。
+
+显示提交：使用commit提交
+
+自动提交：执行DLL或DCL，或者程序正常退出
+
+当事务包含的任意一个数据库操作执行失败后，应该回滚（rollback）事务，使该事务中所作的修改全部失效。
+
+事务的回滚方式有两种：显示回滚和自动回滚。
+
+显示回滚：使用rollback
+
+自动回滚：系统错误或强行退出
+
+2. JDBC的事物的支持
+
+
+JDBC的Connection也支持事物，Connection默认打开自动提交，即关闭事物。
+
+也就是说，每条SQL语句执行就会立即提交到数据库，永久生效，无法对其进行操作。
+
+关闭Connection的自动提交，开启事物。Connection的setAutoCommit方法即可：connection.setAutoCommit(false);
+
+通过connection.getAutoCommit()来获取事物的模式。
+
+当我们开启事物后，在当前Connection中完成的数据库操作，都不会立即提交到数据库，需要调用Connection的commit方法才行。
+
+如果有语句执行失败，可以调用rollback来回滚。
+
+注意：如果Connection遇到未处理的SQLException异常时，系统将非正常退出，系统会自动回滚该事务。
+
+如果程序捕捉了该异常，则需要在异常处理中显示回滚事务。
+
+
+Connection提供了设置事务中间保存点的方法：setSavepoint，有2个方法可以设置中间点：
+
+Savepoint setSavepoint()：在当前事务中创建一个未命名的中间点，并返回该中间点的Savepoint对象。
+
+Savepoint setSavepoint(String name)：当前事务中创建一个具有指定名称的中间点，并返回该中间点的Savepoint对象
+
+通常setSavepoint(String name)设置中间点的名称，事务回滚并不是通过中间点的名称进行回滚的，而是根据中间点对象进行回滚的。
+
+设置名称只是更好的区分中间点对象，用Connection的rollback(Savepoint savepoint)方法即可完成回滚到指定中间点。
+
+3. JDBC的批量更新
+
+批量更新就是可以同时进行多条SQL语句，将会被作为一批操作被同时执行、同时提交。
+
+批量更新需要得到数据底层的支持，可以通过调研DataBaseMetaData的supportsBatchUpdates方法来查看底层数据库是否支持批量更新。
+
+批量更新也需要创建一个Statement对象，然后通过该对象的addBatch方法将多条SQL语句同时收集在一起，
+
+然后通过Statement对象的executeBatch同时执行这些SQL语句，如下代码：
+
+
+```java
+Statement sm = conn.createStatement();
+sm.addBatch(sql);
+sm.addBatch(sql2);
+sm.addBatch(sql3);
+…
+//同时执行多条SQL语句
+sm.executeBatch();
+```
+
+执行executeBatch将返回一个int[]的数组，因为使用Statement执行DDL、DML都将返回一个int的值，而执行多条DDL、DML也将返回一个int数组。批量更新中不允许出现select查询语句，一旦出现程序将出现异常。
+
+如果要批量更新正确、批量完成，需要用单个事务，如果批量更新过程中有失败，则需要用事务回滚到原始状态。
+
+如果要达到这样的效果，需要关闭事务的自动提交，当批量更新完成再提交事务，如果出现异常将回滚事务。
+
+然后将连接恢复成自动提交模式。
+
+```java
+public int[] executeBatch(String[] sql) throws SQLException {
+        int[] result = null;
+        conn = DBHelper.getConnection();
+        try {
+        //获得当前Connection的提交模式
+        boolean autoCommit = conn.getAutoCommit();
+        //关闭自动提交模式
+        conn.setAutoCommit(false);
+        sm = conn.createStatement();
+        for (String s : sql) {
+                        sm.addBatch(s);
+            }
+        //执行批量更新
+        result = sm.executeBatch();
+        //提交事务
+        conn.commit();
+        //还原提交模式
+        conn.setAutoCommit(autoCommit);
+                } catch (Exception e) {
+                e.printStackTrace();
+                conn.rollback();
+                } finally {
+                if (sm != null) {
+                sm.close();
+                }
+                DBHelper.close();
+                }
+                 return result;
+}
+```
+
+
+## 六、分析数据库数据
+
+1. 使用DatabaseMetaData分析数据库数据
+
+JDBC提供了DatabaseMetaData来封装数据库连接对应的数据库信息，通过Connection的getMetaData方法来获取该对象。
+
+DatabaseMetaData接口通常数据库驱动提供商完成实现，其作用是让用户了解数据库的底层信息。
+
+使用该接口可以了解数据库底层的实现，便于完成多个数据库的相互切换。
+
+如：可以利用supportsCorrelatedSubquenes方法来查看数据库底层是否可以利用关联子查询，或是调用supportsBatchUpdates方法查看是否支持批量更新。
+
+大部分的DatabaseMetaData都是以ResultSet对象返回的，可以通过ResultSet对象的getString、getInt来获取相关信息。
+DatabaseMetaData方法都需要传递一个xxxPattern的模式字符串，这个字符串是过滤条件，一般传递是SQL中的%、_等内容。
+如果传递一个null表示不作任何过滤。
 
