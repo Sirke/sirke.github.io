@@ -4,7 +4,7 @@ tags: cms
 category: cms
 date: 2018-02-27 16:44:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0146.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0147.jpg)
 
 开发文档
 <!--more-->
@@ -850,11 +850,10 @@ build webpack打包配置文件
 
 config  全局配置文件api域名 appid配置
 
-​                                           node_modules:node依赖文件夹
+                                           node_modules:node依赖文件夹
 
-​                                              src项目源代码
-
-​                                          static 全局资源文件夹（css images js）
+                                              src项目源代码
+                                          static 全局资源文件夹（css images js）
 
 index.html 入口文件
 
@@ -972,13 +971,11 @@ src/permissions.js   全局路由钩子配置文件
 
    1.普通未封装请求接口示例
 
-   在页面的<script>下引用 axios
+   `在页面的<script>下引用 axios`
 
-​         ![img](http://ovi3ob9p4.bkt.clouddn.com/cms/cms026.png)
+         ![img](http://ovi3ob9p4.bkt.clouddn.com/cms/cms026.png)         
 
-​          
-
-​然后在需要的方法中调用axios请求 此处以created方法中调用为示例 （具体功能，请根据自身情况修改使用）     
+然后在需要的方法中调用axios请求 此处以created方法中调用为示例 （具体功能，请根据自身情况修改使用）     
 
 ```js
  axios.post(this.$api.memberList,this.params)
@@ -997,9 +994,9 @@ src/permissions.js   全局路由钩子配置文件
 
 ```
 
-说明：axios.post()方法可以发送一个post 请求，其他请求类型有 get ，put ，delete等，具体参考axios文档
+说明：*axios.post()方法可以发送一个post 请求，其他请求类型有 get ，put ，delete等，具体参考axios文档*
 
-this.$api.memberList  此参数为api地址 在页面中使用 this.$api.XXX 即可调用src/api中的 地址变量   
+*this.$api.memberList  此参数为api地址 在页面中使用 this.​$api.XXX 即可调用src*/api中的 地址变量   
 
 此方法为获取所有用户列表信息，传递了一个参数对象params: {//只需要业务参数
 
@@ -1036,7 +1033,7 @@ this.$api.memberList  此参数为api地址 在页面中使用 this.$api.XXX 即
 
 以src/views/userMange/list.vue为例
 
-在页面<script></script>中引入mixins
+`在页面<script></script>中引入mixins`
 
 ![img](http://ovi3ob9p4.bkt.clouddn.com/cms/cms030.png)      
 
@@ -1044,11 +1041,11 @@ this.$api.memberList  此参数为api地址 在页面中使用 this.$api.XXX 即
 
 在页面中的created方法中 调用了
 
-created(){
+`created(){`
 
-​     this.initTableData(this.$api.memberList,this.params);
+`     this.initTableData(this.$api.memberList,this.params);`
 
-  }
+  `}`
 
 该方法为混合方法，作用为初始化列表信息，第一个参数传递的为api接口地址，第二个参数为自定义参数对象，调用该函数后会自动初始化列表以及赋值，在页面上直接使用tableData属性即可
 
@@ -1157,17 +1154,17 @@ import { Encrypt } from "../untils/aes";
     }, {
 ```
 
-path：访问地址（唯一不可重复）
+`path：访问地址（唯一不可重复）`
 
 meta：{role:’xxxx’}角色权限名,不可重复，而且不同板块前缀要不同，比如用户模块叫user   另外会员管理叫userMember  这样是不行的   
 
-name:’路由名称’,  【也就是菜单名】
+`name:’路由名称’,  【也就是菜单名】`
 
-component:  component:resolve => { require(['@/views/user/userMange/list.vue'], resolve) },
+`component:  component:resolve => { require(['@/views/user/userMange/list.vue'], resolve) },`
 
-懒加载页面组件，在点击该功能时才加载文件
+`懒加载页面组件，在点击该功能时才加载文件`
 
-children:子路由
+`children:子路由`
 
 ### 4.3.4权限控制
 
@@ -1175,9 +1172,7 @@ children:子路由
 
 角色权限编是一个按照路由层级来构造的json对象（自定义添加时，也保持同样的规则）
 
-以用户列表角色为例
-
-​   
+以用户列表角色为例 
 
 ```js
   {
@@ -1382,7 +1377,7 @@ exportdefault {
 
 npminstall （推荐使用cnpm  install，<http://npm.taobao.org/>  加快依赖下载速度）
 
-​      如果有则忽略此步骤
+如果有则忽略此步骤
 
 3.执行命令npm run build
 
@@ -1422,6 +1417,6 @@ http://xxx.jeecms.com/admin/jeecms/index.do
 
    
 
-​         ![img](http://ovi3ob9p4.bkt.clouddn.com/cms/cms044.png)
+ ![img](http://ovi3ob9p4.bkt.clouddn.com/cms/cms044.png)
 
   将jeeadmin文件夹重命名为admin即可
