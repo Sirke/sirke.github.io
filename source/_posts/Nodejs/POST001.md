@@ -4,7 +4,7 @@ tags: vueJs
 category: vueJs
 date: 2018-02-26 16:44:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0140.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0144.jpg)
 
 ## 前言
 
