@@ -294,13 +294,13 @@ alipay: http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg
 related_posts:
   enable: true
   title: # custom header, leave empty to use the default one
-  display_in_home: true
+  display_in_home: false
   params:
-    maxCount: 5
+    maxCount: 3
     #PPMixingRate: 0.0
     #isDate: true
-    #isImage: true
-    #isExcerpt: true
+    #isImage: false
+    #isExcerpt: false
 # Declare license on posts
 post_copyright:
   enable: true
@@ -998,4 +998,4 @@ js: js
 images: images
 
 # Theme version
-version: 6.0.4
+version: 6.0.5
