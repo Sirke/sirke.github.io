@@ -392,7 +392,7 @@ font:
   logo:
     external: true
     family: Damion
-    size:
+    size: 30
 
   # Font settings for <code> and code blocks.
   codes:
