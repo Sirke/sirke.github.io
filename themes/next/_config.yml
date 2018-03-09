@@ -372,20 +372,20 @@ font:
   global:
     external: true
     family: Lato
-    size:
+    size: 14
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6).
   # Fallback to `global` font settings.
   headings:
     external: true
     family:
-    size:
+    size: 15
 
   # Font settings for posts.
   # Fallback to `global` font settings.
   posts:
     external: true
-    family: 13
+    family: 14
 
   # Font settings for Logo.
   # Fallback to `global` font settings.
@@ -398,7 +398,7 @@ font:
   codes:
     external: true
     family:
-    size: 12
+    size: 13
 
 
 # ---------------------------------------------------------------
