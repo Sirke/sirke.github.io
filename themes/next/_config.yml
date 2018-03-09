@@ -304,7 +304,7 @@ related_posts:
 # Declare license on posts
 post_copyright:
   enable: true
-  license: <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a>
+  license: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a>
 
 
 # ---------------------------------------------------------------
@@ -358,7 +358,7 @@ sidebar_width: 220
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
   host:
@@ -391,7 +391,7 @@ font:
   # Fallback to `global` font settings.
   logo:
     external: true
-    family: 
+    family: Damion
     size:
 
   # Font settings for <code> and code blocks.
