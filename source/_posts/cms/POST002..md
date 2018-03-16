@@ -128,3 +128,143 @@ tpl.productsIndex=products_index
 4. `WEB-INF/languages/jeecms_tpl`    (前台)功能页面，如：投票内容页， `tpl.tagDetail=voteIndex`
 
 5. `WEB-INF/languages/jeecore_admin` 功能按钮、提示信息，如：`global.submit=提交，global.confirm.logout=您确定退出吗？`
+
+### 修改后台访问地址
+
+将`jeeadmin/jeecms/index.do` 改为`admin/index.do`为例
+
+1. 修改`WebContent\WEB-INF\web.xml` 
+
+```xml
+<servlet-mapping>  
+  <servlet-name>JeeCmsAdmin</servlet-name>  
+  <url-pattern>/jeeadmin/jeecms/*</url-pattern>  
+ </servlet-mapping>  
+```
+
+改为 
+
+```xml
+<servlet-mapping> 
+  <servlet-name>JeeCmsAdmin</servlet-name> 
+  <url-pattern>/admin/*</url-pattern> 
+  </servlet-mapping> 
+```
+
+2. 修改`WebContent\WEB-INF\config\jeecms-servlet-admin.xml` 
+
+```xml
+<entry key="appBase" value="/jeeadmin/jeecms"/> 
+```
+
+改为 
+
+```xml
+<entry key="appBase" value="/admin"/> 
+```
+
+3. 修改`WebContent\WEB-INF\config\shiro-context.xml` 
+
+把 
+
+```xml
+  *.jspx = anon 
+  *.jhtml = anon 
+  /member/forgot_password.jspx = anon 
+  /member/password_reset.jspx = anon 
+  /login.jspx = authc 
+  /logout.jspx = logout 
+  /member/** = user 
+  /jeeadmin/jeecms/login.do = authc 
+  /jeeadmin/jeecms/logout.do = logout 
+  /jeeadmin/jeecms/** =user 
+```
+
+改为              
+
+```xml
+*.jspx = anon 
+  *.jhtml = anon 
+  /member/forgot_password.jspx = anon 
+  /member/password_reset.jspx = anon 
+  /login.jspx = authc 
+  /logout.jspx = logout 
+  /member/** = user 
+  /admin/login.do = authc 
+  /admin/logout.do = logout 
+  /admin/** =user 
+```
+
+把 
+
+```xml
+<property name="adminLogin" value="/jeeadmin/jeecms/login.do"/>  
+<property name="adminPrefix" value="/jeeadmin/jeecms/"/>  
+```
+
+改为 
+
+```xml
+<property name="adminLogin" value="/admin/login.do"/> 
+<property name="adminPrefix" value="/admin/"/> 
+```
+
+把 
+
+```xml
+<property name="adminIndex" value="/jeeadmin/jeecms/index.do"/> 
+```
+
+
+改为 
+
+```xml
+<property name="adminIndex" value="/admin/index.do"/> 
+```
+
+3. 修改`\src\com\jeecms\cms\web\AdminContextInterceptor.java` 
+
+把
+
+```java
+  private static String getURI(HttpServletRequest request) throws IllegalStateException { 
+        UrlPathHelper helper = new UrlPathHelper(); 
+        String uri = helper.getOriginatingRequestUri(request); 
+        String ctxPath = helper.getOriginatingContextPath(request); 
+        int start = 0, i = 0, count = 2 
+        if (!StringUtils.isBlank(ctxPath)) { 
+            count++; 
+        } 
+        while (i < count && start != -1) { 
+            start = uri.indexOf('/', start + 1); 
+            i++; 
+        } 
+    if (start <= 0) { 
+        throw new IllegalStateException("admin access path not like '/jeeadmin/jeecms/...' pattern: " + uri); 
+    } 
+    return uri.substring(start); 
+} 
+```
+改为 
+
+
+```java
+private static String getURI(HttpServletRequest request) throws IllegalStateException { 
+        UrlPathHelper helper = new UrlPathHelper(); 
+        String uri = helper.getOriginatingRequestUri(request); 
+        String ctxPath = helper.getOriginatingContextPath(request); 
+        // int start = 0, i = 0, count = 2;修改 
+        int start = 0, i = 0, count = 1; 
+        if (!StringUtils.isBlank(ctxPath)) { 
+            count++; 
+        } 
+        while (i < count && start != -1) { 
+            start = uri.indexOf('/', start + 1); 
+            i++; 
+        }   
+    if (start <= 0) { 
+        throw new IllegalStateException("admin access path not like '/admin/...' pattern: " + uri); 
+    } 
+    return uri.substring(start); 
+}
+```
