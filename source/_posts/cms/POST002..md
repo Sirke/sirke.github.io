@@ -1,12 +1,12 @@
 ---
-title: 库内新增对象Products的流程说明
+title: 库内新增对象的流程及其他技巧
 tags: cms
 category: cms
 date: 2018-03-10 16:44:36
 ---
 ![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0150.jpg)
 
-cms开发——库内新增对象Products的流程说明
+cms开发 ———— 库内新增对象Products的流程说明及其他技巧
 <!--more-->
 ### 第一步：Entity
 
@@ -268,3 +268,36 @@ private static String getURI(HttpServletRequest request) throws IllegalStateExce
     return uri.substring(start); 
 }
 ```
+### 通过数据库修改密码
+
+1. 通过数据库修改admin密码
+
+```sql
+select * from core_user;
+|       1 | admin      | jobar     | 0230504dd5de96d2f6784d45d1bc7633 |
+```
+
+密码已经是被加密过的了。
+
+2. 密码加密类：`com.ponyjava.common.util.Md5PwdEncoder`
+
+ 例如我想将密码设为“zhaozh",就先用这个类加密，然后更新数据库就ok了。
+
+```java
+public class Test {
+	public static void main(String[] args) {
+		Md5PwdEncoder encoder = new Md5PwdEncoder();
+		System.out.println(encoder.encodePassword("zhaozh"));
+	}
+}
+```
+
+输出为：`f06238ff925a61f9c62de7d64c64bad3`
+
+mysql>
+
+```sql
+ update core_user set password='f06238ff925a61f9c62de7d64c64bad3' where user_id='1';
+```
+
+3. 再次登录就ok了。
