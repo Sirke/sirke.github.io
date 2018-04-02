@@ -28,7 +28,7 @@ after_script:
 
 branches:
   only:
-    - doc
+    - dev
 env:
  global:
    - GH_REF: github.com/sirke/sirke.github.io.git
