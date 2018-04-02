@@ -13,14 +13,13 @@ menu:
   tags: Tags
   about: About
   photo: Photos
-  search: Search
   Books: Books
   Movies: Movies
   search: Search
   schedule: Schedule
   sitemap: Sitemap
   commonweal: Commonweal 404
-
+  
 sidebar:
   overview: Overview
   toc: Table of Contents
