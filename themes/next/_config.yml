@@ -900,6 +900,9 @@ audio:
     cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' }
   ]
 
+# Online contact
+daovoice: true
+daovoice_app_id: 91cc22fb
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.
