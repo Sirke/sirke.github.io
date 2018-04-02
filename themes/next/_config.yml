@@ -53,7 +53,7 @@ favicon:
   ms_browserconfig: /images/browserconfig.xml
 
 # Set default keywords (Use a comma to separate)
-keywords: "¿ª·¢±Ê¼Ç, NEXT±Ê¼Ç, Java±Ê¼Ç, Èí¼ş¿ª·¢"
+keywords: "å¼€å‘ç¬”è®°, NEXTç¬”è®°, Javaç¬”è®°, è½¯ä»¶å¼€å‘"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -69,9 +69,9 @@ footer:
   icon: user
     # Icon name in fontawesome, see: https://fontawesome.com/v4.7.0/icons
     # `heart` is recommended with animation in red (#ff0000).
-    name: user
+    name: heart
     # If you want to animate the icon, set it to true.
-    animated: false
+    animated: true
     # Change the color of icon, using Hex Code.
     color: "#808080"
 
@@ -93,7 +93,7 @@ footer:
                <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp;
                <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp;
                <a href="https://pages.coding.me" target="_blank" title="Host by Coding "><span class="hidden"><img style="height:35px;display:inline;margin-bottom:-7px;" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png"></span></a>&nbsp;
-               <a target="_blank" href="http://www.miitbeian.gov.cn">ÉÂICP±¸17015430ºÅ</a>
+               <a target="_blank" href="http://www.miitbeian.gov.cn">é™•ICPå¤‡17015430å·</a>
 # ---------------------------------------------------------------
 # SEO Settings
 # ---------------------------------------------------------------
