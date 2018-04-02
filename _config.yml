@@ -113,9 +113,6 @@ filter_optimize:
     bundle: true
     excludes:
     
-# Online contact
-daovoice: true
-daovoice_app_id: 91cc22fb  
 
 symbols_count_time:
   symbols: true
