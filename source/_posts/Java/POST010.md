@@ -4,7 +4,7 @@ tags: Java
 category: Java
 date: 2018-03-18 20:30:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0156.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0157.jpg)
 
 27天学完Java
 <!--more-->
@@ -2370,3 +2370,1256 @@ class StudentDemo {
 	}	
 }
 ```
+
+### DAY007
+
+![](http://ovi3ob9p4.bkt.clouddn.com/xuexi/007DAY.jpg)
+
+#### 构造方法(掌握)
+
+```java
+/*
+	构造方法作用：给对象的数据进行初始化
+
+	特点：
+		A:方法名与类名相同
+		B:没有返回值类型，连void都没有
+		C:没有具体的返回值
+
+	构造方法的格式：
+		修饰符 类名(...) {
+		
+		}
+
+	构造方法的注意事项：
+		A:如果你不提供构造方法，系统会给出默认无参构造方法
+		B:如果你提供了构造方法，系统将不再提供默认无参构造方法
+			这个时候，如果你还想继续使用无参构造方法，只能自己给出。
+			推荐：永远自己给出无参构造方法。
+		C:构造方法也是可以重载的
+		D:构造方法中可以有return语句吗?
+			可以。只不过是return;
+
+*/
+class Student {
+	//成员变量
+	private String name;
+	private int age;
+
+	//构造方法
+	public Student() {
+		System.out.println("我是无参构造方法");
+		//return;
+	}
+
+	public Student(String name) {
+		this.name = name;
+	}
+
+	public Student(int age) {
+		this.age = age;
+	}
+
+	public Student(String name,int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	//getXxx()/setXxx()方法
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	//显示所有成员变量的方法
+	public void show() {
+		System.out.println("姓名是："+name+",年龄是："+age);
+	}
+}
+
+class StudentDemo {
+	public static void main(String[] args) {
+		//创建对象
+		Student s = new Student();
+		s.show();
+
+		//创建对象
+		Student s2 = new Student("林青霞");
+		s2.show();
+
+		//创建对象
+		Student s3 = new Student(28);
+		s3.show();
+
+		//创建对象
+		Student s4 = new Student("林青霞",28);
+		s4.show();
+	}
+}
+```
+
+#### 对象的初始化过程(理解)
+
+1. `Student s = new Student();`做了哪些事情
+
+- A:加载Student.class文件进内存
+- B:在栈中为s开辟空间
+- C:在堆中为学生对象开辟空间
+- D:为学生对象的成员变量赋默认值
+- E:为学生对象的成员变量赋显示值
+- F:通过构造方法给成员变量赋值
+- G:对象构造完毕，把地址赋值给s变量
+
+#### 面向对象的练习(掌握)
+
+- (1)写一个类Demo,里面有一个求和功能。并测试。
+- (2)写一个长方形的类，里面有求周长和面积的功能。并测试。
+- (3)自己分析员工类，实现，并测试。
+- (4)自己写一个包含了加减乘除运算的类，并测试。
+
+#### static关键字(掌握)
+
+- (1)是一个状态修饰符。静态的意思
+- (2)它可以修饰成员变量和成员方法
+- (3)特点：
+
+			A:随着类的加载而加载
+		B:优先于对象存在
+		C:被所有对象共享
+			这也是判断我们是不是该使用静态的条件
+			举例：饮水机和水杯例子。
+		D:可以通过类名调用
+			静态修饰的内容，可以通过类名调用，也可以通过对象名调用
+
+- (4)方法访问特点
+
+  ​		A:普通成员方法
+
+  ​			可以访问静态成员变量，非静态成员变量，静态成员方法，非静态成员方法
+
+  ​		B:静态成员方法
+
+  ​			只能访问静态成员变量，静态成员方法
+
+  简记：静态只能访问静态
+
+  注意：
+  	静态中是不能有this的。
+  	先进内存的不能访问后进内存的。反之可以。
+
+  ​
+
+#### 静态成员变量和普通成员变量的区别(理解)
+
+​	(1)所属不同
+		静态属于类的，称为类变量
+		非静态属于对象的，称为对象变量，实例变量
+	(2)内存空间不同
+		静态在方法区的静态区
+		非静态在堆内存
+	(3)生命周期不同
+		静态随着类的加载而加载，随着类的消失而消失
+		非静态随着对象的创建而存在，随着对象的消失而消失
+	(4)调用不同
+		静态可以通过类名调用，也可以通过对象名调用。建议通过类名调用
+		非静态只能通过对象名调用
+
+#### main方法是静态的(理解)
+
+​	`public static void main(String[] args)`
+
+#### 制作帮助文档(了解)
+
+​	(1)写代码
+	(2)加文档注释
+	(3)通过javadoc工具生成说明书
+
+```java
+//因为这个数组的工具类并没有使用非静态的成员。
+//为了方便调用，我们就把这个方法改进为静态修饰的
+/*
+	制作一个说明书的过程：
+		A:写代码
+		B:加入文档注释
+		C:通过javadoc工具生成说明书
+			格式：javadoc -d 目录 -author -version ArrayTool.java
+				  javadoc -d doc -author -version ArrayTool.java
+			注意：javadoc: 错误 - 找不到可以文档化的公共或受保护的类。
+				说明类的权限不够大，用public修饰即可
+*/
+class ArrayDemo {
+	public static void main(String[] args) {
+		int[] arr = {56,38,91,72,40};
+
+		//需求：遍历数组
+		//ArrayTool at = new ArrayTool();
+		//at.printArray(arr);
+
+		ArrayTool.printArray(arr);
+
+		//需求：我要获取数组中的最大值
+
+	}
+}
+```
+
+#### 使用帮助文档(掌握)
+
+1. 找到帮助文档，并打开帮助文档
+
+
+2. 找到显示，点击索引，看到输入框
+3. 在输入框里面输入你要查找的类，并回车即可Scanner
+
+
+4. 看类在哪个包下
+
+		如果类在java.lang包下，是不需要导包的。
+	如果类不在java.lang包下，是需要导包的。
+
+	格式：import java.util.Scanner;
+5. 看类的解释说明
+6. 看类的结构和说明书的匹配情况
+
+	字段摘要	--	成员变量
+	构造方法摘要	--	构造方法
+	方法摘要	--	成员方法
+7. 看类的构造方法
+
+		因为看懂了构造方法，我们就可以创建对象了。
+
+```java
+public Scanner(InputStream source) {...}
+
+System:
+	public static final InputStream in; //成员变量
+
+	InputStream is = System.in;
+
+注意：
+	不是所有的类都能看到构造方法。
+	一般来说，没有构造方法的类的成员基本上都是静态的。
+```
+8. 看类的方法
+
+		`public int nextInt()`
+
+左边：
+	是否静态：说明该方法可以通过类名调用
+	返回值类型：人家返回什么类型，你就用什么类型接收
+右边：
+	方法名称：方法名不能写错了，写错了就用不了了。
+	参数列表：看参数的个数，以及参数的数据类型。
+		  人家要几个，你就给几个，人家要什么类型，你就给什么类型。
+
+#### 学习Math类(掌握)
+
+​	(1)Math:针对数学进行运算的类
+	(2)特点：没有构造方法，因为它的成员都是静态的
+	(3)产生随机数：
+		`public static double random(): 产生随机数，范围[0.0,1.0)`
+	(4)产生1-100之间的随机数
+		`int number = (int)(Math.random()*100)+1;`
+	(5)猜数字小游戏案例
+	
+
+```java
+/*
+	需求：猜数字小游戏
+	
+	分析：
+		A:系统产生一个1-100之间的随机数。
+			int number = (int)(Math.random()*100)+1;
+		B:键盘录入数据,用Scanner实现
+		C:用这两个数据进行比较
+			大	提示大了
+			小	提示小了
+			等	恭喜你，猜中了
+		D:为了保证我们能够猜中，我们就加入循环，实现多次猜。直到猜中。
+*/
+import java.util.Scanner;
+
+class GuessNumberDemo {
+	public static void main(String[] args) {
+		//系统产生一个1-100之间的随机数。
+		int number = (int)(Math.random()*100)+1;
+
+		while(true) {
+			//键盘录入数据,用Scanner实现
+			Scanner sc = new Scanner(System.in);
+			System.out.println("请输入一个数据：(1-100)");
+			int guessNumber = sc.nextInt();
+
+			//用这两个数据进行比较
+			if(guessNumber > number) {
+				System.out.println("你猜的数据"+guessNumber+"大了");
+			}else if(guessNumber < number) {
+				System.out.println("你猜的数据"+guessNumber+"小了");
+			}else {
+				System.out.println("恭喜你，猜中了");
+				break;
+			}
+		}
+		
+	}
+}
+```
+
+
+
+#### 代码块(理解)
+
+​	(1)在java中用{}起来的代码
+	(2)分类：
+		局部代码块：在方法中。限定变量生命周期，及早释放，提高内存使用率
+		构造代码块：在类中方法外。
+			    把多个构造中的相同代码用一个构造代码块体现，每次创建对象都会自动调用。
+		静态代码块：在类中方法外，用static修饰。
+			    对类中的数据进行初始化。仅仅执行一次。
+	
+
+```java
+/*
+	代码块：在Java中，使用{}括起来的代码被称为代码块。
+
+	根据其位置和声明的不同，可以分为
+		局部代码块：在方法中出现；限定变量生命周期，及早释放，提高内存利用率
+		构造代码块：在类中方法外出现；
+					多个构造方法方法中相同的代码存放到一起，每次调用构造都执行，并且在构造方法前执行
+		静态代码块：在类中方法外出现，加了static修饰。
+					用于给类进行初始化，在加载的时候就执行，并且只执行一次。
+*/
+//局部代码块
+/*
+class Code {
+	public void show() {
+		//局部代码块
+		{
+			int x = 10;
+			System.out.println(x);
+		}
+
+		//System.out.println(x);
+		//... 1000行,x在这1000行代码中没有被使用
+		int y = 100;
+		System.out.println(y);
+	}
+}
+*/
+
+//构造代码块
+/*
+class Code {
+
+	//构造代码块
+	{
+		System.out.println("AAAAA"); 
+	}
+
+	public Code() {
+		//System.out.println("AAAAA"); //假如这个代码的内容比较多，并且在每个构造中都会出现
+	}
+
+	public Code(String s) {
+		//System.out.println("AAAAA");
+		System.out.println(s);
+	}
+}
+*/
+
+//静态代码块
+class Code {
+	//静态代码块
+	static {
+		System.out.println("AAAAA"); 
+	}
+
+	/*
+	public Code() {
+	}
+
+	public Code(String s) {
+		System.out.println(s);
+	}
+	*/
+}
+
+class CodeDemo {
+	static {
+		System.out.println("BBBBB"); 
+	}
+
+	public static void main(String[] args) {
+		Code c = new Code();
+		//c.show();
+
+		//Code c2 = new Code("hello");
+		System.out.println("CCCCC");
+	}
+}
+```
+
+### DAY008
+
+![](http://ovi3ob9p4.bkt.clouddn.com/xuexi/008DAY.jpg)
+
+#### 继承(掌握)
+
+​	(1)把多个类中相同的属性和行为提取出来，定义到一个类中，
+	   然后让这多个类和这一个类产生一个关系，这多个类就具备这一个类的属性和行为了。
+	   这种关系叫：继承。
+	
+
+```java
+/*
+	java中的继承特点：
+		A:Java只支持单继承，不支持多继承。
+		B:Java支持多层继承(继承体系)
+*/
+class A {
+}
+class B extends A {
+}
+/*
+class C extends A,B {
+}
+*/
+class C extends B {
+}
+class ExtendsDemo {
+	public static void main(String[] args) {	
+	}
+}
+```
+
+```java
+/*
+	java中的继承注意事项：
+		A:子类只能继承父类所有非私有的成员(成员方法和成员变量)
+		B:子类不能继承父类的构造方法，但是可以通过super(后面讲)关键字去访问父类构造方法。
+		C:不要为了部分功能而去继承
+			class A {
+				public void show(){}
+				public void show2(){}
+			}
+
+			class B extends A {
+				//public void show(){}
+				public void show3(){}
+			}
+
+	那么，我们什么时候考虑使用继承呢?
+		继承中类之间体现的是：”is a”的关系。
+		如果两个类满足这个关系：xxx is a yyy，那么他们就可以使用继承。
+		举例：类A和类B，如果类A is a 类B或者类B is a 类A 能念通过，就可以考虑使用继承。
+		      否则不可以。
+
+		Student,Person
+		Dog,Animal
+		Dog,Pig
+*/
+class Fu {
+	private int num = 100;
+	public int num2 = 200;
+
+	private void show() {
+		System.out.println("show");
+	}
+
+	public void show2() {
+		System.out.println("show2");
+	}
+}
+
+class Zi extends Fu {
+}
+
+class ExtendsDemo2 {
+	public static void main(String[] args) {
+		//创建子类对象
+		Zi z = new Zi();
+		//System.out.println(z.num);
+		System.out.println(z.num2);
+		//z.show();
+		z.show2();
+
+		//看Fu行不行
+		//Fu f = new Fu();
+		//System.out.println(f.num);
+		//System.out.println(f.num2);
+	}
+}
+```
+
+```java
+/*
+	继承间的成员变量关系：
+		名字不同：非常的简单，一看就知道使用的是谁。
+		名字相同：就近原则。
+
+	使用变量的时候，会先找局部范围。
+	如果想直接使用成员变量，加关键字：this即可。
+	如果想直接使用父类的成员变量，加关键字：super即可。
+*/
+class Father {
+	public int age = 40;
+}
+
+class Son extends Father {
+	public int num = 100;
+	public int age = 20;
+
+	public void show() {
+		int age = 60;
+		System.out.println(age); //局部范围
+		System.out.println(this.age); //本类成员范围
+		System.out.println(super.age); //父类成员范围
+		System.out.println(num);
+	}
+}
+
+class ExtendsDemo3 {
+	public static void main(String[] args) {
+		Son s = new Son();
+		//System.out.println(s.age);
+		//System.out.println(s.num);
+
+		s.show();
+	}
+}
+```
+
+```java
+/*
+	继承中的构造方法关系：
+		子类中所有的构造方法默认都会访问父类中空参数的构造方法
+
+		为什么呢?
+			因为子类会继承父类中的数据，可能还会使用父类的数据。
+			所以，子类初始化之前，一定要先完成父类数据的初始化。
+
+
+	那么，我可不可以访问父亲的带参构造方法呢?
+		可以。通过super(...)
+
+	注意事项：
+		A:每一个构造方法的第一条语句默认都是：super()
+		B:super(...)这样的形式在构造方法中只能出现一次。
+		C:如果父类没有无参构造方法，那么，我们只能
+			a:通过super去访问父类的带参构造方法。
+			b:通过this去访问本类的其他构造方法。
+*/
+class Fu {
+	/*
+	public Fu() {
+		System.out.println("Fu()");
+	}
+	*/
+
+	public Fu(String name) {
+		System.out.println("hello");
+	}
+}
+
+class Zi extends Fu {
+	public Zi() {
+		//super();
+		//super("aaa");
+		//this("aaa");
+		System.out.println("zi()");
+	}
+
+	public Zi(String name) {
+		//super();
+		//super(name);
+		//this();
+		System.out.println("world");
+	}
+}
+
+class ExtendsDemo4 {
+	public static void main(String[] args) {
+		//创建子类对象
+		Zi z = new Zi();
+		System.out.println("-------------");
+		Zi z2 = new Zi("java");
+	}
+}
+```
+
+```java
+需求1：写一个学生类，包含姓名和年龄
+	class Student {
+		private String name;
+		private int age;
+
+		public Student(){}
+
+		public Student(String name,int age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		//getXxx()/setXxx()
+	}
+需求2：写一个教师类，包含姓名和年龄
+	class Teacher {
+		private String name;
+		private int age;
+
+		public Teacher() {}
+
+		public Teacher(String name,int age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		//getXxx()/setXxx()
+	}
+需求3：写一个工人类，包含姓名和年龄
+	class Worker {
+		private String name;
+		private int age;
+
+		public Worker() {}
+
+		public Worker(String name,int age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		//getXxx()/setXxx()
+	}
+需求4：...
+
+通过上面的代码，我们发现各个类中相同的东西比较多。
+并且，如果我们对每个类要添加或者删除相同的东西，也比较麻烦，
+因为我们要操作很多类。
+那么，我们就在想，有没有比较好的方式解决这个问题呢?
+如何解决呢?
+	思想：我可以把这多个类中相同的内容给提前出来定义到类A中。
+	      然后让这些类和A类产生一个关系，有了这个关系后，这些
+	      类就具备了A类的成员。
+	当然是可以的了，java提供了继承技术来解决这个问题。
+
+按照这种思想我们来改进代码：
+	class Person {
+		private String name;
+		private int age;
+
+		public Person(){}
+
+		public Person(String name,int age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		//getXxx()/setXxx()
+	}
+这个关系如何表达呢?
+	格式：class 子类名 extends 父类名 {}  
+
+	class Student extends Person {
+		public Student(){}
+
+		public Student(String name,int age) {
+			???
+		}
+	}
+
+	class Teacher extends Person {
+		public Teacher(){}
+
+		public Teacher(String name,int age) {
+			???
+		}
+	}
+
+称呼：
+	Person：父类，基类，超类
+	Student,Teacher：子类，派生类
+```
+
+
+
+1. java中的继承的好处和弊端
+
+			A:好处	
+			a:提高了代码的复用性
+			b:提高了代码的可维护性
+			c:让类与类之间产生了一个关系，是多态的前提
+		B:弊端
+			让类与类的耦合增强了。这样一个类的改动会直接影响另一个类。
+
+设计原则：高内聚，低耦合。
+
+2. java中的继承的注意事项：
+
+		A:私有成员不能被继承
+	B:构造方法不能被继承，想访问，通过super关键字
+	C:不能为了部分功能而去使用继承
+
+3. 继承中的成员关系：
+
+		A:成员变量
+		不同名：特别简单，一看就知道用的是谁。
+		同名：就近原则
+			访问自己的用this
+			访问父亲的用super
+	B:构造方法
+		a:子类的所有构造方法默认都是访问父类的无参构造方法
+		b:如果父类没有无参构造方法，怎么办呢?
+			通过super(...)访问父类带参构造方法
+			通过this(...)访问本类其他构造方法。(一定要有一个访问了父类的构造方法)
+			注意：super或者this只能出现一个，并且只能在语句的第一条语句。
+		为什么呢?
+			因为子类可能会访问父类的数据，所以，在子类初始化之前，要先把父类数据初始化完毕。
+	C:成员方法
+		不同名：特别简单，一看就知道用的是谁。
+		同名：就近原则
+			访问自己的用this
+			访问父亲的用super
+
+4. this和super的区别及应用场景
+
+		A:区别
+		this：本类对象的引用
+		super：父类存储空间的标识。可以理解为父类对象的引用。
+
+B:应用场景
+	a:成员变量
+		this.变量 本类的成员变量
+		super.变量 父类的成员变量
+	b:构造方法
+		this(...) 本类的构造方法
+		super(...) 父类的构造方法
+	c:成员方法
+		this.方法名(...) 本类的成员方法
+		super.方法名(...) 父类的成员方法
+
+
+
+#### 方法重写(掌握)
+
+1. 描述：在子类中，出现了和父类中一模一样的方法声明的现象。
+
+2. 作用：可以使用父类功能，还可以增强该功能。
+
+
+3. 面试题：Overload和Override的区别。Overload的方法是否可以改变返回值的类型?
+
+Overload：重载       同一个类中，方法名相同，参数列表不同。与返回值类型无关。
+
+Override：重写       存在于子父类，或者子父接口中，方法声明相同。
+
+Overload的方法可以改变返回值的类型，因为它与返回值类型无关。
+
+4. 方法重写的注意事项：
+
+		A:父类私有方法不能被重写
+	B:子类重写方法的访问权限不能比父类的方法低
+	C:静态只能重写静态。(其实这算不上重写)
+
+#### final关键字(掌握)
+
+​	(1)final:最终的意思
+	(2)作用：可以修饰类，修饰成员变量，修饰成员方法
+	(3)特点：
+		A:修饰类 类不能被继承
+		B:修饰成员变量 变量变成了常量
+		C:修饰成员方法 方法不能被重写
+
+```java
+/*
+	很多时候，我们可能不想让子类修改我的内容。这个时候该怎么半呢?
+	针对这种情况，java又提供了一个状态修饰符：final。
+
+	final:最终的意思。
+
+	作用：
+		可以修饰类，成员变量，成员方法。
+
+	特点：
+		类：类被final修饰，说明该类是最终类，不能被继承。
+		成员变量：变量被final修饰后，就变成了常量。值不能被修改。
+		成员方法：方法不能被子类重写。
+*/
+final class Fu {
+	public int num = 10;
+	public final int num2 = 20;
+
+	public final void getResource() {
+		System.out.println("这里是绝密的资源,可以看,不可以改");
+	}
+	
+	public void show() {
+		num = 100;
+		System.out.println(num);
+		//num2 = 200;
+		System.out.println(num2);
+	}
+}
+
+class Zi extends Fu {
+	/*
+	public void getResource() {
+		System.out.println("这里我想干什么就干什么");
+	}
+	*/
+}
+
+class FinalDemo {
+	public static void main(String[] args) {
+		Zi z = new Zi();
+		z.getResource();
+		z.show();
+	}
+}
+```
+
+​	(4)面试题：
+		A:final修饰局部变量
+			a:基本类型 值不能发生改变
+			b:引用类型 地址值不能发送改变，对象的内容是可以改变的
+		B:final的初始化时机
+			a:在定义时就赋值
+			b:在构造方法完毕前赋值
+
+#### 多态(掌握)
+
+​	(1)多态：同一个对象，在不同时刻表现出来的多种状态
+		举例：水，猫和动物
+
+```java
+/*
+	多态：同一个对象在不同时刻表现出现的不同状态。
+
+	举例：
+		A:水(水，冰，水蒸气)
+
+		B:猫和动物。
+			把右边的值赋值给左边，如果能读通过，就说明可以。
+			动物 d = new 动物();
+			动物 dd = new 猫();
+			猫 m = new 猫();
+			猫 mm = new 动物();  错误
+
+			动物 dd = new 猫();
+
+	代码如何体现呢?
+		A:有继承关系	
+		B:有方法重写	
+		C:有父类引用指向子类对象
+*/
+class Animal {
+	public void eat() {
+		System.out.println("动物吃饭");
+	}
+}
+
+class Dog extends Animal {
+	public void eat() {
+		System.out.println("狗吃肉");
+	}
+}
+
+class DuoTaiDemo {
+	public static void main(String[] args) {
+		//Animal a = new Animal();
+		//Dog d = new Dog();
+
+		//多态
+		Animal a = new Dog();
+	}
+}
+```
+
+​	(2)多态的前提：
+		A:有继承关系
+		B:有方法重写
+		C:有父类引用指向子类对象
+	(3)多态中的成员访问特点：
+		A:成员变量
+			编译看左边，运行看左边
+		B:成员方法
+			编译看左边，运行看右边
+		C:静态方法
+			编译看左边，运行看左边
+
+为什么：
+		因为方法有重写，而变量没有。静态方法没有重写一说。
+
+### DAY009
+
+![](http://ovi3ob9p4.bkt.clouddn.com/xuexi/009DAY.jpg)
+
+#### 多态(掌握)
+
+​	(1)同一个事物在不同时刻表现出现的多种状态。
+		举例：水，猫和动物
+	(2)前提
+		A:有继承或者实现关系
+		B:有方法重写
+			因为抽象类中的抽象方法以及接口中的方法都必须被子类重写，调用才有意义。
+		C:有父类或者父接口引用指向子类对象
+	(3)多态中的成员访问特点
+		Fu f = new Zi();
+		A:成员变量
+			编译看左边，运行看左边
+		B:成员方法
+			编译看左边，运行看右边
+		C:静态方法
+			编译看左边，运行看左边
+	(4)好处和弊端
+		A:好处
+			提高了代码的维护性
+			提高了代码的扩展性
+		B:弊端
+			不能访问子类特有功能
+	(5)如何访问子类特有功能
+		A:创建子类对象
+		B:向下转型
+	(6)多态中的转型
+		A:向上转型
+			子到父
+		B:向下转型
+			父到子(加强制转换)
+	(7)孔子装爹案例
+
+#### 抽象类(掌握)
+
+```java
+/*
+	抽象类概述：动物不是一个具体的事物，只有猫，狗才是具体的个体。
+				并且，在动物中我们针对吃的功能，也不应该给出具体的体现，
+				因为不同的动物吃的内容是不一样的，我们应该让具体的动物自己去实现自己吃的功能。
+				而一个功能如果没有具体的体现，就是一个抽象的内容。如何表示呢?
+
+				格式：
+					修饰符 返回值类型 方法名(参数列表...);
+
+				为了表示这是一个抽象的东西，java提供了一个标识的关键字：abstract
+				格式：
+					修饰符 abstract 返回值类型 方法名(参数列表...);
+				而一个类中的方法如果是抽象的类，那么，该类就必须定义为抽象类。
+	抽象类的特点：
+		A:抽象类和抽象方法必须用abstract关键字修饰
+		B:抽象类的子类
+			a:要么是抽象类
+			b:要么重写抽象类中的所有抽象方法
+		C:抽象类不一定有抽象方法，有抽象方法的类一定是抽象类
+		D:抽象类不能实例化
+			那么如何使用抽象类的功能呢?
+			按照多态的方式使用。抽象类多态。
+
+	回顾：
+		多态前提为什么要有方法重写呢?
+			因为父类的方法可能是抽象的。
+*/
+abstract class Animal {
+	//这个方法是有方法体的，只不过内容为空
+	//public void eat() {}
+
+	//抽象方法
+	public abstract void eat();
+}
+
+abstract class Dog extends Animal {
+}
+
+class Cat extends Animal {
+	public void eat() {
+		System.out.println("猫吃鱼");
+	}
+}
+
+class AbstractDemo {
+	public static void main(String[] args) {
+		//Animal a = new Animal(); //无法实例化
+
+		//Dog d = new Dog();  //无法实例化
+
+		//Cat c = new Cat();
+
+		//多态
+		Animal a = new Cat();
+		a.eat();
+	}
+}
+```
+
+​	有些时候，我们对事物不能用具体的东西来描述，这个时候就应该把事物定义为抽象类。
+	
+
+```java
+/*
+	抽象类的成员特点：
+		A:成员变量
+			可以是变量，也可以是常量
+		B:构造方法
+			有构造方法。但是不能实例化。
+			问题：构造方法有什么用呢?
+				用于子类访问父类数据的初始化
+		C:成员方法
+			可是有抽象方法，也可以有非抽象方法。
+			抽象方法：强制要求子类做某些事情。
+			非抽象方法：用于给子类直接使用，提高了代码的复用性。
+*/
+abstract class Animal {
+	int num = 10;
+	final int num2 = 20;
+
+	public Animal() {}
+
+	public void method() {
+		System.out.println("method");
+	}
+
+	public abstract void function();
+}
+
+class Dog extends Animal  {
+	public void show() {
+		num = 100;
+		System.out.println(num);
+		//num2 = 200;
+		System.out.println(num2);
+	}
+
+	public void function() {}
+}
+
+class AbstractDemo2 {
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		d.show();
+	}
+}
+```
+
+两个小问题
+		A:如果你看到一个抽象类中居然没有抽象方法,这个抽象类的意义何在?
+		  不让别人创建
+		B:abstract不能和哪些关键字共存?
+			a:private 冲突
+			b:final 冲突
+			c:static 无意义
+	
+
+#### 接口(掌握)
+
+​	(1)有些时候，不是事物本身具备的功能，我们就考虑使用接口来扩展。
+	(2)接口的特点：
+		A:定义接口用关键字interface
+			格式是：interface 接口名 {}
+		B:类实现接口用关键字implements 
+			格式是：class 类名 implements 接口名 {}
+		C:接口不能实例化
+		D:接口的子类
+			a:要么是抽象类
+			b:要么重写接口中的所有方法
+	(3)接口的成员特点
+		A:成员变量
+			只能是常量。
+			默认修饰符：public static final
+		B:成员方法
+			只能是抽象方法。
+			默认修饰符：public abstract 
+		推荐：
+			建议自己写接口的时候，把默认修饰符加上。
+	(4)类与接口的关系
+		A:类与类
+			继承关系，只能单继承，可以多层继承。
+		B:类与接口
+			实现关系，可以单实现，也可以多实现。
+			还可以在继承一个类的同时实现多个接口。
+		C:接口与接口
+			继承关系，可以单继承，也可以多继承。
+	(5)抽象类和接口的区别?
+
+```
+1：成员区别
+
+	抽象类：
+
+		成员变量：可以是变量，也可以是常量
+
+		构造方法：有
+
+		成员方法：可以是抽象的，也可以是非抽象的
+
+	接口：
+
+		成员变量：只能是常量。
+
+			默认修饰符：public static final
+
+		成员方法：只能是抽象的
+
+			默认修饰符：public abstract
+
+2：关系区别
+
+	类与类：
+
+		继承关系，只能单继承。可以多层继承。
+
+	类与接口：
+
+		实现关系，可以单实现，也可以多实现。
+
+		还可以在继承一个类的同时实现多个接口。
+
+	接口与接口：
+
+		继承关系，可以单继承，也可以多继承。
+
+3：设计理念区别
+
+	抽象类：被继承体现的是：”is a”的关系。在抽象类中定义的一般是共性功能
+
+	接口：被实现体现的是：”like a”的关系。在接口中定义的一般是扩展功能
+
+		A:成员区别
+
+		B:关系区别
+
+		C:设计理念区别
+
+			抽象类：父抽象类，里面定义的是共性内容。
+
+			接口：父接口，里面定义的是扩展内容。
+```
+
+#### DAY010
+
+1：形式参数和返回值问题(掌握)
+	(1)形式参数：
+		基本类型：需要的是对应的值
+		引用类型：
+			类：该类的对象
+			抽象类：该类的子类对象
+			接口：该接口的实现类对象
+	(2)返回值问题：
+		基本类型：返回的是对应的值
+		引用类型：
+			类：该类的对象
+			抽象类：该类的子类对象
+			接口：该接口的实现类对象
+	(3)链式编程
+		new A().b().c().d();
+
+2：包(理解)
+	(1)其实就是文件夹
+	(2)对类进行分类管理
+	(3)格式：
+		package 包名;
+	(4)注意事项
+		A:package是程序中的第一条可执行语句
+		B:在类中package是唯一的
+		C:没有package，默认是无包名
+	(5)带包的类的编译和运行
+
+3：导包(理解)
+	(1)为了方便使用不同包下的类，需要导包
+	(2)格式：
+		import 包名.报名...类名;
+
+		注意：可以导入到*,但是不建议
+	(3)package，import，class在类中有没有顺序关系呢?
+		有。
+		package --> import --> class
+
+4：修饰符(理解)
+	(1)4种权限修饰符
+				本类	同一个包下	不同包下的子类	不同包下的其他类
+		private		Y
+		默认		Y	Y
+		protected	Y	Y		Y
+		public		Y	Y		Y		Y
+	(2)常见的修饰
+		A:类	public
+		B:成员变量	private
+		C:构造方法	public
+		D:成员方法	public
+
+5：内部类(理解)
+	(1)把类A定义在类B内部，类A就被称为内部类
+	(2)访问特点：
+		A:内部类可以直接访问外部类的成员，包括私有
+		B:外部类要想访问内部类的成员，必须创建对象
+	(3)内部类的分类：
+		A:成员内部类
+		B:局部内部类
+	(4)成员内部类
+		A:private
+		B:static
+		
+		面试题：
+			num
+			this.num
+			Outer.this.num
+	(5)局部内部类
+		A:面试题
+			局部内部类访问局部变量，必须加final修饰
+	(6)匿名内部类(掌握)
+		A:没有名字的内部类
+		B:前提
+			存在一个类或者接口
+		C:格式
+			new 类名或者接口名() {
+				重写方法();
+			};
+	
+			本质：是一个匿名子类对象
+	(7)开发中如何使用
+		不用在定义一个新的类了。直接通过匿名内部类的格式就可以搞定
+	
+		interface Person {
+			public abstract void show();
+		}
+	
+		class PersonDemo {
+			public void method(Person p) {
+				p.show();
+			}
+		}
+	
+		PersonDemo pd = new PersonDemo();
+		pd.method(new Person(){
+			public void show(){...}
+		});
+	(8)面试题
+		补齐代码，在控制台输出HelloWorld
+	
+		interface Inter {
+			public abstract void show();
+		}
+	
+		class Outer {
+			//补齐代码
+			public static Inter method() {
+				return new Inter(){
+					public void show() {
+						System.out.println("helloworld");
+					}
+				};
+			}
+		}
+	
+		class OuterDemo {
+			public static void main(String[] args) {
+				Outer.method().show();
+			}
+		}
