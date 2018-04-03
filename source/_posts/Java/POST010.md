@@ -1,10 +1,10 @@
 ---
-title: Java知识点
+title: Java basic knowledge
 tags: Java
 category: Java
 date: 2018-03-18 20:30:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0157.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0158.jpg)
 
 27天学完Java
 <!--more-->
