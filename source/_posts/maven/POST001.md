@@ -4,21 +4,22 @@ tags: maven
 category: maven
 date: 2018-03-20 20:30:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0158.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0159.jpg)
 
 maven项目的tomcat配置
 <!--more-->
+
 ### 一、没有Tomcat情况
 
-​    `Run As-->Maven build-->tomcat:run`    (不支持jdk1.8+tomcat8;项目启动没问题,访问报错500;jdk1.7 可以正常访问)
+  `Run As-->Maven build-->tomcat:run`    (不支持jdk1.8+tomcat8;项目启动没问题,访问报错500;jdk1.7 可以正常访问)
 
 ### 二、war包形式
 
 1. 使用maven导出war包
 
-​    `Run As-->Maven build... -->package`
+   `Run As-->Maven build... -->package`
 
-​    成功后会提示生成的war包路径。一般在项目的target目录下。 (`注：pom.xml的<packaging/>配置为war打包后的就是war包，配置为jar时打包后的就是jar包`)
+   成功后会提示生成的war包路径。一般在项目的target目录下。 (`注：pom.xml的<packaging/>配置为war打包后的就是war包，配置为jar时打包后的就是jar包`)
 
 2. 将war包部署至tomcat中
 
@@ -35,9 +36,9 @@ maven项目的tomcat配置
 
 注: 在部署项目的时候直接将web项目编译后的文件放在webapps也是同样的
 
-​      JavaEE项目部署 `默认存放在webapp-->WEB-INF-->classes下面(如：C:\Java\apache-tomcat-7.0.79\webapps\mobile_scm\WEB-INF\classes)`
+     JavaEE项目部署 `默认存放在webapp-->WEB-INF-->classes下面(如：C:\Java\apache-tomcat-7.0.79\webapps\mobile_scm\WEB-INF\classes)`
 
-​      maven项目部署 `默认存放在target下面(如：E:\MavenWorks\babasport\target)`
+      maven项目部署 `默认存放在target下面(如：E:\MavenWorks\babasport\target)`
 
 ### 三、Tomcat启动
 
@@ -47,7 +48,7 @@ maven项目的tomcat配置
 
 教程：tomcat热部署：webapps下的项目正在运行，直接把开发的新版本发布到正在运行的Tomcat下(不能关闭Tomcat再发布新版本
 
-​    开发者本地将代码通过Git push到服务器端，服务器自动编译-打包-发布等等；也就是说发布到tomcat中后，不需要重启tomcat。
+   开发者本地将代码通过Git push到服务器端，服务器自动编译-打包-发布等等；也就是说发布到tomcat中后，不需要重启tomcat。
 
 1. 热部署前准备：
 
@@ -55,7 +56,7 @@ maven项目的tomcat配置
 
   热部署需要用户名和密码进行远程发布，修改user配置文件一是为了管理员进入tomcat管理页面并提高其安全性，二是为了在maven设置正确的用户名；
 
-​        `C:\Java\apache-tomcat-7.0.79\conf\tomcat-users.xml`
+      `C:\Java\apache-tomcat-7.0.79\conf\tomcat-users.xml`
 
 - 找到tomcat-user配置文件:
 
@@ -72,7 +73,7 @@ maven项目的tomcat配置
 
    进入tomcat服务器根目录，点击“manager app”输入用户名和密码，成功进入管理页面，说明第一步配置成功。
 
-​    注：端口号改为80 可以默认不显示；访问项目应该隐藏项目名称；
+   注：端口号改为80 可以默认不显示；访问项目应该隐藏项目名称；
 
 #### 热部署
 
@@ -156,7 +157,7 @@ maven项目发布后默认存放到target目录下(如：E:\MavenWorks\babasport
 
 注：如果用eclipse，`http://localhost:8080/项目名称`  也可以访问； 
 
-​	用myeclipse，只能访问`http://localhost:8080/`
+    用myeclipse，只能访问`http://localhost:8080/`
 
 注：如果不能成功发布到 / 目录下，或许需要做以下修改(一般默认完成，不用做修改)   
 
@@ -168,7 +169,7 @@ maven项目发布后默认存放到target目录下(如：E:\MavenWorks\babasport
 
 MyEclipse中Maven build...项目控制台不输出log 没有反应
 
-​	一开始项目与都是可以通过maven build... 然后输入tomcat:run 跑起来的，后来忘记做了啥操作跑步起来了，控制台也不输出log了，总是一闪就过去了，后来也是试了各种方法，可能是自己换了当前项目的jdk版本，下面是解决方案
+  	一开始项目与都是可以通过maven build... 然后输入tomcat:run 跑起来的，后来忘记做了啥操作跑步起来了，控制台也不输出log了，总是一闪就过去了，后来也是试了各种方法，可能是自己换了当前项目的jdk版本，下面是解决方案
 
 右击maven项目: `Build Path ---> configure Build Path... ---> 先选中你当前的jdk remove掉 ，然后重新添加 ----> Add Library --->  选择 JRE System Library  ---> 选择Alternate JRE---> 然后点击installed JRES 进入界面后选择你要用的jdk版本 ---> edit ---> 在Default VM arguments 添加 :Dmaven.multiModuleProjectDirectory=$MAVEN_HOME`
 
