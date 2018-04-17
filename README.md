@@ -11,4 +11,4 @@
 [mirror-url]: http://skei.gitee.io
 
 [model-image]: http://ovi3ob9p4.bkt.clouddn.com/ico/moxing.png
-[model-url]: https://github.com/sirke/sirke.github.io/wiki/post-model/_edit
+[model-url]: https://github.com/keees/keees.github.io/wiki/post-model/_edit
