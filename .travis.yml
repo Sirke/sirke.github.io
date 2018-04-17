@@ -16,7 +16,7 @@ script:
 after_script:
   - cd ./public
   - git init
-  - git config user.name "sirke"
+  - git config user.name "keees"
   - git config user.email "ceek@vip.qq.com"
   - git add .
   - git commit -m "Deploy at $(date)."
@@ -31,4 +31,4 @@ branches:
     - dev
 env:
  global:
-   - GH_REF: github.com/sirke/sirke.github.io.git
+   - GH_REF: github.com/keees/keees.github.io.git
