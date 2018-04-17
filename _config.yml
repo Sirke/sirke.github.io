@@ -142,5 +142,5 @@ douban:
 deploy:
   type: git
   repo:
-      github: git@github.com:sirke/sirke.github.io.git,master
+      github: git@github.com:keees/keees.github.io.git,master
       coding: git@git.coding.net:laukei/laukei.coding.me.git,master
