@@ -162,7 +162,7 @@ site_state: true
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  #GitHub: https://github.com/sirke || github
+  #GitHub: https://github.com/keees || github
   E-Mail: mailto:ceek@vip.qq.com || envelope
   Weibo: http://weibo.com/sirkei || weibo
   #Douban: http://douban.com/people/sirkei || book
@@ -515,8 +515,8 @@ gitment:
   lazy: false # Comments lazy loading with a button
   cleanly: true # Hide 'Powered by ...' on footer, and more
   language: auto # Force language, or auto switch by theme
-  github_user: Sirke # MUST HAVE, Your Github Username
-  github_repo: i.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
+  github_user: keees # MUST HAVE, Your Github Username
+  github_repo: keees.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
   client_id: 236428ac7ea5e4d89f13 # MUST HAVE, Github client id for the Gitment
   client_secret: c2e896728cc875ef54cf77f64b1f920fd6f778dc # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
@@ -853,51 +853,51 @@ audio:
   { title: 'faded',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1775613206.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'JULY',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/kw/27780227.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'TIME',
-    artist: 'mc',
+    artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1774279139.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'DA Y',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1776099904.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
    { title: 'Summertime',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1773727505.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'BOOTY',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1769177009.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'Try Everything',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1775595262.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'Monody',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1775271436.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'Victory',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1774245401.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'SEVE',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1774279139.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'PANAMA',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/1774389724.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' },
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' },
   { title: 'GHSY',
     artist: 'Mr.Q',
     mp3: 'http://link.hhtjim.com/xiami/174891.mp3',
-    cover: 'http://img.xiami.net/images/album/img29/3029/16250159661472438031.jpg' }
+    cover: 'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg' }
   ]
 
 # Online contact
