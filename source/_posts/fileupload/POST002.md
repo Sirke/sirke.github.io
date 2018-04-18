@@ -400,3 +400,583 @@ uploader.onFileQueued = function( file ) {
     // do some things.
 };
 ```
+#### 断点上传实例
+
+##### 准备：
+
+Uploader.swf、webuploader.css、webuploader.js，其中Uploader.swf只在初始化webUploader时用到，其余两个文件在页面引用即可。下载地址：https://github.com/fex-team/webuploader/releases
+
+##### Jsp代码：
+
+```jsp
+<!-- 断点续传   start-->
+<!-- 隐藏域 实时保存上传进度 -->
+<input id="jindutiao" type="hidden"/>
+<div id="uploader" class="wu-example">
+    <label class="text-right" style="font-weight:100;float:left;margin-left:15px;width:144px;margin-right:15px;">大文件：</label>
+    <div class="btns">
+    <div id="picker" class="webuploader-container">
+        <div class="webuploader-pick">选择文件</div>
+        <div id="rt_rt_1bchdejhrarjdvd11h41eoh1nt1" style="position: absolute; top: 0px; left: 0px; width: 88px; height: 35px; overflow: hidden; bottom: auto; right: auto;">
+            <input id="file_bp" name="file" class="webuploader-element-invisible" type="file" />
+            <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label>
+        </div>
+    </div>
+    <!-- 文件列表：选择文件后在该div显示 -->
+    <div id="thelist" class="uploader-list list-group-item clearfix ng-hide" style="margin-left:160px;"></div>
+    <label class="text-right" style="font-weight:100;float:left;margin-left:15px;width:144px;margin-right:15px;"></label>
+    <button class="btn m-b-xs btn-sm btn-info btn-addon" id="startOrStopBtn" style="padding:7px 50px;margin-top:20px;">开始上传</button>
+    </div>
+</div>
+<!-- 断点续传   end-->
+```
+
+##### js代码
+
+```js
+<script type="text/javascript">  
+jQuery(function() {
+    /*******************初始化参数*********************************/
+    var $list = $('#thelist'),//文件列表
+        $btn = $('#startOrStopBtn'),//开始上传按钮
+        state = 'pending',//初始按钮状态
+        uploader; //uploader对象
+    var fileMd5;  //文件唯一标识
+    
+    /******************下面的参数是自定义的*************************/
+    var fileName;//文件名称
+    var oldJindu;//如果该文件之前上传过 已经上传的进度是多少
+    var count=0;//当前正在上传的文件在数组中的下标，一次上传多个文件时使用
+    var filesArr=new Array();//文件数组：每当有文件被添加进队列的时候 就push到数组中
+    var map={};//key存储文件id，value存储该文件上传过的进度
+    
+    /***************************************************** 监听分块上传过程中的三个时间点 start ***********************************************************/
+    WebUploader.Uploader.register({  
+        "before-send-file":"beforeSendFile",//整个文件上传前
+        "before-send":"beforeSend",  //每个分片上传前
+        "after-send-file":"afterSendFile",  //分片上传完毕
+    },
+    {  
+        //时间点1：所有分块进行上传之前调用此函数  
+        beforeSendFile:function(file){
+            var deferred = WebUploader.Deferred();  
+            //1、计算文件的唯一标记fileMd5，用于断点续传  如果.md5File(file)方法里只写一个file参数则计算MD5值会很慢 所以加了后面的参数：10*1024*1024
+            (new WebUploader.Uploader()).md5File(file,0,10*1024*1024).progress(function(percentage){
+                $('#'+file.id ).find('p.state').text('正在读取文件信息...');
+            })  
+            .then(function(val){  
+                $('#'+file.id ).find("p.state").text("成功获取文件信息...");  
+                fileMd5=val;  
+                //获取文件信息后进入下一步  
+                deferred.resolve();  
+            });  
+            
+            fileName=file.name; //为自定义参数文件名赋值
+            return deferred.promise();  
+        },  
+        //时间点2：如果有分块上传，则每个分块上传之前调用此函数  
+        beforeSend:function(block){
+            var deferred = WebUploader.Deferred();  
+            $.ajax({  
+                type:"POST",  
+                url:"${ctx}/testController/mergeOrCheckChunks.do?param=checkChunk",  //ajax验证每一个分片
+                data:{  
+                    fileName : fileName,
+                    jindutiao:$("#jindutiao").val(),
+                    fileMd5:fileMd5,  //文件唯一标记  
+                    chunk:block.chunk,  //当前分块下标  
+                    chunkSize:block.end-block.start//当前分块大小  
+                },  
+                cache: false,
+                async: false,  // 与js同步
+                timeout: 1000, //todo 超时的话，只能认为该分片未上传过
+                dataType:"json",  
+                success:function(response){  
+                    if(response.ifExist){
+                        //分块存在，跳过  
+                        deferred.reject();  
+                    }else{  
+                        //分块不存在或不完整，重新发送该分块内容  
+                        deferred.resolve();  
+                    }  
+                }  
+            });  
+                             
+            this.owner.options.formData.fileMd5 = fileMd5;  
+            deferred.resolve();  
+            return deferred.promise();  
+        },  
+        //时间点3：所有分块上传成功后调用此函数  
+        afterSendFile:function(){
+            //如果分块上传成功，则通知后台合并分块  
+            $.ajax({  
+                type:"POST",  
+                url:"${ctx}/testController/mergeOrCheckChunks.do?param=mergeChunks",  //ajax将所有片段合并成整体
+                data:{  
+                    fileName : fileName,
+                    fileMd5:fileMd5,
+                },  
+                success:function(data){
+                    count++; //每上传完成一个文件 count+1
+                    if(count<=filesArr.length-1){
+                        uploader.upload(filesArr[count].id);//上传文件列表中的下一个文件
+                    }
+                     //合并成功之后的操作
+                }  
+            });  
+        }  
+    });
+    /***************************************************** 监听分块上传过程中的三个时间点 end **************************************************************/
+    
+    /************************************************************ 初始化WebUploader start ******************************************************************/
+    uploader = WebUploader.create({
+        auto:false,//选择文件后是否自动上传
+        chunked: true,//开启分片上传
+        chunkSize:10*1024*1024,// 如果要分片，分多大一片？默认大小为5M
+        chunkRetry: 3,//如果某个分片由于网络问题出错，允许自动重传多少次
+        threads: 3,//上传并发数。允许同时最大上传进程数[默认值：3]
+        duplicate : false,//是否重复上传（同时选择多个一样的文件），true可以重复上传
+        prepareNextFile: true,//上传当前分片时预处理下一分片
+        swf: '${ctx}/resource/webuploader/Uploader.swf',// swf文件路径  
+        server: '${ctx}/testController/fileSave.do',// 文件接收服务端
+        fileSizeLimit:6*1024*1024*1024,//6G 验证文件总大小是否超出限制, 超出则不允许加入队列
+        fileSingleSizeLimit:3*1024*1024*1024,  //3G 验证单个文件大小是否超出限制, 超出则不允许加入队列
+        pick: {
+                id: '#picker', //这个id是你要点击上传文件按钮的外层div的id
+                multiple : false //是否可以批量上传，true可以同时选择多个文件
+        },  
+        resize: false,  //不压缩image, 默认如果是jpeg，文件上传前会先压缩再上传！
+        accept: {  
+                //允许上传的文件后缀，不带点，多个用逗号分割
+            extensions: "txt,jpg,jpeg,bmp,png,zip,rar,war,pdf,cebx,doc,docx,ppt,pptx,xls,xlsx",  
+            mimeTypes: '.txt,.jpg,.jpeg,.bmp,.png,.zip,.rar,.war,.pdf,.cebx,.doc,.docx,.ppt,.pptx,.xls,.xlsx',  
+        }  
+    });  
+    /************************************************************ 初始化WebUploader end ********************************************************************/
+    
+    //当有文件被添加进队列的时候（点击上传文件按钮，弹出文件选择框，选择完文件点击确定后触发的事件）  
+    uploader.on('fileQueued', function(file) {
+        //限制单个文件的大小 超出了提示
+        if(file.size>3*1024*1024*1024){
+            alert("单个文件大小不能超过3G");
+            return false;
+        }
+        
+        /*************如果一次只能选择一个文件，再次选择替换前一个，就增加如下代码*******************************/
+        //清空文件队列
+        $list.html("");
+        //清空文件数组
+        filesArr=[];
+        /*************如果一次只能选择一个文件，再次选择替换前一个，就增加以上代码*******************************/
+        
+        //将选择的文件添加进文件数组
+        filesArr.push(file);
+
+        $.ajax({  
+            type:"POST",  
+            url:"${ctx}/testController/selectProgressByFileName.do",  //先检查该文件是否上传过，如果上传过，上传进度是多少
+            data:{  
+                fileName : file.name  //文件名
+            },  
+            cache: false,
+            async: false,  // 同步
+            dataType:"json",  
+            success:function(data){  
+                //上传过
+                if(data>0){
+                    //上传过的进度的百分比
+                            oldJindu=data/100;
+                    //如果上传过 上传了多少
+                    var jindutiaoStyle="width:"+data+"%";
+                    $list.append( '<div id="' + file.id + '" class="item">' +
+                        '<h4 class="info">' + file.name + '</h4>' +
+                        '<p class="state">已上传'+data+'%</p>' +
+                        '<a href="javascript:void(0);" class="btn btn-primary file_btn btnRemoveFile">删除</a>' +
+                            '<div class="progress progress-striped active">' +
+                      '<div class="progress-bar" role="progressbar" style="'+jindutiaoStyle+'">' +
+                      '</div>' +
+                    '</div>'+
+                    '</div>' );
+                    //将上传过的进度存入map集合
+                    map[file.id]=oldJindu;
+                }else{//没有上传过
+                    $list.append( '<div id="' + file.id + '" class="item">' +
+                        '<h4 class="info">' + file.name + '</h4>' +
+                        '<p class="state">等待上传...</p>' +
+                        '<a href="javascript:void(0);" class="btn btn-primary file_btn btnRemoveFile">删除</a>' +
+                    '</div>' );
+                }  
+            }  
+        });
+        uploader.stop(true);
+        //删除队列中的文件
+        $(".btnRemoveFile").bind("click", function() {
+            var fileItem = $(this).parent();
+            uploader.removeFile($(fileItem).attr("id"), true);
+            $(fileItem).fadeOut(function() {
+                $(fileItem).remove();
+            });
+        
+            //数组中的文件也要删除
+            for(var i=0;i<filesArr.length;i++){
+                if(filesArr[i].id==$(fileItem).attr("id")){
+                    filesArr.splice(i,1);//i是要删除的元素在数组中的下标，1代表从下标位置开始连续删除一个元素
+                }
+            }
+        });
+    });  
+         
+    //文件上传过程中创建进度条实时显示
+    uploader.on('uploadProgress', function(file, percentage) {
+        var $li = $( '#'+file.id ),
+        $percent = $li.find('.progress .progress-bar');
+        //避免重复创建
+        if (!$percent.length){
+            $percent = $('<div class="progress progress-striped active">' +
+              '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+              '</div>' +
+            '</div>').appendTo( $li ).find('.progress-bar');
+        }
+        
+        //将实时进度存入隐藏域
+        $("#jindutiao").val(Math.round(percentage * 100));
+        
+        //根据fielId获得当前要上传的文件的进度
+        var oldJinduValue = map[file.id];
+        
+        if(percentage<oldJinduValue && oldJinduValue!=1){
+            $li.find('p.state').text('上传中'+Math.round(oldJinduValue * 100) + '%');
+            $percent.css('width', oldJinduValue * 100 + '%');
+        }else{
+            $li.find('p.state').text('上传中'+Math.round(percentage * 100) + '%');
+            $percent.css('width', percentage * 100 + '%');
+        }
+    });  
+    
+    //上传成功后执行的方法
+    uploader.on('uploadSuccess', function( file ) {  
+        //上传成功去掉进度条
+        $('#'+file.id).find('.progress').fadeOut();
+        //隐藏删除按钮
+        $(".btnRemoveFile").hide();
+        //隐藏上传按钮
+        $("#startOrStopBtn").hide();
+        $('#'+file.id).find('p.state').text('文件已上传成功，系统后台正在处理，请稍后...');  
+    });  
+    
+    //上传出错后执行的方法
+    uploader.on('uploadError', function( file ) {
+        errorUpload=true;
+        $btn.text('开始上传');
+        uploader.stop(true);
+        $('#'+file.id).find('p.state').text('上传出错，请检查网络连接');
+    });  
+      
+    //文件上传成功失败都会走这个方法
+    uploader.on('uploadComplete', function( file ) {
+        
+    });  
+    
+    uploader.on('all', function(type){
+        if (type === 'startUpload'){
+            state = 'uploading';
+        }else if(type === 'stopUpload'){
+            state = 'paused';
+        }else if(type === 'uploadFinished'){
+            state = 'done';
+        }
+
+        if (state === 'uploading'){
+            $btn.text('暂停上传');
+        } else {
+            $btn.text('开始上传');
+        }
+    });
+
+    //上传按钮的onclick时间
+    $btn.on('click', function(){
+        if (state === 'uploading'){
+            uploader.stop(true);
+        } else {
+            //当前上传文件的文件名
+            var currentFileName;
+            //当前上传文件的文件id
+            var currentFileId;
+            //count=0 说明没开始传 默认从文件列表的第一个开始传
+            if(count==0){
+                currentFileName=filesArr[0].name;
+                currentFileId=filesArr[0].id;
+            }else{
+                if(count<=filesArr.length-1){
+                    currentFileName=filesArr[count].name;
+                    currentFileId=filesArr[count].id;
+                }
+            }
+            
+            //先查询该文件是否上传过 如果上传过已经上传的进度是多少
+            $.ajax({  
+                type:"POST",  
+                url:"${ctx}/testController/selectProgressByFileName.do",  
+                data:{  
+                    fileName : currentFileName//文件名
+                },  
+                cache: false,
+                async: false,  // 同步
+                dataType:"json",  
+                success:function(data){  
+                    //如果上传过 将进度存入map
+                    if(data>0){
+                        map[currentFileId]=data/100;
+                    }
+                    //执行上传
+                    uploader.upload(currentFileId);
+                }  
+            });
+        }
+    });
+});
+</script>
+```
+
+##### Java代码
+
+```java
+//合并、验证分片方法
+public void mergeOrCheckChunks(HttpServletRequest request, HttpServletResponse response) {
+    String param = request.getParameter("param");  
+    String fileName = request.getParameter("fileName");
+    
+    //当前登录用户信息
+    SysUser sysUser = (SysUser)request.getSession().getAttribute("user");
+    String newFilePath = sysUser.getUserId()+"_"+fileName;
+    String savePath = request.getRealPath("/");
+    //文件上传的临时文件保存在项目的temp文件夹下 定时删除
+    savePath = new File(savePath) + "/upload/";
+    if(param.equals("mergeChunks")){
+        //合并文件  
+        Jedis jedis =null;
+        try {
+            jedis =jedisPool.getResource();
+            //读取目录里的所有文件  
+            File f = new File(savePath+"/"+jedis.get("fileName_"+fileName));  
+            File[] fileArray = f.listFiles(new FileFilter(){  
+                //排除目录只要文件  
+                @Override  
+                public boolean accept(File pathname) {  
+                    if(pathname.isDirectory()){  
+                        return false;  
+                    }  
+                    return true;  
+                }  
+            });
+
+            //转成集合，便于排序  
+            List<File> fileList = new ArrayList<File>(Arrays.asList(fileArray));  
+            Collections.sort(fileList,new Comparator<File>() {  
+                @Override  
+                public int compare(File o1, File o2) {  
+                    if(Integer.parseInt(o1.getName()) < Integer.parseInt(o2.getName())){  
+                        return -1;  
+                    }  
+                    return 1;  
+                }  
+            });  
+
+            //截取文件名的后缀名
+            //最后一个"."的位置
+            int pointIndex=fileName.lastIndexOf(".");
+            //后缀名
+            String suffix=fileName.substring(pointIndex);
+            //合并后的文件
+            File outputFile = new File(savePath+"/"+jedis.get("fileName_"+fileName)+suffix);  
+            //创建文件  
+            try {
+                outputFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }  
+            //输出流  
+            FileChannel outChnnel = new FileOutputStream(outputFile).getChannel();  
+            //合并  
+            FileChannel inChannel;  
+            for(File file : fileList){  
+                inChannel = new FileInputStream(file).getChannel();  
+                try {
+                    inChannel.transferTo(0, inChannel.size(), outChnnel);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }  
+                try {
+                    inChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }  
+                //删除分片  
+                file.delete();  
+            }  
+            try {
+                outChnnel.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }  
+
+            //清除文件夹  
+            File tempFile = new File(savePath+"/"+jedis.get("fileName_"+fileName));  
+            if(tempFile.isDirectory() && tempFile.exists()){  
+                tempFile.delete();  
+            }  
+
+            Map<String, String> resultMap=new HashMap<>();
+            //将文件的最后上传时间和生成的文件名返回
+            resultMap.put("lastUploadTime", jedis.get("lastUploadTime_"+newFilePath));
+            resultMap.put("pathFileName", jedis.get("fileName_"+fileName)+suffix);
+            
+            /****************清除redis中的相关信息**********************/
+            //合并成功后删除redis中的进度信息
+            jedis.del("jindutiao_"+newFilePath);
+            //合并成功后删除redis中的最后上传时间，只存没上传完成的
+            jedis.del("lastUploadTime_"+newFilePath);
+            //合并成功后删除文件名称与该文件上传时生成的存储分片的临时文件夹的名称在redis中的信息  key：上传文件的真实名称   value：存储分片的临时文件夹名称（由上传文件的MD5值+时间戳组成）
+            //如果下次再上传同名文件  redis中将存储新的临时文件夹名称  没有上传完成的还要保留在redis中 直到定时任务生效
+            jedis.del("fileName_"+fileName);
+            
+            Gson gson=new Gson();
+            String json=gson.toJson(resultMap);
+            PrintWriterJsonUtils.printWriter(response, json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            jedisPool.returnResource(jedis);
+        }
+    }else if(param.equals("checkChunk")){  
+        /*************************检查当前分块是否上传成功**********************************/  
+        String fileMd5 = request.getParameter("fileMd5");  
+        String chunk = request.getParameter("chunk");  
+        String chunkSize = request.getParameter("chunkSize");  
+        String jindutiao=request.getParameter("jindutiao");//文件上传的实时进度
+
+        Jedis jedis =null;
+        try {
+            jedis =jedisPool.getResource();
+            //将当前进度存入redis
+            jedis.set("jindutiao_"+newFilePath, jindutiao);
+
+            //将系统当前时间转换为字符串
+            Date date=new Date();  
+            SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+            String lastUploadTime=formatter.format(date);  
+            //将最后上传时间以字符串形式存入redis
+            jedis.set("lastUploadTime_"+newFilePath, lastUploadTime);
+
+            //自定义文件名： 时间戳（13位）
+            String tempFileName= String.valueOf(System.currentTimeMillis());
+            if(jedis.get("fileName_"+fileName)==null || "".equals(jedis.get("fileName_"+fileName))){
+                //将文件名与该文件上传时生成的存储分片的临时文件夹的名称存入redis
+                //文件上传时生成的存储分片的临时文件夹的名称由MD5和时间戳组成
+                jedis.set("fileName_"+fileName, fileMd5+tempFileName);
+            }
+
+            File checkFile = new File(savePath+"/"+jedis.get("fileName_"+fileName)+"/"+chunk);  
+
+            response.setContentType("text/html;charset=utf-8");  
+            //检查文件是否存在，且大小是否一致  
+            if(checkFile.exists() && checkFile.length()==Integer.parseInt(chunkSize)){  
+                //上传过  
+                try {
+                    response.getWriter().write("{\"ifExist\":1}");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }  
+            }else{  
+                //没有上传过  
+                try {
+                    response.getWriter().write("{\"ifExist\":0}");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }  
+            }  
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            jedisPool.returnResource(jedis);
+        }
+    }
+}
+
+
+//保存上传分片
+public void fileSave(HttpServletRequest request, HttpServletResponse response) {
+    DiskFileItemFactory factory = new DiskFileItemFactory();  
+    ServletFileUpload sfu = new ServletFileUpload(factory);  
+    sfu.setHeaderEncoding("utf-8");  
+        
+        String savePath = request.getRealPath("/");
+        savePath = new File(savePath) + "/upload/";  
+          
+        String fileMd5 = null;  
+        String chunk = null;  
+    String fileName=null;
+        try {  
+            List<FileItem> items = sfu.parseRequest(request);  
+              
+            for(FileItem item:items){
+                //上传文件的真实名称
+                fileName=item.getName();
+                if(item.isFormField()){  
+                    String fieldName = item.getFieldName();  
+                    if(fieldName.equals("fileMd5")){  
+                        try {
+                fileMd5 = item.getString("utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }  
+                    }  
+                    if(fieldName.equals("chunk")){  
+                        try {
+                chunk = item.getString("utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }  
+                    }  
+                }else{  
+            Jedis jedis =null;
+            try {
+                jedis =jedisPool.getResource();
+                File file = new File(savePath+"/"+jedis.get("fileName_"+fileName));  
+                if(!file.exists()){  
+                    file.mkdir();  
+                }  
+                File chunkFile = new File(savePath+"/"+jedis.get("fileName_"+fileName)+"/"+chunk);
+                FileUtils.copyInputStreamToFile(item.getInputStream(), chunkFile);  
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally{
+                jedisPool.returnResource(jedis);
+            }
+                }  
+            }  
+        } catch (FileUploadException e) {  
+            e.printStackTrace();  
+        }  
+}
+
+
+//当有文件添加进队列时 通过文件名查看该文件是否上传过 上传进度是多少
+public String selectProgressByFileName(String fileName) {
+    String jindutiao="";
+    Jedis jedis =null;
+    try {
+        jedis =jedisPool.getResource();
+        if(null!=fileName && !"".equals(fileName)){
+            jindutiao=jedis.get("jindutiao_"+fileName);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }finally{
+        jedisPool.returnResource(jedis);
+    }
+    return jindutiao;
+}
+```
+
+**注：webUploader断点上传多个大文件时是按队列顺序上传的，即队列中的文件一个一个上传，前一个上传完成才会开始上传下一个，不能实现同时上传。**
