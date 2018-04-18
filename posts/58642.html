@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|14:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="description" content="Java NIO Path接口和Files类配合操作文件">
+<meta name="keywords" content="NIO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java NIO Path and Files">
+<meta property="og:url" content="http://www.iskei.cn/posts/58642.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="Java NIO Path接口和Files类配合操作文件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0162.jpg">
+<meta property="og:updated_time" content="2018-04-18T09:00:50.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java NIO Path and Files">
+<meta name="twitter:description" content="Java NIO Path接口和Files类配合操作文件">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0162.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/58642.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java NIO Path and Files | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-photo">
+    <a href="/photo/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-movies">
+    <a href="/movies/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/58642.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java NIO Path and Files</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T20:30:36+08:00">2018-03-23</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NIO/" itemprop="url" rel="index"><span itemprop="name">NIO</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/58642.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/58642.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/58642.html" class="leancloud_visitors" data-flag-title="Java NIO Path and Files">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计：</span>
+                
+                <span title="字数统计">9.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长&asymp;</span>
+                
+                <span title="阅读时长">0:09</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0162.jpg" alt="image"></p>
+<p>Java NIO Path接口和Files类配合操作文件<br><a id="more"></a></p>
+<h2 id="Path接口"><a href="#Path接口" class="headerlink" title="Path接口"></a>Path接口</h2><hr>
+<p>1、Path表示的是一个目录名序列，其后还可以跟着一个文件名，路径中第一个部件是根部件时就是绝对路径，例如 / 或 C:\ ，而允许访问的根部件取决于文件系统；</p>
+<p>2、以根部件开始的路径是绝对路径，否则就是相对路径；</p>
+<p>3、静态的<strong>Paths.get</strong>方法接受一个或多个字符串，字符串之间<strong>自动使用</strong>默认文件系统的路径分隔符连接起来（Unix是 /，Windows是 \ ），这就解决了跨平台的问题，接着解析连接起来的结果，如果不是合法路径就抛出InvalidPathException异常，否则就返回一个Path对象；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设是Unix的文件系统</span></span><br><span class="line">Path absolute = Paths.get(<span class="string">"/home"</span>, <span class="string">"cat"</span>); <span class="comment">//绝对路径 </span></span><br><span class="line">Path relative = Pahts.get(<span class="string">"ixenos"</span>, <span class="string">"config"</span>, <span class="string">"user.properties"</span>); <span class="comment">//相对路径</span></span><br></pre></td></tr></table></figure>
+<p>4、由String路径获取Path对象</p>
+<p><strong>get还可以获取一整条路径</strong>（即多个部件构成的单个字符串），例如从配置文件中读取路径：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String baseDir = properties.getProperty(<span class="string">"base.dir"</span>);</span><br><span class="line"> <span class="comment">//可能获得 /opt/ixenos 或者 C:\Program Files\ixenos</span></span><br><span class="line"> Path basePath = Paths.get(baseDir);</span><br></pre></td></tr></table></figure>
+<p>5、组合或解析路径</p>
+<p>　　1) 调用 <strong>p.resolve(q)</strong> 将按下面的规则返回一个Path：如果q是绝对路径，则返回q，否则<strong>追加路径</strong>返回 p/q 或者 p\q</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Path workRelative = Paths.get(<span class="string">"work"</span>);</span><br><span class="line">Path workPath = basePath.resolve(workRelative);</span><br><span class="line"> <span class="comment">//resolve也可以接受字符串形参</span></span><br><span class="line">Path workPath = basePath.resolve(<span class="string">"work"</span>);</span><br></pre></td></tr></table></figure>
+<p>　　2) 调用 <strong>p.resolveSibling(“q”)</strong> 将解析指定路径 p 的父路径 o ，并<strong>产生兄弟路径</strong> o/q</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Path tempPath = workPath.resolveSibling(<span class="string">"temp"</span>);</span><br><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment">   如果workPath是 /opt/ixenos/work</span></span><br><span class="line"><span class="comment">    那么将创建 /opt/ixenos/temp  </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>　　3) 调用 <strong>p.relativize(r)</strong> 将产生一个冗余路径q，对q进行解析将产生<strong>相对路径r，</strong>最终r不包含和p的交集路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    pathA为 /home/misty</span></span><br><span class="line"><span class="comment">    pathB为 /home/ixenos/config </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    现已pathA对pathB进行相对化操作，将产生冗余路径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Path pathC = pathA.relativize(pathB); <span class="comment">//此时pathC为 ../ixenos/config</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    normalize方法将移除冗余部件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Path pathD = pathC.normalize(); <span class="comment">//pathD为 /ixenos/config</span></span><br></pre></td></tr></table></figure>
+<p>　　4) <strong>toAbsolutePath</strong> 将产生给定路径的<strong>绝对路径</strong>，从根部件开始</p>
+<p>　　5) Path类还有一些有用的断开和组合路径的方法，比如 <strong>getParent</strong>、<strong>getFileName</strong>、<strong>getRoot</strong>//获得根目录</p>
+<p>　　6) Path有个<strong>toFile</strong>方法用来跟<strong>遗留类File类</strong>打交道，File类也有个toPath方法</p>
+<h2 id="Files工具类"><a href="#Files工具类" class="headerlink" title="Files工具类"></a>Files工具类</h2><hr>
+<h3 id="1、读写文件"><a href="#1、读写文件" class="headerlink" title="1、读写文件"></a>1、<strong>读写文件</strong></h3><p>方法签名:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> path **write**(Path path, <span class="keyword">byte</span>[] bytes, OpenOption... options)</span><br><span class="line">　<span class="function"><span class="keyword">static</span> path <span class="title">write</span><span class="params">(Path path, Iterable&lt;? extends CharSequence&gt; lines, OpenOption... options)</span></span></span><br></pre></td></tr></table></figure>
+<p>这里只列举下面用到的方法，更多方法请看API文档…</p>
+<p><strong>其中OpenOption是个nio接口，StandardOpenOption是其枚举实现类，各枚举实例功能请查看API文档</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Files提供的简便方法适用于处理中等长度的文本文件</span></span><br><span class="line"><span class="comment">    如果要处理的文件长度较大，或者二进制文件，那么还是应该使用经典的IO流 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//将文件所有内容读入byte数组中</span></span><br><span class="line"><span class="keyword">byte</span>[] bytes = Files.readAllBytes(path); <span class="comment">//传入Path对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//之后可以根据字符集构建字符串</span></span><br><span class="line">String content = <span class="keyword">new</span> String(bytes, charset);</span><br><span class="line"></span><br><span class="line"><span class="comment">//也可以直接当作行序列读入</span></span><br><span class="line">List&lt;String&gt; lines = Files.readAllLines(path, charset);</span><br><span class="line"></span><br><span class="line"><span class="comment">//相反，也可以写一个字符串到文件中，默认是覆盖</span></span><br><span class="line">Files.write(path, content.getBytes(charset)); <span class="comment">//传入byte[]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//追加内容，根据参数决定追加等功能</span></span><br><span class="line">Files.write(path, content.getBytes(charset), StandardOpenOption.APPEND); <span class="comment">//传入枚举对象，打开追加开关</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//将一个行String的集合List写出到文件中</span></span><br><span class="line">Files.write(path, lines);</span><br></pre></td></tr></table></figure>
+<h3 id="2、复制、剪切、删除"><a href="#2、复制、剪切、删除" class="headerlink" title="2、复制、剪切、删除"></a><strong>2、复制、剪切、删除</strong></h3><p>方法签名:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　	<span class="function"><span class="keyword">static</span> path <span class="title">copy</span><span class="params">(Path source, Path target, CopyOption... options)</span></span></span><br><span class="line"><span class="function">　　<span class="keyword">static</span> path <span class="title">move</span><span class="params">(Path source, Path target, CopyOption... options)</span></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Path path)</span> <span class="comment">//如果path不存在文件将抛出异常，此时调用下面的比较好</span></span></span><br><span class="line"><span class="function">　　<span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">deleteIfExists</span><span class="params">(Path path)</span></span></span><br></pre></td></tr></table></figure>
+<p>　　<a href="">这里只列举下面用到的方法，更多方法请看API文档…</a></p>
+<p><strong>其中CopyOption是个nio接口，StandardCopyOption是其枚举实现类，各枚举实例功能请查看API文档</strong></p>
+<p>　　其中有个<strong>ATOMIC_MOVE可以填入用来保证原子性操作</strong>，要么移动成功完成，要么源文件保持在原位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复制</span></span><br><span class="line">Files.copy(fromPath, toPath);</span><br><span class="line"><span class="comment">//剪切</span></span><br><span class="line">Files.move(fromPath, toPath);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    以上如果toPath已存在，那么操作失败，</span></span><br><span class="line"><span class="comment">    如果要覆盖，需传入参数REPLACE_EXISTING</span></span><br><span class="line"><span class="comment">    还要复制文件属性，传入COPY_ATTRIBUTES</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Files.copy(fromPath, toPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);</span><br></pre></td></tr></table></figure>
+<h3 id="3、创建文件和目录"><a href="#3、创建文件和目录" class="headerlink" title="3、创建文件和目录"></a><strong>3、创建文件和目录</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建新目录，除了最后一个部件，其他必须是已存在的</span></span><br><span class="line">Files.createDirectory(path); </span><br><span class="line"><span class="comment">//创建路径中的中间目录，能创建不存在的中间部件</span></span><br><span class="line">Files.createDirectories(path);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   创建一个空文件，检查文件存在，如果已存在则抛出异常</span></span><br><span class="line"><span class="comment">   而检查文件存在是原子性的，因此在此过程中无法执行文件创建操作</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Files.createFile(path);</span><br><span class="line"><span class="comment">//添加前/后缀创建临时文件或临时目录</span></span><br><span class="line">Path newPath = Files.createTempFile(dir, prefix, suffix);</span><br><span class="line">Path newPath = Files.createTempDirectory(dir, prefix);</span><br></pre></td></tr></table></figure>
+<h3 id="4、获取文件信息"><a href="#4、获取文件信息" class="headerlink" title="4、获取文件信息"></a><strong>4、获取文件信息</strong></h3><p>略，具体看API文档，或者corejava page51</p>
+<h3 id="5、迭代目录中的文件"><a href="#5、迭代目录中的文件" class="headerlink" title="5、迭代目录中的文件"></a>5、迭代目录中的文件</h3><p>　　<strong>旧的File类</strong>有两个方法获取目录中所有文件构成的字符串数组，String[] list() 和String[] list(FileFilter filter)，但是<strong>当目录中包含大量文件时，这两方法性能会非常低。</strong></p>
+<p><strong>原因分析：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//File类list所有文件</span></span><br><span class="line">    <span class="keyword">public</span> String[] list() &#123;</span><br><span class="line">        SecurityManager security = System.getSecurityManager(); <span class="comment">//文件系统权限获取</span></span><br><span class="line">        <span class="keyword">if</span> (security != <span class="keyword">null</span>) &#123;</span><br><span class="line">            security.checkRead(path);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isInvalid()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fs.list(<span class="keyword">this</span>); <span class="comment">//底层调用FileSystem的list</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//FileSystem抽象类的list</span></span><br><span class="line"> <span class="comment">//File类中定义fs是由DefaultFileSystem静态生成的</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> FileSystem fs = DefaultFileSystem.getFileSystem();</span><br><span class="line"></span><br><span class="line"><span class="comment">//因此我们来看一下DefaultFileSystem类，发现是生成一个WinNtFileSystem对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DefaultFileSystem</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Return the FileSystem object for Windows platform.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FileSystem <span class="title">getFileSystem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WinNTFileSystem();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//而WinNtFileSystem类继承于FileSystem抽象类，这里我们主要观察它的list(File file)方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">native</span> String[] list(File f);</span><br><span class="line"><span class="comment">/*我们可以看到这是个native方法，说明list的操作是由操作系统的文件系统控制的，当目录中包含大量的文件时，这个方法的性能将会非常低。</span></span><br><span class="line"><span class="comment">由此为了替代，NIO的Files类设计了newDirectoryStream(Path dir)及其重载方法，将生成Iterable对象（可用foreach迭代）*/</span><span class="comment">//~</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//回调过滤</span></span><br><span class="line">    <span class="keyword">public</span> String[] list(FilenameFilter filter) &#123; <span class="comment">//采用接口回调</span></span><br><span class="line">        String names[] = list(); <span class="comment">//调用list所有</span></span><br><span class="line">        <span class="keyword">if</span> ((names == <span class="keyword">null</span>) || (filter == <span class="keyword">null</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> names;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;String&gt; v = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; names.length ; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (filter.accept(<span class="keyword">this</span>, names[i])) &#123;  <span class="comment">//回调FilenameFileter对象的accept方法</span></span><br><span class="line">                v.add(names[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v.toArray(<span class="keyword">new</span> String[v.size()]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="这时候高科技来了——Files获得可迭代的目录流，"><a href="#这时候高科技来了——Files获得可迭代的目录流，" class="headerlink" title="这时候高科技来了——Files获得可迭代的目录流，"></a>这时候高科技来了——Files获得可迭代的目录流，</h3><h4 id="传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！"><a href="#传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！" class="headerlink" title="传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！"></a>传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！</h4><p>因此，Files类设计了<strong>newDirectoryStream(Path dir)</strong>及其重载方法，将生成Iterable对象（可用foreach迭代）</p>
+<p>遍历目录得到一个可迭代的子孙文件集合</p>
+<table>
+<thead>
+<tr>
+<th><code>staticDirectoryStream&lt;Path&gt;</code></th>
+<th><code>newDirectoryStream(Path dir)</code>Opens a directory, returning a <a href=""><code>DirectoryStream</code></a> to iterate over all entries in the directory.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>staticDirectoryStream&lt;Path&gt;</code></td>
+<td><code>newDirectoryStream(Path dir, DirectoryStream.Filter&lt;? superPath&gt; filter)</code>Opens a directory, returning a <a href=""><code>DirectoryStream</code></a> to iterate over the entries in the directory.</td>
+</tr>
+<tr>
+<td><code>staticDirectoryStream&lt;Path&gt;</code></td>
+<td><code>newDirectoryStream(Path dir, String glob)</code></td>
+</tr>
+</tbody>
+</table>
+<p>　　返回一个 <strong>目录流 ，可以看成一个存放着全部Path的实现了Iterable的集合</strong>，</p>
+<p>　　　　因此可用迭代器或foreach迭代，只是使用迭代器的时候要注意不能invoke另一个Iterator：</p>
+<ul>
+<li><ul>
+<li><strong>While DirectoryStream extends Iterable, it is not a general-purpose Iterable as it supports only a single Iterator; invoking the iterator method to obtain a second or subsequent iterator throws IllegalStateException.</strong> </li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(DirectoryStream&lt;Path&gt; entries = Files.newDirectoryStream(dir))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(Path entry : entries)</span><br><span class="line">    &#123;</span><br><span class="line">         ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　可以传入glob参数，即使用<strong>glob模式</strong>来<strong>过滤文件</strong>（以取代<code>list(FileFilter filter)：newDirectoryStream(Path dir, String glob)</code> 注意是String类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(DirectoryStream&lt;Path&gt; entries = Files.newDirectoryStream(dir, <span class="string">"*.java"</span>)) <span class="comment">//</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　<strong>glob模式</strong></p>
+<p>所谓的 glob 模式是指 shell 所使用的简化了的<strong>正则表达式</strong>。</p>
+<p>1.星号 <em> 匹配<strong>路径组成部分</strong>0个或多个字符；例如 </em>.java 匹配<strong>当前目录中</strong>的所有Java文件</p>
+<p>2.两星号 <strong> 匹配</strong>跨目录边界<strong>0个或多个字符；例如 </strong>.java 匹配在<strong>所有子目录中</strong>的Java文件</p>
+<p>3.问号（?）只匹配一个字符；例如 ????.java 匹配所有<strong>四个字符</strong>的Java文件，不包括扩展名；使用?是因为*是通配符不指定数量</p>
+<p>4.[…] 匹配<strong>一个</strong>字符集合，可以用连线 [0-9] 和取反符 [!0-9]；例如 Test[0-9A-F].java 匹配Testx.java，假设x是一个十六进制数字，[0-9A-F]是匹配单个字符为十六进制数字，比如B（十六进制不区分大小写）</p>
+<p>　　<em>如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）</em>。</p>
+<p>5.{…} 匹配由逗号隔开的<strong>多个可选项</strong>之中的一个；例如 *.{java,class} 匹配所有Java文件和类class文件</p>
+<p>6.\ 转义上述任意模式中的字符；例如 <em>** 匹配所有子目录中文件名包含</em>的文件，这里为 ** 转义，前面是匹配0个或多个字符</p>
+<p>下面是网友总结的Glob模式：</p>
+<table>
+<thead>
+<tr>
+<th>Glob模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.txt</td>
+<td>匹配所有扩展名为.txt的文件</td>
+</tr>
+<tr>
+<td>*.{html,htm}</td>
+<td>匹配所有扩展名为.html或.htm的文件。{ }用于组模式，它使用逗号分隔</td>
+</tr>
+<tr>
+<td>?.txt</td>
+<td>匹配任何单个字符做文件名且扩展名为.txt的文件</td>
+</tr>
+<tr>
+<td><em>.</em></td>
+<td>匹配所有含扩展名的文件</td>
+</tr>
+<tr>
+<td>C:\Users*</td>
+<td>匹配所有在C盘Users目录下的文件。反斜线“\”用于对紧跟的字符进行转义</td>
+</tr>
+<tr>
+<td>/home/**</td>
+<td>UNIX平台上匹配所有/home目录及子目录下的文件。**用于匹配当前目录及其所有子目录</td>
+</tr>
+<tr>
+<td>[xyz].txt</td>
+<td>匹配所有单个字符作为文件名，且单个字符只含“x”或“y”或“z”三种之一，且扩展名为.txt的文件。方括号[]用于指定一个集合</td>
+</tr>
+<tr>
+<td>[a-c].txt</td>
+<td>匹配所有单个字符作为文件名，且单个字符只含“a”或“b”或“c”三种之一，且扩展名为.txt的文件。减号“-”用于指定一个范围，且只能用在方括号[]内</td>
+</tr>
+<tr>
+<td>[!a].txt</td>
+<td>匹配所有单个字符作为文件名，且单个字符不能包含字母“a”，且扩展名为.txt的文件。叹号“!”用于否定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）"><a href="#遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）" class="headerlink" title="遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）"></a>遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）</h3><p>　　我们可以调用Files类的<strong>walkFileTree</strong>方法，并传入一个FileVisitor接口类型的对象（还有更多方法在API里等你发现……）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*传入一个FileVisitor子类的匿名对象*/</span></span><br><span class="line">Files.walkFileTree(dir, <span class="keyword">new</span> SimpleFileVisitor&lt;Path&gt;()</span><br><span class="line">    &#123;</span><br><span class="line">         <span class="comment">//walkFileTree回调此方法来遍历所有子孙</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">visitFile</span><span class="params">(Path path, BasicFileAttributes attrs)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">         </span>&#123;</span><br><span class="line">              <span class="keyword">if</span>(attrs.isDirectory()) <span class="comment">//自定义的选择，属于业务代码，这和walkFileTree的宗旨(遍历所有子孙成员)无关</span></span><br><span class="line">                  System.out.println(path);</span><br><span class="line">              <span class="keyword">return</span> FileVisitResult.CONTINUE;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">visitFileFailed</span><span class="params">(Path path, IOException exc)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">         </span>&#123;</span><br><span class="line">              <span class="keyword">return</span> FileVisitResult.CONTINUE;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="咱们来总结一下，"><a href="#咱们来总结一下，" class="headerlink" title="咱们来总结一下，"></a>咱们来总结一下，</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Files.newDirectoryStream(Path dir) <span class="comment">//遍历后返回一个可迭代的子孙文件集合；</span></span><br><span class="line">Files.walkFileTree(Path dir, FileVisitor fv) <span class="comment">//是一个遍历子孙目录和文件的过程；</span></span><br></pre></td></tr></table></figure>
+<h2 id="ZIP文件系统"><a href="#ZIP文件系统" class="headerlink" title="ZIP文件系统"></a>ZIP文件系统</h2><hr>
+<p>由上文知道，Paths类会在<strong>默认的文件系统</strong>中查找路径，即在用户本地磁盘中的文件。</p>
+<p>其实，我们也可以有其他的文件系统，比如<strong>ZIP文件系统</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*假设zipname是某个ZIP文件的名字*/</span></span><br><span class="line">FileSystem fs = FileSystems.newFileSystem(Paths.get(zipname), <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p> 上述代码将建立一个<strong>基于zipname的文件系统，它包含ZIP文档中的所有文件</strong>。</p>
+<p>　　1）如果知道<strong>文件名（String类型）</strong>，那么从这个ZIP文档中复制出这个文件就很容易：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Files.copy(fs.getPath(fileName), targetPath);</span><br></pre></td></tr></table></figure>
+<p>　　　　Q：fs.getPath是使用了ZIP文件系统来getPath，那么默认的文件系统能调用吗？</p>
+<p>　　　　A：能。FileSystem类中有一个静态的getDefault()方法，返回一个默认的文件系统对象，同样可以由文件名getPath。</p>
+<p>　　　　　　*具体getPath(String name)是遍历还是随机访问，有空再去看源码实现。<br>　　2）要列出ZIP文档中的所有文件，同样可以用walkFileTree遍历文件树</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FileSystem fs = FileSystems.newFileSystem(Paths.get(fileName), <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//walkFileTree需要传入一个要被遍历的目录Path，和一个FileVisitor对象</span></span><br><span class="line">Files.walkFileTree(fs.getPath(<span class="string">"/"</span>), </span><br><span class="line">        newSimpleFileVisitor&lt;Path&gt;()&#123;</span><br><span class="line">               <span class="function"><span class="keyword">public</span> FileVisitResult <span class="title">visitFile</span><span class="params">(Path file, BasicFileAttributes attrs)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">                     System.out.println(file);</span><br><span class="line">                     <span class="keyword">return</span> FileVisitResult.CONTINUE; </span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="Kee 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="Kee 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kee</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/58642.html" title="Java NIO Path and Files">http://www.iskei.cn/posts/58642.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NIO/" rel="tag"># NIO</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/41980.html" rel="next" title="WebUploader上传组件">
+                <i class="fa fa-chevron-left"></i> WebUploader上传组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/25709.html" rel="prev" title="Java 文件上传及下载">
+                Java 文件上传及下载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg"
+                alt="Kee" />
+            
+              <p class="site-author-name" itemprop="name">Kee</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Kee's note" target="_blank">Kee's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Kee's Blog" target="_blank">Kee's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Path接口"><span class="nav-number">1.</span> <span class="nav-text">Path接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Files工具类"><span class="nav-number">2.</span> <span class="nav-text">Files工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、读写文件"><span class="nav-number">2.1.</span> <span class="nav-text">1、读写文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、复制、剪切、删除"><span class="nav-number">2.2.</span> <span class="nav-text">2、复制、剪切、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、创建文件和目录"><span class="nav-number">2.3.</span> <span class="nav-text">3、创建文件和目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、获取文件信息"><span class="nav-number">2.4.</span> <span class="nav-text">4、获取文件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、迭代目录中的文件"><span class="nav-number">2.5.</span> <span class="nav-text">5、迭代目录中的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这时候高科技来了——Files获得可迭代的目录流，"><span class="nav-number">2.6.</span> <span class="nav-text">这时候高科技来了——Files获得可迭代的目录流，</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！"><span class="nav-number">2.6.1.</span> <span class="nav-text">传入一个目录Path，遍历子孙目录返回一个目录Path的Stream，注意这里所有涉及的Path都是目录而不是文件！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）"><span class="nav-number">2.7.</span> <span class="nav-text">遍历得到某个目录的所有子孙文件集合再迭代不够爽？来，我们来直接遍历某个目录的所有子孙成员（包括目录和文件）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#咱们来总结一下，"><span class="nav-number">2.7.1.</span> <span class="nav-text">咱们来总结一下，</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZIP文件系统"><span class="nav-number">3.</span> <span class="nav-text">ZIP文件系统</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">2.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长：</span>
+    
+    <span title="站点总阅读时长">43:17</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp; <a href="https://pages.coding.me" target="_blank" title="Host by Coding "><span class="hidden"><img style="height:35px;display:inline;margin-bottom:-7px;" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png"></span></a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'JULY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'TIME',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'DA Y',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Monody',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Victory',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'GHSY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.1.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

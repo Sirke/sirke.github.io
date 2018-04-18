@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|14:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="description" content="Spring Batch 4.0.0  已发布，Spring Batch 是一个轻量级的，完全面向 Spring 的批处理框架，可以应用于企业级大量的数据处理系统。Spring Batch 以 POJO 和  Spring 框架为基础，使开发者更容易的访问和利用企业级服务。Spring Batch 可以提供大量的，可重复的数据处理功能，包括日志记录/跟踪，事务管理，作业处理统计工作重新启动、跳过">
+<meta name="keywords" content="Spring Batch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Batch 4.0.0批处理框架">
+<meta property="og:url" content="http://www.iskei.cn/posts/31932.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="Spring Batch 4.0.0  已发布，Spring Batch 是一个轻量级的，完全面向 Spring 的批处理框架，可以应用于企业级大量的数据处理系统。Spring Batch 以 POJO 和  Spring 框架为基础，使开发者更容易的访问和利用企业级服务。Spring Batch 可以提供大量的，可重复的数据处理功能，包括日志记录/跟踪，事务管理，作业处理统计工作重新启动、跳过">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0021.jpg">
+<meta property="og:updated_time" content="2018-04-18T09:00:50.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Batch 4.0.0批处理框架">
+<meta name="twitter:description" content="Spring Batch 4.0.0  已发布，Spring Batch 是一个轻量级的，完全面向 Spring 的批处理框架，可以应用于企业级大量的数据处理系统。Spring Batch 以 POJO 和  Spring 框架为基础，使开发者更容易的访问和利用企业级服务。Spring Batch 可以提供大量的，可重复的数据处理功能，包括日志记录/跟踪，事务管理，作业处理统计工作重新启动、跳过">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0021.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/31932.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Spring Batch 4.0.0批处理框架 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-photo">
+    <a href="/photo/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-movies">
+    <a href="/movies/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/31932.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Spring Batch 4.0.0批处理框架</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T23:34:36+08:00">2017-12-04</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/31932.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/31932.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/31932.html" class="leancloud_visitors" data-flag-title="Spring Batch 4.0.0批处理框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计：</span>
+                
+                <span title="字数统计">18k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长&asymp;</span>
+                
+                <span title="阅读时长">0:18</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0021.jpg" alt="image"></p>
+<p>Spring Batch 4.0.0  已发布，Spring Batch 是一个轻量级的，完全面向 Spring 的批处理框架，可以应用于企业级大量的数据处理系统。Spring Batch 以 POJO 和  Spring 框架为基础，使开发者更容易的访问和利用企业级服务。Spring Batch 可以提供大量的，可重复的数据处理功能，包括日志记录/跟踪，事务管理，作业处理统计工作重新启动、跳过，和资源管理等重要功能。<br><a id="more"></a><br>Spring Batch 4.0 是自2014年 3.0 发布以来的又一个主要版本。3.0 发布至今，Spring 生态系统发生了很大变化，4.0 版本旨在让 Spring Batch 更新这些变化。</p>
+<p>New Baseline</p>
+<p>Spring Batch 3 基于 Spring Framework 4 ，Spring Batch 4 重新审视了它的依赖关系树，将它与即将到来的 Spring Boot 2 依赖关系树进行了更新，包括将 Spring Framework 5 和 Java 8 作为基线要求。</p>
+<h3 id="改进的-Java-配置"><a href="#改进的-Java-配置" class="headerlink" title="改进的 Java 配置"></a>改进的 Java 配置</h3><p>如前所述，Spring Batch 4 是 Spring Boot 发布以来的第一个主要版本。在这个版本中，改善了让用户的 Java 配置体验。所有 ItemReader 和 ItemWriter 实现现在都可以使用构建器。使用 Spring Batch 3 的 Java 配置功能，将需要如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FlatFileItemReader&lt;Foo&gt; <span class="title">reader</span><span class="params">(Resource resource)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        FlatFileItemReader&lt;Foo&gt; reader = <span class="keyword">new</span> FlatFileItemReader&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        reader.setName(“fooReader”);</span><br><span class="line">        reader.setResource(resource);</span><br><span class="line"></span><br><span class="line">        BeanWrapperFieldSetMapper&lt;Foo&gt; fieldSetMapper = </span><br><span class="line">            <span class="keyword">new</span> BeanWrapperFieldSetMapper&lt;&gt;();</span><br><span class="line">        fieldSetMapper.setTargetType(Foo.class);</span><br><span class="line">        fieldSetMapper.afterPropertiesSet();</span><br><span class="line"></span><br><span class="line">        DelimitedLineTokenizer tokenizer = <span class="keyword">new</span> DelimitedLineTokenizer();</span><br><span class="line">        tokenizer.setNames(<span class="keyword">new</span> String[] &#123;“first”, “second”, “third”&#125;);</span><br><span class="line">        tokenizer.afterPropertiesSet();</span><br><span class="line"></span><br><span class="line">        DefaultLineMapper lineMapper = <span class="keyword">new</span> DefaultLineMapper();</span><br><span class="line">        lineMapper.setLineTokenizer(tokenizer);</span><br><span class="line">        lineMapper.setFieldSetMapper(fieldSetMapper);</span><br><span class="line"></span><br><span class="line">        reader.setLineMapper(lineMapper);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> reader;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>使用 Spring Batch 4，配置简化如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FlatFileItemReader&lt;Foo&gt; <span class="title">reader</span><span class="params">(Resource resource)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FlatFileItemReaderBuilder&lt;Foo&gt;()</span><br><span class="line">            .name(“fooReader”)</span><br><span class="line">            .resource(resource)</span><br><span class="line">            .delimited()</span><br><span class="line">            .names(<span class="keyword">new</span> String[]&#123;“first”, “second”, “third”&#125;)</span><br><span class="line">            .targetType(Foo.class)</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="创建批处理服务"><a href="#创建批处理服务" class="headerlink" title="创建批处理服务"></a>创建批处理服务</h3><pre><code>本指南将引导您完成创建基本批处理驱动解决方案的过程。
+</code></pre><h3 id="你要建什么"><a href="#你要建什么" class="headerlink" title="你要建什么"></a>你要建什么</h3><pre><code>您将构建一个服务，该服务从CSV电子表格中导入数据，用自定义代码对其进行转换，并将最终结果存储在数据库中。
+</code></pre><h3 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h3><pre><code>大约15分钟
+</code></pre><h3 id="最喜欢的文本编辑器或IDE"><a href="#最喜欢的文本编辑器或IDE" class="headerlink" title="最喜欢的文本编辑器或IDE"></a>最喜欢的文本编辑器或IDE</h3><pre><code>JDK 1.8或以后
+
+Gradle 2.3或Maven 3.0+
+
+您还可以直接将代码导入IDE中：
+
+Spring Tool Suite (STS)
+
+IntelliJ IDEA
+</code></pre><h3 id="如何完成本指南"><a href="#如何完成本指南" class="headerlink" title="如何完成本指南"></a>如何完成本指南</h3><pre><code>像大多数Spring一样入门指南，您可以从头开始并完成每个步骤，也可以绕过您已经熟悉的基本设置步骤。无论哪种方式，你最终都会得到工作代码。
+</code></pre><p>到白手兴家，继续前进用Gradle建造…</p>
+<p>到跳过基础，做以下工作：</p>
+<p>下载并解压缩本指南的源存储库，或用Git:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/spring-guides/gs-batch-processing.git</span><br></pre></td></tr></table></figure></p>
+<p>cd into gs-batch-processing/initial</p>
+<p>跳到创建一个business类…</p>
+<p>当你完成中的代码检查结果，gs-batch-processing/complete.</p>
+<h3 id="用Gradle创建"><a href="#用Gradle创建" class="headerlink" title="用Gradle创建"></a>用Gradle创建</h3><p>首先，您设置了一个基本的构建脚本。在使用Spring构建应用程序时，您可以使用任何您喜欢的构建系统，但是您需要使用的代码用Gradle和Maven包括在这里。如果您对这两种情况都不熟悉，请参阅用Gradle构建Java项目或使用Maven构建Java项目…</p>
+<h4 id="创建目录结构"><a href="#创建目录结构" class="headerlink" title="创建目录结构"></a>创建目录结构</h4><p>在您选择的项目目录中，创建以下子目录结构；例如，使用mkdir-p src/main/java/hello关于*nix系统：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        └── java</span><br><span class="line">            └── hello</span><br></pre></td></tr></table></figure>
+<p>创建一个Gradle构建文件<br>下面是initial Gradle build file….</p>
+<p><strong>build.gradle</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildscript&#123;repositories&#123;mavenCentral()</span><br><span class="line">    &#125;dependencies&#123;classpath(<span class="string">"org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;apply plugin: <span class="string">'java'</span>apply plugin: <span class="string">'eclipse'</span>apply plugin: <span class="string">'idea'</span>apply plugin: <span class="string">'org.springframework.boot'</span>jar&#123;baseName= <span class="string">'gs-batch-processing'</span>version=  <span class="string">'0.1.0'</span></span><br><span class="line">&#125;repositories&#123;mavenCentral()</span><br><span class="line">&#125;sourceCompatibility= <span class="number">1.8</span>targetCompatibility= <span class="number">1.8</span>dependencies&#123;compile(<span class="string">"org.springframework.boot:spring-boot-starter-batch"</span>)compile(<span class="string">"org.hsqldb:hsqldb"</span>)testCompile(<span class="string">"junit:junit"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Spring-Boot-gradle-plugin提供了许多方便的功能："><a href="#Spring-Boot-gradle-plugin提供了许多方便的功能：" class="headerlink" title="Spring Boot gradle plugin提供了许多方便的功能："></a>Spring Boot gradle plugin提供了许多方便的功能：</h4><ul>
+<li>它收集类路径上的所有JAR，并构建一个可运行的“über-jar”，这使得执行和传输服务更加方便。</li>
+<li>它搜索public static void main()方法标记为可运行的类。</li>
+<li>它提供了一个内置的依赖项解析器，它将版本号设置为匹配。Spring Boot dependencies您可以覆盖任何版本，但它将默认为Boot所选的一组版本。</li>
+</ul>
+<h2 id="用Maven构建"><a href="#用Maven构建" class="headerlink" title="用Maven构建"></a>用Maven构建</h2><p>首先，您设置了一个基本的构建脚本。在使用Spring构建应用程序时，您可以使用任何您喜欢的构建系统，但是您需要使用的代码马文包括在这里。如果您不熟悉Maven，请参阅使用Maven构建Java项目…</p>
+<p>创建目录结构<br>在您选择的项目目录中，创建以下子目录结构；例如，使用mkdir-p src/main/java/hello关于*nix系统：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        └── java</span><br><span class="line">            └── hello</span><br></pre></td></tr></table></figure>
+<p><strong>pom.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gs-batch-processing<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-batch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hsqldb<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hsqldb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="大Spring-Boot-Maven插件提供了许多方便的功能："><a href="#大Spring-Boot-Maven插件提供了许多方便的功能：" class="headerlink" title="大Spring Boot Maven插件提供了许多方便的功能："></a>大Spring Boot Maven插件提供了许多方便的功能：</h4><ul>
+<li><p>它收集类路径上的所有JAR，并构建一个可运行的“über-jar”，这使得执行和传输服务更加方便。</p>
+</li>
+<li><p>它搜索public static void main()方法标记为可运行的类。</p>
+</li>
+<li><p>它提供了一个内置的依赖项解析器，它将版本号设置为匹配。Spring Boot dependencies您可以覆盖任何版本，但它将默认为Boot所选的一组版本。</p>
+<h2 id="用IDE构建"><a href="#用IDE构建" class="headerlink" title="用IDE构建"></a>用IDE构建</h2></li>
+</ul>
+<p>阅读如何将本指南直接导入Spring Tool Suite…</p>
+<p>阅读如何使用本指南IntelliJ IDEA…</p>
+<h3 id="业务数据"><a href="#业务数据" class="headerlink" title="业务数据"></a>业务数据</h3><p>通常，您的客户或业务分析师提供电子表格。在这种情况下，你自己编出来的。</p>
+<p><strong>SRC/Main/Resources/Sample-data.csv</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Jill,Doe</span><br><span class="line">Joe,Doe</span><br><span class="line">Justin,Doe</span><br><span class="line">Jane,Doe</span><br><span class="line">John,Doe</span><br></pre></td></tr></table></figure>
+<p>此电子表格包含每行的名称和姓氏，以逗号分隔。正如您所看到的，这是Spring处理的一个非常常见的模式。</p>
+<p>接下来，编写一个SQL脚本来创建一个表来存储数据。</p>
+<p><strong>SRC/main/resources/schema-all.sql</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> people <span class="keyword">IF</span> <span class="keyword">EXISTS</span>;<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people(person_id <span class="built_in">BIGINT</span> <span class="keyword">IDENTITY</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span>,first_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>),last_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code>Spring Boot模式schema-@@platform@@.sql启动时自动。-all是所有平台的默认设置。
+</code></pre><h3 id="创建一个business类"><a href="#创建一个business类" class="headerlink" title="创建一个business类"></a>创建一个business类</h3><p>现在您已经看到了数据输入和输出的格式，您可以编写代码来表示一行数据.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">packagehello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> StringlastName;</span><br><span class="line">    <span class="keyword">private</span> StringfirstName;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(StringfirstName, StringlastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName=firstName;</span><br><span class="line">        <span class="keyword">this</span>.lastName=lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">voidsetFirstName</span><span class="params">(StringfirstName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName=firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StringgetFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        returnfirstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StringgetLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        returnlastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">voidsetLastName</span><span class="params">(StringlastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lastName=lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StringtoString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"firstName: "</span> +firstName+ <span class="string">", lastName: "</span> +lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您可以实例化person通过构造函数，或通过设置属性，使用姓和名初始化。</p>
+<h3 id="创建中间处理器（-intermediate-processor）"><a href="#创建中间处理器（-intermediate-processor）" class="headerlink" title="创建中间处理器（ intermediate processor）"></a>创建中间处理器（ intermediate processor）</h3><p>批处理中的一个常见范例是摄取数据，转换数据，然后将其输送到其他地方。在这里，您将编写一个简单的转换器，将名称转换为大写。</p>
+<p><strong>SRC/main/java/hello/PersonItemProcessor.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">packagehello;</span><br><span class="line"></span><br><span class="line">importorg.slf4j.Logger;</span><br><span class="line">importorg.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">importorg.springframework.batch.item.ItemProcessor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonItemProcessor</span> <span class="keyword">implements</span> <span class="title">ItemProcessor</span>&lt;<span class="title">Person</span>, <span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Loggerlog= LoggerFactory.getLogger(PersonItemProcessor.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Personprocess</span><span class="params">(<span class="keyword">final</span> Personperson)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> StringfirstName=person.getFirstName().toUpperCase();</span><br><span class="line">        <span class="keyword">final</span> StringlastName=person.getLastName().toUpperCase();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> PersontransformedPerson= <span class="keyword">new</span> Person(firstName,lastName);log.info(<span class="string">"Converting ("</span> +person+ <span class="string">") into ("</span> +transformedPerson+ <span class="string">")"</span>);</span><br><span class="line"></span><br><span class="line">        returntransformedPerson;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PersonItemProcessor器实现Spring批处理ItemProcessor接口。这使代码很容易连接到一个批处理作业中，您可以在本指南中进一步对其进行定义。根据接口，您将收到一个传入的person对象，然后将其转换upper-cased Person.</p>
+<pre><code>不需要输入和输出类型相同。事实上，在读取一个数据源之后，有时应用程序的数据流需要不同的数据类型。
+</code></pre><h3 id="把一批工作放在一起"><a href="#把一批工作放在一起" class="headerlink" title="把一批工作放在一起"></a>把一批工作放在一起</h3><p>现在，您将实际的批处理作业组合在一起。SpringBatch提供了许多实用程序类，这些类减少了编写自定义代码的需要。相反，您可以专注于业务逻辑。</p>
+<p><strong>SRC/main/java/hello/BatchConfiguration.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">packagehello;</span><br><span class="line"></span><br><span class="line">importjavax.sql.DataSource;</span><br><span class="line"></span><br><span class="line">importorg.springframework.batch.core.Job;</span><br><span class="line">importorg.springframework.batch.core.JobExecutionListener;</span><br><span class="line">importorg.springframework.batch.core.Step;</span><br><span class="line">importorg.springframework.batch.core.configuration.annotation.EnableBatchProcessing;</span><br><span class="line">importorg.springframework.batch.core.configuration.annotation.JobBuilderFactory;</span><br><span class="line">importorg.springframework.batch.core.configuration.annotation.StepBuilderFactory;</span><br><span class="line">importorg.springframework.batch.core.launch.support.RunIdIncrementer;</span><br><span class="line">importorg.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;</span><br><span class="line">importorg.springframework.batch.item.database.JdbcBatchItemWriter;</span><br><span class="line">importorg.springframework.batch.item.file.FlatFileItemReader;</span><br><span class="line">importorg.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;</span><br><span class="line">importorg.springframework.batch.item.file.mapping.DefaultLineMapper;</span><br><span class="line">importorg.springframework.batch.item.file.transform.DelimitedLineTokenizer;</span><br><span class="line">importorg.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">importorg.springframework.context.annotation.Bean;</span><br><span class="line">importorg.springframework.context.annotation.Configuration;</span><br><span class="line">importorg.springframework.core.io.ClassPathResource;</span><br><span class="line">importorg.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableBatchProcessing</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BatchConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> JobBuilderFactoryjobBuilderFactory;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> StepBuilderFactorystepBuilderFactory;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> DataSourcedataSource;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// tag::readerwriterprocessor[]</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FlatFileItemReader&lt;Person&gt;reader() &#123;</span><br><span class="line">        FlatFileItemReader&lt;Person&gt;reader= <span class="keyword">new</span> FlatFileItemReader&lt;Person&gt;();reader.setResource(<span class="keyword">new</span> ClassPathResource(<span class="string">"sample-data.csv"</span>));reader.setLineMapper(<span class="keyword">new</span> DefaultLineMapper&lt;Person&gt;() &#123;&#123;setLineTokenizer(<span class="keyword">new</span> DelimitedLineTokenizer() &#123;&#123;setNames(<span class="keyword">new</span> String[] &#123; <span class="string">"firstName"</span>, <span class="string">"lastName"</span> &#125;);</span><br><span class="line">            &#125;&#125;);setFieldSetMapper(<span class="keyword">new</span> BeanWrapperFieldSetMapper&lt;Person&gt;() &#123;&#123;setTargetType(Person.class);</span><br><span class="line">            &#125;&#125;);</span><br><span class="line">        &#125;&#125;);</span><br><span class="line">        returnreader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonItemProcessorprocessor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PersonItemProcessor();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> JdbcBatchItemWriter&lt;Person&gt;writer() &#123;</span><br><span class="line">        JdbcBatchItemWriter&lt;Person&gt;writer= <span class="keyword">new</span> JdbcBatchItemWriter&lt;Person&gt;();writer.setItemSqlParameterSourceProvider(<span class="keyword">new</span> BeanPropertyItemSqlParameterSourceProvider&lt;Person&gt;());writer.setSql(<span class="string">"INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)"</span>);writer.setDataSource(dataSource);</span><br><span class="line">        returnwriter;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// end::readerwriterprocessor[]</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// tag::jobstep[]</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JobimportUserJob</span><span class="params">(JobCompletionNotificationListenerlistener)</span> </span>&#123;</span><br><span class="line">        returnjobBuilderFactory.get(<span class="string">"importUserJob"</span>)</span><br><span class="line">                .incrementer(<span class="keyword">new</span> RunIdIncrementer())</span><br><span class="line">                .listener(listener)</span><br><span class="line">                .flow(step1())</span><br><span class="line">                .end()</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Stepstep1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        returnstepBuilderFactory.get(<span class="string">"step1"</span>)</span><br><span class="line">                .&lt;Person, Person&gt;chunk(<span class="number">10</span>)</span><br><span class="line">                .reader(reader())</span><br><span class="line">                .processor(processor())</span><br><span class="line">                .writer(writer())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// end::jobstep[]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  首先，@EnableBatchProcessing注释添加了许多支持作业的关键bean，并为您节省了大量的腿工作。此示例使用基于内存的数据库(由@EnableBatchProcessing)，这意味着当它完成时，数据就会消失。</p>
+<p>把它分解：</p>
+<p><strong>SRC/main/java/hello/BatchConfiguration.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> FlatFileItemReader&lt;Person&gt;reader() &#123;</span><br><span class="line">    FlatFileItemReader&lt;Person&gt;reader= <span class="keyword">new</span> FlatFileItemReader&lt;Person&gt;();reader.setResource(<span class="keyword">new</span> ClassPathResource(<span class="string">"sample-data.csv"</span>));reader.setLineMapper(<span class="keyword">new</span> DefaultLineMapper&lt;Person&gt;() &#123;&#123;setLineTokenizer(<span class="keyword">new</span> DelimitedLineTokenizer() &#123;&#123;setNames(<span class="keyword">new</span> String[] &#123; <span class="string">"firstName"</span>, <span class="string">"lastName"</span> &#125;);</span><br><span class="line">        &#125;&#125;);setFieldSetMapper(<span class="keyword">new</span> BeanWrapperFieldSetMapper&lt;Person&gt;() &#123;&#123;setTargetType(Person.class);</span><br><span class="line">        &#125;&#125;);</span><br><span class="line">    &#125;&#125;);</span><br><span class="line">    returnreader;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PersonItemProcessorprocessor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> PersonItemProcessor();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> JdbcBatchItemWriter&lt;Person&gt;writer() &#123;</span><br><span class="line">    JdbcBatchItemWriter&lt;Person&gt;writer= <span class="keyword">new</span> JdbcBatchItemWriter&lt;Person&gt;();writer.setItemSqlParameterSourceProvider(<span class="keyword">new</span> BeanPropertyItemSqlParameterSourceProvider&lt;Person&gt;());writer.setSql(<span class="string">"INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)"</span>);writer.setDataSource(dataSource);</span><br><span class="line">    returnwriter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个代码块定义输入、处理器和输出。—reader()创建ItemReader.它查找一个名为sample-data.csv并使用足够的信息解析每一行项，从而将其转换为person…processor()创建我们的PersonItemProcessor您在前面定义，目的是大写数据。—write(DataSource)创建ItemWriter。此对象针对JDBC目标，并自动获取由@EnableBatchProcessing它包括插入单个person由Javabean属性驱动。</p>
+<p>下一部分重点关注实际的作业配置。<br><strong>SRC/main/java/hello/BatchConfiguration.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">JobimportUserJob</span><span class="params">(JobCompletionNotificationListenerlistener)</span> </span>&#123;</span><br><span class="line">    returnjobBuilderFactory.get(<span class="string">"importUserJob"</span>)</span><br><span class="line">            .incrementer(<span class="keyword">new</span> RunIdIncrementer())</span><br><span class="line">            .listener(listener)</span><br><span class="line">            .flow(step1())</span><br><span class="line">            .end()</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Stepstep1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    returnstepBuilderFactory.get(<span class="string">"step1"</span>)</span><br><span class="line">            .&lt;Person, Person&gt;chunk(<span class="number">10</span>)</span><br><span class="line">            .reader(reader())</span><br><span class="line">            .processor(processor())</span><br><span class="line">            .writer(writer())</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个方法定义作业，三定义一个步骤。作业是由步骤构建的，每个步骤都可以包含一个阅读器、一个处理器和一个编写器。</p>
+<p>在此作业定义中，您需要一个增量器，因为作业使用数据库来维护执行状态。然后列出每个步骤，其中此作业只有一个步骤。作业结束，JavaAPI生成一个配置完美的作业。</p>
+<p>在步骤定义中，定义一次写入多少数据。在这种情况下，它一次最多写十条记录。接下来，使用前面注入的位来配置读取器、处理器和写入器。</p>
+<pre><code>chunk()是前缀&lt;Person,Person&gt;因为这是一个通用的方法。这表示处理的每个“块”的输入和输出类型，并与ItemReader和ItemWriter...
+</code></pre><p><strong>SRC/main/java/hello/JobCompletionNotificationListener.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">packagehello;</span><br><span class="line"></span><br><span class="line">importjava.sql.ResultSet;</span><br><span class="line">importjava.sql.SQLException;</span><br><span class="line">importjava.util.List;</span><br><span class="line"></span><br><span class="line">importorg.slf4j.Logger;</span><br><span class="line">importorg.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">importorg.springframework.batch.core.BatchStatus;</span><br><span class="line">importorg.springframework.batch.core.JobExecution;</span><br><span class="line">importorg.springframework.batch.core.listener.JobExecutionListenerSupport;</span><br><span class="line">importorg.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">importorg.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line">importorg.springframework.jdbc.core.RowMapper;</span><br><span class="line">importorg.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JobCompletionNotificationListener</span> <span class="keyword">extends</span> <span class="title">JobExecutionListenerSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Loggerlog= LoggerFactory.getLogger(JobCompletionNotificationListener.class);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JdbcTemplatejdbcTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">JobCompletionNotificationListener</span><span class="params">(JdbcTemplatejdbcTemplate)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.jdbcTemplate=jdbcTemplate;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">voidafterJob</span><span class="params">(JobExecutionjobExecution)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(jobExecution.getStatus() == BatchStatus.COMPLETED) &#123;log.info(<span class="string">"!!! JOB FINISHED! Time to verify the results"</span>);</span><br><span class="line"></span><br><span class="line">			List&lt;Person&gt;results=jdbcTemplate.query(<span class="string">"SELECT first_name, last_name FROM people"</span>, <span class="keyword">new</span> RowMapper&lt;Person&gt;() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="title">PersonmapRow</span><span class="params">(ResultSetrs, introw)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">new</span> Person(rs.getString(<span class="number">1</span>),rs.getString(<span class="number">2</span>));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (Personperson:results) &#123;log.info(<span class="string">"Found &lt;"</span> +person+ <span class="string">"&gt; in the database."</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此代码监听作业为BatchStatus.COMPLETED，然后使用JdbcTemplate检查结果。</p>
+<h3 id="使应用程序可执行"><a href="#使应用程序可执行" class="headerlink" title="使应用程序可执行"></a>使应用程序可执行</h3><p>虽然批处理可以嵌入到Web应用程序和WAR文件中，但下面演示的更简单的方法创建了一个独立的应用程序。您将所有东西打包到一个可执行的JAR文件中，该文件由一个好的旧Java驱动。main()方法。</p>
+<p><strong>src/main/java/hello/Application.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">packagehello;</span><br><span class="line"></span><br><span class="line">importorg.springframework.boot.SpringApplication;</span><br><span class="line">importorg.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">voidmain</span><span class="params">(String[]args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@SpringBootApplication是一个方便的注释，它添加了以下所有内容：</p>
+<ul>
+<li>@Configuration将类标记为应用程序上下文的bean定义的源。</li>
+<li>@EnableAutoConfiguration告诉SpringBoot根据类路径设置、其他bean和各种属性设置开始添加bean。</li>
+<li>通常你会添加@EnableWebMvc对于SpringMVC应用程序，但是SpringBoot在看到Springwebmvc在类路径上。这会将应用程序标记为web应用程序，并激活关键行为，例如设置DispatcherServlet…</li>
+<li>@ComponentScan告诉Spring在hello包，让它找到控制器。</li>
+</ul>
+<p>main()方法使用SpringBoot的SpringApplication.run()方法来启动应用程序。您注意到没有一行XML吗？不web.xml也要归档。这个Web应用程序是100%纯Java，您不必处理配置任何管道或基础设施的问题。</p>
+<p>出于演示目的，有一些代码可以创建一个JdbcTemplate，查询数据库，并打印批处理作业插入的人员的名称。</p>
+<p>构建一个可执行的JAR<br>您可以使用Gradle或Maven从命令行运行应用程序。或者，您可以构建一个包含所有必需的依赖项、类和资源的单个可执行JAR文件，并运行该文件。这使得在整个开发生命周期、跨不同环境等将服务作为应用程序进行发布、版本和部署变得非常容易。</p>
+<h5 id="如果使用Gradle"><a href="#如果使用Gradle" class="headerlink" title="如果使用Gradle"></a>如果使用Gradle</h5><p>则可以使用./gradlew bootRun.或者您可以使用以下方法构建JAR文件./gradlew build然后可以运行JAR文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar build/libs/gs-batch-processing-0.1.0.jar</span><br></pre></td></tr></table></figure>
+<h5 id="如果您使用的是Maven"><a href="#如果您使用的是Maven" class="headerlink" title="如果您使用的是Maven"></a>如果您使用的是Maven</h5><p>则可以使用./mvnw Spring-boot：运行.或者您可以用./mvnw clean package然后可以运行JAR文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar target/gs-batch-processing-0.1.0.jar</span><br></pre></td></tr></table></figure>
+<pre><code>上面的过程将创建一个可运行的JAR。你也可以选择构建一个经典的WAR文件相反。
+</code></pre><p>该职务为每个被转换的人打印一行。作业运行后，还可以看到查询数据库的输出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Converting (firstName: Jill, lastName: Doe) into (firstName: JILL, lastName: DOE)</span><br><span class="line">Converting (firstName: Joe, lastName: Doe) into (firstName: JOE, lastName: DOE)</span><br><span class="line">Converting (firstName: Justin, lastName: Doe) into (firstName: JUSTIN, lastName: DOE)</span><br><span class="line">Converting (firstName: Jane, lastName: Doe) into (firstName: JANE, lastName: DOE)</span><br><span class="line">Converting (firstName: John, lastName: Doe) into (firstName: JOHN, lastName: DOE)</span><br><span class="line">Found  in the database.</span><br><span class="line">Found  in the database.</span><br><span class="line">Found  in the database.</span><br><span class="line">Found  in the database.</span><br><span class="line">Found  in the database.</span><br></pre></td></tr></table></figure>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>恭喜你！您构建了一个批处理作业，该作业从电子表格中摄取数据，并对其进行处理，并将其写入数据库。</p>
+<p>See also</p>
+<ul>
+<li><p>The following guides may also be helpful:</p>
+</li>
+<li><p>Building an Application with Spring Boot</p>
+</li>
+<li><p>Accessing Data with GemFire</p>
+</li>
+<li><p>Accessing Data with JPA</p>
+</li>
+<li><p>Accessing Data with MongoDB</p>
+</li>
+<li><p>Accessing data with MySQL</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="Kee 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="Kee 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kee</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/31932.html" title="Spring Batch 4.0.0批处理框架">http://www.iskei.cn/posts/31932.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-Batch/" rel="tag"># Spring Batch</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/54997.html" rel="next" title="穷忙族的人生">
+                <i class="fa fa-chevron-left"></i> 穷忙族的人生
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/44114.html" rel="prev" title="三目运算详解">
+                三目运算详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg"
+                alt="Kee" />
+            
+              <p class="site-author-name" itemprop="name">Kee</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Kee's note" target="_blank">Kee's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Kee's Blog" target="_blank">Kee's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进的-Java-配置"><span class="nav-number">1.</span> <span class="nav-text">改进的 Java 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number"></span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建批处理服务"><span class="nav-number">1.</span> <span class="nav-text">创建批处理服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你要建什么"><span class="nav-number">2.</span> <span class="nav-text">你要建什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你需要什么"><span class="nav-number">3.</span> <span class="nav-text">你需要什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最喜欢的文本编辑器或IDE"><span class="nav-number">4.</span> <span class="nav-text">最喜欢的文本编辑器或IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何完成本指南"><span class="nav-number">5.</span> <span class="nav-text">如何完成本指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用Gradle创建"><span class="nav-number">6.</span> <span class="nav-text">用Gradle创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建目录结构"><span class="nav-number">6.1.</span> <span class="nav-text">创建目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Boot-gradle-plugin提供了许多方便的功能："><span class="nav-number">6.2.</span> <span class="nav-text">Spring Boot gradle plugin提供了许多方便的功能：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Maven构建"><span class="nav-number"></span> <span class="nav-text">用Maven构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#大Spring-Boot-Maven插件提供了许多方便的功能："><span class="nav-number">0.1.</span> <span class="nav-text">大Spring Boot Maven插件提供了许多方便的功能：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用IDE构建"><span class="nav-number"></span> <span class="nav-text">用IDE构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务数据"><span class="nav-number">1.</span> <span class="nav-text">业务数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个business类"><span class="nav-number">2.</span> <span class="nav-text">创建一个business类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建中间处理器（-intermediate-processor）"><span class="nav-number">3.</span> <span class="nav-text">创建中间处理器（ intermediate processor）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把一批工作放在一起"><span class="nav-number">4.</span> <span class="nav-text">把一批工作放在一起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使应用程序可执行"><span class="nav-number">5.</span> <span class="nav-text">使应用程序可执行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如果使用Gradle"><span class="nav-number">5.0.1.</span> <span class="nav-text">如果使用Gradle</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如果您使用的是Maven"><span class="nav-number">5.0.2.</span> <span class="nav-text">如果您使用的是Maven</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">6.</span> <span class="nav-text">摘要</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">2.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长：</span>
+    
+    <span title="站点总阅读时长">43:17</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp; <a href="https://pages.coding.me" target="_blank" title="Host by Coding "><span class="hidden"><img style="height:35px;display:inline;margin-bottom:-7px;" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png"></span></a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'JULY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'TIME',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'DA Y',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Monody',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Victory',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'GHSY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.1.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

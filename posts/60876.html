@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|14:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="description" content="Java面试笔记">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法分析">
+<meta property="og:url" content="http://www.iskei.cn/posts/60876.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="Java面试笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0150.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/5510045a-8f32-487f-a756-463e51a6dab0.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/ca3a793e-06e5-4ff3-b28e-a9c20540d164.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/1ea4dc9a-c4dd-46b5-bb11-49f98d57ded1.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/6f5ed46f-86d7-4852-a34f-c1cf1b6343a0.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/222768a7-914f-4d64-b874-d98f3b926fb6.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/065c3bbb-3ea0-4dbf-8f26-01d0e0ba7db7.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/8320bad6-3f91-4a15-8e3d-68e8f39649b5.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/dcf265ad-fe35-424d-b4b7-d149cdf239f4.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/6468a541-3a9a-4008-82b6-03a0fe941d2a.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/c7665f73-c52f-4ce4-aed3-592bbd76265b.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/c7b9b4c8-83d1-4eb0-8408-ea6576a9ed90.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/61b4832d-71f3-413c-84b6-237e219b9fdc.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/e198c201-f386-4491-8ad6-f7e433bf992d.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/9d2226dc-c4a3-40ec-9b3e-a46bf86af499.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/a9b6c1db-0f4a-4e91-8ac8-6b19bd106b51.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/a2670745-a7b1-497b-90a4-dbddc4e2006d.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/be53c00b-2534-4dc6-ad03-c55995c47db9.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/b69d7184-ab62-4957-ba29-fb4fa25f9b65.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/ba6ae411-82da-4d86-a434-6776d1731e8e.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/25226bb2-92cc-40cb-9e7f-c44e79fbb64a.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/73a3983d-dd18-4373-897e-64b706a7e370.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/6e2cb20a-8d2a-46fe-9ac7-68a2126b7bd5.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/b488282d-bfe0-464f-9e91-1f5b83a975bd.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/2548f2ec-7b00-4ec7-b286-20fc3022e084.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/912174d8-0786-4222-b7ef-a611d36e5db9.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/7080a928-06ba-4e10-9792-b8dd190dc8e2.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/62077f5d-a06d-4129-9b43-78715b82cb03.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/33a4e822-2dd0-481e-ac89-7f6161034402.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/5e0cef33-4087-4f21-a428-16d5fddda671.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/dfd078b2-aa4f-4c50-8319-232922d822b8.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/3f8d8c9d-a9a9-4d7a-813c-2de05ee5a97e.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/de7c5a31-55f5-4e9d-92ec-4ed5b2ec3828.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/e5ad625e-729d-4a8d-923a-7c3df5773e1c.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/40639782-5df2-4e96-a4f3-f9dd664d0ca1.jpg">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/b001fa64-307c-49af-b4b2-2043fc26154e.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/70b66757-755c-4e17-a7b7-5ce808023643.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/540133af-aaaf-4208-8f7f-33cb89ac9621.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/2b3410f1-9559-4dd1-bc3d-e3e572247be2.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/0ddebc5c-7c24-46b1-98db-4fa5e54db16b.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/01658047-0d86-4a7a-a8ca-7ea20fa1fdde.png">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/Interview/9ee83c8c-1165-476c-85a6-e6e434e5307a.jpg">
+<meta property="og:updated_time" content="2018-04-18T09:00:50.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法分析">
+<meta name="twitter:description" content="Java面试笔记">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0150.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/60876.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>算法分析 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-photo">
+    <a href="/photo/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-movies">
+    <a href="/movies/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/60876.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">算法分析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T16:44:36+08:00">2018-02-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/60876.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/60876.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/60876.html" class="leancloud_visitors" data-flag-title="算法分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计：</span>
+                
+                <span title="字数统计">26k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长&asymp;</span>
+                
+                <span title="阅读时长">0:26</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0150.jpg" alt="image"></p>
+<p>Java面试笔记<br><a id="more"></a></p>
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><h2 id="1-函数转换"><a href="#1-函数转换" class="headerlink" title="1. 函数转换"></a>1. 函数转换</h2><p>指数函数可以转换为线性函数，从而在函数图像上显示的更直观。</p>
+<p>T(N)=aN<sup>3</sup> 转换为 lg(T(N))=3lgN+lga</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/5510045a-8f32-487f-a756-463e51a6dab0.png" alt=""></p>
+<h2 id="2-数学模型"><a href="#2-数学模型" class="headerlink" title="2. 数学模型"></a>2. 数学模型</h2><p><strong>近似</strong></p>
+<p>使用 ~f(N) 来表示所有随着 N 的增大除以 f(N) 的结果趋近于 1 的函数 , 例如 N<sup>3</sup>/6-N<sup>2</sup>/2+N/3 ~ N<sup>3</sup>/6。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/ca3a793e-06e5-4ff3-b28e-a9c20540d164.png" alt=""></p>
+<p><strong>增长数量级</strong></p>
+<p>增长数量级将算法与它的实现隔离开来，一个算法的增长数量级为 N<sup>3</sup> 与它是否用 Java 实现，是否运行于特定计算机上无关。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/1ea4dc9a-c4dd-46b5-bb11-49f98d57ded1.png" alt=""></p>
+<p><strong>内循环</strong></p>
+<p>执行最频繁的指令决定了程序执行的总时间，把这些指令称为程序的内循环。</p>
+<p><strong>成本模型</strong></p>
+<p>使用成本模型来评估算法，例如数组的访问次数就是一种成本模型。</p>
+<h2 id="3-ThreeSum"><a href="#3-ThreeSum" class="headerlink" title="3. ThreeSum"></a>3. ThreeSum</h2><p>ThreeSum 程序用于统计一个数组中三元组的和为 0 的数量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeSum</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; N; k++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (a[i] + a[j] + a[k] == <span class="number">0</span>) &#123;</span><br><span class="line">                        cnt++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该程序的内循环为 if (a[i] + a[j] + a[k] == 0) 语句，总共执行的次数为 N<sup>3</sup>/6-N<sup>2</sup>/2+N/3，因此它的近似执行次数为 ~N<sup>3</sup>/6，增长数量级为 N<sup>3</sup>。</p>
+<p><strong>改进</strong></p>
+<p>通过将数组先排序，对两个元素求和，并用二分查找方法查找是否存在该和的相反数，如果存在，就说明存在三元组的和为 0。</p>
+<p>该方法可以将 ThreeSum 算法增长数量级降低为 N<sup>2</sup>logN。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeSumFast</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(a);</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; N; k++) &#123;</span><br><span class="line">                    <span class="comment">// rank() 方法返回元素在数组中的下标，如果元素不存在，这里会返回 -1。应该注意这里的下标必须大于 j，这样就不会重复统计了。</span></span><br><span class="line">                    <span class="keyword">if</span> (BinarySearch.rank(-a[i] - a[j], a) &gt; j) &#123;</span><br><span class="line">                        cnt++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-倍率实验"><a href="#4-倍率实验" class="headerlink" title="4. 倍率实验"></a>4. 倍率实验</h2><p>如果 T(N) ~ aN<sup>b</sup>lgN，那么 T(2N)/T(N) ~ 2<sup>b</sup>，例如对于暴力方法的 ThreeSum 算法，近似时间为 ~N<sup>3</sup>/6，对它进行倍率实验得到如下结果：</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/6f5ed46f-86d7-4852-a34f-c1cf1b6343a0.png" alt=""></p>
+<p>可见 T(2N)/T(N)~2<sup>3</sup>，也就是 b 为 3。</p>
+<h2 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5. 注意事项"></a>5. 注意事项</h2><p><strong>大常数</strong></p>
+<p>在求近似时，如果低级项的常数系数很大，那么近似的结果就是错误的。</p>
+<p><strong>缓存</strong></p>
+<p>计算机系统会使用缓存技术来组织内存，访问数组相邻的元素会比访问不相邻的元素快很多。</p>
+<p><strong>对最坏情况下的性能的保证</strong></p>
+<p>在核反应堆、心脏起搏器或者刹车控制器中的软件，最坏情况下的性能是十分重要的。</p>
+<p><strong>随机化算法</strong></p>
+<p>通过打乱输入，去除算法对输入的依赖。</p>
+<p><strong>均摊分析</strong></p>
+<p>将所有操作的总成本所以操作总数来将成本均摊。例如对一个空栈进行 N 次连续的 push() 调用需要访问数组的元素为 N+4+8+16+…+2N=5N-4（N 是向数组写入元素，其余的都是调整数组大小时进行复制需要的访问数组操作），均摊后每次操作访问数组的平均次数为常数。</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="1-初级排序算法"><a href="#1-初级排序算法" class="headerlink" title="1. 初级排序算法"></a>1. 初级排序算法</h2><h3 id="1-1-约定"><a href="#1-1-约定" class="headerlink" title="1.1 约定"></a>1.1 约定</h3><p>待排序的元素需要实现 Java 的 Comparable 接口，该接口有 compareTo() 方法。</p>
+<p>研究排序算法的成本模型时，计算的是比较和交换的次数。</p>
+<p>使用辅助函数 less() 和 exch() 来进行比较和交换的操作，使得代码的可读性和可移植性更好。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">less</span><span class="params">(Comparable v, Comparable w)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v.compareTo(w) &lt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(Comparable[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    Comparable t = a[i];</span><br><span class="line">    a[i] = a[j];</span><br><span class="line">    a[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-选择排序"><a href="#1-2-选择排序" class="headerlink" title="1.2 选择排序"></a>1.2 选择排序</h3><p>找到数组中的最小元素，然后将它与数组的第一个元素交换位置。然后再从剩下的元素中找到最小的元素，将它与数组的第二个元素交换位置。不断进行这样的操作，直到将整个数组排序。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/222768a7-914f-4d64-b874-d98f3b926fb6.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Selection</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (less(a[j], a[min])) min = j;</span><br><span class="line">            &#125;</span><br><span class="line">            exch(a, i, min);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择排序需要 ~N<sup>2</sup>/2 次比较和 ~N 次交换，它的运行时间与输入无关，这个特点使得它对一个已经排序的数组也需要这么多的比较和交换操作。</p>
+<h3 id="1-3-插入排序"><a href="#1-3-插入排序" class="headerlink" title="1.3 插入排序"></a>1.3 插入排序</h3><p>将一个元素插入到已排序的数组中，使得插入之后的数组也是有序的。插入排序从左到右插入每个元素，每次插入之后左部的子数组是有序的。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/065c3bbb-3ea0-4dbf-8f26-01d0e0ba7db7.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Insertion</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(a[j], a[j - <span class="number">1</span>]); j--) &#123;</span><br><span class="line">                exch(a, j, j - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插入排序的复杂度取决于数组的初始顺序，如果数组已经部分有序了，那么插入排序会很快。平均情况下插入排序需要 ~N<sup>2</sup>/4 比较以及 ~N<sup>2</sup>/4 次交换，最坏的情况下需要 ~N<sup>2</sup>/2 比较以及 ~N<sup>2</sup>/2 次交换，最坏的情况是数组是逆序的；而最好的情况下需要 N-1 次比较和 0 次交换，最好的情况就是数组已经有序了。</p>
+<p>插入排序对于部分有序数组和小规模数组特别高效。</p>
+<h3 id="1-4-选择排序和插入排序的比较"><a href="#1-4-选择排序和插入排序的比较" class="headerlink" title="1.4 选择排序和插入排序的比较"></a>1.4 选择排序和插入排序的比较</h3><p>对于随机排序的无重复主键的数组，插入排序和选择排序的运行时间是平方级别的，两者之比是一个较小的常数。</p>
+<h3 id="1-5-希尔排序"><a href="#1-5-希尔排序" class="headerlink" title="1.5 希尔排序"></a>1.5 希尔排序</h3><p>对于大规模的数组，插入排序很慢，因为它只能交换相邻的元素，如果要把元素从一端移到另一端，就需要很多次操作。</p>
+<p>希尔排序的出现就是为了改进插入排序的这种局限性，它通过交换不相邻的元素，使得元素更快的移到正确的位置上。</p>
+<p>希尔排序使用插入排序对间隔 h 的序列进行排序，如果 h 很大，那么元素就能很快的移到很远的地方。通过不断减小 h，最后令 h=1，就可以使得整个数组是有序的。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/8320bad6-3f91-4a15-8e3d-68e8f39649b5.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Shell</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = a.length;</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (h &lt; N / <span class="number">3</span>) &#123;</span><br><span class="line">            h = <span class="number">3</span> * h + <span class="number">1</span>;<span class="comment">// 1, 4, 13, 40, ...</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (h &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = h; i &lt; N; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= h &amp;&amp; less(a[j], a[j - h]); j -= h) &#123;</span><br><span class="line">                    exch(a, j, j - h);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            h = h / <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>希尔排序的运行时间达不到平方级别，使用递增序列 1, 4, 13, 40, … 的希尔排序所需要的比较次数不会超过 N 的若干倍乘于递增序列的长度。后面介绍的高级排序算法只会比希尔排序快两倍左右。</p>
+<h2 id="2-归并排序"><a href="#2-归并排序" class="headerlink" title="2 归并排序"></a>2 归并排序</h2><p>归并排序的思想是将数组分成两部分，分别进行排序，然后归并起来。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/dcf265ad-fe35-424d-b4b7-d149cdf239f4.png" alt=""></p>
+<h3 id="2-1-归并方法"><a href="#2-1-归并方法" class="headerlink" title="2.1 归并方法"></a>2.1 归并方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Comparable[] aux;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> mid, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = lo, j = mid + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">            aux[k] = a[k]; <span class="comment">// 将数据复制到辅助数组</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = lo; k &lt;= hi; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; mid) a[k] = aux[j++];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi) a[k] = aux[i++];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (aux[i].compareTo(a[j]) &lt; <span class="number">0</span>) a[k] = aux[i++]; <span class="comment">// 先进行这一步，保证稳定性</span></span><br><span class="line">            <span class="keyword">else</span> a[k] = aux[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-自顶向下归并排序"><a href="#2-2-自顶向下归并排序" class="headerlink" title="2.2 自顶向下归并排序"></a>2.2 自顶向下归并排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">    aux = <span class="keyword">new</span> Comparable[a.length];</span><br><span class="line">    sort(a, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">    sort(a, lo, mid);</span><br><span class="line">    sort(a, mid + <span class="number">1</span>, hi);</span><br><span class="line">    merge(a, lo, mid, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/6468a541-3a9a-4008-82b6-03a0fe941d2a.png" alt=""></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/c7665f73-c52f-4ce4-aed3-592bbd76265b.png" alt=""></p>
+<p>很容易看出该排序算法的时间复杂度为 O(Nlg<sub>N</sub>)。</p>
+<p>因为小数组的递归操作会过于频繁，因此使用插入排序来处理小数组将会获得更高的性能。</p>
+<h3 id="2-3-自底向上归并排序"><a href="#2-3-自底向上归并排序" class="headerlink" title="2.3 自底向上归并排序"></a>2.3 自底向上归并排序</h3><p>先归并那些微型数组，然后成对归并得到的子数组。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/c7b9b4c8-83d1-4eb0-8408-ea6576a9ed90.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">busort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = a.length;</span><br><span class="line">    aux = <span class="keyword">new</span> Comparable[N];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> sz = <span class="number">1</span>; sz &lt; N; sz += sz) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> lo = <span class="number">0</span>; lo &lt; N - sz; lo += sz + sz) &#123;</span><br><span class="line">            merge(a, lo, lo + sz - <span class="number">1</span>, Math.min(lo + sz + sz - <span class="number">1</span>, N - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-快速排序"><a href="#3-快速排序" class="headerlink" title="3.快速排序"></a>3.快速排序</h2><h3 id="3-1-基本算法"><a href="#3-1-基本算法" class="headerlink" title="3.1 基本算法"></a>3.1 基本算法</h3><p>归并排序将数组分为两个子数组分别排序，并将有序的子数组归并使得整个数组排序；快速排序通过一个切分元素将数组分为两个子数组，左子数组小于等于切分元素，右子数组大于等于切分元素，将这两个子数组排序也就将整个数组排序了。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/61b4832d-71f3-413c-84b6-237e219b9fdc.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        shuffle(a);</span><br><span class="line">        sort(a, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> j = partition(a, lo, hi);</span><br><span class="line">        sort(a, lo, j - <span class="number">1</span>);</span><br><span class="line">        sort(a, j + <span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-切分"><a href="#3-2-切分" class="headerlink" title="3.2 切分"></a>3.2 切分</h3><p>取 a[lo] 作为切分元素，然后从数组的左端向右扫描直到找到第一个大于等于它的元素，再从数组的右端向左扫描找到第一个小于等于它的元素，交换这两个元素，并不断继续这个过程，就可以保证左指针的左侧元素都不大于切分元素，右指针 j 的右侧元素都不小于切分元素。当两个指针相遇时，将切分元素 a[lo] 和左子数组最右侧的元素 a[j] 交换然后返回 j 即可。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/e198c201-f386-4491-8ad6-f7e433bf992d.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = lo, j = hi + <span class="number">1</span>;</span><br><span class="line">    Comparable v = a[lo];</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (less(a[++i], v)) <span class="keyword">if</span> (i == hi) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">while</span> (less(v, a[--j])) <span class="keyword">if</span> (j == lo) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">        exch(a, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    exch(a, lo, j);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-性能分析"><a href="#3-3-性能分析" class="headerlink" title="3.3 性能分析"></a>3.3 性能分析</h3><p>快速排序是原地排序，不需要辅助数组，但是递归调用需要辅助栈。</p>
+<p>快速排序最好的情况下是每次都正好能将数组对半分，这样递归调用次数才是最少的。这种情况下比较次数为 C<sub>N</sub>=2C<sub>N/2</sub>+N，也就是复杂度为 O(Nlg<sub>N</sub>)。</p>
+<p>最坏的情况下，第一次从最小的元素切分，第二次从第二小的元素切分，如此这般。因此最坏的情况下需要比较 N<sup>2</sup>/2。为了防止数组最开始就是有序的，在进行快速排序时需要随机打乱数组。</p>
+<h3 id="3-4-算法改进"><a href="#3-4-算法改进" class="headerlink" title="3.4 算法改进"></a>3.4 算法改进</h3><h4 id="3-4-1-切换到插入排序"><a href="#3-4-1-切换到插入排序" class="headerlink" title="3.4.1 切换到插入排序"></a>3.4.1 切换到插入排序</h4><p>因为快速排序在小数组中也会调用自己，对于小数组，插入排序比快速排序的性能更好，因此在小数组中可以切换到插入排序。</p>
+<h4 id="3-4-2-三取样"><a href="#3-4-2-三取样" class="headerlink" title="3.4.2 三取样"></a>3.4.2 三取样</h4><p>最好的情况下是每次都能取数组的中位数作为切分元素，但是计算中位数的代价很高。人们发现取 3 个元素并将大小居中的元素作为切分元素的效果最好。</p>
+<h4 id="3-4-3-三向切分"><a href="#3-4-3-三向切分" class="headerlink" title="3.4.3 三向切分"></a>3.4.3 三向切分</h4><p>对于有大量重复元素的数组，可以将数组切分为三部分，分别对应小于、等于和大于切分元素。</p>
+<p>三向切分快速排序对于只有若干不同主键的随机数组可以在线性时间内完成排序。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/9d2226dc-c4a3-40ec-9b3e-a46bf86af499.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quick3Way</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> lt = lo, i = lo + <span class="number">1</span>, gt = hi;</span><br><span class="line">        Comparable v = a[lo];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= gt) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = a[i].compareTo(v);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) exch(a, lt++, i++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) exch(a, i, gt--);</span><br><span class="line">            <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a, lo, lt - <span class="number">1</span>);</span><br><span class="line">        sort(a, gt + <span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-优先队列"><a href="#4-优先队列" class="headerlink" title="4. 优先队列"></a>4. 优先队列</h2><p>优先队列主要用于处理最大元素。</p>
+<h3 id="4-1-堆"><a href="#4-1-堆" class="headerlink" title="4.1 堆"></a>4.1 堆</h3><p>定义：一颗二叉树的每个节点都大于等于它的两个子节点。</p>
+<p>堆可以用数组来表示，因为堆是一种完全二叉树，而完全二叉树很容易就存储在数组中。位置 k 的节点的父节点位置为 k/2，而它的两个子节点的位置分别为 2k 和 2k+1。这里我们不使用数组索引为 0 的位置，是为了更清晰地理解节点的关系。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/a9b6c1db-0f4a-4e91-8ac8-6b19bd106b51.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxPQ</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Key[] pq;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> N = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MaxPQ</span><span class="params">(<span class="keyword">int</span> maxN)</span> </span>&#123;</span><br><span class="line">        pq = (Key[]) <span class="keyword">new</span> Comparable[maxN + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> N == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">less</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pq[i].compareTo(pq[j]) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        Key t = pq[i];</span><br><span class="line">        pq[i] = pq[j];</span><br><span class="line">        pq[j] = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-上浮和下沉"><a href="#4-2-上浮和下沉" class="headerlink" title="4.2 上浮和下沉"></a>4.2 上浮和下沉</h3><p>在堆中，当一个节点比父节点大，那么需要交换这个两个节点。交换后还可能比它新的父节点大，因此需要不断地进行比较和交换操作。把这种操作称为上浮。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (k &gt; <span class="number">1</span> &amp;&amp; less(k / <span class="number">2</span>, k)) &#123;</span><br><span class="line">        exch(k / <span class="number">2</span>, k);</span><br><span class="line">        k = k / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似地，当一个节点比子节点来得小，也需要不断的向下比较和交换操作，把这种操作称为下沉。一个节点有两个子节点，应当与两个子节点中最大那么节点进行交换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">2</span> * k &lt;= N) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span> * k;</span><br><span class="line">        <span class="keyword">if</span> (j &lt; N &amp;&amp; less(j, j + <span class="number">1</span>)) j++;</span><br><span class="line">        <span class="keyword">if</span> (!less(k, j)) <span class="keyword">break</span>;</span><br><span class="line">        exch(k, j);</span><br><span class="line">        k = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-插入元素"><a href="#4-3-插入元素" class="headerlink" title="4.3 插入元素"></a>4.3 插入元素</h3><p>将新元素放到数组末尾，然后上浮到合适的位置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Key v)</span> </span>&#123;</span><br><span class="line">    pq[++N] = v;</span><br><span class="line">    swim(N);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-删除最大元素"><a href="#4-4-删除最大元素" class="headerlink" title="4.4 删除最大元素"></a>4.4 删除最大元素</h3><p>从数组顶端删除最大的元素，并将数组的最后一个元素放到顶端，并让这个元素下沉到合适的位置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">delMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Key max = pq[<span class="number">1</span>];</span><br><span class="line">    exch(<span class="number">1</span>, N--);</span><br><span class="line">    pq[N + <span class="number">1</span>] = <span class="keyword">null</span>;</span><br><span class="line">    sink(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-5-堆排序"><a href="#4-5-堆排序" class="headerlink" title="4.5 堆排序"></a>4.5 堆排序</h3><p>由于堆可以很容易得到最大的元素并删除它，不断地进行这种操作可以得到一个递减序列。如果把最大元素和当前堆中数组的最后一个元素交换位置，并且不删除它，那么就可以得到一个从尾到头的递减序列，从正向来看就是一个递增序列。因此很容易使用堆来进行排序，并且堆排序是原地排序，不占用额外空间。</p>
+<p>堆排序要分两个阶段，第一个阶段是把无序数组建立一个堆；第二个阶段是交换最大元素和当前堆的数组最后一个元素，并且进行下沉操作维持堆的有序状态。</p>
+<p>无序数组建立堆最直接的方法是从左到右遍历数组，然后进行上浮操作。一个更高效的方法是从右至左进行下沉操作，如果一个节点的两个节点都已经是堆有序，那么进行下沉操作可以使得这个节点为根节点的堆有序。叶子节点不需要进行下沉操作，因此可以忽略叶子节点的元素，因此只需要遍历一半的元素即可。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/a2670745-a7b1-497b-90a4-dbddc4e2006d.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = a.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = N/<span class="number">2</span>; k &gt;= <span class="number">1</span>; k--)&#123;</span><br><span class="line">        sink(a, k, N);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(N &gt; <span class="number">1</span>)&#123;</span><br><span class="line">        exch(a, <span class="number">1</span>, N--);</span><br><span class="line">        sink(a, <span class="number">1</span>, N);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-6-分析"><a href="#4-6-分析" class="headerlink" title="4.6 分析"></a>4.6 分析</h3><p>一个堆的高度为 lgN，因此在堆中插入元素和删除最大元素的复杂度都为 lgN。</p>
+<p>对于堆排序，由于要对 N 个节点进行下沉操作，因此复杂度为 NlgN。</p>
+<p>堆排序时一种原地排序，没有利用额外的空间。</p>
+<p>现代操作系统很少使用堆排序，因为它无法利用缓存，也就是数组元素很少和相邻的元素进行比较。</p>
+<h2 id="5-应用"><a href="#5-应用" class="headerlink" title="5. 应用"></a>5. 应用</h2><h3 id="5-1-排序算法的比较"><a href="#5-1-排序算法的比较" class="headerlink" title="5.1 排序算法的比较"></a>5.1 排序算法的比较</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/be53c00b-2534-4dc6-ad03-c55995c47db9.jpg" alt=""></p>
+<p>快速排序时最快的通用排序算法，它的内循环的指令很少，而且它还能利用缓存，因为它总是顺序地访问数据。它的运行时间增长数量级为 ~cNlgN，这里的 c 比其他线性对数级别的排序算法都要小。使用三向切分之后，实际应用中可能出现的某些分布的输入能够达到线性级别，而其它排序算法仍然需要线性对数时间。</p>
+<h3 id="5-2-Java-的排序算法实现"><a href="#5-2-Java-的排序算法实现" class="headerlink" title="5.2 Java 的排序算法实现"></a>5.2 Java 的排序算法实现</h3><p>Java 系统库中的主要排序方法为 java.util.Arrays.sort()，对于原始数据类型使用三向切分的快速排序，对于引用类型使用归并排序。</p>
+<h3 id="5-3-基于切分的快速选择算法"><a href="#5-3-基于切分的快速选择算法" class="headerlink" title="5.3 基于切分的快速选择算法"></a>5.3 基于切分的快速选择算法</h3><p>快速排序的 partition() 方法，会将数组的 a[lo] 至 a[hi] 重新排序并返回一个整数 j 使得 a[lo..j-1] 小于等于 a[j]，且 a[j+1..hi] 大于等于 a[j]。那么如果 j=k，a[j] 就是第 k 个数。</p>
+<p>该算法是线性级别的，因为每次正好将数组二分，那么比较的总次数为 (N+N/2+N/4+..)，直到找到第 k 个元素，这个和显然小于 2N。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Comparable <span class="title">select</span><span class="params">(Comparable[] a, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lo = <span class="number">0</span>, hi = a.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (hi &gt; lo) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = partion(a, lo, hi);</span><br><span class="line">        <span class="keyword">if</span> (j == k) <span class="keyword">return</span> a[k];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; k) hi = j - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> lo = j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><p>本章使用三种经典的数据类型来实现高效的符号表：二叉查找树、红黑树和散列表。</p>
+<h2 id="1-符号表"><a href="#1-符号表" class="headerlink" title="1. 符号表"></a>1. 符号表</h2><h3 id="1-1-无序符号表"><a href="#1-1-无序符号表" class="headerlink" title="1.1 无序符号表"></a>1.1 无序符号表</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/b69d7184-ab62-4957-ba29-fb4fa25f9b65.jpg" alt=""></p>
+<h3 id="1-2-有序符号表"><a href="#1-2-有序符号表" class="headerlink" title="1.2 有序符号表"></a>1.2 有序符号表</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/ba6ae411-82da-4d86-a434-6776d1731e8e.jpg" alt=""></p>
+<p>有序符号表的键需要实现 Comparable 接口。</p>
+<p>查找的成本模型：键的比较次数，在不进行比较时使用数组的访问次数。</p>
+<h3 id="1-3-二分查找实现有序符号表"><a href="#1-3-二分查找实现有序符号表" class="headerlink" title="1.3 二分查找实现有序符号表"></a>1.3 二分查找实现有序符号表</h3><p>使用一对平行数组，一个存储键一个存储值。</p>
+<p>需要创建一个 Key 类型的 Comparable 对象数组和一个 Value 类型的 Object 对象数组。</p>
+<p>rank() 方法至关重要，当键在表中时，它能够知道该键的位置；当键不在表中时，它也能知道在何处插入新键。</p>
+<p>复杂度：二分查找最多需要 lgN+1 次比较，使用二分查找实现的符号表的查找操作所需要的时间最多是对数级别的。但是插入操作需要移动数组元素，是线性级别的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinarySearchST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Key[] keys;</span><br><span class="line">    <span class="keyword">private</span> Value[] values;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BinarySearchST</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        keys = (Key[]) <span class="keyword">new</span> Comparable[capacity];</span><br><span class="line">        values = (Value[]) <span class="keyword">new</span> Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = rank(key);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; N &amp;&amp; keys[i].compareTo(key) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> values[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = N - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> cmp = key.compareTo(keys[mid]);</span><br><span class="line">            <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) hi = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> lo = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = rank(key);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; N &amp;&amp; keys[i].compareTo(key) == <span class="number">0</span>) &#123;</span><br><span class="line">            values[i] = value;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = N; j &gt; i; j--) &#123;</span><br><span class="line">            keys[j] = keys[j - <span class="number">1</span>];</span><br><span class="line">            values[j] = values[j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        keys[i] = key;</span><br><span class="line">        values[i] = value;</span><br><span class="line">        N++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Key <span class="title">ceiling</span><span class="params">(Key key)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = rank(key);</span><br><span class="line">        <span class="keyword">return</span> keys[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-二叉查找树"><a href="#2-二叉查找树" class="headerlink" title="2. 二叉查找树"></a>2. 二叉查找树</h2><p><strong>二叉树</strong> 定义为一个空链接，或者是一个有左右两个链接的节点，每个链接都指向一颗子二叉树。</p>
+<p><strong>二叉查找树</strong>（BST）是一颗二叉树，并且每个节点的键都大于其左子树中的任意节点的键而小于右子树的任意节点的键。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/25226bb2-92cc-40cb-9e7f-c44e79fbb64a.jpg" alt=""></p>
+<p>二叉查找树的查找操作每次迭代都会让区间减少一半，和二分查找类似。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Key key;</span><br><span class="line">        <span class="keyword">private</span> Value val;</span><br><span class="line">        <span class="keyword">private</span> Node left, right;</span><br><span class="line">        <span class="comment">// 以该节点为根的子树中节点总数</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Key key, Value val, <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            <span class="keyword">this</span>.N = N;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> x.N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-get"><a href="#2-1-get" class="headerlink" title="2.1 get()"></a>2.1 get()</h3><p>如果树是空的，则查找未命中；如果被查找的键和根节点的键相等，查找命中，否则递归地在子树中查找：如果被查找的键较小就在左子树中查找，较大就在右子树中查找。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(root, key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> Value <span class="title">get</span><span class="params">(Node x, Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> x.val;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> get(x.left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> get(x.right, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-put"><a href="#2-2-put" class="headerlink" title="2.2 put()"></a>2.2 put()</h3><p>当插入的键不存在于树中，需要创建一个新节点，并且更新上层节点的链接使得该节点正确链接到树中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span> </span>&#123;</span><br><span class="line">    root = put(root, key, val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">put</span><span class="params">(Node x, Key key, Value val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> Node(key, val, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) x.val = val;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) x.left = put(x.left, key, val);</span><br><span class="line">    <span class="keyword">else</span> x.right = put(x.right, key, val);</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-分析"><a href="#2-3-分析" class="headerlink" title="2.3 分析"></a>2.3 分析</h3><p>二叉查找树的算法运行时间取决于树的形状，而树的形状又取决于键被插入的先后顺序。最好的情况下树是完全平衡的，每条空链接和根节点的距离都为 lgN。在最坏的情况下，树的高度为 N。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/73a3983d-dd18-4373-897e-64b706a7e370.jpg" alt=""></p>
+<p>复杂度：查找和插入操作都为对数级别。</p>
+<h3 id="2-4-floor"><a href="#2-4-floor" class="headerlink" title="2.4 floor()"></a>2.4 floor()</h3><p>如果 key 小于根节点的 key，那么小于等于 key 的最大键节点一定在左子树中；如果 key 大于根节点的 key，只有当根节点右子树中存在小于等于 key 的节点，小于等于 key 的最大键节点才在右子树中，否则根节点就是小于等于 key 的最大键节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">floor</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    Node x = floor(root, key);</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> x.key;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">floor</span><span class="params">(Node x, Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> floor(x.left, key);</span><br><span class="line">    Node t = floor(x.right, key);</span><br><span class="line">    <span class="keyword">if</span> (t != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-rank"><a href="#2-5-rank" class="headerlink" title="2.5 rank()"></a>2.5 rank()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> rank(key, root);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key, Node x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> size(x.left);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> rank(key, x.left);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">1</span> + size(x.left) + rank(key, x.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-6-min"><a href="#2-6-min" class="headerlink" title="2.6 min()"></a>2.6 min()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">min</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x.left == <span class="keyword">null</span>) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> min(x.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-7-deleteMin"><a href="#2-7-deleteMin" class="headerlink" title="2.7 deleteMin()"></a>2.7 deleteMin()</h3><p>令指向最小节点的链接指向最小节点的右子树。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/6e2cb20a-8d2a-46fe-9ac7-68a2126b7bd5.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    root = deleteMin(root);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">deleteMin</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x.left == <span class="keyword">null</span>) <span class="keyword">return</span> x.right;</span><br><span class="line">    x.left = deleteMin(x.left);</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-8-delete"><a href="#2-8-delete" class="headerlink" title="2.8 delete()"></a>2.8 delete()</h3><p>如果待删除的节点只有一个子树，那么只需要让指向待删除节点的链接指向唯一的子树即可；否则，让右子树的最小节点替换该节点。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/b488282d-bfe0-464f-9e91-1f5b83a975bd.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    root = delete(root, key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">delete</span><span class="params">(Node x, Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) x.left = delete(x.left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) x.right = delete(x.right, key);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (x.right == <span class="keyword">null</span>) <span class="keyword">return</span> x.left;</span><br><span class="line">        <span class="keyword">if</span> (x.left == <span class="keyword">null</span>) <span class="keyword">return</span> x.right;</span><br><span class="line">        Node t = x;</span><br><span class="line">        x = min(t.right);</span><br><span class="line">        x.right = deleteMin(t.right);</span><br><span class="line">        x.left = t.left;</span><br><span class="line">    &#125;</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-9-keys"><a href="#2-9-keys" class="headerlink" title="2.9 keys()"></a>2.9 keys()</h3><p>利用二叉查找树中序遍历的结果为有序序列的特点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">(Key lo, Key hi)</span> </span>&#123;</span><br><span class="line">    Queue&lt;Key&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    keys(root, queue, lo, hi);</span><br><span class="line">    <span class="keyword">return</span> queue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keys</span><span class="params">(Node x, Queue&lt;Key&gt; queue, Key lo, Key hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> cmpLo = lo.compareTo(x.key);</span><br><span class="line">    <span class="keyword">int</span> cmpHi = hi.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmpLo &lt; <span class="number">0</span>) keys(x.left, queue, lo, hi);</span><br><span class="line">    <span class="keyword">if</span> (cmpLo &lt;= <span class="number">0</span> &amp;&amp; cmpHi &gt;= <span class="number">0</span>) queue.add(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmpHi &gt; <span class="number">0</span>) keys(x.right, queue, lo, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-10-性能分析"><a href="#2-10-性能分析" class="headerlink" title="2.10 性能分析"></a>2.10 性能分析</h3><p>复杂度：二叉查找树所有操作在最坏的情况下所需要的时间都和树的高度成正比。</p>
+<h2 id="3-平衡查找树"><a href="#3-平衡查找树" class="headerlink" title="3. 平衡查找树"></a>3. 平衡查找树</h2><h3 id="3-1-2-3-查找树"><a href="#3-1-2-3-查找树" class="headerlink" title="3.1 2-3 查找树"></a>3.1 2-3 查找树</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/2548f2ec-7b00-4ec7-b286-20fc3022e084.jpg" alt=""></p>
+<p>一颗完美平衡的 2-3 查找树的所有空链接到根节点的距离应该是相同的。</p>
+<h4 id="3-1-1-插入操作"><a href="#3-1-1-插入操作" class="headerlink" title="3.1.1 插入操作"></a>3.1.1 插入操作</h4><p>当插入之后产生一个临时 4- 节点时，需要将 4- 节点分裂成 3 个 2- 节点，并将中间的 2- 节点移到上层节点中。如果上移操作继续产生临时 4- 节点则一直进行分裂上移，直到不存在临时 4- 节点。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/912174d8-0786-4222-b7ef-a611d36e5db9.jpg" alt=""></p>
+<h4 id="3-1-2-性质"><a href="#3-1-2-性质" class="headerlink" title="3.1.2 性质"></a>3.1.2 性质</h4><p>2-3 查找树插入操作的变换都是局部的，除了相关的节点和链接之外不必修改或者检查树的其它部分，而这些局部变换不会影响树的全局有序性和平衡性。</p>
+<p>2-3 查找树的查找和插入操作复杂度和插入顺序 <strong>无关</strong>，在最坏的情况下查找和插入操作访问的节点必然不超过 logN 个，含有 10 亿个节点的 2-3 查找树最多只需要访问 30 个节点就能进行任意的查找和插入操作。</p>
+<h3 id="3-2-红黑二叉查找树"><a href="#3-2-红黑二叉查找树" class="headerlink" title="3.2 红黑二叉查找树"></a>3.2 红黑二叉查找树</h3><p>2-3 查找树需要用到 2- 节点和 3- 节点，红黑树使用红链接来实现 3- 节点。指向一个节点的链接颜色如果为红色，那么这个节点和上层节点表示的是一个 3- 节点，而黑色则是普通链接。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/7080a928-06ba-4e10-9792-b8dd190dc8e2.jpg" alt=""></p>
+<p>红黑树具有以下性质：</p>
+<ol>
+<li>红链接都为左链接；</li>
+<li>完美黑色平衡，即任意空链接到根节点的路径上的黑链接数量相同。</li>
+</ol>
+<p>画红黑树时可以将红链接画平。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/62077f5d-a06d-4129-9b43-78715b82cb03.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedBlackBST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node root;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> RED = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> BLACK = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        Key key;</span><br><span class="line">        Value val;</span><br><span class="line">        Node left, right;</span><br><span class="line">        <span class="keyword">int</span> N;</span><br><span class="line">        <span class="keyword">boolean</span> color;</span><br><span class="line"></span><br><span class="line">        Node(Key key, Value val, <span class="keyword">int</span> n, <span class="keyword">boolean</span> color) &#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            N = n;</span><br><span class="line">            <span class="keyword">this</span>.color = color;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isRed</span><span class="params">(Node x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> x.color == RED;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-1-左旋转"><a href="#3-2-1-左旋转" class="headerlink" title="3.2.1 左旋转"></a>3.2.1 左旋转</h4><p>因为合法的红链接都为左链接，如果出现右链接为红链接，那么就需要进行左旋转操作。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/33a4e822-2dd0-481e-ac89-7f6161034402.jpg" alt=""></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/5e0cef33-4087-4f21-a428-16d5fddda671.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">rotateLeft</span><span class="params">(Node h)</span> </span>&#123;</span><br><span class="line">    Node x = h.right;</span><br><span class="line">    h.right = x.left;</span><br><span class="line">    x.left = h;</span><br><span class="line">    x.color = h.color;</span><br><span class="line">    h.color = RED;</span><br><span class="line">    x.N = h.N;</span><br><span class="line">    h.N = <span class="number">1</span> + size(h.left) + size(h.right);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-2-右旋转"><a href="#3-2-2-右旋转" class="headerlink" title="3.2.2 右旋转"></a>3.2.2 右旋转</h4><p>进行右旋转是为了转换两个连续的左红链接，这会在之后的插入过程中探讨。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/dfd078b2-aa4f-4c50-8319-232922d822b8.jpg" alt=""></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/3f8d8c9d-a9a9-4d7a-813c-2de05ee5a97e.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">rotateRight</span><span class="params">(Node h)</span> </span>&#123;</span><br><span class="line">    Node x = h.left;</span><br><span class="line">    h.left = x.right;</span><br><span class="line">    x.color = h.color;</span><br><span class="line">    h.color = RED;</span><br><span class="line">    x.N = h.N;</span><br><span class="line">    h.N = <span class="number">1</span> + size(h.left) + size(h.right);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-3-颜色转换"><a href="#3-2-3-颜色转换" class="headerlink" title="3.2.3 颜色转换"></a>3.2.3 颜色转换</h4><p>一个 4- 节点在红黑树中表现为一个节点的左右子节点都是红色的。分裂 4- 节点除了需要将子节点的颜色由红变黑之外，同时需要将父节点的颜色由黑变红，从 2-3 树的角度看就是将中间节点移到上层节点。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/de7c5a31-55f5-4e9d-92ec-4ed5b2ec3828.jpg" alt=""></p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/e5ad625e-729d-4a8d-923a-7c3df5773e1c.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">flipColors</span><span class="params">(Node h)</span></span>&#123;</span><br><span class="line">    h.color = RED;</span><br><span class="line">    h.left.color = BLACK;</span><br><span class="line">    h.right.color = BLACK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-4-插入"><a href="#3-2-4-插入" class="headerlink" title="3.2.4 插入"></a>3.2.4 插入</h4><p>先将一个节点按二叉查找树的方法插入到正确位置，然后再进行如下颜色操作：</p>
+<ul>
+<li>如果右子节点是红色的而左子节点是黑色的，进行左旋转；</li>
+<li>如果左子节点是红色的且它的左子节点也是红色的，进行右旋转；</li>
+<li>如果左右子节点均为红色的，进行颜色转换。</li>
+</ul>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/40639782-5df2-4e96-a4f3-f9dd664d0ca1.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span> </span>&#123;</span><br><span class="line">    root = put(root, key, val);</span><br><span class="line">    root.color = BLACK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">put</span><span class="params">(Node x, Key key, Value val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> Node(key, val, <span class="number">1</span>, RED);</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) x.val = val;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) x.left = put(x.left, key, val);</span><br><span class="line">    <span class="keyword">else</span> x.right = put(x.right, key, val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isRed(x.right) &amp;&amp; !isRed(x.left)) x = rotateLeft(x);</span><br><span class="line">    <span class="keyword">if</span> (isRed(x.left) &amp;&amp; isRed(x.left.left)) x = rotateRight(x);</span><br><span class="line">    <span class="keyword">if</span> (isRed(x.left) &amp;&amp; isRed(x.right)) flipColors(x);</span><br><span class="line"></span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到该插入操作和 BST 的插入操作类似，只是在最后加入了旋转和颜色变换操作即可。</p>
+<p>根节点一定为黑色，因为根节点没有上层节点，也就没有上层节点的左链接指向根节点。flipColors() 有可能会使得根节点的颜色变为红色，每当根节点由红色变成黑色时树的黑链接高度加 1.</p>
+<h4 id="3-2-5-删除最小键"><a href="#3-2-5-删除最小键" class="headerlink" title="3.2.5 删除最小键"></a>3.2.5 删除最小键</h4><p>如果最小键在一个 2- 节点中，那么删除该键会留下一个空链接，就破坏了平衡性，因此要确保最小键不在 2- 节点中。将 2- 节点转换成 3- 节点或者 4- 节点有两种方法，一种是向上层节点拿一个 key，一种是向兄弟节点拿一个 key。如果上层节点是 2- 节点，那么就没办法从上层节点拿 key 了，因此要保证删除路径上的所有节点都不是 2- 节点。在向下删除的过程中，保证以下情况之一发生：</p>
+<ol>
+<li>如果当前节点的左子节点不是 2- 节点，完成；</li>
+<li>如果当前节点的左子节点是 2- 节点而它的兄弟节点不是 2- 节点，向兄弟节点拿一个 key 过来；</li>
+<li>如果当前节点的左子节点和它的兄弟节点都是 2- 节点，将左子节点、父节点中的最小键和最近的兄弟节点合并为一个 4- 节点。</li>
+</ol>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/b001fa64-307c-49af-b4b2-2043fc26154e.png" alt=""></p>
+<p>最后得到一个含有最小键的 3- 节点或者 4- 节点，直接从中删除。然后再从头分解所有临时的 4- 节点。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/70b66757-755c-4e17-a7b7-5ce808023643.png" alt=""></p>
+<h4 id="3-2-6-分析"><a href="#3-2-6-分析" class="headerlink" title="3.2.6 分析"></a>3.2.6 分析</h4><p>一颗大小为 N 的红黑树的高度不会超过 2lgN。最坏的情况下是它所对应的 2-3 树中构成最左边的路径节点全部都是 3- 节点而其余都是 2- 节点。</p>
+<p>红黑树大多数的操作所需要的时间都是对数级别的。</p>
+<h2 id="4-散列表"><a href="#4-散列表" class="headerlink" title="4. 散列表"></a>4. 散列表</h2><p>散列表类似于数组，可以把散列表的散列值看成数组的索引值。访问散列表和访问数组元素一样快速，它可以在常数时间内实现查找和插入的符号表。</p>
+<p>由于无法通过散列值知道键的大小关系，因此散列表无法实现有序性操作。</p>
+<h3 id="4-1-散列函数"><a href="#4-1-散列函数" class="headerlink" title="4.1 散列函数"></a>4.1 散列函数</h3><p>对于一个大小为 M 的散列表，散列函数能够把任意键转换为 [0, M-1] 内的正整数，该正整数即为 hash 值。</p>
+<p>散列表有冲突的存在，也就是两个不同的键可能有相同的 hash 值。</p>
+<p>散列函数应该满足以下三个条件：</p>
+<ol>
+<li>一致性：相等的键应当有相等的 hash 值。</li>
+<li>高效性：计算应当简便，有必要的话可以把 hash 值缓存起来，在调用 hash 函数时直接返回。</li>
+<li>均匀性：所有键的 hash 值应当均匀地分布到 [0, M-1] 之间，这个条件至关重要，直接影响到散列表的性能。</li>
+</ol>
+<p>除留余数法可以将整数散列到 [0, M-1] 之间，例如一个正整数 k，计算 k%M 既可得到一个 [0, M-1] 之间的 hash 值。注意 M 必须是一个素数，否则无法利用键包含的所有信息。例如 M 为 10<sup>k</sup>，那么只能利用键的后 k 位。</p>
+<p>对于其它数，可以将其转换成整数的形式，然后利用除留余数法。例如对于浮点数，可以将其表示成二进制形式，然后使用二进制形式的整数值进行除留余数法。</p>
+<p>对于有多部分组合的键，每部分都需要计算 hash 值，并且最后合并时需要让每部分 hash 值都具有同等重要的地位。可以将该键看成 R 进制的整数，键中每部分都具有不同的权值。</p>
+<p>例如，字符串的散列函数实现如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">    hash = (R * hash + s.charAt(i)) % M;</span><br></pre></td></tr></table></figure>
+<p>再比如，拥有多个成员的自定义类的哈希函数如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = (((day * R + month) % M) * R + year) % M;</span><br></pre></td></tr></table></figure>
+<p>R 的值不是很重要，通常取 31。</p>
+<p>Java 中的 hashCode() 实现了 hash 函数，但是默认使用对象的内存地址值。在使用 hashCode() 函数时，应当结合除留余数法来使用。因为内存地址是 32 位整数，我们只需要 31 位的非负整数，因此应当屏蔽符号位之后再使用除留余数法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = (x.hashCode() &amp; <span class="number">0x7fffffff</span>) % M;</span><br></pre></td></tr></table></figure>
+<p>使用 Java 自带的 HashMap 等自带的哈希表实现时，只需要去实现 Key 类型的 hashCode() 函数即可。Java 规定 hashCode() 能够将键均匀分布于所有的 32 位整数，Java 中的 String、Integer 等对象的 hashCode() 都能实现这一点。以下展示了自定义类型如何实现 hashCode()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Transaction</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String who;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Date when;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> amount;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> hash = <span class="number">17</span>;</span><br><span class="line">        hash = <span class="number">31</span> * hash + who.hashCode();</span><br><span class="line">        hash = <span class="number">31</span> * hash + when.hashCode();</span><br><span class="line">        hash = <span class="number">31</span> * hash + ((Double) amount).hashCode();</span><br><span class="line">        <span class="keyword">return</span> hash;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-基于拉链法的散列表"><a href="#4-2-基于拉链法的散列表" class="headerlink" title="4.2 基于拉链法的散列表"></a>4.2 基于拉链法的散列表</h3><p>拉链法使用链表来存储 hash 值相同的键，从而解决冲突。此时查找需要分两步，首先查找 Key 所在的链表，然后在链表中顺序查找。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/540133af-aaaf-4208-8f7f-33cb89ac9621.png" alt=""></p>
+<p>对于 N 个键，M 条链表 (N&gt;M)，如果哈希函数能够满足均匀性的条件，每条链表的大小趋向于 N/M，因此未命中的查找和插入操作所需要的比较次数为 ~N/M。</p>
+<h3 id="4-3-基于线性探测法的散列表"><a href="#4-3-基于线性探测法的散列表" class="headerlink" title="4.3 基于线性探测法的散列表"></a>4.3 基于线性探测法的散列表</h3><p>线性探测法使用空位来解决冲突，当冲突发生时，向前探测一个空位来存储冲突的键。使用线程探测法，数组的大小 M 应当大于键的个数 N（M&gt;N)。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/2b3410f1-9559-4dd1-bc3d-e3e572247be2.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinearProbingHashST</span>&lt;<span class="title">Key</span>, <span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> M = <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">private</span> Key[] keys;</span><br><span class="line">    <span class="keyword">private</span> Value[] vals;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinearProbingHashST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinearProbingHashST</span><span class="params">(<span class="keyword">int</span> M)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.M = M;</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        keys = (Key[]) <span class="keyword">new</span> Object[M];</span><br><span class="line">        vals = (Value[]) <span class="keyword">new</span> Object[M];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (key.hashCode() &amp; <span class="number">0x7fffffff</span>) % M;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-1-查找"><a href="#4-3-1-查找" class="headerlink" title="4.3.1 查找"></a>4.3.1 查找</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = hash(key); keys[i] != <span class="keyword">null</span>; i = (i + <span class="number">1</span>) % M) &#123;</span><br><span class="line">        <span class="keyword">if</span> (keys[i].equals(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> vals[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-2-插入"><a href="#4-3-2-插入" class="headerlink" title="4.3.2 插入"></a>4.3.2 插入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = hash(key); keys[i] != <span class="keyword">null</span>; i = (i + <span class="number">1</span>) % M) &#123;</span><br><span class="line">        <span class="keyword">if</span> (keys[i].equals(key)) &#123;</span><br><span class="line">            vals[i] = val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    keys[i] = key;</span><br><span class="line">    vals[i] = val;</span><br><span class="line">    N++;</span><br><span class="line">    resize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-3-删除"><a href="#4-3-3-删除" class="headerlink" title="4.3.3 删除"></a>4.3.3 删除</h4><p>删除操作应当将右侧所有相邻的键值重新插入散列表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!contains(key)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> i = hash(key);</span><br><span class="line">    <span class="keyword">while</span> (!key.equals(keys[i])) &#123;</span><br><span class="line">        i = (i + <span class="number">1</span>) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    keys[i] = <span class="keyword">null</span>;</span><br><span class="line">    vals[i] = <span class="keyword">null</span>;</span><br><span class="line">    i = (i + <span class="number">1</span>) % M;</span><br><span class="line">    <span class="keyword">while</span> (keys[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">        Key keyToRedo = keys[i];</span><br><span class="line">        Value valToRedo = vals[i];</span><br><span class="line">        keys[i] = <span class="keyword">null</span>;</span><br><span class="line">        vals[i] = <span class="keyword">null</span>;</span><br><span class="line">        N--;</span><br><span class="line">        put(keyToRedo, valToRedo);</span><br><span class="line">        i = (i + <span class="number">1</span>) % M;</span><br><span class="line">    &#125;</span><br><span class="line">    N--;</span><br><span class="line">    resize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-4-调整数组大小"><a href="#4-3-4-调整数组大小" class="headerlink" title="4.3.4 调整数组大小"></a>4.3.4 调整数组大小</h4><p>线性探测法的成本取决于连续条目的长度，连续条目也叫聚簇。当聚簇很长时，在查找和插入时也需要进行很多次探测。</p>
+<p>α = N/M，把 α 称为利用率。理论证明，当 α 小于 1/2 时探测的预计次数只在 1.5 到 2.5 之间。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/0ddebc5c-7c24-46b1-98db-4fa5e54db16b.png" alt=""></p>
+<p>为了保证散列表的性能，应当调整数组的大小，使得 α 在 [1/4, 1/2] 之间。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (N &gt;= M / <span class="number">2</span>) resize(<span class="number">2</span> * M);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (N &lt;= M / <span class="number">8</span>) resize(M / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    LinearProbingHashST&lt;Key, Value&gt; t = <span class="keyword">new</span> LinearProbingHashST&lt;&gt;(cap);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (keys[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">            t.put(keys[i], vals[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    keys = t.keys;</span><br><span class="line">    vals = t.vals;</span><br><span class="line">    M = t.M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然每次重新调整数组都需要重新把每个键值对插入到散列表，但是从摊还分析的角度来看，所需要的代价却是很小的。从下图可以看出，每次数组长度加倍后，累计平均值都会增加 1，因为表中每个键都需要重新计算散列值，但是随后平均值会下降。</p>
+<p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/01658047-0d86-4a7a-a8ca-7ea20fa1fdde.png" alt=""></p>
+<h2 id="5-应用-1"><a href="#5-应用-1" class="headerlink" title="5. 应用"></a>5. 应用</h2><h3 id="5-1-各种符号表实现的比较"><a href="#5-1-各种符号表实现的比较" class="headerlink" title="5.1 各种符号表实现的比较"></a>5.1 各种符号表实现的比较</h3><p><img src="http://ovi3ob9p4.bkt.clouddn.com/Interview/9ee83c8c-1165-476c-85a6-e6e434e5307a.jpg" alt=""></p>
+<p>应当优先考虑散列表，当需要有序性操作时使用红黑树。</p>
+<h3 id="5-2-Java-的符号表实现"><a href="#5-2-Java-的符号表实现" class="headerlink" title="5.2 Java 的符号表实现"></a>5.2 Java 的符号表实现</h3><p>Java 的 java.util.TreeMap 和 java.util.HashMap 分别是基于红黑树和拉链法的散列表的符号表实现。</p>
+<h3 id="5-3-集合类型"><a href="#5-3-集合类型" class="headerlink" title="5.3 集合类型"></a>5.3 集合类型</h3><p>除了符号表，集合类型也经常使用，它只有键没有值，可以用集合类型来存储一系列的键然后判断一个键是否在集合中。</p>
+<h3 id="5-4-稀疏向量乘法"><a href="#5-4-稀疏向量乘法" class="headerlink" title="5.4 稀疏向量乘法"></a>5.4 稀疏向量乘法</h3><p>当向量为稀疏向量时，可以使用符号表来存储向量中的非 0 索引和值，使得乘法运算只需要对那些非 0 元素进行即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SparseVector</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;Integer, Double&gt; hashMap;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SparseVector</span><span class="params">(<span class="keyword">double</span>[] vector)</span> </span>&#123;</span><br><span class="line">        hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (vector[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                hashMap.put(i, vector[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> hashMap.getOrDefault(i, <span class="number">0.0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">dot</span><span class="params">(SparseVector other)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : hashMap.keySet()) &#123;</span><br><span class="line">            sum += <span class="keyword">this</span>.get(i) * other.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/16221.html" rel="bookmark">SQL命令</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/2937.html" rel="bookmark">代码风格规范</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/6481.html" rel="bookmark">2016 Java HTTP</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/11330.html" rel="bookmark">Java IO</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/38943.html" rel="bookmark">Java基础</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="Kee 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="Kee 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kee</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/60876.html" title="算法分析">http://www.iskei.cn/posts/60876.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"># Interview</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/52460.html" rel="next" title="重构思想">
+                <i class="fa fa-chevron-left"></i> 重构思想
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/41682.html" rel="prev" title="设计模式">
+                设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg"
+                alt="Kee" />
+            
+              <p class="site-author-name" itemprop="name">Kee</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Kee's note" target="_blank">Kee's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Kee's Blog" target="_blank">Kee's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-函数转换"><span class="nav-number">1.1.</span> <span class="nav-text">1. 函数转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数学模型"><span class="nav-number">1.2.</span> <span class="nav-text">2. 数学模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ThreeSum"><span class="nav-number">1.3.</span> <span class="nav-text">3. ThreeSum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-倍率实验"><span class="nav-number">1.4.</span> <span class="nav-text">4. 倍率实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-注意事项"><span class="nav-number">1.5.</span> <span class="nav-text">5. 注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">2.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-初级排序算法"><span class="nav-number">2.1.</span> <span class="nav-text">1. 初级排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-约定"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-选择排序"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-插入排序"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-选择排序和插入排序的比较"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 选择排序和插入排序的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-希尔排序"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 希尔排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-归并排序"><span class="nav-number">2.2.</span> <span class="nav-text">2 归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-归并方法"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 归并方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-自顶向下归并排序"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 自顶向下归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-自底向上归并排序"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 自底向上归并排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-快速排序"><span class="nav-number">2.3.</span> <span class="nav-text">3.快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-基本算法"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 基本算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-切分"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 切分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-性能分析"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 性能分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-算法改进"><span class="nav-number">2.3.4.</span> <span class="nav-text">3.4 算法改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-切换到插入排序"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">3.4.1 切换到插入排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-三取样"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">3.4.2 三取样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-三向切分"><span class="nav-number">2.3.4.3.</span> <span class="nav-text">3.4.3 三向切分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-优先队列"><span class="nav-number">2.4.</span> <span class="nav-text">4. 优先队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-堆"><span class="nav-number">2.4.1.</span> <span class="nav-text">4.1 堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-上浮和下沉"><span class="nav-number">2.4.2.</span> <span class="nav-text">4.2 上浮和下沉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-插入元素"><span class="nav-number">2.4.3.</span> <span class="nav-text">4.3 插入元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-删除最大元素"><span class="nav-number">2.4.4.</span> <span class="nav-text">4.4 删除最大元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-堆排序"><span class="nav-number">2.4.5.</span> <span class="nav-text">4.5 堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-分析"><span class="nav-number">2.4.6.</span> <span class="nav-text">4.6 分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-应用"><span class="nav-number">2.5.</span> <span class="nav-text">5. 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-排序算法的比较"><span class="nav-number">2.5.1.</span> <span class="nav-text">5.1 排序算法的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Java-的排序算法实现"><span class="nav-number">2.5.2.</span> <span class="nav-text">5.2 Java 的排序算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-基于切分的快速选择算法"><span class="nav-number">2.5.3.</span> <span class="nav-text">5.3 基于切分的快速选择算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找"><span class="nav-number">3.</span> <span class="nav-text">查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-符号表"><span class="nav-number">3.1.</span> <span class="nav-text">1. 符号表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-无序符号表"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 无序符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-有序符号表"><span class="nav-number">3.1.2.</span> <span class="nav-text">1.2 有序符号表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-二分查找实现有序符号表"><span class="nav-number">3.1.3.</span> <span class="nav-text">1.3 二分查找实现有序符号表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-二叉查找树"><span class="nav-number">3.2.</span> <span class="nav-text">2. 二叉查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-get"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-put"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 put()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-分析"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.3 分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-floor"><span class="nav-number">3.2.4.</span> <span class="nav-text">2.4 floor()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-rank"><span class="nav-number">3.2.5.</span> <span class="nav-text">2.5 rank()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-min"><span class="nav-number">3.2.6.</span> <span class="nav-text">2.6 min()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-deleteMin"><span class="nav-number">3.2.7.</span> <span class="nav-text">2.7 deleteMin()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-delete"><span class="nav-number">3.2.8.</span> <span class="nav-text">2.8 delete()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-keys"><span class="nav-number">3.2.9.</span> <span class="nav-text">2.9 keys()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-性能分析"><span class="nav-number">3.2.10.</span> <span class="nav-text">2.10 性能分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-平衡查找树"><span class="nav-number">3.3.</span> <span class="nav-text">3. 平衡查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-3-查找树"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.1 2-3 查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-插入操作"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">3.1.1 插入操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-性质"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">3.1.2 性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-红黑二叉查找树"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.2 红黑二叉查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-左旋转"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">3.2.1 左旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-右旋转"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">3.2.2 右旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-颜色转换"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">3.2.3 颜色转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-插入"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">3.2.4 插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-删除最小键"><span class="nav-number">3.3.2.5.</span> <span class="nav-text">3.2.5 删除最小键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-6-分析"><span class="nav-number">3.3.2.6.</span> <span class="nav-text">3.2.6 分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-散列表"><span class="nav-number">3.4.</span> <span class="nav-text">4. 散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-散列函数"><span class="nav-number">3.4.1.</span> <span class="nav-text">4.1 散列函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-基于拉链法的散列表"><span class="nav-number">3.4.2.</span> <span class="nav-text">4.2 基于拉链法的散列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-基于线性探测法的散列表"><span class="nav-number">3.4.3.</span> <span class="nav-text">4.3 基于线性探测法的散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-查找"><span class="nav-number">3.4.3.1.</span> <span class="nav-text">4.3.1 查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-插入"><span class="nav-number">3.4.3.2.</span> <span class="nav-text">4.3.2 插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-3-删除"><span class="nav-number">3.4.3.3.</span> <span class="nav-text">4.3.3 删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-调整数组大小"><span class="nav-number">3.4.3.4.</span> <span class="nav-text">4.3.4 调整数组大小</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-应用-1"><span class="nav-number">3.5.</span> <span class="nav-text">5. 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-各种符号表实现的比较"><span class="nav-number">3.5.1.</span> <span class="nav-text">5.1 各种符号表实现的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Java-的符号表实现"><span class="nav-number">3.5.2.</span> <span class="nav-text">5.2 Java 的符号表实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-集合类型"><span class="nav-number">3.5.3.</span> <span class="nav-text">5.3 集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-稀疏向量乘法"><span class="nav-number">3.5.4.</span> <span class="nav-text">5.4 稀疏向量乘法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">2.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长：</span>
+    
+    <span title="站点总阅读时长">43:17</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp; <a href="https://pages.coding.me" target="_blank" title="Host by Coding "><span class="hidden"><img style="height:35px;display:inline;margin-bottom:-7px;" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png"></span></a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'JULY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'TIME',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'DA Y',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Monody',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Victory',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'GHSY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.1.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>

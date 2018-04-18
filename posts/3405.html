@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <meta name="msvalidate.01" content="837C492439BBC9180D904F17B2A34ABC" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|14:300,300italic,400,400italic,700,700italic|Helvetica:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "91cc22fb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="description" content="hybrid app技术开发APP应用。而现在主流的Hybrid app框架是phonegap。在使用phonegap做混合式开发之前需要下载很多软件及插件。如：JavaJDK、node.js、cordova、ionic、Android studio、AndroidSDK等软件及相应的插件。（请不要下载phonegap应用程序，不要混淆）下面就来简单介绍一下，如何安装cordova和ionic及">
+<meta name="keywords" content="ionic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hybrid app技术开发APP应用">
+<meta property="og:url" content="http://www.iskei.cn/posts/3405.html">
+<meta property="og:site_name" content="Keis Note">
+<meta property="og:description" content="hybrid app技术开发APP应用。而现在主流的Hybrid app框架是phonegap。在使用phonegap做混合式开发之前需要下载很多软件及插件。如：JavaJDK、node.js、cordova、ionic、Android studio、AndroidSDK等软件及相应的插件。（请不要下载phonegap应用程序，不要混淆）下面就来简单介绍一下，如何安装cordova和ionic及">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0107.jpg">
+<meta property="og:updated_time" content="2018-04-18T09:00:50.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hybrid app技术开发APP应用">
+<meta name="twitter:description" content="hybrid app技术开发APP应用。而现在主流的Hybrid app框架是phonegap。在使用phonegap做混合式开发之前需要下载很多软件及插件。如：JavaJDK、node.js、cordova、ionic、Android studio、AndroidSDK等软件及相应的插件。（请不要下载phonegap应用程序，不要混淆）下面就来简单介绍一下，如何安装cordova和ionic及">
+<meta name="twitter:image" content="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0107.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Keis Note" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.iskei.cn/posts/3405.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>hybrid app技术开发APP应用 | Keis Note</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Keis Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Java developer's professional blog.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-photo">
+    <a href="/photo/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />图库</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />图书</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-movies">
+    <a href="/movies/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />电影</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iskei.cn/posts/3405.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keis Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">hybrid app技术开发APP应用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T15:44:36+08:00">2018-01-30</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ionic/" itemprop="url" rel="index"><span itemprop="name">ionic</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/3405.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/3405.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/3405.html" class="leancloud_visitors" data-flag-title="hybrid app技术开发APP应用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计：</span>
+                
+                <span title="字数统计">9.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长&asymp;</span>
+                
+                <span title="阅读时长">0:09</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0107.jpg" alt="image"></p>
+<p>hybrid app技术开发APP应用。而现在主流的<strong>Hybrid app</strong>框架是<strong>phonegap</strong>。在使用phonegap做混合式开发之前需要下载很多软件及插件。如：<strong>JavaJDK、node.js、cordova、ionic、Android studio、AndroidSDK</strong>等软件及相应的插件。（请不要下载phonegap应用程序，不要混淆）<br>下面就来简单介绍一下，如何安装cordova和ionic及常用的命令总结。<br><a id="more"></a></p>
+<h2 id="第一部分-安装时总结"><a href="#第一部分-安装时总结" class="headerlink" title="第一部分  安装时总结"></a>第一部分  安装时总结</h2><h4 id="win系统下nodejs安装及环境配置"><a href="#win系统下nodejs安装及环境配置" class="headerlink" title="win系统下nodejs安装及环境配置"></a>win系统下nodejs安装及环境配置</h4><h5 id="第一步：下载nodejs"><a href="#第一步：下载nodejs" class="headerlink" title="第一步：下载nodejs"></a>第一步：下载nodejs</h5><p>官网：<a href="http://nodejs.org/download/" target="_blank" rel="noopener">http://nodejs.org/download/</a></p>
+<h5 id="第二步：安装nodejs"><a href="#第二步：安装nodejs" class="headerlink" title="第二步：安装nodejs"></a>第二步：安装nodejs</h5><ol>
+<li><p>下载完成之后，双击”node-v0.10.28-x86.msi”，开始安装nodejs，自定义安装在D:\dev\nodejs下面。</p>
+</li>
+<li><p>在cmd控制台输入：node -v，控制台将打印出：v0.10.28，出现版本提示表示安装成功。</p>
+</li>
+<li>该引导步骤会将node.exe文件安装到D:\dev\nodejs\目录下，并将该目录添加进PATH环境变量。</li>
+</ol>
+<h5 id="第三步：npm安装"><a href="#第三步：npm安装" class="headerlink" title="第三步：npm安装"></a>第三步：npm安装</h5><p>由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以使用cmd命令行输入”npm -v”来测试是否成功安装。出现版本提示表示安装成功。</p>
+<h5 id="第四步：安装相关环境"><a href="#第四步：安装相关环境" class="headerlink" title="第四步：安装相关环境"></a>第四步：安装相关环境</h5><pre><code>npm install -g express-generator
+npm install jade -g
+npm install mysql -g
+</code></pre><p>默认情况下上述组件都是安装在D:\dev\nodejs\node_modules文件夹下，这也是nodejs相关组件的自动查找路径。</p>
+<h5 id="第五步：安装CoffeeScript"><a href="#第五步：安装CoffeeScript" class="headerlink" title="第五步：安装CoffeeScript"></a>第五步：安装CoffeeScript</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install coffee-script -g</span><br></pre></td></tr></table></figure>
+<p>确认安装的命令：coffee -v，出现版本号表示成功安装。</p>
+<p>补充说明：<br>所有命令都是-g进行全局安装的，这样安装的安装包都在当前用户下，在磁盘的所有其他地方都可以访问到，比较方面。否则安装在当前目录下，只能在当前目录下使用。</p>
+<p>安装express问题<br>安装nodejs安装包后，通过npm安装express后，运行express提示” express”不是内部或外部命令，原因是版本问题，当前版本是4.0.0，改成3.5.0即可运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express@3.5.0</span><br></pre></td></tr></table></figure>
+<p>注意：express 测试版本用大写V</p>
+<p>npm命令集合：</p>
+<ol>
+<li>npm install moduleNames：安装Node模块</li>
+</ol>
+<ul>
+<li><p>npm install express<br>默认会安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
+</li>
+<li><p>npm install <name> -g<br>将包安装到全局环境中</name></p>
+<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
+</li>
+<li><p>npm install <name> –save<br>安装的同时，将信息写入package.json中项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包，这样代码提交到github时，就不用提交node_modules这个文件夹了。</name></p>
+</li>
+</ul>
+<ol>
+<li>全局安装命令为npm install -g moduleName。</li>
+<li>npm view moduleNames：查看node模块的package.json文件夹</li>
+<li>npm list：查看当前目录下已安装的node包</li>
+<li>npm help：查看帮助命令</li>
+<li>npm view moudleName dependencies：查看包的依赖关系</li>
+<li>npm view moduleName repository.url：查看包的源文件地址</li>
+<li>npm view moduleName engines：查看包所依赖的Node的版本</li>
+<li>npm help folders：查看npm使用的所有文件夹</li>
+<li>npm rebuild moduleName：用于更改包内容后进行重建</li>
+<li>npm outdated：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</li>
+<li>npm update moduleName：更新node模块</li>
+<li>npm uninstall moudleName：卸载node模块</li>
+<li>一个npm包是包含了package.json的文件夹，package.json描述了这个文件夹的结构。访问npm的json文件夹的方法如下：</li>
+</ol>
+<ul>
+<li>$ npm help json 此命令会以默认的方式打开一个网页，如果更改了默认打开程序则可能不会以网页的形式打开。</li>
+</ul>
+<ol>
+<li>发布一个npm包的时候，需要检验某个包名是否已存在 $ npm search packageName</li>
+<li>npm init：会引导你创建一个package.json文件，包括名称.  版本.  作者这些信息等</li>
+<li>npm root：查看当前包的安装路径</li>
+<li>npm root -g：查看全局的包的安装路径</li>
+<li>npm -v：查看npm安装的版本</li>
+<li>npm install –save moduleName 安装模块到本目录</li>
+</ol>
+<p>更多命令请参看npm官方文档：<a href="https://www.npmjs.org/doc/" target="_blank" rel="noopener">https://www.npmjs.org/doc/</a></p>
+<ol>
+<li>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org（npm镜像源指向淘宝）" target="_blank" rel="noopener">https://registry.npm.taobao.org（npm镜像源指向淘宝）</a> </li>
+<li>cnpm install -g cordova ionic（安装cordova ionic） </li>
+<li>cnpm update -g cordova ionic（更新cordova ionic） </li>
+<li>ionic -help（查看帮助） </li>
+<li>ionic -v（查看版本） </li>
+<li>ionic start myApp blank（空项目） </li>
+<li>ionic start myApp tabs（带导航条） </li>
+<li>ionic start myApp sidemenu（带侧滑菜单） </li>
+<li>ionic platform add android（添加android平台） </li>
+<li>ionic platform remove android（移除android平台） </li>
+<li>ionic build android（编译项目apk）</li>
+<li>ionic emulate android（运行项目apk 手机连接在手机运行 模拟器连接在模拟器运行） </li>
+<li>ionic run android （相当于build + emulate） </li>
+<li>ionic serve （开启服务调试） </li>
+<li>ionic build ios（编译项目ipk）</li>
+<li>ionic emulate ios（运行项目ipk） </li>
+</ol>
+<h5 id="第六步：创建项目"><a href="#第六步：创建项目" class="headerlink" title="第六步：创建项目"></a>第六步：创建项目</h5><pre><code>express /tmp/foo &amp;&amp; cd /tmp/foo
+npm install //下载依赖包
+npm start //启动项目
+</code></pre><p>目录介绍:</p>
+<pre><code>node_moduls  存放所有的项目依赖库
+package.json  项目依赖配置及开发者信息
+app.js 程序启动文件
+public 静态文件（css js img）
+routes 路由文件（MVC中的C，controller）
+Viesws 页面文件（Ejs模板）
+</code></pre><h5 id="第七步-创建cordova项目"><a href="#第七步-创建cordova项目" class="headerlink" title="第七步 创建cordova项目"></a>第七步 创建cordova项目</h5><p>（注意：当第一次创建或编译项目的时候，可能系统会自动下载一些东西，需要一些时间。）</p>
+<ol>
+<li>在某个目录下创建cordova项目，打开命令行</li>
+</ol>
+<p>输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova  create  test  com.cordova.test   test</span><br></pre></td></tr></table></figure>
+<p> （创建cordova工程  &lt;文件夹名&gt; &lt;包名&gt; <app名>）</app名></p>
+<ol>
+<li>文件夹目录</li>
+</ol>
+<ul>
+<li>hooks：存放自定义cordova命令的脚本文件。每个project命令都可以定义before和after的Hook，比如：before_build、after_build。没用过，不展开了。</li>
+<li>platforms：平台目录，各自的平台代码就放在这里，可以放一下平台专属的代码，现在这个目录应该是空的，后面会介绍如何创建平台。</li>
+<li>plugins：插件目录，安装的插件会放在这里。后面会有专门的文章介绍开发插件。</li>
+<li>www：最重要的目录，存放项目主题的HTML5和JS代码的目录。app一开始打开的就是这个目录中index.html文件。</li>
+<li>config.xml：主要是cordova的一些配置，比如：项目使用了哪些插件、应用图标icon和启动页面SplashScreen，修改app的版本，名字等信息，还有平台的配置。</li>
+</ul>
+<ol>
+<li>添加平台支持</li>
+</ol>
+<p>用命令行打开对应的文件夹，</p>
+<p>添加平台 输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova platforms add android</span><br></pre></td></tr></table></figure>
+<p>移除平台 输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova platforms rm android</span><br></pre></td></tr></table></figure>
+<p> （移除android平台支持）</p>
+<p>也可以通过@版本号，来添加不同版本的android平台，如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova platforms rm android @4.1.1</span><br></pre></td></tr></table></figure>
+<p>现在就可以在www文件夹内写自己的js和html代码了。</p>
+<p>添加插件 输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova plugin add cordova-plugin-file</span><br></pre></td></tr></table></figure>
+<p> (cordova plugin add &lt;插件官方名称&gt;)</p>
+<p>插件搜索地址：<a href="http://cordova.apache.org/plugins/" target="_blank" rel="noopener">http://cordova.apache.org/plugins/</a></p>
+<p>也可以通过github查找一些第三方插件 输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova plugin add https://github.com/phonegap/phonegap-plugin-barcodescanner.git //这个是扫描二维码插件  (github项目地址)</span><br></pre></td></tr></table></figure>
+<p>github地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>删除插件 输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova plugin rm cordova-plugin-file</span><br></pre></td></tr></table></figure>
+<p>（使用rm和remove都可以）</p>
+<p>插件列表 输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova plugin list</span><br></pre></td></tr></table></figure>
+<p>（查看当前安装了哪些插件）</p>
+<p>编译调试程序</p>
+<p>不是每一句代码都需要运行，根据自己的需求进行选择。</p>
+<ul>
+<li>cordova install android //将编译好的应用程序安装到模拟器上。</li>
+<li>cordova emulate android //在模拟器上运行（前提是创建好AVD）</li>
+<li>cordova serve android //在浏览器运行</li>
+<li>cordova build android //打包cordova项目到android平台。</li>
+<li>cordova run android //通过USB直接安装到真机（该语句已经包括了build命令）</li>
+</ul>
+<p>例如：我现在是手边直接连着测试手机，所以我就会直接用cordova run android</p>
+<p>中间省略…</p>
+<p>出现LAUNCH SUCCESS则编译成功，已经安装到手机上了。</p>
+<h5 id="第八步-安装Android-SDK"><a href="#第八步-安装Android-SDK" class="headerlink" title="第八步 安装Android SDK"></a>第八步 安装Android SDK</h5><ol>
+<li>下载Android SDK，点击安装，直接默认路径即可！</li>
+</ol>
+<p>下载地址：<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="noopener">http://developer.android.com/sdk/index.html</a></p>
+<ol>
+<li>默认路径安装后，安装完成，开始配置环境变量。</li>
+<li><p>打开计算机属性——高级系统设置——环境变量（如上文）</p>
+</li>
+<li><p>新建一个环境变量，变量名：ANDROID_HOME，变量值：C:\Program Files (x86)\Android\android-sdk（以你安装目录为准,确认里面有tools和add-ons等多个文件夹），点击确认。</p>
+</li>
+<li>在变量PATH后面加上变量值%ANDROID_HOME%\tools;点击确认即可。 如果没有这个变量，新建一个即可！新建方法见上文！</li>
+<li><p>Android SDK配置完成，接下来验证配置是否成功。</p>
+</li>
+<li><p>点击运行——输入cmd——回车——输入android -h——回车</p>
+</li>
+<li>ionic  Android 环境搭建过程遇到的问题 <a href="http://bbs.ionic-china.com/read.php?tid=7&amp;fid=4" target="_blank" rel="noopener">http://bbs.ionic-china.com/read.php?tid=7&amp;fid=4</a> </li>
+</ol>
+<h5 id="第九步-安装Ionic"><a href="#第九步-安装Ionic" class="headerlink" title="第九步 安装Ionic"></a>第九步 安装Ionic</h5><ol>
+<li>执行npm install -g ionic</li>
+<li>创建一个Ionic APP 执行ionic start myapp[template]<br>Template 有如下三种 默认是tabs project:<br>tabs（默认）.  sidemenu.  blank</li>
+<li>安装模板  ionic install –save 模板</li>
+<li>cordova 是页面与设备桥接</li>
+<li>npm install –save bower</li>
+</ol>
+<h5 id="第十步-安装gulp相关代码合并-混淆工具"><a href="#第十步-安装gulp相关代码合并-混淆工具" class="headerlink" title="第十步 安装gulp相关代码合并.  混淆工具"></a>第十步 安装gulp相关代码合并.  混淆工具</h5><pre><code>npm install gulp  
+npm install gulp-concat:合并文件
+npm install gulp-rename:重命名文件
+npm install gulp-sass:支持sass
+npm install gulp-minify-css:压缩css 
+npm install gulp-connect  配置一个web服务器
+</code></pre><h5 id="第十一步-编译测试"><a href="#第十一步-编译测试" class="headerlink" title="第十一步 编译测试"></a>第十一步 编译测试</h5><ol>
+<li><p>android版本</p>
+<p> cd myapp<br> ionic platform add android<br> ionic build android<br> ionic run android<br> 如果要在虚拟机中测试，可以改用<br> ionic emulate android</p>
+</li>
+<li><p>ios版本</p>
+<p> $ ionic start myapp tabs<br> $ cd myapp<br> $ ionic platform add ios<br> $ ionic build ios<br> $ ionic emulate ios</p>
+</li>
+<li><p>浏览器同时修改端口号</p>
+<p> cd myapp<br> ionic serve -p 8105</p>
+</li>
+<li><p>连接数据线直接测试</p>
+<p> ionic run android</p>
+</li>
+</ol>
+<h4 id="重点集合"><a href="#重点集合" class="headerlink" title="重点集合"></a>重点集合</h4><h5 id="ionic安装失败或者cordova安装失败解决方法"><a href="#ionic安装失败或者cordova安装失败解决方法" class="headerlink" title="ionic安装失败或者cordova安装失败解决方法"></a>ionic安装失败或者cordova安装失败解决方法</h5><p>镜像使用方法（三种办法任意一种都能解决问题，建议使用##### 第三种，将配置写死，下次用的时候配置还在）:</p>
+<ol>
+<li><p>通过config命令</p>
+<p> npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br> npm info underscore （如果上面配置正确这个命令会有字符串response）</p>
+</li>
+<li><p>命令行指定</p>
+<p> npm –registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> info underscore </p>
+</li>
+<li><p>编辑 ~/.npmrc 加入下面内容</p>
+<p> registry = <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br> 搜索镜像: <a href="https://npm.taobao.org" target="_blank" rel="noopener">https://npm.taobao.org</a><br> 建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org" target="_blank" rel="noopener">https://github.com/cnpm/cnpmjs.org</a></p>
+</li>
+<li><p>使用cnpm(强烈建议)</p>
+<p> 安装cnpm<br> npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br> 以后所有的npm可用cnpm代替，如:cnpm install ionic</p>
+</li>
+<li><p>如果还是一直失败，将ionic文件下载解压后放到C:\Users\Auser\AppData\Roaming\npm\node_modules中</p>
+</li>
+<li><p>配置环境变量</p>
+<p>node的npm命令Path : C:\Documents and Settings\Administrator\Application Data\npm</p>
+<p>补齐npm文件夹下有关于ionic的文件 <a href="http://download.csdn.net/detail/superjunjin/8417723" target="_blank" rel="noopener">http://download.csdn.net/detail/superjunjin/8417723</a></p>
+<p>补齐ionic项目下node_modules等文件 <a href="http://download.csdn.net/detail/superjunjin/8417731" target="_blank" rel="noopener">http://download.csdn.net/detail/superjunjin/8417731</a><br>（具体文件见最后的压缩包）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ionic start myApp sidemenu  //创建带有左侧带有menu栏的示例项目</span><br><span class="line">ionic start myApp blank   //创建空白项目</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="第二部分-开发过程总结"><a href="#第二部分-开发过程总结" class="headerlink" title="第二部分 开发过程总结"></a>第二部分 开发过程总结</h2><h4 id="Angular-提供3种方法创建并注册服务"><a href="#Angular-提供3种方法创建并注册服务" class="headerlink" title="Angular 提供3种方法创建并注册服务"></a>Angular 提供3种方法创建并注册服务</h4><ol>
+<li>Provider  </li>
+<li>Factory  </li>
+<li>Service</li>
+</ol>
+<p>Providers 是唯一一种你可以传进 .config() 函数的 service。当你想要在 service对象启用之前，先进行模块范围的配置，那就应该用 provider。</p>
+<h4 id="bower安装restangular失败"><a href="#bower安装restangular失败" class="headerlink" title="bower安装restangular失败"></a>bower安装restangular失败</h4><p>（报错：Bower : ENOGIT git is not installed or not in the PATH）</p>
+<ol>
+<li>添加git路径到环境变量PATH中（命令：set PATH=%PATH%;D:\Program Files\Git\bin）</li>
+<li>运行bower install restangular 即可安装成功</li>
+<li><a href="http://www.ng-newsletter.com/posts/restangular.html" target="_blank" rel="noopener">http://www.ng-newsletter.com/posts/restangular.html</a></li>
+<li>restangular文档：<a href="https://github.com/mgonto/restangular#element-methods" target="_blank" rel="noopener">https://github.com/mgonto/restangular#element-methods</a></li>
+<li>安装bower install underscore</li>
+</ol>
+<h4 id="restangular需要用到的js"><a href="#restangular需要用到的js" class="headerlink" title="restangular需要用到的js"></a>restangular需要用到的js</h4><p>(js少引入报错：Uncaught ReferenceError: _ is not defined from restangular)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdn.jsdelivr.net/restangular/latest/restangular.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="跨域错误解决办法"><a href="#跨域错误解决办法" class="headerlink" title="跨域错误解决办法"></a>跨域错误解决办法</h4><p>（XMLHttpRequest cannot load  ‘’. No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘ ‘ is therefore not allowed access. ）</p>
+<p>Java代码中返回结果集前增加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h4><p> <a href="http://yijiebuyi.com/blog/3b55056c87b73ba606c19e9338dca679.html" target="_blank" rel="noopener">http://yijiebuyi.com/blog/3b55056c87b73ba606c19e9338dca679.html</a></p>
+<ol>
+<li>安装bower install angular-translate</li>
+<li>安装bower install angular-translate-loader-static-files</li>
+<li>angular国际化不存在乱码，如果出现乱码可能是中文json文件编码非UTF-8格式</li>
+<li>国际化使用（移动端有问题  无法使用）：</li>
+</ol>
+<p>需要引入JS</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lib/angular/angular.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"lib/angular-translate/angular-translate.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>建立文件夹i18n存放cn.json /en.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">en.json：&#123;&quot;100001&quot;:&quot;Login&quot;,&quot;100002&quot;:&quot;Register&quot;&#125;</span><br><span class="line">cn.json：&#123;&quot;100001&quot;:&quot;登录&quot;,&quot;100002&quot;:&quot;注册&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>在app.js中config里配置如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//国际化配置</span></span><br><span class="line">$translateProvider.preferredLanguage(<span class="string">'cn'</span>);</span><br><span class="line">$translateProvider.useStaticFilesLoader(&#123;</span><br><span class="line">  prefix: <span class="string">'/i18n/'</span>,</span><br><span class="line">  suffix: <span class="string">'.json'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>html页面使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;<span class="string">'100001'</span> | translate &#125;&#125;</span><br><span class="line"><span class="number">5.</span>按钮切换语种</span><br><span class="line">.controller(<span class="string">'LanguageSwitchingCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$translate'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">scope, $translate</span>) </span>&#123;</span><br><span class="line">scope.switching = <span class="function"><span class="keyword">function</span> (<span class="params">lang</span>) </span>&#123;</span><br><span class="line">  $translate.use(lang);</span><br><span class="line">		&#125;;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+<h4 id="AngularJS-iframe跨域打开内容时报错误的解决办法"><a href="#AngularJS-iframe跨域打开内容时报错误的解决办法" class="headerlink" title="AngularJS iframe跨域打开内容时报错误的解决办法"></a>AngularJS iframe跨域打开内容时报错误的解决办法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">"myFrame"</span> <span class="attr">ng-src</span>=<span class="string">"&#123;&#123;url&#125;&#125;"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">seamless</span> <span class="attr">frameborder</span>=<span class="string">"0"</span> &gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="打开不同域的内容时报下面的错误"><a href="#打开不同域的内容时报下面的错误" class="headerlink" title="打开不同域的内容时报下面的错误"></a>打开不同域的内容时报下面的错误</h4><p><code>Blocked loading resource from url not allowed by $sceDelegate policy</code></p>
+<p>解决方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$sceDelegateProvider</span>) </span>&#123;</span><br><span class="line">   $sceDelegateProvider.resourceUrlWhitelist([</span><br><span class="line">       <span class="comment">// Allow same origin resource loads.</span></span><br><span class="line">       <span class="string">'self'</span>,</span><br><span class="line">       <span class="comment">// Allow loading from our assets domain.  Notice the difference between * and **.</span></span><br><span class="line">       <span class="string">'http://media.w3.org/**'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg" alt="Kee 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg" alt="Kee 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kee</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.iskei.cn/posts/3405.html" title="hybrid app技术开发APP应用">http://www.iskei.cn/posts/3405.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ionic/" rel="tag"># ionic</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/55294.html" rel="next" title="JavaScript中的Bind，Call和Apply">
+                <i class="fa fa-chevron-left"></i> JavaScript中的Bind，Call和Apply
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/12275.html" rel="prev" title="gradle入门笔记">
+                gradle入门笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ovi3ob9p4.bkt.clouddn.com/toux.jpg"
+                alt="Kee" />
+            
+              <p class="site-author-name" itemprop="name">Kee</p>
+              <p class="site-description motion-element" itemprop="description">Java technology blog.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ceek@vip.qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/sirkei" target="_blank" title="Weibo" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/siekei" target="_blank" title="Zhihu" rel="external nofollow"><i class="fa fa-fw fa-gitlab"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=281147233" target="_blank" title="QQ" rel="external nofollow"><i class="fa fa-fw fa-qq"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iskei.cn/" title="Kee's note" target="_blank">Kee's note</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.iskei.cn/" title="Kee's Blog" target="_blank">Kee's Blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分-安装时总结"><span class="nav-number">1.</span> <span class="nav-text">第一部分  安装时总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#win系统下nodejs安装及环境配置"><span class="nav-number">1.0.1.</span> <span class="nav-text">win系统下nodejs安装及环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步：下载nodejs"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">第一步：下载nodejs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步：安装nodejs"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">第二步：安装nodejs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三步：npm安装"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">第三步：npm安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四步：安装相关环境"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">第四步：安装相关环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第五步：安装CoffeeScript"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">第五步：安装CoffeeScript</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第六步：创建项目"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">第六步：创建项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第七步-创建cordova项目"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">第七步 创建cordova项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第八步-安装Android-SDK"><span class="nav-number">1.0.1.8.</span> <span class="nav-text">第八步 安装Android SDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第九步-安装Ionic"><span class="nav-number">1.0.1.9.</span> <span class="nav-text">第九步 安装Ionic</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第十步-安装gulp相关代码合并-混淆工具"><span class="nav-number">1.0.1.10.</span> <span class="nav-text">第十步 安装gulp相关代码合并.  混淆工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第十一步-编译测试"><span class="nav-number">1.0.1.11.</span> <span class="nav-text">第十一步 编译测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重点集合"><span class="nav-number">1.0.2.</span> <span class="nav-text">重点集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ionic安装失败或者cordova安装失败解决方法"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">ionic安装失败或者cordova安装失败解决方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分-开发过程总结"><span class="nav-number">2.</span> <span class="nav-text">第二部分 开发过程总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Angular-提供3种方法创建并注册服务"><span class="nav-number">2.0.1.</span> <span class="nav-text">Angular 提供3种方法创建并注册服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bower安装restangular失败"><span class="nav-number">2.0.2.</span> <span class="nav-text">bower安装restangular失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restangular需要用到的js"><span class="nav-number">2.0.3.</span> <span class="nav-text">restangular需要用到的js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨域错误解决办法"><span class="nav-number">2.0.4.</span> <span class="nav-text">跨域错误解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#国际化"><span class="nav-number">2.0.5.</span> <span class="nav-text">国际化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AngularJS-iframe跨域打开内容时报错误的解决办法"><span class="nav-number">2.0.6.</span> <span class="nav-text">AngularJS iframe跨域打开内容时报错误的解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开不同域的内容时报下面的错误"><span class="nav-number">2.0.7.</span> <span class="nav-text">打开不同域的内容时报下面的错误</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kee</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">2.6m</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总阅读时长：</span>
+    
+    <span title="站点总阅读时长">43:17</span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><a href="http://weibo.com/" target="_blank" title="Weibo"><i class="fa fa-2x fa-fw fa-weibo"></i> <span class="hidden">Weibo</span></a>&nbsp; <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp; <a href="/atom.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>&nbsp; <a href="http://skei.gitee.io/" target="_blank" title="MirrorSite"><i class="fa fa-2x fa-fw fa-globe"></i> <span class="hidden">Site</span></a>&nbsp; <a href="https://pages.coding.me" target="_blank" title="Host by Coding "><span class="hidden"><img style="height:35px;display:inline;margin-bottom:-7px;" src="http://ovi3ob9p4.bkt.clouddn.com/codings.png"></span></a>&nbsp; <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备17015430号</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="/static/css/player.css">
+</head>
+
+<div id="QPlayer">
+	<div id="pContent">
+		<div id="player">
+			<span class="cover"></span>
+			<div class="ctrl">
+				<div class="musicTag marquee">
+					<strong>Title</strong>
+					 <span> - </span>
+					<span class="artist">Artist</span>
+				</div>
+				<div class="progress">
+					<div class="timer left">0:00</div>
+					<div class="contr">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="right">
+						<div class="liebiao icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ssBtn">
+				<div class="adf"></div>
+		</div>
+	</div>
+	<ol id="playlist"></ol>
+</div>
+<script src="//cdn.bootcss.com/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
+<script>
+  var playlist = [];
+  
+  playlist.push({title:'faded',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775613206.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'JULY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/kw/27780227.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'TIME',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'DA Y',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1776099904.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Summertime',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1773727505.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'BOOTY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1769177009.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Try Everything',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775595262.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Monody',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1775271436.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'Victory',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774245401.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'SEVE',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774279139.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'PANAMA',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/1774389724.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  playlist.push({title:'GHSY',artist:'Mr.Q',mp3:'http://link.hhtjim.com/xiami/174891.mp3',cover:'http://ovi3ob9p4.bkt.clouddn.com/toux.jpg'})
+  
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="/static/js/player.js"></script>
+<script>
+  function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+  }
+  window.onload = bgChange;
+</script>
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: '3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz',
+        appKey: 'ATSiF5Wtn160uu6HIYFiRpWs',
+        placeholder: 'Just go go',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz", "ATSiF5Wtn160uu6HIYFiRpWs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 8184,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.1.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#more");
+  
+  </script>
+
+
+</body>
+</html>
