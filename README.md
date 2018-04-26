@@ -1,4 +1,4 @@
-##### DEV
+##### Authoring tools
 
 | NEW | WEB | EDIT |
 | ---- | ---- | ---- |
