@@ -85,4 +85,6 @@ HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment
 
 - JDK1.6,JDK1.7,JDK1.8安装共存问题 https://blog.csdn.net/just_coming_here/article/details/51775909
 
--  JDK7与JDK8环境共存与切换 https://www.cnblogs.com/iathanasy/p/8507647.html
+- JDK7与JDK8环境共存与切换 https://www.cnblogs.com/iathanasy/p/8507647.html
+
+- JDK7与JDK8共存问题小思 https://www.cnblogs.com/fxmemory/p/7234848.html
