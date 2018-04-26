@@ -1,6 +1,6 @@
 ##### Authoring tools
 
-| NEW | WEB | EDIT |
+| ##### NEW | ##### WEB | ##### EDIT |
 | ---- | ---- | ---- |
 | [![edit-image]][edit-url]| [![mirror-image]][mirror-url]| [![model-image]][model-url]|
 
