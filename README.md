@@ -4,11 +4,11 @@
 | ---- | ---- | ---- |
 | [![edit-image]][edit-url]| [![mirror-image]][mirror-url]| [![model-image]][model-url]|
 
-[edit-image]: http://ovi3ob9p4.bkt.clouddn.com/ico/edit.png
+[edit-image]: http://ovi3ob9p4.bkt.clouddn.com/gheditor.png
 [edit-url]: /source/_posts/
 
-[mirror-image]: http://ovi3ob9p4.bkt.clouddn.com/ico/home.png
+[mirror-image]: http://ovi3ob9p4.bkt.clouddn.com/ghhome.png
 [mirror-url]: http://skei.gitee.io
 
-[model-image]: http://ovi3ob9p4.bkt.clouddn.com/ico/moxing.png
+[model-image]: http://ovi3ob9p4.bkt.clouddn.com/ghmodel.png
 [model-url]: https://github.com/keees/keees.github.io/wiki/post-model/_edit
