@@ -28,7 +28,7 @@ after_script:
 
 branches:
   only:
-    - dev
+    - src
 env:
  global:
    - GH_REF: github.com/imcco/imcco.github.io.git
