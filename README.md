@@ -1,4 +1,4 @@
-##### Authoring tools.
+#### Authoring tools.
 
 | NEW | WEB | EDIT |
 | ---- | ---- | ---- |
