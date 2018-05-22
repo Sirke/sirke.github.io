@@ -298,8 +298,8 @@ wechat_subscriber:
 
 # Reward
 reward_comment: Donate comment here
-wechatpay: http://ovi3ob9p4.bkt.clouddn.com/wechat.jpg
-alipay: http://ovi3ob9p4.bkt.clouddn.com/Alipay.jpg
+wechatpay: http://ovi3ob9p4.bkt.clouddn.com/WeChat.png
+alipay: http://ovi3ob9p4.bkt.clouddn.com/Alipay.png
 #bitcoin: /images/bitcoin.png
 
 # Related popular posts
