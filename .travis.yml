@@ -10,7 +10,7 @@ install:
   - npm install   #安装hexo及插件
 before_script:
   - export TZ='Asia/Shanghai'  
-  - npm install -g mocha
+  #- npm install -g mocha #mocha单元测试
   - git clone --branch master https://github.com/imcco/imcco.github.io.git public
   
 script:
