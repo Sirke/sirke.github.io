@@ -4,7 +4,7 @@ tags: Think
 category: Think
 date: 2018-07-28 15:30:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0177.jpg)
+![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0178.jpg)
 
 人为什么来到这个世界，到底怎样的生活才会有意义有价值？虽然我们普通老百姓不追求功名利禄，金钱权势。但是要想自己的人生活的有滋有味，充实而有价值，实现自己的人生价值。我想，需要我们每个人好好的揣摩揣摩。虽然每个人的志向与兴趣爱好，人生价值观不一样，但是，我觉得，我们普通人，普通的人生应该是这样的，我的人生感悟。
 <!--more-->
