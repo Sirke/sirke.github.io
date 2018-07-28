@@ -9,7 +9,7 @@
 [gitter-image]: https://badges.gitter.im/Join%20Chat.svg
 [gitter-url]: https://gitter.im/sirke
 
-[travis-image]: https://travis-ci.org/imcco/imcco.github.io.svg?branch=dev
+[travis-image]: https://travis-ci.org/imcco/imcco.github.io.svg?branch=src
 [travis-url]: https://travis-ci.org/
 
 [hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
