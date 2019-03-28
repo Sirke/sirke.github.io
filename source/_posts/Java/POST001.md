@@ -4,7 +4,7 @@ tags: Java
 category: Java
 date: 2018-02-22 22:44:36
 ---
-![image](http://ovi3ob9p4.bkt.clouddn.com/TIETU/CT0125.jpg)
+![image](http://www.iskei.cn/TIETU/CT0125.jpg)
 
 Java工程师学习路线、知识框架图
 <!--more-->
