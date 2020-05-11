@@ -3,20 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Keis Note
-subtitle: Java developer's blog.
-description: Java technology blog.
-author: Kee
+title: Kei's Note
+subtitle: Kancolle is life!
+description: "note"
+author: Kee Lau
 language: zh-CN
-timezone: Asia/Shanghai
+timezone: Japan
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.iskei.cn
+url: https://www.iskei.cn
 root: /
-permalink: posts/:abbrlink.html
-permalink_defaults: 
-lang: en
+permalink: doc/:year/:abbrlink.html
+permalink_defaults:
 
 # Directory
 source_dir: source
@@ -27,11 +26,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-   - README.md
-   - baidu_verify_EMHua102PZ.html
-   - 404.html
-   - static/**
-   - LICENSE
+
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -47,7 +42,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -56,11 +51,21 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
+    买买买: Buying
+    杂谈: Talk
+    工程: Projects
+    大创: Big Innovation
 tag_map:
+    买买买: Buying
+    键盘: Keyboard
+    杂谈: Talk
+    打字: Typing
+    工程: Projects
+    大创: Big Innovation
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -78,65 +83,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-#search
-search:
-  path: search.xml
-  field: post
-  format: html
-  limit: 10000
-  
-  # sitemap
-sitemap:
-  path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
-  #baidu验证
-  
-filter_optimize:
-  enable: true
-  # remove static resource query string
-  #   - like `?v=1.0.0`
-  remove_query_string: true
-  css:
-    enable: true
-    # bundle loaded css file into the one
-    bundle: true
-    # use a script block to load css elements dynamically
-    delivery: true
-    # make specific css content inline into the html page
-    #   - only support the full path
-    #   - default is ['css/main.css']
-    inlines:
-    excludes:
-  js:
-    # bundle loaded js file into the one
-    bundle: true
-    excludes:
-    
 
-symbols_count_time:
-  symbols: true
-  time: true
-  total_symbols: true
-  total_time: true
-
-leancloud_counter_security:
-  enable_sync: true
-  app_id: 3nyXCqUCR7h9bS03SgVrVcTo-gzGzoHsz
-  app_key: ATSiF5Wtn160uu6HIYFiRpWs
-  username: keis # Will be asked while deploying if is left blank
-  password:  # Recommmended to be left blank. Will be asked while deploying if is left blank
-
-# douban
-douban:
-  user: sirkei
-  book:
-    title: 'books'
-    quote: 'Books are the Windows of the human soul.'
-  movie:
-    title: 'movie'
-    quote: 'The dream begins with the play.'
-    
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -144,3 +91,105 @@ deploy:
   repo:
       github: git@github.com:keees/keees.github.io.git,master
       coding: git@git.coding.net:laukei/laukei.coding.me.git,master
+
+# Sitemap
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
+
+# Feed
+feed:
+  type:
+    - atom
+  path:
+    - atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+
+# Search
+search:
+  path: search.xml
+  field: post
+  content: true
+
+# Symbols Count Time
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+
+# Renderer
+markdown_it_plus:
+    highlight: true
+    html: true
+    xhtmlOut: true
+    breaks: true
+    langPrefix:
+    linkify: true
+    typographer:
+    quotes: “”‘’
+    pre_class: highlight
+    plugins:
+        - plugin:
+            name: markdown-it-task-lists
+            enable: true
+        - plugin:
+            name: markdown-it-criticmarkup
+            enable: true
+        - plugin:
+            name: markdown-it-fontawesome
+            enable: true
+
+
+# Minifier
+all_minifier: true
+
+## HTML
+html_minifier:
+  enable: true
+  ignore_error: false
+  silent: true
+  exclude:
+
+## CSS
+css_minifier:
+  enable: true
+  silent: true
+  exclude:
+
+## JS
+js_minifier:
+  enable: true
+  mangle: true
+  silent: true
+  exclude:
+
+## Image
+image_minifier:
+  enable: true
+  interlaced: true
+  multipass: true
+  optimizationLevel: 7
+  pngquant: true
+  progressive: true
+  silent: true
+
+## JS Concator
+js_concator:
+  enable: false
+  bundle_path: '/js/bundle.js'
+  front: true
+  silent: true
+
+# PlantUML
+plantuml:
+  render: "PlantUMLServer"
