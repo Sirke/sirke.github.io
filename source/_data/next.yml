@@ -1,7 +1,3 @@
-# Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
-
 # Site
 title: Kei's Note
 subtitle: Xi'an is great!
@@ -58,19 +54,9 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category:
 category_map:
-    买买买: Buying
-    杂谈: Talk
-    工程: Projects
-    大创: Big Innovation
 tag_map:
-    买买买: Buying
-    键盘: Keyboard
-    杂谈: Talk
-    打字: Typing
-    工程: Projects
-    大创: Big Innovation
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -100,8 +86,8 @@ deploy:
 # Sitemap
 sitemap:
     path: sitemap.xml
-    tag: false
-    category: false
+    tag: true
+    category: true
 
 # Feed
 feed:
@@ -241,7 +227,7 @@ favicon:
   #ms_browserconfig: /images/browserconfig.xml
 
 # Show multilingual switcher in footer.
-language_switcher: false
+language_switcher: true
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
@@ -260,7 +246,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: true
+  powered: false
 
   # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
