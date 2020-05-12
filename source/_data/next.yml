@@ -1,16 +1,20 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
 # Site
 title: Kei's Note
-subtitle: Xi'an is great!
+subtitle: Shenzhen is great!
 description: "Android & Kotlin beginner\n Ex-experienced Admiral"
-author: kee Lau
+author: Kei Lau
 language: zh-CN
-timezone: Japan
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://www.iskei.cn
 root: /
-permalink: doc/:year/:abbrlink.html
+permalink: /:title/
 permalink_defaults:
 
 # Directory
@@ -22,11 +26,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-   - README.md
-   - baidu_verify_EMHua102PZ.html
-   - 404.html
-   - static/**
-   - LICENSE
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -54,7 +53,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category:
+default_category: uncategorized
 category_map:
 tag_map:
 
@@ -86,8 +85,8 @@ deploy:
 # Sitemap
 sitemap:
     path: sitemap.xml
-    tag: true
-    category: true
+    tag: false
+    category: false
 
 # Feed
 feed:
@@ -189,7 +188,7 @@ plantuml:
 override: false
 
 # Console reminder if new version released.
-reminder: true
+reminder: false
 
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
@@ -227,7 +226,7 @@ favicon:
   #ms_browserconfig: /images/browserconfig.xml
 
 # Show multilingual switcher in footer.
-language_switcher: true
+language_switcher: false
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
@@ -246,7 +245,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: false
+  powered: true
 
   # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -356,7 +355,7 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  GitHub: https://github.com/wafer-li || fab fa-github
+  GitHub: https://github.com/Kei-li || fab fa-github
   E-Mail: mailto:omyshokami@gmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
@@ -387,7 +386,7 @@ links:
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: false 
+  number: false
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
@@ -569,7 +568,7 @@ bookmark:
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
   enable: true
-  permalink: https://github.com/wafer-li
+  permalink: https://github.com/Kei-li
   title: Follow me on GitHub
 
 

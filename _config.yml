@@ -5,16 +5,16 @@
 # Site
 title: Kei's Note
 subtitle: Kancolle is life!
-description: "note"
-author: Kee Lau
+description: "Android & Kotlin beginner\n Experienced Admiral"
+author: Kei Lau
 language: zh-CN
-timezone: Japan
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.iskei.cn
+url: https://Kei.li
 root: /
-permalink: doc/:year/:abbrlink.html
+permalink: /:title/
 permalink_defaults:
 
 # Directory
@@ -89,8 +89,8 @@ theme: next
 deploy:
   type: git
   repo:
-      github: git@github.com:keees/keees.github.io.git,master
-      coding: git@git.coding.net:laukei/laukei.coding.me.git,master
+      github: git@github.com:Kei-li/Kei-li.github.io.git
+  branch: master
 
 # Sitemap
 sitemap:
